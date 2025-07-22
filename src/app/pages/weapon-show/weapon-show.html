@@ -1,0 +1,57 @@
+<h1>{{weapon.name}}</h1>
+<p>Cost: {{weapon.cost}}</p>
+<p>Size: {{weapon.size}}</p>
+<p>Ammo type: {{weapon.regularAmmoType}} </p>
+<p>Max damage range: {{weapon.maxDamageRange}}</p>
+
+<p>Base Damage: {{weapon.baseDamage}}</p>
+<p>Drop range: {{weapon.dropRange}}</p>
+<p>Fire Rate: {{weapon.rateOfFire}}</p>
+<p>Cycle time: {{weapon.cycleTime}}</p>
+<p>Spread: {{weapon.spread}}</p>
+<p>Sway: {{weapon.sway}} </p>
+<p>Vertical Recoil: {{weapon.verticalRecoil}}</p>
+<p>Reload Speed: {{weapon.reloadSpeed}}</p>
+<p>Muzzle Velocity: {{weapon.muzzleVelocity}}</p>
+<p>Melee damage: {{weapon.meleeDamage}}</p>
+<p>Heavy melee damage: {{weapon.heavyMeleeDamage}}</p>
+<p>Stamina consumption: {{weapon.staminaConsumption}}</p>
+<p>Magazine: {{`${weapon.magazine}+1`}}</p>
+<p>Ammo reserve: {{weapon.ammoReserve}}</p>
+
+<h3>Custom ammo</h3>
+
+@for (ca of weapon.customAmmos; track $index) {
+    <h4>{{ca.type}}</h4>
+    <p>Cost: {{ca.cost}}</p>
+    @if (ca.damageModifier) {
+        <p>Damage: {{weapon.baseDamage}} &rarr; {{weapon.baseDamage + ca.damageModifier}}</p>
+    }
+    @if (ca.maxDamageRangeModifier) {
+        <p>Max damage range: {{weapon.maxDamageRange}} &rarr; {{weapon.maxDamageRange + ca.maxDamageRangeModifier}}</p>
+    }
+
+    @if (ca.dropRangeModifier) {
+        <p>Drop range: {{weapon.dropRange}} &rarr; {{weapon.dropRange + ca.dropRangeModifier}}</p>
+    }
+
+    @if (ca.spreadModifier) {
+        <p>Spread: {{weapon.spread}} &rarr; {{weapon.spread + ca.spreadModifier}}</p>
+    }
+
+    @if (ca.verticalRecoilModifier) {
+        <p>Vertical recoil: {{weapon.verticalRecoil}} &rarr; {{weapon.verticalRecoil + ca.verticalRecoilModifier}}</p>
+    }
+    
+    @if (ca.muzzleVelocityModifier) {
+        <p>Muzzle velocity: {{weapon.muzzleVelocity}} &rarr; {{weapon.muzzleVelocity + ca.muzzleVelocityModifier}}</p>
+    }
+
+    @if (ca.ammoReserveModifier) {
+        <p>Ammo reserve: {{weapon.ammoReserve}} &rarr; {{weapon.ammoReserve + ca.ammoReserveModifier}}</p>
+    }
+
+    @if (ca.statusEffect) {
+        <p>Status effect: {{ca.statusEffect.description}}</p>
+    }
+}
