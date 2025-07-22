@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Weapon } from '../../arsenal/weapons';
 import { FRONTIER_73C } from '../../arsenal/weapons.list';
+import { CustomAmmoType } from '../../arsenal/ammo';
 
 @Component({
   selector: 'hunt-weapon-show',
@@ -13,14 +14,6 @@ export class WeaponShow implements OnInit {
   weaponCopy: Weapon = new Weapon(FRONTIER_73C);
 
   ngOnInit(): void {
-    console.log(this.weapon);
-    this.weaponCopy.activeCustomAmmo = this.weaponCopy.customAmmos[0].type
-    console.log(this.weaponCopy)
-    this.weaponCopy.activeCustomAmmo = this.weaponCopy.customAmmos[1].type
-    console.log(this.weaponCopy)
-    this.weaponCopy.activeCustomAmmo = this.weaponCopy.customAmmos[2].type
-    console.log(this.weaponCopy)
-    // this.weaponCopy.activeCustomAmmo = undefined
-    // console.log(this.weaponCopy)
+    this.weaponCopy.activeCustomAmmo = CustomAmmoType.FMJ
   }
 }

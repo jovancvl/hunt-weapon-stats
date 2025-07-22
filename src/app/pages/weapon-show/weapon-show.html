@@ -1,57 +1,124 @@
-<h1>{{weapon.name}}</h1>
-<p>Cost: {{weapon.cost}}</p>
-<p>Size: {{weapon.size}}</p>
-<p>Ammo type: {{weapon.regularAmmoType}} </p>
-<p>Max damage range: {{weapon.maxDamageRange}}</p>
+<div class="grid-container">
+    <div>
+        <h1>{{weapon.name}}</h1>
+        <p>Cost: {{weapon.cost}}</p>
+        <p>Size: {{weapon.size}}</p>
+        <p>Ammo type: {{weapon.regularAmmoType}} </p>
+        <p>Max damage range: {{weapon.maxDamageRange}}</p>
+        <table>
+            <tr>
+                <td>Base Damage: {{weapon.baseDamage}}</td>
+                <td>Drop range: {{weapon.dropRange}}</td>
+            </tr>
+            <tr>
+                <td>Fire Rate: {{weapon.rateOfFire}}</td>
+                <td>Cycle time: {{weapon.cycleTime}}</td>
+            </tr>
+            <tr>
+                <td>Spread: {{weapon.spread}}</td>
+                <td>Sway: {{weapon.sway}}</td>
+            </tr>
+            <tr>
+                <td>Vertical Recoil: {{weapon.verticalRecoil}}</td>
+                <td>Reload Speed: {{weapon.reloadSpeed}}</td>
+            </tr>
+            <tr>
+                <td>Muzzle Velocity: {{weapon.muzzleVelocity}}</td>
+                <td>Melee damage: {{weapon.meleeDamage}}</td>
+            </tr>
+            <tr>
+                <td>Heavy melee damage: {{weapon.heavyMeleeDamage}}</td>
+                <td>Stamina consumption: {{weapon.staminaConsumption}}</td>
+            </tr>
+            <tr>
+                <td>Magazine: {{`${weapon.magazine}+1`}}</td>
+                <td>Ammo reserve: {{weapon.ammoReserve}}</td>
+            </tr>
+        </table>
+    </div>
+    <div>
+        <h1>Custom ammo</h1>
 
-<p>Base Damage: {{weapon.baseDamage}}</p>
-<p>Drop range: {{weapon.dropRange}}</p>
-<p>Fire Rate: {{weapon.rateOfFire}}</p>
-<p>Cycle time: {{weapon.cycleTime}}</p>
-<p>Spread: {{weapon.spread}}</p>
-<p>Sway: {{weapon.sway}} </p>
-<p>Vertical Recoil: {{weapon.verticalRecoil}}</p>
-<p>Reload Speed: {{weapon.reloadSpeed}}</p>
-<p>Muzzle Velocity: {{weapon.muzzleVelocity}}</p>
-<p>Melee damage: {{weapon.meleeDamage}}</p>
-<p>Heavy melee damage: {{weapon.heavyMeleeDamage}}</p>
-<p>Stamina consumption: {{weapon.staminaConsumption}}</p>
-<p>Magazine: {{`${weapon.magazine}+1`}}</p>
-<p>Ammo reserve: {{weapon.ammoReserve}}</p>
+        @for (ca of weapon.customAmmos; track $index) {
+            <h4>{{ca.type}}</h4>
+            <p>Cost: {{ca.cost}}</p>
+            @if (ca.damageModifier) {
+                <p>Damage: {{weapon.baseDamage}} &rarr; {{weapon.baseDamage + ca.damageModifier}}</p>
+            }
+            @if (ca.maxDamageRangeModifier) {
+                <p>Max damage range: {{weapon.maxDamageRange}} &rarr; {{weapon.maxDamageRange + ca.maxDamageRangeModifier}}</p>
+            }
 
-<h3>Custom ammo</h3>
+            @if (ca.dropRangeModifier) {
+                <p>Drop range: {{weapon.dropRange}} &rarr; {{weapon.dropRange + ca.dropRangeModifier}}</p>
+            }
 
-@for (ca of weapon.customAmmos; track $index) {
-    <h4>{{ca.type}}</h4>
-    <p>Cost: {{ca.cost}}</p>
-    @if (ca.damageModifier) {
-        <p>Damage: {{weapon.baseDamage}} &rarr; {{weapon.baseDamage + ca.damageModifier}}</p>
-    }
-    @if (ca.maxDamageRangeModifier) {
-        <p>Max damage range: {{weapon.maxDamageRange}} &rarr; {{weapon.maxDamageRange + ca.maxDamageRangeModifier}}</p>
-    }
+            @if (ca.spreadModifier) {
+                <p>Spread: {{weapon.spread}} &rarr; {{weapon.spread + ca.spreadModifier}}</p>
+            }
 
-    @if (ca.dropRangeModifier) {
-        <p>Drop range: {{weapon.dropRange}} &rarr; {{weapon.dropRange + ca.dropRangeModifier}}</p>
-    }
+            @if (ca.verticalRecoilModifier) {
+                <p>Vertical recoil: {{weapon.verticalRecoil}} &rarr; {{weapon.verticalRecoil + ca.verticalRecoilModifier}}</p>
+            }
 
-    @if (ca.spreadModifier) {
-        <p>Spread: {{weapon.spread}} &rarr; {{weapon.spread + ca.spreadModifier}}</p>
-    }
+            @if (ca.muzzleVelocityModifier) {
+                <p>Muzzle velocity: {{weapon.muzzleVelocity}} &rarr; {{weapon.muzzleVelocity + ca.muzzleVelocityModifier}}</p>
+            }
 
-    @if (ca.verticalRecoilModifier) {
-        <p>Vertical recoil: {{weapon.verticalRecoil}} &rarr; {{weapon.verticalRecoil + ca.verticalRecoilModifier}}</p>
-    }
-    
-    @if (ca.muzzleVelocityModifier) {
-        <p>Muzzle velocity: {{weapon.muzzleVelocity}} &rarr; {{weapon.muzzleVelocity + ca.muzzleVelocityModifier}}</p>
-    }
+            @if (ca.ammoReserveModifier) {
+                <p>Ammo reserve: {{weapon.ammoReserve}} &rarr; {{weapon.ammoReserve + ca.ammoReserveModifier}}</p>
+            }
 
-    @if (ca.ammoReserveModifier) {
-        <p>Ammo reserve: {{weapon.ammoReserve}} &rarr; {{weapon.ammoReserve + ca.ammoReserveModifier}}</p>
-    }
-
-    @if (ca.statusEffect) {
-        <p>Status effect: {{ca.statusEffect.description}}</p>
-    }
-}
+            @if (ca.statusEffect) {
+                <p>Status effect: {{ca.statusEffect.description}}</p>
+            }
+        }
+    </div>
+    <div>
+        <div class="flex-container">
+            @for (ca of weaponCopy.customAmmos; track $index) {
+                <button (click)="weaponCopy.activeCustomAmmo = ca.type" [class.active]="weaponCopy.activeCustomAmmo === ca">
+                    {{ca.type}}
+                </button>
+            }
+        </div>
+        <h1>{{weaponCopy.name}} {{weaponCopy.activeCustomAmmo?.type}}</h1>
+        <p>Cost: {{weaponCopy.cost}}</p>
+        <p>Size: {{weaponCopy.size}}</p>
+        <p>Ammo type: {{weaponCopy.regularAmmoType}} {{weaponCopy.activeCustomAmmo?.type}} </p>
+        @if (weaponCopy.activeCustomAmmo && weaponCopy.activeCustomAmmo.statusEffect) {
+            <p>Status effect: {{weaponCopy.activeCustomAmmo.statusEffect.description}}</p>
+        }
+        <p>Max damage range: {{weaponCopy.maxDamageRange}}</p>
+        <table>
+            <tr>
+                <td>Base Damage: {{weaponCopy.baseDamage}}</td>
+                <td>Drop range: {{weaponCopy.dropRange}}</td>
+            </tr>
+            <tr>
+                <td>Fire Rate: {{weaponCopy.rateOfFire}}</td>
+                <td>Cycle time: {{weaponCopy.cycleTime}}</td>
+            </tr>
+            <tr>
+                <td>Spread: {{weaponCopy.spread}}</td>
+                <td>Sway: {{weaponCopy.sway}}</td>
+            </tr>
+            <tr>
+                <td>Vertical Recoil: {{weaponCopy.verticalRecoil}}</td>
+                <td>Reload Speed: {{weaponCopy.reloadSpeed}}</td>
+            </tr>
+            <tr>
+                <td>Muzzle Velocity: {{weaponCopy.muzzleVelocity}}</td>
+                <td>Melee damage: {{weaponCopy.meleeDamage}}</td>
+            </tr>
+            <tr>
+                <td>Heavy melee damage: {{weaponCopy.heavyMeleeDamage}}</td>
+                <td>Stamina consumption: {{weaponCopy.staminaConsumption}}</td>
+            </tr>
+            <tr>
+                <td>Magazine: {{`${weaponCopy.magazine}+1`}}</td>
+                <td>Ammo reserve: {{weaponCopy.ammoReserve}}</td>
+            </tr>
+        </table>
+    </div>
+</div>

@@ -24,7 +24,7 @@ export class Weapon {
     magazine: number
     ammoReserve: number
 
-    get activeCustomAmmo(): CustomAmmo | undefined { return this.activeCustomAmmo; }
+    get activeCustomAmmo(): CustomAmmo | undefined { return this._activeCustomAmmo; }
     set activeCustomAmmo(value: CustomAmmoType | undefined) {
         if (value === undefined) { // want to remove active
             if (this._activeCustomAmmo !== undefined) { // there is active

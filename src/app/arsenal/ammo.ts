@@ -58,7 +58,6 @@ export class CustomAmmo {
     }
 }
 
-
 export interface CustomAmmoInterface {
     type: CustomAmmoType,
     cost: number,
