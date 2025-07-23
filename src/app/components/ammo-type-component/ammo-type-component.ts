@@ -1,5 +1,4 @@
 import { Component, input } from '@angular/core';
-import { CustomAmmoType, RegularAmmoType } from '../../arsenal/ammo';
 
 @Component({
   selector: 'hunt-ammo-type',
@@ -8,5 +7,5 @@ import { CustomAmmoType, RegularAmmoType } from '../../arsenal/ammo';
   styleUrl: './ammo-type-component.scss'
 })
 export class AmmoTypeComponent {
-  ammoType = input.required<CustomAmmoType | RegularAmmoType>();
+  // ammoType = input.required<CustomAmmoType | RegularAmmoType>();
 }

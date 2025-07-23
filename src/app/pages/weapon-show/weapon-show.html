@@ -3,8 +3,9 @@
         <h1>{{weapon.name}}</h1>
         <p>Cost: {{weapon.cost}}</p>
         <p>Size: {{weapon.size}}</p>
-        <p>Ammo type: {{weapon.regularAmmoType}} </p>
-        <p>Max damage range: {{weapon.maxDamageRange}}</p>
+        <p>Ammo type: {{weapon.baseAmmoName}} </p>
+        <p>Ammo description: {{weapon.baseAmmoDescription}} </p>
+        <p>Max damage range: {{weapon.maxDamageRange}}m</p>
         <table>
             <tr>
                 <td>Base Damage: {{weapon.baseDamage}}</td>
@@ -20,7 +21,7 @@
             </tr>
             <tr>
                 <td>Vertical Recoil: {{weapon.verticalRecoil}}</td>
-                <td>Reload Speed: {{weapon.reloadSpeed}}</td>
+                <td>Reload Speed: {{weapon.reloadTime}}</td>
             </tr>
             <tr>
                 <td>Muzzle Velocity: {{weapon.muzzleVelocity}}</td>
@@ -40,56 +41,70 @@
         <h1>Custom ammo</h1>
 
         @for (ca of weapon.customAmmos; track $index) {
-            <h4>{{ca.type}}</h4>
+            <h4>{{ca.name}}</h4>
+            <p>{{ca.description}}</p>
             <p>Cost: {{ca.cost}}</p>
+            <p>Scarce: {{ca.scarce}}</p>
             @if (ca.damageModifier) {
-                <p>Damage: {{weapon.baseDamage}} &rarr; {{weapon.baseDamage + ca.damageModifier}}</p>
+                <tr>
+                    <td>Damage: {{weapon.baseDamage}} &rarr; {{weapon.baseDamage + ca.damageModifier}}</td>
+                </tr>
+                
             }
             @if (ca.maxDamageRangeModifier) {
-                <p>Max damage range: {{weapon.maxDamageRange}} &rarr; {{weapon.maxDamageRange + ca.maxDamageRangeModifier}}</p>
+                <tr>
+                    <td>Max damage range: {{weapon.maxDamageRange}} &rarr; {{weapon.maxDamageRange + ca.maxDamageRangeModifier}}</td>
+                </tr>
             }
 
             @if (ca.dropRangeModifier) {
-                <p>Drop range: {{weapon.dropRange}} &rarr; {{weapon.dropRange + ca.dropRangeModifier}}</p>
+                <tr>
+                    <td>Drop range: {{weapon.dropRange}} &rarr; {{weapon.dropRange + ca.dropRangeModifier}}</td>
+                </tr>
             }
 
             @if (ca.spreadModifier) {
-                <p>Spread: {{weapon.spread}} &rarr; {{weapon.spread + ca.spreadModifier}}</p>
+                <tr>
+                    <td>Spread: {{weapon.spread}} &rarr; {{weapon.spread + ca.spreadModifier}}</td>
+                </tr>
             }
 
             @if (ca.verticalRecoilModifier) {
-                <p>Vertical recoil: {{weapon.verticalRecoil}} &rarr; {{weapon.verticalRecoil + ca.verticalRecoilModifier}}</p>
+                <tr>
+                    <td>Vertical recoil: {{weapon.verticalRecoil}} &rarr; {{weapon.verticalRecoil + ca.verticalRecoilModifier}}</td>
+                </tr>
             }
 
             @if (ca.muzzleVelocityModifier) {
-                <p>Muzzle velocity: {{weapon.muzzleVelocity}} &rarr; {{weapon.muzzleVelocity + ca.muzzleVelocityModifier}}</p>
+                <tr>
+                    <td>Muzzle velocity: {{weapon.muzzleVelocity}} &rarr; {{weapon.muzzleVelocity + ca.muzzleVelocityModifier}}</td>
+                </tr>
             }
 
             @if (ca.ammoReserveModifier) {
-                <p>Ammo reserve: {{weapon.ammoReserve}} &rarr; {{weapon.ammoReserve + ca.ammoReserveModifier}}</p>
-            }
-
-            @if (ca.statusEffect) {
-                <p>Status effect: {{ca.statusEffect.description}}</p>
+                <tr>
+                    <td>Ammo reserve: {{weapon.ammoReserve}} &rarr; {{weapon.ammoReserve + ca.ammoReserveModifier}}</td>
+                </tr>
             }
         }
     </div>
     <div>
         <div class="flex-container">
+            <button (click)="weaponCopy.activeCustomAmmo = undefined">
+                {{weapon.baseAmmoName}}
+            </button>
             @for (ca of weaponCopy.customAmmos; track $index) {
-                <button (click)="weaponCopy.activeCustomAmmo = ca.type" [class.active]="weaponCopy.activeCustomAmmo === ca">
-                    {{ca.type}}
+                <button (click)="weaponCopy.activeCustomAmmo = ca">
+                    {{ca.name}}
                 </button>
             }
         </div>
-        <h1>{{weaponCopy.name}} {{weaponCopy.activeCustomAmmo?.type}}</h1>
+        <h1>{{weaponCopy.name}} {{weaponCopy.activeCustomAmmo?.name}}</h1>
         <p>Cost: {{weaponCopy.cost}}</p>
         <p>Size: {{weaponCopy.size}}</p>
-        <p>Ammo type: {{weaponCopy.regularAmmoType}} {{weaponCopy.activeCustomAmmo?.type}} </p>
-        @if (weaponCopy.activeCustomAmmo && weaponCopy.activeCustomAmmo.statusEffect) {
-            <p>Status effect: {{weaponCopy.activeCustomAmmo.statusEffect.description}}</p>
-        }
-        <p>Max damage range: {{weaponCopy.maxDamageRange}}</p>
+        <p>Ammo type: {{weaponCopy.baseAmmoName}} {{weaponCopy.activeCustomAmmo?.name}} </p>
+        <p>Ammo description: {{weaponCopy.activeCustomAmmo ? weaponCopy.activeCustomAmmo.description : weaponCopy.baseAmmoDescription}} </p>
+        <p>Max damage range: {{weaponCopy.maxDamageRange}}m</p>
         <table>
             <tr>
                 <td>Base Damage: {{weaponCopy.baseDamage}}</td>
@@ -105,7 +120,7 @@
             </tr>
             <tr>
                 <td>Vertical Recoil: {{weaponCopy.verticalRecoil}}</td>
-                <td>Reload Speed: {{weaponCopy.reloadSpeed}}</td>
+                <td>Reload Speed: {{weaponCopy.reloadTime}}</td>
             </tr>
             <tr>
                 <td>Muzzle Velocity: {{weaponCopy.muzzleVelocity}}</td>

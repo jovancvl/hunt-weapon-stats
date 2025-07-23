@@ -1,34 +1,45 @@
-import { CustomAmmo, CustomAmmoType, RegularAmmoType } from "./ammo"
+import { CustomAmmo, BaseAmmoName, CustomAmmoEffectType, CustomAmmoEffectSeverity, BaseAmmoDescription } from "./ammo"
 
 export class Weapon {
     private _activeCustomAmmo: CustomAmmo | undefined
-    maxDamageRange: number
+    baseAmmoEffectActive: boolean = false
 
     name: string
     cost: number
     size: number
-    regularAmmoType: RegularAmmoType
-    customAmmos: CustomAmmo[]
+    action: ActionType
+
+    baseAmmoName: BaseAmmoName
+    baseAmmoEffectType: CustomAmmoEffectType
+    baseAmmoEffectSeverity: CustomAmmoEffectSeverity
+    baseAmmoDescription: BaseAmmoDescription
+
     baseDamage: number
+    maxDamageRange: number
     dropRange: number
+    spread: number
+    verticalRecoil: number
+    muzzleVelocity: number
+    ammoReserve: number
+
+    sway: number
     rateOfFire: number
     cycleTime: number
-    spread: number
-    sway: number
-    verticalRecoil: number
-    reloadSpeed: number
-    muzzleVelocity: number
+    reloadTime: number
+    magazine: number
+    hasExtraBullet: boolean
+
     meleeDamage: number
     heavyMeleeDamage: number
     staminaConsumption: number
-    magazine: number
-    ammoReserve: number
+
+    customAmmos: CustomAmmo[] = []
 
     get activeCustomAmmo(): CustomAmmo | undefined { return this._activeCustomAmmo; }
-    set activeCustomAmmo(value: CustomAmmoType | undefined) {
+    set activeCustomAmmo(value: CustomAmmo | undefined) {
         if (value === undefined) { // want to remove active
             if (this._activeCustomAmmo !== undefined) { // there is active
-                this._activeCustomAmmo.remove()
+                this._activeCustomAmmo.remove(this)
                 this._activeCustomAmmo = undefined
                 return
             }
@@ -37,15 +48,15 @@ export class Weapon {
 
         // want to change active
         if (this._activeCustomAmmo !== undefined) {
-            this._activeCustomAmmo.remove()
+            this._activeCustomAmmo.remove(this)
             this._activeCustomAmmo = undefined
         }
 
-        const ca = this.customAmmos.find(ca => ca.type === value)
+        const ca = this.customAmmos.find(ca => ca.name === value.name)
         if (ca === undefined) {
             throw new Error(`Custom ammo type not on weapon: ${value}`)
         }
-        ca.apply()
+        ca.apply(this)
         this._activeCustomAmmo = ca
     }
 
@@ -53,43 +64,50 @@ export class Weapon {
         this.name = weapon.name
         this.cost = weapon.cost
         this.size = weapon.size
-        this.regularAmmoType = weapon.regularAmmoType
-        this.customAmmos = weapon.customAmmos
+        this.action = weapon.action
+
+        this.baseAmmoName = weapon.baseAmmoName
+        this.baseAmmoEffectType = weapon.baseAmmoEffectType
+        this.baseAmmoEffectSeverity = weapon.baseAmmoEffectSeverity
+        this.baseAmmoDescription = weapon.baseAmmoDescription
+        
         this.baseDamage = weapon.baseDamage
+
         this.dropRange = weapon.dropRange
+        this.spread = weapon.spread
+        this.verticalRecoil = weapon.verticalRecoil
+        this.muzzleVelocity = weapon.muzzleVelocity
+        this.ammoReserve = weapon.ammoReserve
+
+        this.sway = weapon.sway
         this.rateOfFire = weapon.rateOfFire
         this.cycleTime = weapon.cycleTime
-        this.spread = weapon.spread
-        this.sway = weapon.sway
-        this.verticalRecoil = weapon.verticalRecoil
-        this.reloadSpeed = weapon.reloadSpeed
-        this.muzzleVelocity = weapon.muzzleVelocity
+        this.reloadTime = weapon.reloadTime
+        this.magazine = weapon.magazine
+        this.hasExtraBullet = weapon.hasExtraBullet
+        
         this.meleeDamage = weapon.meleeDamage
         this.heavyMeleeDamage = weapon.heavyMeleeDamage
         this.staminaConsumption = weapon.staminaConsumption
-        this.magazine = weapon.magazine
-        this.ammoReserve = weapon.ammoReserve
+        
+        this.customAmmos = weapon.customAmmos
 
-        switch (weapon.regularAmmoType) {
-            case RegularAmmoType.COMPACT: {
+        switch (weapon.baseAmmoName) {
+            case BaseAmmoName.COMPACT: {
                 this.maxDamageRange = 20
                 break
             }
-            case RegularAmmoType.MEDIUM: {
+            case BaseAmmoName.MEDIUM: {
                 this.maxDamageRange = 30
                 break
             }
-            case RegularAmmoType.LONG: {
+            case BaseAmmoName.LONG: {
                 this.maxDamageRange = 40
                 break
             }
             default: {
-                throw new Error("RegularAmmoType not recognized")
+                throw new Error("RegularAmmoName not recognized")
             }
-        }
-
-        for (const ca of this.customAmmos) {
-            ca.weapon = this
         }
     }
 }
@@ -98,25 +116,37 @@ export interface WeaponInterface {
     name: string
     cost: number
     size: number
-    regularAmmoType: RegularAmmoType
-    customAmmos: CustomAmmo[]
+    action: ActionType
+
+    baseAmmoName: BaseAmmoName
+    baseAmmoEffectType: CustomAmmoEffectType
+    baseAmmoEffectSeverity: CustomAmmoEffectSeverity
+    baseAmmoDescription: BaseAmmoDescription
+
     baseDamage: number
     dropRange: number
+    spread: number
+    verticalRecoil: number
+    muzzleVelocity: number
+    ammoReserve: number
+
+    sway: number
     rateOfFire: number
     cycleTime: number
-    spread: number
-    sway: number
-    verticalRecoil: number
-    reloadSpeed: number
-    muzzleVelocity: number
+    reloadTime: number
+    magazine: number
+    hasExtraBullet: boolean
+
     meleeDamage: number
     heavyMeleeDamage: number
     staminaConsumption: number
-    magazine: number
-    ammoReserve: number
+
+    customAmmos: CustomAmmo[]
 }
 
-export enum CycleType {
+
+
+export enum ActionType {
     BOLT_ACTION,
     LEVER_ACTION,
     PUMP_ACTION,
