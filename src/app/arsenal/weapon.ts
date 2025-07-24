@@ -15,7 +15,12 @@ export class Weapon {
     baseAmmoDescription: BaseAmmoDescription
 
     baseDamage: number
-    maxDamageRange: number
+    /**
+     * For rifles and pistols, this is the range at which the weapon deals its full damage.
+     * 
+     * For shotguns and special weapons, this is the range at which the weapon will reliably down a hunter in one shot.
+     */
+    optimalRange: number 
     dropRange: number
     spread: number
     verticalRecoil: number
@@ -94,15 +99,15 @@ export class Weapon {
 
         switch (weapon.baseAmmoName) {
             case BaseAmmoName.COMPACT: {
-                this.maxDamageRange = 20
+                this.optimalRange = 20
                 break
             }
             case BaseAmmoName.MEDIUM: {
-                this.maxDamageRange = 30
+                this.optimalRange = 30
                 break
             }
             case BaseAmmoName.LONG: {
-                this.maxDamageRange = 40
+                this.optimalRange = 40
                 break
             }
             default: {

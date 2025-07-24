@@ -146,7 +146,7 @@ export class CustomAmmo {
         }
 
         weapon.baseDamage += this.damageModifier
-        weapon.maxDamageRange += this.maxDamageRangeModifier
+        weapon.optimalRange += this.maxDamageRangeModifier
         weapon.dropRange += this.dropRangeModifier
         weapon.spread += this.spreadModifier 
         weapon.verticalRecoil += this.verticalRecoilModifier
@@ -165,7 +165,7 @@ export class CustomAmmo {
         }
 
         weapon.baseDamage -= this.damageModifier
-        weapon.maxDamageRange -= this.maxDamageRangeModifier
+        weapon.optimalRange -= this.maxDamageRangeModifier
         weapon.dropRange -= this.dropRangeModifier
         weapon.spread -= this.spreadModifier 
         weapon.verticalRecoil -= this.verticalRecoilModifier

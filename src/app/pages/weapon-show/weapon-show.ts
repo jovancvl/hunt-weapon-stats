@@ -1,10 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import { Weapon } from '../../arsenal/weapon';
 import { FRONTIER_73C } from '../../arsenal/frontier-family';
+import { HunterBodyComponent } from "../../components/hunter-body-component/hunter-body-component";
 
 @Component({
   selector: 'hunt-weapon-show',
-  imports: [],
+  imports: [HunterBodyComponent],
   templateUrl: './weapon-show.html',
   styleUrl: './weapon-show.scss'
 })

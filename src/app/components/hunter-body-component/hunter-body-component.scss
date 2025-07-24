@@ -1,0 +1,52 @@
+.hunter-body-container {
+    position: relative;
+    width: fit-content;
+    height: max(400px, 70vh);
+    box-sizing: border-box;
+    // border: 1px solid aqua;
+
+    p {
+        position: absolute;
+        font-size: xx-large;
+        margin: 0;
+        width: 15%;
+        
+    }
+
+    .chest-damage, .cock-damage {
+        text-align: center;
+    }
+
+    .arms-damage, .legs-damage {
+        text-align: right;
+    }
+
+    .chest-damage {
+        top: 25%;
+        left: 41%;
+    }
+
+    .cock-damage {
+        top: 46%; 
+        left: 41%;
+    }
+
+    .arms-damage {
+        top: 25%;
+        left: 5%;
+    }
+
+    .legs-damage {
+        top: 70%;
+        left: 15%;
+    }
+
+    img {
+        // position: absolute;
+        filter: invert(63%) sepia(0%) saturate(0%) hue-rotate(190deg) brightness(90%) contrast(82%);
+        box-sizing: border-box;
+        // border: 2px solid rgb(141, 141, 141);
+        padding: 1rem 4rem;
+        height: 100%;
+    }
+}
