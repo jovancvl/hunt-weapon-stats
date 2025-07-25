@@ -35,8 +35,9 @@ export class Weapon {
     hasExtraBullet: boolean
 
     meleeDamage: number
-    heavyMeleeDamage: number
     staminaConsumption: number
+    heavyMeleeDamage: number
+    heavyStaminaConsumption: number
 
     customAmmos: CustomAmmo[] = []
 
@@ -92,8 +93,9 @@ export class Weapon {
         this.hasExtraBullet = weapon.hasExtraBullet
         
         this.meleeDamage = weapon.meleeDamage
-        this.heavyMeleeDamage = weapon.heavyMeleeDamage
         this.staminaConsumption = weapon.staminaConsumption
+        this.heavyMeleeDamage = weapon.heavyMeleeDamage
+        this.heavyStaminaConsumption = weapon.heavyStaminaConsumption
         
         this.customAmmos = weapon.customAmmos
 
@@ -145,6 +147,7 @@ export interface WeaponInterface {
     meleeDamage: number
     heavyMeleeDamage: number
     staminaConsumption: number
+    heavyStaminaConsumption: number
 
     customAmmos: CustomAmmo[]
 }

@@ -1,0 +1,16 @@
+table {
+    font-size: 16px;
+    // table-layout: auto;
+    width: 100%;
+    tr {
+        td {
+            width: 50%;
+            padding: 0px 10px;
+        }
+    }
+}
+
+.flex-container {
+    display: flex;
+    justify-content: center;
+}

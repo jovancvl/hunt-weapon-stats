@@ -85,8 +85,9 @@ export const FRONTIER_73C: Weapon = new Weapon({
     hasExtraBullet: true,
     
     meleeDamage: 27,
+    staminaConsumption: 12,
     heavyMeleeDamage: 54,
-    staminaConsumption: 25,
+    heavyStaminaConsumption: 25,
     
     customAmmos: FRONTIER_73C_CUSTOM_AMMO,
 })
