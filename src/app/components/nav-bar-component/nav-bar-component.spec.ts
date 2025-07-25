@@ -1,18 +1,18 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { AmmoEffectComponent } from './ammo-effect-component';
+import { NavBarComponent } from './nav-bar-component';
 
-describe('AmmoEffectComponent', () => {
-  let component: AmmoEffectComponent;
-  let fixture: ComponentFixture<AmmoEffectComponent>;
+describe('NavBarComponent', () => {
+  let component: NavBarComponent;
+  let fixture: ComponentFixture<NavBarComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [AmmoEffectComponent]
+      imports: [NavBarComponent]
     })
     .compileComponents();
 
-    fixture = TestBed.createComponent(AmmoEffectComponent);
+    fixture = TestBed.createComponent(NavBarComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

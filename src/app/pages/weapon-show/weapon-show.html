@@ -1,55 +1,6 @@
-<div class="grid-container">
+<div class="container">
     <div>
         <hunt-rifle-stats-component [rifle]="weapon"></hunt-rifle-stats-component>
-    </div>
-    <div>
-        <!-- <h1>{{weaponCopy.name}} {{weaponCopy.activeCustomAmmo?.name}}</h1>
-        <div class="flex-container">
-            <button (click)="weaponCopy.activeCustomAmmo = undefined">
-                {{weapon.baseAmmoName}}
-            </button>
-            @for (ca of weaponCopy.customAmmos; track $index) {
-            <button (click)="weaponCopy.activeCustomAmmo = ca">
-                {{ca.name}}
-            </button>
-            }
-        </div>
-        <p>Cost: {{weaponCopy.cost}}</p>
-        <p>Size: {{weaponCopy.size}}</p>
-        <p>Ammo type: {{weaponCopy.baseAmmoName}} {{weaponCopy.activeCustomAmmo?.name}} </p>
-        <p>Ammo description: {{weaponCopy.activeCustomAmmo ? weaponCopy.activeCustomAmmo.description :
-            weaponCopy.baseAmmoDescription}} </p>
-        <p>Max damage range: {{weaponCopy.optimalRange}}m</p>
-        <table>
-            <tr>
-                <td>Base Damage: {{weaponCopy.baseDamage}}</td>
-                <td>Drop range: {{weaponCopy.dropRange}}</td>
-            </tr>
-            <tr>
-                <td>Fire Rate: {{weaponCopy.rateOfFire}}</td>
-                <td>Cycle time: {{weaponCopy.cycleTime}}</td>
-            </tr>
-            <tr>
-                <td>Spread: {{weaponCopy.spread}}</td>
-                <td>Sway: {{weaponCopy.sway}}</td>
-            </tr>
-            <tr>
-                <td>Vertical Recoil: {{weaponCopy.verticalRecoil}}</td>
-                <td>Reload Speed: {{weaponCopy.reloadTime}}</td>
-            </tr>
-            <tr>
-                <td>Muzzle Velocity: {{weaponCopy.muzzleVelocity}}</td>
-                <td>Melee damage: {{weaponCopy.meleeDamage}}</td>
-            </tr>
-            <tr>
-                <td>Heavy melee damage: {{weaponCopy.heavyMeleeDamage}}</td>
-                <td>Stamina consumption: {{weaponCopy.staminaConsumption}}</td>
-            </tr>
-            <tr>
-                <td>Magazine: {{`${weaponCopy.magazine}+1`}}</td>
-                <td>Ammo reserve: {{weaponCopy.ammoReserve}}</td>
-            </tr>
-        </table> -->
     </div>
     <div>
         <hunt-hunter-body-component></hunt-hunter-body-component>

@@ -1,7 +1,23 @@
-<h1>Weapon Arsenal</h1>
+<!-- <h1>Weapon Arsenal</h1>
 <div class="equipment-list">
     @for (item of [1,2,3,4,5,6,7,8,9,0]; track $index) {
         <a routerLink="asdasd"><hunt-equipment-card></hunt-equipment-card></a>
     }
 </div>
-
+ -->
+<hunt-nav-bar-component></hunt-nav-bar-component>
+<div class="grid-container">
+    <div class="equipment-list">
+        @for (item of [1,2,3,4,5,6,7,8,9,0]; track $index) {
+        <a><hunt-equipment-card></hunt-equipment-card></a>
+        }
+    </div>
+    <div class="flex-container">
+        <div>
+            <hunt-rifle-stats-component [rifle]="weapon"></hunt-rifle-stats-component>
+        </div>
+        <div>
+            <hunt-hunter-body-component></hunt-hunter-body-component>
+        </div>
+    </div>
+</div>

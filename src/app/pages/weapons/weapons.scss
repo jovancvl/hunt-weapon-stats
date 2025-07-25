@@ -1,5 +1,27 @@
-.equipment-list {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 10px;
+.grid-container {
+    display: grid;
+    grid-template-columns: 1fr 3fr;
+    height: 100vh;
+
+    .equipment-list {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 10px;
+
+        overflow-y: auto;
+    }
+
+    .flex-container {
+        display: flex;
+        justify-content: center;
+        flex-wrap: wrap;
+        gap: 20px;
+        // height: 100vh;
+        overflow-y: auto;
+
+        div {
+            flex: 1 1 auto;
+        }
+    }
 }

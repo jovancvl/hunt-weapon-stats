@@ -1,18 +1,1 @@
-<div class="grid-container">
-  <div class="grid-sidebar">
-    <a routerLink="">
-      <img src="https://cdn2.steamgriddb.com/logo/b9f1deebf7c17e1e1052c6e772322e27.png" alt="logo">
-    </a>
-    @for (item of tabs; track $index) {
-      <a [routerLink]="item.tab" routerLinkActive="active">
-        <span>
-          <ion-icon-wrapper [name]="item.icon"></ion-icon-wrapper>
-          <p>{{item.text}}</p>
-        </span>
-      </a>
-    }
-  </div>
-  <div class="grid-content">
-    <router-outlet />
-  </div>
-</div>
+<router-outlet />

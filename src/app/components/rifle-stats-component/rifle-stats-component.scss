@@ -1,7 +1,7 @@
 table {
     font-size: 16px;
     // table-layout: auto;
-    width: 100%;
+    width: max(400px, 100%);
     tr {
         td {
             width: 50%;
