@@ -1,6 +1,6 @@
 .equipment-card {
     position: relative;
-    width: 400px;
+    width: max(300px, calc(100vw / 5 - 20px));
     aspect-ratio: 21 / 9;
     overflow: hidden;
     box-sizing: border-box;

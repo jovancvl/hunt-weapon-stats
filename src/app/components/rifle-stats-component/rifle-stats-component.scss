@@ -2,6 +2,7 @@ table {
     font-size: 16px;
     // table-layout: auto;
     width: max(400px, 100%);
+
     tr {
         td {
             width: 50%;
@@ -10,7 +11,21 @@ table {
     }
 }
 
-.flex-container {
+.button-container {
     display: flex;
     justify-content: center;
+}
+
+.flex-container {
+    padding: 0rem 1rem;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 20px;
+    // overflow-y: auto;
+    overflow: hidden;
+
+    div {
+        flex: 0 1 30%;
+    }
 }

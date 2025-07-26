@@ -1,10 +1,11 @@
 import { Component, input, OnInit } from '@angular/core';
 import { Weapon } from '../../arsenal/weapon';
 import { StatComparatorComponent } from '../stat-comparator-component/stat-comparator-component';
+import { HunterBodyComponent } from "../hunter-body-component/hunter-body-component";
 
 @Component({
   selector: 'hunt-rifle-stats-component',
-  imports: [StatComparatorComponent],
+  imports: [StatComparatorComponent, HunterBodyComponent],
   templateUrl: './rifle-stats-component.html',
   styleUrl: './rifle-stats-component.scss'
 })

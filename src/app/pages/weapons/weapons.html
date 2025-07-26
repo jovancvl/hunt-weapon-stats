@@ -1,23 +1,17 @@
-<!-- <h1>Weapon Arsenal</h1>
-<div class="equipment-list">
-    @for (item of [1,2,3,4,5,6,7,8,9,0]; track $index) {
-        <a routerLink="asdasd"><hunt-equipment-card></hunt-equipment-card></a>
-    }
-</div>
- -->
 <hunt-nav-bar-component></hunt-nav-bar-component>
-<div class="grid-container">
-    <div class="equipment-list">
-        @for (item of [1,2,3,4,5,6,7,8,9,0]; track $index) {
-        <a><hunt-equipment-card></hunt-equipment-card></a>
-        }
+<div class="container">
+    <div class="left" [class.open]="isWeaponListOpen()">
+        <div class="content">
+            @for (item of [1,2,3,4,5,6,7,8,9,10,11,12]; track $index) {
+            <a (click)="selectWeapon($index)"><hunt-equipment-card></hunt-equipment-card></a>
+            }
+        </div>
     </div>
-    <div class="flex-container">
-        <div>
-            <hunt-rifle-stats-component [rifle]="weapon"></hunt-rifle-stats-component>
+    <div class="right" [class.open]="!isWeaponListOpen()">
+        <div class="button-container">
+            <button class="button" (click)="selectWeapon(3)">OPEN-CLOSE</button>
         </div>
-        <div>
-            <hunt-hunter-body-component></hunt-hunter-body-component>
-        </div>
+        
+        <hunt-rifle-stats-component class="content" [rifle]="weapon"></hunt-rifle-stats-component>
     </div>
 </div>
