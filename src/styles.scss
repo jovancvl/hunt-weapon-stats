@@ -1,6 +1,8 @@
 /* You can add global styles to this file, and also import other style files */
+@import url('https://fonts.googleapis.com/css2?family=Crimson+Text:ital,wght@0,400;0,600;0,700;1,400;1,600;1,700&display=swap');
 
-body, html {
+body,
+html {
   margin: 0;
   // height: 100vh;
   // min-height: 100vh;
@@ -10,4 +12,74 @@ body, html {
   background-color: black;
 }
 
-@import url('https://fonts.googleapis.com/css2?family=Crimson+Text:ital,wght@0,400;0,600;0,700;1,400;1,600;1,700&display=swap');
+@keyframes in-from-down {
+  from {
+    transform: translateY(100vh);
+  }
+
+  to {
+    transform: translateY(0vh);
+  }
+}
+
+@keyframes in-from-up {
+  from {
+    transform: translateY(-100vh);
+  }
+
+  to {
+    transform: translateY(0vh);
+  }
+}
+
+@keyframes out-to-up {
+  from {
+    transform: translateY(0vh);
+  }
+
+  to {
+    transform: translateY(-100vh);
+  }
+}
+
+@keyframes out-to-below {
+  from {
+    transform: translateY(0vh);
+  }
+
+  to {
+    transform: translateY(100vh);
+  }
+}
+
+::view-transition-old(animate-out-to-above) {
+  animation: 1s ease-in-out both out-to-up;
+}
+
+::view-transition-old(animate-out-to-below) {
+  animation: 1s ease-in-out both out-to-below;
+}
+
+::view-transition-new(animate-in-from-above) {
+  animation: 1s ease-in-out both in-from-up;
+}
+
+::view-transition-new(animate-in-from-below) {
+  animation: 1s ease-in-out both in-from-down;
+}
+
+.animate-out-to-above {
+  view-transition-name: animate-out-to-above;
+}
+
+.animate-out-to-below {
+  view-transition-name: animate-out-to-below;
+}
+
+.animate-in-from-above {
+  view-transition-name: animate-out-from-above;
+}
+
+.animate-in-from-below {
+  view-transition-name: animate-in-from-below;
+}

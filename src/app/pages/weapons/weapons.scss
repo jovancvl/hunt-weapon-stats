@@ -27,16 +27,6 @@
     .right {
         box-sizing: border-box;
         border: 2px solid white;
-        
-        .button-container {
-
-            display: flex;
-            justify-content: center;
-        
-            .button {
-                position: absolute;
-            }
-        }
     }
 
     .open {

@@ -1,17 +1,14 @@
 <hunt-nav-bar-component></hunt-nav-bar-component>
-<div class="container">
+<!-- <div class="container">
     <div class="left" [class.open]="isWeaponListOpen()">
-        <div class="content">
-            @for (item of [1,2,3,4,5,6,7,8,9,10,11,12]; track $index) {
-            <a (click)="selectWeapon($index)"><hunt-equipment-card></hunt-equipment-card></a>
-            }
-        </div>
+        <hunt-weapon-list class="content"></hunt-weapon-list>
     </div>
     <div class="right" [class.open]="!isWeaponListOpen()">
         <div class="button-container">
             <button class="button" (click)="selectWeapon(3)">OPEN-CLOSE</button>
         </div>
-        
+
         <hunt-rifle-stats-component class="content" [rifle]="weapon"></hunt-rifle-stats-component>
     </div>
-</div>
+</div> -->
+<hunt-weapon-list class=" animate-out-to-above"></hunt-weapon-list>

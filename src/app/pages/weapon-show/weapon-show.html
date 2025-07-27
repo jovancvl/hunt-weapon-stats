@@ -1,8 +1,7 @@
-<div class="container">
-    <div>
-        <hunt-rifle-stats-component [rifle]="weapon"></hunt-rifle-stats-component>
-    </div>
-    <div>
-        <hunt-hunter-body-component></hunt-hunter-body-component>
-    </div>
+<hunt-nav-bar-component></hunt-nav-bar-component>
+<div class="animate-in-from-below animate-out-to-above">
+    <div class="button-container">
+            <button class="button" (click)="goBack()">OPEN-CLOSE</button>
+        </div>
+    <hunt-rifle-stats-component [rifle]="weapon"></hunt-rifle-stats-component>
 </div>
