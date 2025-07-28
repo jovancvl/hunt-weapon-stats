@@ -1,4 +1,4 @@
-import { Component, computed, input, OnInit } from '@angular/core';
+import { Component, computed, input, OnInit, signal } from '@angular/core';
 import { Weapon } from '../../arsenal/weapon';
 import { StatComparatorComponent } from '../stat-comparator-component/stat-comparator-component';
 import { HunterBodyComponent } from "../hunter-body-component/hunter-body-component";
@@ -11,10 +11,10 @@ import { HunterBodyComponent } from "../hunter-body-component/hunter-body-compon
 })
 export class RifleStatsComponent implements OnInit{
   rifle = input.required<Weapon>();
-  rifleCopy = computed(() => structuredClone(this.rifle()))
+  rifleCopy = signal(Weapon.EMPTY)
 
 
   ngOnInit(): void {
-    // this.rifleCopy = new Weapon(this.rifle());
+    this.rifleCopy.set(new Weapon(this.rifle()))
   }
 }

@@ -1,5 +1,15 @@
 import { CustomAmmo, AmmoInfo } from "./ammo"
 
+export enum ActionType {
+    BOLT_ACTION,
+    LEVER_ACTION,
+    PUMP_ACTION,
+    SINGLE_SHOT,
+    SEMI_OR_FULL_AUTO,
+    SINGLE_ACTION,
+    DOUBLE_ACTION
+}
+
 export class Weapon {
     private _activeCustomAmmo: CustomAmmo | undefined
     // baseAmmoEffectActive: boolean = false
@@ -17,7 +27,7 @@ export class Weapon {
      * 
      * For shotguns and special weapons, this is the range at which the weapon will reliably down a hunter in one shot.
      */
-    optimalRange: number 
+    optimalRange: number
     dropRange: number
     spread: number
     verticalRecoil: number
@@ -40,6 +50,7 @@ export class Weapon {
 
     get activeCustomAmmo(): CustomAmmo | undefined { return this._activeCustomAmmo; }
     set activeCustomAmmo(value: CustomAmmo | undefined) {
+        console.log('HALLO')
         if (value === undefined) { // want to remove active
             if (this._activeCustomAmmo !== undefined) { // there is active
                 this._activeCustomAmmo.remove(this)
@@ -70,7 +81,7 @@ export class Weapon {
         this.action = weapon.action
 
         this.baseAmmo = weapon.baseAmmo
-        
+
         this.baseDamage = weapon.baseDamage
 
         this.optimalRange = weapon.optimalRange
@@ -86,14 +97,48 @@ export class Weapon {
         this.reloadTime = weapon.reloadTime
         this.magazine = weapon.magazine
         this.hasExtraBullet = weapon.hasExtraBullet
-        
+
         this.meleeDamage = weapon.meleeDamage
         this.staminaConsumption = weapon.staminaConsumption
         this.heavyMeleeDamage = weapon.heavyMeleeDamage
         this.heavyStaminaConsumption = weapon.heavyStaminaConsumption
-        
+
         this.customAmmos = weapon.customAmmos
     }
+
+    /**
+     * Used to initialize a variable without using undefined or null
+     */
+    static readonly EMPTY = new Weapon({
+        name: 'none',
+        cost: 0,
+        size: 0,
+        action: ActionType.BOLT_ACTION,
+
+        baseAmmo: AmmoInfo.COMPACT,
+        optimalRange: 0,
+
+        baseDamage: 0,
+        dropRange: 0,
+        spread: 0,
+        verticalRecoil: 0,
+        muzzleVelocity: 0,
+        ammoReserve: 0,
+
+        sway: 0,
+        rateOfFire: 0,
+        cycleTime: 0,
+        reloadTime: 0,
+        magazine: 0,
+        hasExtraBullet: false,
+
+        meleeDamage: 0,
+        heavyMeleeDamage: 0,
+        staminaConsumption: 0,
+        heavyStaminaConsumption: 0,
+
+        customAmmos: []
+    })
 }
 
 export interface WeaponInterface {
@@ -125,17 +170,5 @@ export interface WeaponInterface {
     heavyStaminaConsumption: number
 
     customAmmos: CustomAmmo[]
-}
-
-
-
-export enum ActionType {
-    BOLT_ACTION,
-    LEVER_ACTION,
-    PUMP_ACTION,
-    SINGLE_SHOT,
-    SEMI_OR_FULL_AUTO,
-    SINGLE_ACTION,
-    DOUBLE_ACTION
 }
 
