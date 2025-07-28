@@ -1,7 +1,16 @@
 div {
-    padding: 10px;
+    padding: 2rem 4rem;
     display: flex;
     flex-wrap: wrap;
     gap: 10px;
-    flex: 1 1 auto;
+    
+    a {
+        flex: 1 0 max(300px, 19%);
+    }
+}
+
+@media (max-width: 768px) {
+    div {
+        padding: 2rem 1rem;
+    }
 }
