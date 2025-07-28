@@ -1,19 +1,19 @@
 <div class="flex-container">
     <div>
-        <h1>{{rifle().name}} {{rifleCopy!.activeCustomAmmo?.name }}</h1>
+        <h1>{{rifle().name}} {{rifleCopy().activeCustomAmmo?.info?.name }}</h1>
         <p>Cost: {{rifle().cost}}</p>
         <p>Size: {{rifle().size}}</p>
-        <p>Ammo type: {{rifle().baseAmmoName}} </p>
-        <p>Ammo description: {{rifle().baseAmmoDescription}} </p>
+        <p>Ammo type: {{rifle().baseAmmo}} </p>
+        <p>Ammo description: {{rifle().baseAmmo.description}} </p>
 
         <div class="button-container">
-            <button (click)="rifleCopy!.activeCustomAmmo = undefined">
-                {{rifleCopy!.baseAmmoName}}
+            <button (click)="rifleCopy().activeCustomAmmo = undefined">
+                {{rifleCopy().baseAmmo.name}}
             </button>
-            @for (ca of rifleCopy!.customAmmos; track $index) {
-            <button (click)="rifleCopy!.activeCustomAmmo = ca">
-                {{ca.name}}
-            </button>
+            @for (ca of rifleCopy().customAmmos; track $index) {
+                <button (click)="rifleCopy().activeCustomAmmo = ca">
+                    {{ca.info.name}}
+                </button>
             }
         </div>
 
@@ -24,16 +24,16 @@
                         <span>Damage:</span>
                     </div>
                     <hunt-stat-comparator-component [max]="150" [originalValue]="rifle().baseDamage"
-                        [newValue]="rifleCopy!.baseDamage"
-                        [showComparison]="rifleCopy!.activeCustomAmmo !== undefined"></hunt-stat-comparator-component>
+                        [newValue]="rifleCopy().baseDamage"
+                        [showComparison]="rifleCopy().activeCustomAmmo !== undefined"></hunt-stat-comparator-component>
                 </td>
                 <td>
                     <div>
                         <span>Effective Range:</span>
                     </div>
                     <hunt-stat-comparator-component [max]="50" [originalValue]="rifle().optimalRange"
-                        [newValue]="rifleCopy!.optimalRange"
-                        [showComparison]="rifleCopy!.activeCustomAmmo !== undefined"></hunt-stat-comparator-component>
+                        [newValue]="rifleCopy().optimalRange"
+                        [showComparison]="rifleCopy().activeCustomAmmo !== undefined"></hunt-stat-comparator-component>
 
                 </td>
             </tr>
@@ -43,16 +43,16 @@
                         <span>Drop range:</span>
                     </div>
                     <hunt-stat-comparator-component [max]="200" [originalValue]="rifle().dropRange"
-                        [newValue]="rifleCopy!.dropRange"
-                        [showComparison]="rifleCopy!.activeCustomAmmo !== undefined"></hunt-stat-comparator-component>
+                        [newValue]="rifleCopy().dropRange"
+                        [showComparison]="rifleCopy().activeCustomAmmo !== undefined"></hunt-stat-comparator-component>
                 </td>
                 <td>
                     <div>
                         <span>Muzzle Velocity:</span>
                     </div>
                     <hunt-stat-comparator-component [max]="1000" [originalValue]="rifle().muzzleVelocity"
-                        [newValue]="rifleCopy!.muzzleVelocity"
-                        [showComparison]="rifleCopy!.activeCustomAmmo !== undefined"></hunt-stat-comparator-component>
+                        [newValue]="rifleCopy().muzzleVelocity"
+                        [showComparison]="rifleCopy().activeCustomAmmo !== undefined"></hunt-stat-comparator-component>
                 </td>
             </tr>
             <tr>
@@ -61,16 +61,16 @@
                         <span>Rate of fire:</span>
                     </div>
                     <hunt-stat-comparator-component [max]="100" [originalValue]="rifle().rateOfFire"
-                        [newValue]="rifleCopy!.rateOfFire"
-                        [showComparison]="rifleCopy!.activeCustomAmmo !== undefined"></hunt-stat-comparator-component>
+                        [newValue]="rifleCopy().rateOfFire"
+                        [showComparison]="rifleCopy().activeCustomAmmo !== undefined"></hunt-stat-comparator-component>
                 </td>
                 <td>
                     <div>
                         <span>Cycle time:</span>
                     </div>
                     <hunt-stat-comparator-component [max]="8" [originalValue]="rifle().cycleTime"
-                        [newValue]="rifleCopy!.cycleTime"
-                        [showComparison]="rifleCopy!.activeCustomAmmo !== undefined"></hunt-stat-comparator-component>
+                        [newValue]="rifleCopy().cycleTime"
+                        [showComparison]="rifleCopy().activeCustomAmmo !== undefined"></hunt-stat-comparator-component>
                 </td>
             </tr>
             <tr>
@@ -79,16 +79,16 @@
                         <span>Reload Speed:</span>
                     </div>
                     <hunt-stat-comparator-component [max]="20" [originalValue]="rifle().reloadTime"
-                        [newValue]="rifleCopy!.reloadTime"
-                        [showComparison]="rifleCopy!.activeCustomAmmo !== undefined"></hunt-stat-comparator-component>
+                        [newValue]="rifleCopy().reloadTime"
+                        [showComparison]="rifleCopy().activeCustomAmmo !== undefined"></hunt-stat-comparator-component>
                 </td>
                 <td>
                     <div>
                         <span>Spread:</span>
                     </div>
                     <hunt-stat-comparator-component [max]="200" [originalValue]="rifle().spread"
-                        [newValue]="rifleCopy!.spread"
-                        [showComparison]="rifleCopy!.activeCustomAmmo !== undefined"></hunt-stat-comparator-component>
+                        [newValue]="rifleCopy().spread"
+                        [showComparison]="rifleCopy().activeCustomAmmo !== undefined"></hunt-stat-comparator-component>
                 </td>
             </tr>
             <tr>
@@ -97,16 +97,16 @@
                         <span>Sway:</span>
                     </div>
                     <hunt-stat-comparator-component [max]="150" [originalValue]="rifle().sway"
-                        [newValue]="rifleCopy!.sway"
-                        [showComparison]="rifleCopy!.activeCustomAmmo !== undefined"></hunt-stat-comparator-component>
+                        [newValue]="rifleCopy().sway"
+                        [showComparison]="rifleCopy().activeCustomAmmo !== undefined"></hunt-stat-comparator-component>
                 </td>
                 <td>
                     <div>
                         <span>Vertical Recoil:</span>
                     </div>
                     <hunt-stat-comparator-component [max]="50" [originalValue]="rifle().verticalRecoil"
-                        [newValue]="rifleCopy!.verticalRecoil"
-                        [showComparison]="rifleCopy!.activeCustomAmmo !== undefined"></hunt-stat-comparator-component>
+                        [newValue]="rifleCopy().verticalRecoil"
+                        [showComparison]="rifleCopy().activeCustomAmmo !== undefined"></hunt-stat-comparator-component>
                 </td>
             </tr>
             <tr>
@@ -115,16 +115,16 @@
                         <span>Melee damage:</span>
                     </div>
                     <hunt-stat-comparator-component [max]="150" [originalValue]="rifle().meleeDamage"
-                        [newValue]="rifleCopy!.meleeDamage"
-                        [showComparison]="rifleCopy!.activeCustomAmmo !== undefined"></hunt-stat-comparator-component>
+                        [newValue]="rifleCopy().meleeDamage"
+                        [showComparison]="rifleCopy().activeCustomAmmo !== undefined"></hunt-stat-comparator-component>
                 </td>
                 <td>
                     <div>
                         <span>Stamina consumption:</span>
                     </div>
                     <hunt-stat-comparator-component [max]="100" [originalValue]="rifle().staminaConsumption"
-                        [newValue]="rifleCopy!.staminaConsumption"
-                        [showComparison]="rifleCopy!.activeCustomAmmo !== undefined"></hunt-stat-comparator-component>
+                        [newValue]="rifleCopy().staminaConsumption"
+                        [showComparison]="rifleCopy().activeCustomAmmo !== undefined"></hunt-stat-comparator-component>
                 </td>
             </tr>
             <tr>
@@ -133,15 +133,15 @@
                         <span>Melee damage (Heavy):</span>
                     </div>
                     <hunt-stat-comparator-component [max]="150" [originalValue]="rifle().heavyMeleeDamage"
-                        [newValue]="rifleCopy!.heavyMeleeDamage"
-                        [showComparison]="rifleCopy!.activeCustomAmmo !== undefined"></hunt-stat-comparator-component>
+                        [newValue]="rifleCopy().heavyMeleeDamage"
+                        [showComparison]="rifleCopy().activeCustomAmmo !== undefined"></hunt-stat-comparator-component>
                 <td>
                     <div>
                         <span>Stamina consumption (Heavy):</span>
                     </div>
                     <hunt-stat-comparator-component [max]="100" [originalValue]="rifle().heavyStaminaConsumption"
-                        [newValue]="rifleCopy!.heavyStaminaConsumption"
-                        [showComparison]="rifleCopy!.activeCustomAmmo !== undefined"></hunt-stat-comparator-component>
+                        [newValue]="rifleCopy().heavyStaminaConsumption"
+                        [showComparison]="rifleCopy().activeCustomAmmo !== undefined"></hunt-stat-comparator-component>
 
                 </td>
             </tr>

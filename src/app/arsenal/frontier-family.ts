@@ -1,11 +1,9 @@
-import { CustomAmmo, CustomAmmoEffectType, CustomAmmoName, CustomAmmoEffectSeverity, CustomAmmoDescription, BaseAmmo } from "./ammo";
+import { CustomAmmo, AmmoInfo } from "./ammo";
 import { ActionType, Weapon } from "./weapon";
 
 const FRONTIER_73C_CUSTOM_AMMO = [
     new CustomAmmo({
-        name: CustomAmmoName.FMJ,
-        description: CustomAmmoDescription.FMJ,
-        cost: 50,
+        info: AmmoInfo.COMPACT_FMJ,
         scarce: false,
 
         maxDamageRangeModifier: +10,
@@ -15,9 +13,7 @@ const FRONTIER_73C_CUSTOM_AMMO = [
         muzzleVelocityModifier: -70
     }),
     new CustomAmmo({
-        name: CustomAmmoName.HIGH_VELOCITY,
-        description: CustomAmmoDescription.HIGH_VELOCITY,
-        cost: 60,
+        info: AmmoInfo.COMPACT_HIGH_VELOCITY,
         scarce: false,
 
         damageModifier: -6,
@@ -27,25 +23,15 @@ const FRONTIER_73C_CUSTOM_AMMO = [
         ammoReserveModifier: -10
     }),
     new CustomAmmo({
-        name: CustomAmmoName.INCENDIARY,
-        effect: CustomAmmoEffectType.BURN,
-        severity: CustomAmmoEffectSeverity.MEDIUM,
-        description: CustomAmmoDescription.INCENDIARY,
-        cost: 40,
+        info: AmmoInfo.COMPACT_INCENDIARY,
         scarce: false
     }),
     new CustomAmmo({
-        name: CustomAmmoName.POISON,
-        effect: CustomAmmoEffectType.POISON,
-        severity: CustomAmmoEffectSeverity.MEDIUM,
-        description: CustomAmmoDescription.POISON,
-        cost: 50,
+        info: AmmoInfo.COMPACT_POISON,
         scarce: false
     }),
     new CustomAmmo({
-        name: CustomAmmoName.SUBSONIC,
-        description: CustomAmmoDescription.SUBSONIC,
-        cost: 5,
+        info: AmmoInfo.COMPACT_SUBSONIC,
         scarce: false,
 
         dropRangeModifier: -30,
@@ -59,7 +45,7 @@ export const FRONTIER_73C: Weapon = new Weapon({
     size: 3,
     action: ActionType.LEVER_ACTION,
 
-    baseAmmo: BaseAmmo.COMPACT,
+    baseAmmo: AmmoInfo.COMPACT,
     
     optimalRange: 20,
     baseDamage: 110,

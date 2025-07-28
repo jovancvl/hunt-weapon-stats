@@ -1,15 +1,15 @@
-import { CustomAmmo, BaseAmmo } from "./ammo"
+import { CustomAmmo, AmmoInfo } from "./ammo"
 
 export class Weapon {
     private _activeCustomAmmo: CustomAmmo | undefined
-    baseAmmoEffectActive: boolean = false
+    // baseAmmoEffectActive: boolean = false
 
     name: string
     cost: number
     size: number
     action: ActionType
 
-    baseAmmo: BaseAmmo
+    baseAmmo: AmmoInfo
 
     baseDamage: number
     /**
@@ -55,7 +55,7 @@ export class Weapon {
             this._activeCustomAmmo = undefined
         }
 
-        const ca = this.customAmmos.find(ca => ca.name === value.name)
+        const ca = this.customAmmos.find(ca => ca.info.name === value.info.name)
         if (ca === undefined) {
             throw new Error(`Custom ammo type not on weapon: ${value}`)
         }
@@ -102,7 +102,7 @@ export interface WeaponInterface {
     size: number
     action: ActionType
 
-    baseAmmo: BaseAmmo
+    baseAmmo: AmmoInfo
     optimalRange: number
 
     baseDamage: number
