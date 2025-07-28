@@ -1,4 +1,4 @@
-import { CustomAmmo, BaseAmmoName, CustomAmmoEffectType, CustomAmmoEffectSeverity, BaseAmmoDescription } from "./ammo"
+import { CustomAmmo, BaseAmmo } from "./ammo"
 
 export class Weapon {
     private _activeCustomAmmo: CustomAmmo | undefined
@@ -9,10 +9,7 @@ export class Weapon {
     size: number
     action: ActionType
 
-    baseAmmoName: BaseAmmoName
-    baseAmmoEffectType: CustomAmmoEffectType
-    baseAmmoEffectSeverity: CustomAmmoEffectSeverity
-    baseAmmoDescription: BaseAmmoDescription
+    baseAmmo: BaseAmmo
 
     baseDamage: number
     /**
@@ -72,13 +69,11 @@ export class Weapon {
         this.size = weapon.size
         this.action = weapon.action
 
-        this.baseAmmoName = weapon.baseAmmoName
-        this.baseAmmoEffectType = weapon.baseAmmoEffectType
-        this.baseAmmoEffectSeverity = weapon.baseAmmoEffectSeverity
-        this.baseAmmoDescription = weapon.baseAmmoDescription
+        this.baseAmmo = weapon.baseAmmo
         
         this.baseDamage = weapon.baseDamage
 
+        this.optimalRange = weapon.optimalRange
         this.dropRange = weapon.dropRange
         this.spread = weapon.spread
         this.verticalRecoil = weapon.verticalRecoil
@@ -98,24 +93,6 @@ export class Weapon {
         this.heavyStaminaConsumption = weapon.heavyStaminaConsumption
         
         this.customAmmos = weapon.customAmmos
-
-        switch (weapon.baseAmmoName) {
-            case BaseAmmoName.COMPACT: {
-                this.optimalRange = 20
-                break
-            }
-            case BaseAmmoName.MEDIUM: {
-                this.optimalRange = 30
-                break
-            }
-            case BaseAmmoName.LONG: {
-                this.optimalRange = 40
-                break
-            }
-            default: {
-                throw new Error("RegularAmmoName not recognized")
-            }
-        }
     }
 }
 
@@ -125,10 +102,8 @@ export interface WeaponInterface {
     size: number
     action: ActionType
 
-    baseAmmoName: BaseAmmoName
-    baseAmmoEffectType: CustomAmmoEffectType
-    baseAmmoEffectSeverity: CustomAmmoEffectSeverity
-    baseAmmoDescription: BaseAmmoDescription
+    baseAmmo: BaseAmmo
+    optimalRange: number
 
     baseDamage: number
     dropRange: number

@@ -1,24 +1,24 @@
 import { Weapon } from "./weapon"
 
-export enum BaseAmmoName {
-    COMPACT = 'Compact',
-    MEDIUM = 'Medium',
-    LONG = 'Long',
-    BUCKSHOT = 'Buckshot',
-    DERRINGER = 'Derringer',
+// export enum BaseAmmoName {
+//     COMPACT = 'Compact',
+//     MEDIUM = 'Medium',
+//     LONG = 'Long',
+//     BUCKSHOT = 'Buckshot',
+//     DERRINGER = 'Derringer',
 
-    ARROW = 'Arrow', // medium bleed
-    BOLT = 'Bolt', // intense bleed
-    CHUKONU = 'Compact Bolt', // medium bleed
-    HAND_CROSSBOW = 'Compact Bolt', // medium bleed
-    DOLCH = 'Dolch',
-    LANCE = 'Lance Bolt',
-    NITRO = 'Nitro'
-}
+//     ARROW = 'Arrow', // medium bleed
+//     BOLT = 'Bolt', // intense bleed
+//     CHUKONU = 'Compact Bolt', // medium bleed
+//     HAND_CROSSBOW = 'Compact Bolt', // medium bleed
+//     DOLCH = 'Dolch',
+//     LANCE = 'Lance Bolt',
+//     NITRO = 'Nitro'
+// }
 
-export enum BaseAmmoDescription {
-    COMPACT = 'Small caliber bullet.'
-}
+// export enum BaseAmmoDescription {
+//     COMPACT = 'Small caliber bullet.'
+// }
 
 export enum CustomAmmoName {
     DUMDUM = 'Dumdum', // compact - medium | medium - intense
@@ -61,14 +61,12 @@ export enum CustomAmmoName {
 }
 
 export enum CustomAmmoEffectType {
-    NA = 'N/A',
     BURN = 'burning',
     BLEED = 'bleeding',
     POISON = 'poison',
 }
 
 export enum CustomAmmoEffectSeverity {
-    NA = 'N/A',
     LIGHT = 'light',
     MEDIUM = 'medium',
     INTENSE = 'intense',
@@ -85,10 +83,48 @@ export enum CustomAmmoDescription {
     SPITZER = `Increases penetration and muzzle velocity at the cost of reduced damage and reduced ammo reserves.`
 }
 
+export interface BaseAmmoInterface {
+    name: string
+    effect?: CustomAmmoEffectType
+    severity?: CustomAmmoEffectSeverity
+    description: string
+}
+
+export class BaseAmmo {
+    readonly name: string
+    readonly effect?: CustomAmmoEffectType
+    readonly severity?: CustomAmmoEffectSeverity
+    readonly description: string
+
+    private constructor(baseAmmoInterface: BaseAmmoInterface) {
+        this.name = baseAmmoInterface.name
+        this.effect = baseAmmoInterface.effect
+        this.severity = baseAmmoInterface.severity
+        this.description = baseAmmoInterface.description
+    }
+
+    static readonly COMPACT = new BaseAmmo({
+        name: "Compact",
+        description: "20m optimal range, low penetration, what else"
+    })
+    static readonly MEDIUM = new BaseAmmo({
+        name: "Medium",
+        description: "30m optimal range, medium penetration"
+    })
+    static readonly LONG = new BaseAmmo({
+        name: "Long",
+        description: "40m optimal range, high penetration"
+    })
+    static readonly BUCKSHOT = new BaseAmmo({
+        name: "Buckshot",
+        description: "Shotgun"
+    })
+}
+
 export interface CustomAmmoInterface {
     name: CustomAmmoName
-    type: CustomAmmoEffectType
-    severity: CustomAmmoEffectSeverity
+    effect?: CustomAmmoEffectType
+    severity?: CustomAmmoEffectSeverity
     description: CustomAmmoDescription
     cost: number
     scarce: boolean
@@ -104,8 +140,8 @@ export interface CustomAmmoInterface {
 
 export class CustomAmmo {
     name: CustomAmmoName
-    type: CustomAmmoEffectType
-    severity: CustomAmmoEffectSeverity
+    effect?: CustomAmmoEffectType
+    severity?: CustomAmmoEffectSeverity
     description: string // format custom ammo description to input the severity
     cost: number
     scarce: boolean
@@ -120,9 +156,13 @@ export class CustomAmmo {
 
     constructor(customAmmoInterface: CustomAmmoInterface) {
         this.name = customAmmoInterface.name
-        this.type = customAmmoInterface.type
+        this.effect = customAmmoInterface.effect
         this.severity = customAmmoInterface.severity
-        this.description = customAmmoInterface.description.replace('<EFFECT_SEVERITY>', customAmmoInterface.severity)
+        if (customAmmoInterface.severity) {
+            this.description = customAmmoInterface.description.replace('<EFFECT_SEVERITY>', customAmmoInterface.severity)
+        } else {
+            this.description = customAmmoInterface.description
+        }
         this.cost = customAmmoInterface.cost
         this.scarce = customAmmoInterface.scarce
 
@@ -137,9 +177,9 @@ export class CustomAmmo {
 
     apply(weapon: Weapon) {
         // remove base ammo effect
-        if ([BaseAmmoName.BOLT, BaseAmmoName.CHUKONU, BaseAmmoName.HAND_CROSSBOW].includes(weapon.baseAmmoName)) {
-            weapon.baseAmmoEffectActive = false
-        }
+        // if ([BaseAmmoName.BOLT, BaseAmmoName.CHUKONU, BaseAmmoName.HAND_CROSSBOW].includes(weapon.baseAmmoName)) {
+        //     weapon.baseAmmoEffectActive = false
+        // }
 
         if ([CustomAmmoName.FRAG_ARROW, CustomAmmoName.CONCERTINA_ARROW].includes(this.name)) {
             weapon.baseAmmoEffectActive = false
@@ -156,9 +196,9 @@ export class CustomAmmo {
 
     remove(weapon: Weapon) {
         // put back base ammo effect
-        if ([BaseAmmoName.BOLT, BaseAmmoName.CHUKONU, BaseAmmoName.HAND_CROSSBOW].includes(weapon.baseAmmoName)) {
-            weapon.baseAmmoEffectActive = true
-        }
+        // if ([BaseAmmoName.BOLT, BaseAmmoName.CHUKONU, BaseAmmoName.HAND_CROSSBOW].includes(weapon.baseAmmoName)) {
+        //     weapon.baseAmmoEffectActive = true
+        // }
 
         if ([CustomAmmoName.FRAG_ARROW, CustomAmmoName.CONCERTINA_ARROW].includes(this.name)) {
             weapon.baseAmmoEffectActive = true

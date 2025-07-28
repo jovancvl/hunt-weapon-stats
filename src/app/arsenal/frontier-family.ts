@@ -1,11 +1,9 @@
-import { CustomAmmo, CustomAmmoEffectType, CustomAmmoName, BaseAmmoName, CustomAmmoEffectSeverity, CustomAmmoDescription, BaseAmmoDescription } from "./ammo";
+import { CustomAmmo, CustomAmmoEffectType, CustomAmmoName, CustomAmmoEffectSeverity, CustomAmmoDescription, BaseAmmo } from "./ammo";
 import { ActionType, Weapon } from "./weapon";
 
 const FRONTIER_73C_CUSTOM_AMMO = [
     new CustomAmmo({
         name: CustomAmmoName.FMJ,
-        type: CustomAmmoEffectType.NA,
-        severity: CustomAmmoEffectSeverity.NA,
         description: CustomAmmoDescription.FMJ,
         cost: 50,
         scarce: false,
@@ -18,8 +16,6 @@ const FRONTIER_73C_CUSTOM_AMMO = [
     }),
     new CustomAmmo({
         name: CustomAmmoName.HIGH_VELOCITY,
-        type: CustomAmmoEffectType.NA,
-        severity: CustomAmmoEffectSeverity.NA,
         description: CustomAmmoDescription.HIGH_VELOCITY,
         cost: 60,
         scarce: false,
@@ -32,7 +28,7 @@ const FRONTIER_73C_CUSTOM_AMMO = [
     }),
     new CustomAmmo({
         name: CustomAmmoName.INCENDIARY,
-        type: CustomAmmoEffectType.BURN,
+        effect: CustomAmmoEffectType.BURN,
         severity: CustomAmmoEffectSeverity.MEDIUM,
         description: CustomAmmoDescription.INCENDIARY,
         cost: 40,
@@ -40,7 +36,7 @@ const FRONTIER_73C_CUSTOM_AMMO = [
     }),
     new CustomAmmo({
         name: CustomAmmoName.POISON,
-        type: CustomAmmoEffectType.POISON,
+        effect: CustomAmmoEffectType.POISON,
         severity: CustomAmmoEffectSeverity.MEDIUM,
         description: CustomAmmoDescription.POISON,
         cost: 50,
@@ -48,8 +44,6 @@ const FRONTIER_73C_CUSTOM_AMMO = [
     }),
     new CustomAmmo({
         name: CustomAmmoName.SUBSONIC,
-        type: CustomAmmoEffectType.NA,
-        severity: CustomAmmoEffectSeverity.NA,
         description: CustomAmmoDescription.SUBSONIC,
         cost: 5,
         scarce: false,
@@ -65,11 +59,9 @@ export const FRONTIER_73C: Weapon = new Weapon({
     size: 3,
     action: ActionType.LEVER_ACTION,
 
-    baseAmmoName: BaseAmmoName.COMPACT,
-    baseAmmoEffectType: CustomAmmoEffectType.NA,
-    baseAmmoEffectSeverity: CustomAmmoEffectSeverity.NA,
-    baseAmmoDescription: BaseAmmoDescription.COMPACT,
+    baseAmmo: BaseAmmo.COMPACT,
     
+    optimalRange: 20,
     baseDamage: 110,
     dropRange: 140,
     spread: 17.5,
