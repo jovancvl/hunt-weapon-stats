@@ -1,41 +1,86 @@
-import { CustomAmmo, AmmoInfo } from "./ammo";
+import { AmmoStats, AmmoInfo } from "./ammo";
 import { ActionType, Weapon } from "./weapon";
 
-const FRONTIER_73C_CUSTOM_AMMO = [
-    new CustomAmmo({
+const BASE_DAMAGE = 110
+const OPTIMAL_RANGE = 20
+const DROP_RANGE = 140
+const SPREAD = 17.5
+const VERTICAL_RECOIL = 5
+const MUZZLE_VELOCITY = 400
+const AMMO_RESERVE = 28
+
+const FRONTIER_73C_AMMO = [
+    new AmmoStats({
+        info: AmmoInfo.COMPACT,
+        scarce: false,
+
+        baseDamage: BASE_DAMAGE,
+        optimalRange: OPTIMAL_RANGE,
+        dropRange: DROP_RANGE,
+        spread: SPREAD,
+        verticalRecoil: VERTICAL_RECOIL,
+        muzzleVelocity: MUZZLE_VELOCITY,
+        ammoReserve: AMMO_RESERVE
+    }),
+    new AmmoStats({
         info: AmmoInfo.COMPACT_FMJ,
         scarce: false,
 
-        maxDamageRangeModifier: +10,
-        dropRangeModifier: -15,
-        spreadModifier: 10,
-        verticalRecoilModifier: +3,
-        muzzleVelocityModifier: -70
+        baseDamage: BASE_DAMAGE,
+        optimalRange: OPTIMAL_RANGE +10,
+        dropRange: DROP_RANGE -15,
+        spread: SPREAD + 10,
+        verticalRecoil: VERTICAL_RECOIL +3,
+        muzzleVelocity: MUZZLE_VELOCITY -70,
+        ammoReserve: AMMO_RESERVE
     }),
-    new CustomAmmo({
+    new AmmoStats({
         info: AmmoInfo.COMPACT_HIGH_VELOCITY,
         scarce: false,
 
-        damageModifier: -6,
-        dropRangeModifier: +20,
-        verticalRecoilModifier: +3,
-        muzzleVelocityModifier: +100,
-        ammoReserveModifier: -10
+        baseDamage: BASE_DAMAGE -6,
+        optimalRange: OPTIMAL_RANGE,
+        dropRange: DROP_RANGE +20,
+        spread: SPREAD,
+        verticalRecoil: VERTICAL_RECOIL +3,
+        muzzleVelocity: MUZZLE_VELOCITY +100,
+        ammoReserve: AMMO_RESERVE -10
     }),
-    new CustomAmmo({
+    new AmmoStats({
         info: AmmoInfo.COMPACT_INCENDIARY,
-        scarce: false
+        scarce: false,
+
+        baseDamage: BASE_DAMAGE,
+        optimalRange: OPTIMAL_RANGE,
+        dropRange: DROP_RANGE,
+        spread: SPREAD,
+        verticalRecoil: VERTICAL_RECOIL,
+        muzzleVelocity: MUZZLE_VELOCITY,
+        ammoReserve: AMMO_RESERVE
     }),
-    new CustomAmmo({
+    new AmmoStats({
         info: AmmoInfo.COMPACT_POISON,
-        scarce: false
+        scarce: false,
+
+        baseDamage: BASE_DAMAGE,
+        optimalRange: OPTIMAL_RANGE,
+        dropRange: DROP_RANGE,
+        spread: SPREAD,
+        verticalRecoil: VERTICAL_RECOIL,
+        muzzleVelocity: MUZZLE_VELOCITY,
+        ammoReserve: AMMO_RESERVE
     }),
-    new CustomAmmo({
+    new AmmoStats({
         info: AmmoInfo.COMPACT_SUBSONIC,
         scarce: false,
 
-        dropRangeModifier: -30,
-        muzzleVelocityModifier: -137
+        baseDamage: BASE_DAMAGE,
+        optimalRange: OPTIMAL_RANGE,
+        dropRange: DROP_RANGE - 30,
+        spread: SPREAD,
+        verticalRecoil: VERTICAL_RECOIL,
+        muzzleVelocity: MUZZLE_VELOCITY - 137,
+        ammoReserve: AMMO_RESERVE
     })
 ]
 
@@ -45,15 +90,7 @@ export const FRONTIER_73C: Weapon = new Weapon({
     size: 3,
     action: ActionType.LEVER_ACTION,
 
-    baseAmmo: AmmoInfo.COMPACT,
-    
-    optimalRange: 20,
-    baseDamage: 110,
-    dropRange: 140,
-    spread: 17.5,
-    verticalRecoil: 5,
-    muzzleVelocity: 400,
-    ammoReserve: 28,
+    availableAmmo: FRONTIER_73C_AMMO,
 
     sway: 77,
     rateOfFire: 29,
@@ -61,11 +98,9 @@ export const FRONTIER_73C: Weapon = new Weapon({
     reloadTime: 10.1,
     magazine: 7,
     hasExtraBullet: true,
-    
+
     meleeDamage: 27,
     staminaConsumption: 12,
     heavyMeleeDamage: 54,
     heavyStaminaConsumption: 25,
-    
-    customAmmos: FRONTIER_73C_CUSTOM_AMMO,
 })

@@ -11,10 +11,8 @@ import { HunterBodyComponent } from "../hunter-body-component/hunter-body-compon
 })
 export class RifleStatsComponent implements OnInit{
   rifle = input.required<Weapon>();
-  rifleCopy = signal(Weapon.EMPTY)
 
 
   ngOnInit(): void {
-    this.rifleCopy.set(new Weapon(this.rifle()))
   }
 }
