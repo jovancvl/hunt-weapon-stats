@@ -1,9 +1,7 @@
 <div class="flex-container">
     <div>
-        <h1>{{rifle().name}} {{rifle().activeAmmo.info.name }}</h1>
-        <p>Cost: {{rifle().cost}}</p>
-        <p>Size: {{rifle().size}}</p>
-        <p>Ammo type: {{rifle().baseAmmo.info.name}} </p>
+        <h1>{{rifle().name}} {{rifle().activeAmmo !== rifle().baseAmmo ? rifle().activeAmmo.info.name : '' }}</h1>
+        <p>Cost: {{rifle().cost}} | Size: {{rifle().size}} | Ammo type: {{rifle().baseAmmo.info.name}}</p>
         <p>Ammo description: {{rifle().baseAmmo.info.description}} </p>
 
         <div class="button-container">

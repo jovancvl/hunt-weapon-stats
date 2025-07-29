@@ -1,0 +1,9 @@
+<hunt-nav-bar-component></hunt-nav-bar-component>
+<div class="content-container" [class.only-stats]="!isWeaponSelectOpen">
+    <hunt-weapon-list (onWeaponSelect)="showWeaponStats($event)" class="left-content"></hunt-weapon-list>
+    <div class="right-content">
+        <button (click)="showWeaponSelect()" [hidden]="isWeaponSelectOpen">&lt;</button>
+        <hunt-rifle-stats-component [rifle]="weapon" ></hunt-rifle-stats-component>
+    </div>
+    <div style="background-color: aqua; overflow: hidden;">extra div</div>
+</div>

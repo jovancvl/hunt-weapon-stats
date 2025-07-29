@@ -22,10 +22,8 @@ table {
     justify-content: center;
     flex-wrap: wrap;
     gap: 20px;
-    // overflow-y: auto;
-    overflow: hidden;
 
     div {
-        flex: 0 1 30%;
+        flex: 1 1 30%;
     }
 }

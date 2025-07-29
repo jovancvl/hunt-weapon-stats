@@ -1,16 +1,43 @@
-div {
-    padding: 2rem 4rem;
+.equipment-card-list-container {
+    padding: 1rem;
     display: flex;
     flex-wrap: wrap;
     gap: 10px;
-    
+
     a {
-        flex: 1 0 max(300px, 19%);
+        flex: 1 1 max(250px, 15%);
     }
 }
 
-@media (max-width: 768px) {
-    div {
-        padding: 2rem 1rem;
+.filters-container {
+    z-index: 10;
+    box-sizing: border-box;
+    background-color: black;
+    border-bottom: 2px solid rgb(39, 39, 39);
+    position: sticky;
+    top: 0px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 5px;
+    padding: 0.5rem 4rem;
+
+    >* {
+        height: 2rem;
+    }
+
+    button {
+        aspect-ratio: 1/1;
+    }
+
+    input {
+        box-sizing: border-box;
+        border-radius: 5px;
     }
 }
+
+// @media (max-width: 768px) {
+//     div {
+//         padding: 2rem 1rem;
+//     }
+// }

@@ -1,5 +1,26 @@
-<div>
-    @for (item of [1,2,3,4,5,6,7,8,9,10,11,12,1,2,3,4,5,6,7,8,9,10,11,12,1,2,3,4,5,6,7,8,9,10,11,12,1,2,3,4,5,6,7,8,9,10,11,12,]; track $index) {
-        <a routerLink="asdasd"><hunt-equipment-card></hunt-equipment-card></a>
+<div class="filters-container">
+    <input placeholder="Search something"/>
+    <button>1</button>
+    <button>2</button>
+    <button>3</button>
+    <button>C</button>
+    <button>M</button>
+    <button>L</button>
+    <button>B</button>
+    <button>S</button>
+    <button>E</button>
+    <button>D</button>
+    <button>I</button>
+    <button>P</button>
+    <button>FMJ</button>
+    <button>SUB</button>
+    <button>HV</button>
+    <button>SPITZ</button>
+    <button>SLUG</button>
+    <button>PENNY</button>
+</div>
+<div class="equipment-card-list-container">
+    @for (item of weapons; track $index) {
+        <a (click)="goToWeapon(item)"><hunt-equipment-card></hunt-equipment-card></a>
     }
 </div>
