@@ -29,6 +29,8 @@ export interface WeaponInterface {
     staminaConsumption: number
     heavyMeleeDamage: number
     heavyStaminaConsumption: number
+
+    image: string
 }
 
 
@@ -54,6 +56,8 @@ export class Weapon {
     heavyMeleeDamage: number
     heavyStaminaConsumption: number
 
+    image: string
+
     constructor(weapon: WeaponInterface) {
         this.name = weapon.name
         this.cost = weapon.cost
@@ -78,6 +82,8 @@ export class Weapon {
         this.staminaConsumption = weapon.staminaConsumption
         this.heavyMeleeDamage = weapon.heavyMeleeDamage
         this.heavyStaminaConsumption = weapon.heavyStaminaConsumption
+
+        this.image = weapon.image
     }
 
     /**
@@ -102,6 +108,7 @@ export class Weapon {
         staminaConsumption: 0,
         heavyMeleeDamage: 0,
         heavyStaminaConsumption: 0,
+        image: "https://huntshowdown.wiki.gg/images/thumb/0/0f/Weapon_Frontier_73C.png/256px-Weapon_Frontier_73C.png"
     })
 }
 

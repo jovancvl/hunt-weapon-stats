@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { Component, input } from '@angular/core';
+import { Weapon } from '../../arsenal/weapon';
 
 @Component({
   selector: 'hunt-equipment-card-component',
@@ -7,5 +8,5 @@ import { Component } from '@angular/core';
   styleUrl: './equipment-card-component.scss'
 })
 export class EquipmentCardComponent {
-  cost = (Math.random() * 100).toFixed(0)
+  weapon = input.required<Weapon>()
 }

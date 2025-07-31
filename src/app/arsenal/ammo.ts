@@ -281,6 +281,11 @@ export interface AmmoStatsInterface {
     scarce: boolean
 
     baseDamage: number
+    /**
+     * For rifles, this is the range at which damage dropoff starts happening
+     * 
+     * For weapons that can one shot kill, this is the range at which it is no longer possible to oneshot.
+     */
     optimalRange: number
     dropRange: number
     spread: number

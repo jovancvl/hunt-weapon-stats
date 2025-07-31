@@ -1,5 +1,5 @@
-import { AmmoStats, AmmoInfo } from "./ammo";
-import { ActionType, Weapon } from "./weapon";
+import { AmmoStats, AmmoInfo } from "../arsenal/ammo";
+import { ActionType, Weapon } from "../arsenal/weapon";
 
 const BASE_DAMAGE = 110
 const OPTIMAL_RANGE = 20
@@ -9,7 +9,7 @@ const VERTICAL_RECOIL = 5
 const MUZZLE_VELOCITY = 400
 const AMMO_RESERVE = 28
 
-const FRONTIER_73C_AMMO = [
+const AMMO = [
     new AmmoStats({
         info: AmmoInfo.COMPACT,
         scarce: false,
@@ -90,7 +90,7 @@ export const FRONTIER_73C: Weapon = new Weapon({
     size: 3,
     action: ActionType.LEVER_ACTION,
 
-    availableAmmo: FRONTIER_73C_AMMO,
+    availableAmmo: AMMO,
 
     sway: 77,
     rateOfFire: 29,
@@ -103,4 +103,6 @@ export const FRONTIER_73C: Weapon = new Weapon({
     staminaConsumption: 12,
     heavyMeleeDamage: 54,
     heavyStaminaConsumption: 25,
+
+    image: "https://huntshowdown.wiki.gg/images/thumb/0/0f/Weapon_Frontier_73C.png/256px-Weapon_Frontier_73C.png"
 })
