@@ -1,7 +1,7 @@
 <div class="hunter-body-container">
-    <p class="chest-damage">{{number}}</p>
-    <p class="cock-damage">{{number}}</p>
-    <p class="arms-damage">{{number}}</p>
-    <p class="legs-damage">{{number}}</p>
+    <p class="chest-damage">{{weapon().activeAmmo.baseDamage}}</p>
+    <p class="cock-damage">{{weapon().activeAmmo.baseDamage * 0.9}}</p>
+    <p class="arms-damage">{{weapon().activeAmmo.baseDamage * 0.7}}</p>
+    <p class="legs-damage">{{weapon().activeAmmo.baseDamage * 0.5}}</p>
     <img src="/hunter-body/hunter_body.svg">
 </div>
