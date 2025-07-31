@@ -1,13 +1,13 @@
 import { AmmoInfo, AmmoStats } from "../arsenal/ammo"
 import { Weapon, ActionType } from "../arsenal/weapon"
 
-const BASE_DAMAGE = 113
+const BASE_DAMAGE = 110
 const OPTIMAL_RANGE = 20
-const DROP_RANGE = 140
-const SPREAD = 15
-const VERTICAL_RECOIL = 7
-const MUZZLE_VELOCITY = 430
-const AMMO_RESERVE = 24
+const DROP_RANGE = 145
+const SPREAD = 17.5
+const VERTICAL_RECOIL = 3
+const MUZZLE_VELOCITY = 400
+const AMMO_RESERVE = 20
 
 const AMMO = [
     new AmmoStats({
@@ -70,21 +70,33 @@ const AMMO = [
         muzzleVelocity: MUZZLE_VELOCITY,
         ammoReserve: AMMO_RESERVE
     }),
+    new AmmoStats({
+        info: AmmoInfo.COMPACT_HIGH_VELOCITY,
+        scarce: false,
+
+        baseDamage: BASE_DAMAGE,
+        optimalRange: OPTIMAL_RANGE,
+        dropRange: DROP_RANGE - 30,
+        spread: SPREAD,
+        verticalRecoil: VERTICAL_RECOIL,
+        muzzleVelocity: MUZZLE_VELOCITY - 137,
+        ammoReserve: AMMO_RESERVE + 4
+    }),
 ]
 
-export const MARATHON: Weapon = new Weapon({
-    name: "Marathon",
-    cost: 68,
+export const INFANTRY_37L: Weapon = new Weapon({
+    name: "Infantry 37L",
+    cost: 78,
     size: 3,
-    action: ActionType.PUMP_ACTION,
+    action: ActionType.LEVER_ACTION,
 
     availableAmmo: AMMO,
 
     sway: 77,
-    rateOfFire: 31,
-    cycleTime: 1,
-    reloadTime: 19.2,
-    magazine: 15,
+    rateOfFire: 35,
+    cycleTime: 1.2,
+    reloadTime: 17.9,
+    magazine: 17,
     hasExtraBullet: true,
 
     meleeDamage: 27,
@@ -92,5 +104,5 @@ export const MARATHON: Weapon = new Weapon({
     heavyMeleeDamage: 54,
     heavyStaminaConsumption: 25,
 
-    image: "https://huntshowdown.wiki.gg/images/thumb/b/b5/Weapon_Marathon.png/256px-Weapon_Marathon.png"
+    image: "https://huntshowdown.wiki.gg/images/5/56/Weapon_Infantry_73L.png"
 })
