@@ -1,18 +1,18 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { EquipmentCard } from './equipment-card';
+import { WeaponStatsPage } from './weapon-stats-page';
 
-describe('EquipmentCard', () => {
-  let component: EquipmentCard;
-  let fixture: ComponentFixture<EquipmentCard>;
+describe('WeaponStatsPage', () => {
+  let component: WeaponStatsPage;
+  let fixture: ComponentFixture<WeaponStatsPage>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [EquipmentCard]
+      imports: [WeaponStatsPage]
     })
     .compileComponents();
 
-    fixture = TestBed.createComponent(EquipmentCard);
+    fixture = TestBed.createComponent(WeaponStatsPage);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

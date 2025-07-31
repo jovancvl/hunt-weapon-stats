@@ -1,18 +1,18 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { StatusEffectComponent } from './status-effect-component';
+import { EquipmentCardComponent } from './equipment-card-component';
 
-describe('StatusEffectComponent', () => {
-  let component: StatusEffectComponent;
-  let fixture: ComponentFixture<StatusEffectComponent>;
+describe('EquipmentCardComponent', () => {
+  let component: EquipmentCardComponent;
+  let fixture: ComponentFixture<EquipmentCardComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [StatusEffectComponent]
+      imports: [EquipmentCardComponent]
     })
     .compileComponents();
 
-    fixture = TestBed.createComponent(StatusEffectComponent);
+    fixture = TestBed.createComponent(EquipmentCardComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
