@@ -2,8 +2,6 @@ import { Component, inject, OnInit, output } from '@angular/core';
 import { EquipmentCardComponent } from "../equipment-card-component/equipment-card-component";
 import { Router } from '@angular/router';
 import { Weapon } from '../../arsenal/weapon';
-import { FRONTIER_73C } from '../../catalogue/frontier-73c';
-import { VETTERLI_71 } from '../../catalogue/vetterli-71';
 import { WEAPON_LIST } from '../../catalogue/all-weapons';
 
 @Component({
@@ -27,6 +25,6 @@ export class WeaponListComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.weapons.push(FRONTIER_73C, VETTERLI_71)
+    // this.weapons.push(FRONTIER_73C, VETTERLI_71)
   }
 }

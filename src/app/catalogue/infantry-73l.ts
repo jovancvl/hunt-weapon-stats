@@ -71,7 +71,7 @@ const AMMO = [
         ammoReserve: AMMO_RESERVE
     }),
     new AmmoStats({
-        info: AmmoInfo.COMPACT_HIGH_VELOCITY,
+        info: AmmoInfo.COMPACT_SUBSONIC,
         scarce: false,
 
         baseDamage: BASE_DAMAGE,

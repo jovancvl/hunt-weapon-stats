@@ -11,4 +11,20 @@ import { Weapon } from '../../arsenal/weapon';
 })
 export class HunterBodyComponent  {
   weapon = input.required<Weapon>()
+
+  get chestDamage() {
+    return Math.floor(this.weapon().activeAmmo.baseDamage)
+  }
+
+  get cockDamage() {
+    return Math.floor(this.weapon().activeAmmo.baseDamage * 0.9)
+  }
+
+  get armDamage() {
+    return Math.floor(this.weapon().activeAmmo.baseDamage * 0.7)
+  }
+
+  get legDamage() {
+    return Math.floor(this.weapon().activeAmmo.baseDamage * 0.6)
+  }
 }

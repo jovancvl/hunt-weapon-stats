@@ -88,6 +88,7 @@ export interface AmmoInfoInterface {
     severity?: AmmoEffectSeverity
     description: AmmoDescription | string
     cost: number
+    icon: string
 }
 
 export class AmmoInfo {
@@ -96,37 +97,43 @@ export class AmmoInfo {
     severity?: AmmoEffectSeverity
     description: string // format custom ammo description to input the severity
     cost: number
+    icon: string
 
-    constructor(customAmmoInfoInterface: AmmoInfoInterface) {
-        this.name = customAmmoInfoInterface.name
-        this.effect = customAmmoInfoInterface.effect
-        if (customAmmoInfoInterface.severity) {
-            this.description = customAmmoInfoInterface.description.replace('<EFFECT_SEVERITY>', customAmmoInfoInterface.severity)
+    constructor(AmmoinfoInterface: AmmoInfoInterface) {
+        this.name = AmmoinfoInterface.name
+        this.effect = AmmoinfoInterface.effect
+        if (AmmoinfoInterface.severity) {
+            this.description = AmmoinfoInterface.description.replace('<EFFECT_SEVERITY>', AmmoinfoInterface.severity)
         } else {
-            this.description = customAmmoInfoInterface.description
+            this.description = AmmoinfoInterface.description
         }
-        this.cost = customAmmoInfoInterface.cost
+        this.cost = AmmoinfoInterface.cost
+        this.icon = AmmoinfoInterface.icon
     }
 
     static readonly COMPACT = new AmmoInfo({
         name: AmmoName.COMPACT,
         description: AmmoDescription.COMPACT,
-        cost: 0
+        cost: 0,
+        icon: "/ammo-icons/ammo_compact.svg"
     })
     static readonly MEDIUM = new AmmoInfo({
         name: AmmoName.MEDIUM,
         description: AmmoDescription.MEDIUM,
-        cost: 0
+        cost: 0,
+        icon: "/ammo-icons/ammo_medium.svg"
     })
     static readonly LONG = new AmmoInfo({
         name: AmmoName.LONG,
         description: AmmoDescription.LONG,
-        cost: 0
+        cost: 0,
+        icon: "/ammo-icons/ammo_long.svg"
     })
     static readonly BUCKSHOT = new AmmoInfo({
         name: AmmoName.BUCKSHOT,
         description: AmmoDescription.BUCKSHOT,
-        cost: 0
+        cost: 0,
+        icon: "/ammo-icons/ammo_shell.svg"
     })
 
     static readonly COMPACT_DUMDUM = new AmmoInfo({
@@ -134,36 +141,42 @@ export class AmmoInfo {
         effect: AmmoEffectType.BLEED,
         severity: AmmoEffectSeverity.MEDIUM,
         description: AmmoDescription.DUMDUM,
-        cost: 50
+        cost: 50,
+        icon: "/ammo-icons/ammo_compact-dumdum.svg"
     })
     static readonly COMPACT_FMJ = new AmmoInfo({
         name: AmmoName.FMJ,
         description: AmmoDescription.FMJ,
-        cost: 50
+        cost: 50,
+        icon: "/ammo-icons/ammo_compact-fmj.svg"
     })
     static readonly COMPACT_HIGH_VELOCITY = new AmmoInfo({
         name: AmmoName.HIGH_VELOCITY,
         description: AmmoDescription.HIGH_VELOCITY,
-        cost: 50
+        cost: 50,
+        icon: "/ammo-icons/ammo_compact-high-velocity.svg"
     })
     static readonly COMPACT_INCENDIARY = new AmmoInfo({
         name: AmmoName.INCENDIARY,
         effect: AmmoEffectType.BURN,
         severity: AmmoEffectSeverity.MEDIUM,
         description: AmmoDescription.INCENDIARY,
-        cost: 50
+        cost: 50,
+        icon: "/ammo-icons/ammo_compact-incendiary.svg"
     })
     static readonly COMPACT_POISON = new AmmoInfo({
         name: AmmoName.POISON,
         effect: AmmoEffectType.POISON,
         severity: AmmoEffectSeverity.MEDIUM,
         description: AmmoDescription.POISON,
-        cost: 50
+        cost: 50,
+        icon: "/ammo-icons/ammo_compact-poison.svg"
     })
     static readonly COMPACT_SUBSONIC = new AmmoInfo({
         name: AmmoName.SUBSONIC,
         description: AmmoDescription.SUBSONIC,
-        cost: 50
+        cost: 50,
+        icon: "/ammo-icons/ammo_compact-subsonic.svg"
     })
 
     static readonly MEDIUM_DUMDUM = new AmmoInfo({
@@ -171,76 +184,89 @@ export class AmmoInfo {
         effect: AmmoEffectType.BLEED,
         severity: AmmoEffectSeverity.INTENSE,
         description: AmmoDescription.DUMDUM,
-        cost: 50
+        cost: 50,
+        icon: "/ammo-icons/ammo_compact.svg"
     })
     static readonly MEDIUM_EXPLOSIVE = new AmmoInfo({
         name: AmmoName.EXPLOSIVE,
         description: AmmoDescription.EXPLOSIVE,
-        cost: 50
+        cost: 50,
+        icon: "/ammo-icons/ammo_compact.svg"
     })
     static readonly MEDIUM_FMJ = new AmmoInfo({
         name: AmmoName.FMJ,
         description: AmmoDescription.FMJ,
-        cost: 50
+        cost: 50,
+        icon: "/ammo-icons/ammo_compact.svg"
     })
     static readonly MEDIUM_HIGH_VELOCITY = new AmmoInfo({
         name: AmmoName.HIGH_VELOCITY,
         description: AmmoDescription.HIGH_VELOCITY,
-        cost: 50
+        cost: 50,
+        icon: "/ammo-icons/ammo_compact.svg"
     })
     static readonly MEDIUM_INCENDIARY = new AmmoInfo({
         name: AmmoName.INCENDIARY,
         effect: AmmoEffectType.BURN,
         severity: AmmoEffectSeverity.MEDIUM,
         description: AmmoDescription.INCENDIARY,
-        cost: 50
+        cost: 50,
+        icon: "/ammo-icons/ammo_compact.svg"
     })
     static readonly MEDIUM_POISON = new AmmoInfo({
         name: AmmoName.POISON,
         effect: AmmoEffectType.POISON,
         severity: AmmoEffectSeverity.MEDIUM,
         description: AmmoDescription.POISON,
-        cost: 50
+        cost: 50,
+        icon: "/ammo-icons/ammo_compact.svg"
     })
     static readonly MEDIUM_SUBSONIC = new AmmoInfo({
         name: AmmoName.SUBSONIC,
         description: AmmoDescription.SUBSONIC,
-        cost: 50
+        cost: 50,
+        icon: "/ammo-icons/ammo_compact.svg"
     })
 
     static readonly LONG_EXPLOSIVE = new AmmoInfo({
         name: AmmoName.EXPLOSIVE,
         description: AmmoDescription.EXPLOSIVE,
-        cost: 50
+        cost: 50,
+        icon: "/ammo-icons/ammo_compact.svg"
     })
     static readonly LONG_FMJ = new AmmoInfo({
         name: AmmoName.FMJ,
         description: AmmoDescription.FMJ,
-        cost: 50
+        cost: 50,
+        icon: "/ammo-icons/ammo_compact.svg"
     })
     static readonly LONG_HIGH_VELOCITY = new AmmoInfo({
         name: AmmoName.HIGH_VELOCITY,
         description: AmmoDescription.HIGH_VELOCITY,
-        cost: 50
+        cost: 50,
+        icon: "/ammo-icons/ammo_compact.svg"
     })
     static readonly LONG_INCENDIARY = new AmmoInfo({
         name: AmmoName.INCENDIARY,
         effect: AmmoEffectType.BURN,
         severity: AmmoEffectSeverity.MEDIUM,
         description: AmmoDescription.INCENDIARY,
-        cost: 50
+        cost: 50,
+        icon: "/ammo-icons/ammo_compact.svg"
     })
     static readonly LONG_POISON = new AmmoInfo({
         name: AmmoName.POISON,
         effect: AmmoEffectType.POISON,
         severity: AmmoEffectSeverity.MEDIUM,
         description: AmmoDescription.POISON,
-        cost: 50
+        cost: 50,
+        icon: "/ammo-icons/ammo_compact.svg"
     })
     static readonly LONG_SUBSONIC = new AmmoInfo({
         name: AmmoName.SUBSONIC,
         description: AmmoDescription.SUBSONIC,
-        cost: 50
+        cost: 50,
+        icon: "/ammo-icons/ammo_compact.svg"
     })
 
     static readonly SHELL_DRAGONBREATH = new AmmoInfo({
@@ -248,31 +274,36 @@ export class AmmoInfo {
         effect: AmmoEffectType.BURN,
         severity: AmmoEffectSeverity.MEDIUM,
         description: AmmoDescription.INCENDIARY,
-        cost: 50
+        cost: 50,
+        icon: "/ammo-icons/ammo_compact.svg"
     })
     static readonly SHELL_FLECHETTE = new AmmoInfo({
         name: AmmoName.FLECHETTE,
         effect: AmmoEffectType.BLEED,
         severity: AmmoEffectSeverity.MEDIUM,
         description: AmmoDescription.DUMDUM,
-        cost: 50
+        cost: 50,
+        icon: "/ammo-icons/ammo_compact.svg"
     })
     static readonly SHELL_PENNYSHOT = new AmmoInfo({
         name: AmmoName.PENNY,
         description: AmmoDescription.DUMDUM,
-        cost: 50
+        cost: 50,
+        icon: "/ammo-icons/ammo_compact.svg"
     })
     static readonly SHELL_SLUG = new AmmoInfo({
         name: AmmoName.SLUG,
         description: AmmoDescription.DUMDUM,
-        cost: 50
+        cost: 50,
+        icon: "/ammo-icons/ammo_compact.svg"
     })
     static readonly SHELL_STARSHELL = new AmmoInfo({
         name: AmmoName.STARSHELL,
         effect: AmmoEffectType.BURN,
         severity: AmmoEffectSeverity.INTENSE,
         description: AmmoDescription.INCENDIARY,
-        cost: 50
+        cost: 50,
+        icon: "/ammo-icons/ammo_compact.svg"
     })
 }
 

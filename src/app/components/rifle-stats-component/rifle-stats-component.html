@@ -6,8 +6,9 @@
 
         <div class="button-container">
             @for (ammo of rifle().availableAmmo; track $index) {
-                <button (click)="rifle().activeAmmo = ammo">
-                    {{ammo.info.name}}
+                <button (click)="rifle().activeAmmo = ammo" [class.active]="ammo.info.name === rifle().activeAmmo.info.name">
+                    <!-- {{ammo.info.name}} -->
+                     <img [src]="ammo.info.icon">
                 </button>
             }
         </div>

@@ -14,6 +14,30 @@ table {
 .button-container {
     display: flex;
     justify-content: center;
+    gap: 3px;
+    height: 3rem;
+    
+    button {
+        height: 100%;
+        aspect-ratio: 1/1;
+        background-color: rgb(15, 15, 15);
+        border: 1px solid white;
+        padding: 8px;
+        border-radius: 5px;
+
+        img {
+            height: 100%;
+            aspect-ratio: 1/1;
+        }
+
+        &:hover {
+            background-color: rgb(31, 31, 31);
+        }
+
+        &.active {
+            border-color: gold;
+        }
+    }
 }
 
 .flex-container {
