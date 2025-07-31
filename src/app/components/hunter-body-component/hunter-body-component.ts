@@ -1,6 +1,7 @@
 import { HttpClient } from '@angular/common/http';
-import { Component, ElementRef, OnInit, viewChild, ViewChild } from '@angular/core';
+import { Component, ElementRef, input, OnInit, viewChild, ViewChild } from '@angular/core';
 import { interval } from 'rxjs';
+import { Weapon } from '../../arsenal/weapon';
 
 @Component({
   selector: 'hunt-hunter-body-component',
@@ -9,8 +10,5 @@ import { interval } from 'rxjs';
   styleUrl: './hunter-body-component.scss'
 })
 export class HunterBodyComponent  {
-  randomizer = interval(2000).subscribe({
-    next: n => this.number = Math.floor(Math.random() * 200)
-  })
-  number = Math.floor(Math.random() * 200)
+  weapon = input.required<Weapon>()
 }

@@ -1,7 +1,7 @@
 import { AmmoInfo, AmmoStats } from "../arsenal/ammo"
 import { Weapon, ActionType } from "../arsenal/weapon"
 
-const BASE_DAMAGE = 1113
+const BASE_DAMAGE = 113
 const OPTIMAL_RANGE = 20
 const DROP_RANGE = 140
 const SPREAD = 15

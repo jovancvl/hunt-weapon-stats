@@ -4,6 +4,7 @@ import { HunterBodyComponent } from "../../components/hunter-body-component/hunt
 import { FRONTIER_73C } from '../../catalogue/frontier-73c';
 import { ActivatedRoute, Router } from '@angular/router';
 import { NavBarComponent } from "../../components/nav-bar-component/nav-bar-component";
+import { WEAPON_LIST } from '../../catalogue/all-weapons';
 
 @Component({
   selector: 'hunt-weapon-stats-page',
@@ -15,16 +16,15 @@ export class WeaponStatsPage implements OnInit {
   rifle = FRONTIER_73C
   private activatedRoute = inject(ActivatedRoute)
   private router = inject(Router)
-  private weaponName: string;
 
   constructor() {
-    let wn = this.activatedRoute.snapshot.paramMap.get('id')
+    let wn = WEAPON_LIST.find(w => w.name === this.activatedRoute.snapshot.paramMap.get('id'))
     if (wn) {
-      this.weaponName = wn
+      this.rifle = wn
     } else {
+      alert("weapon name not set, reload the page")
       throw new Error("weapon name not set")
     }
-    console.log(`selected weapon: ${this.weaponName}`)
   }
 
   ngOnInit(): void {
