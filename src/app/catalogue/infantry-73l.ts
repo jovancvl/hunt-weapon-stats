@@ -9,6 +9,22 @@ const VERTICAL_RECOIL = 3
 const MUZZLE_VELOCITY = 400
 const AMMO_RESERVE = 20
 
+const NAME = "Infantry 73L"
+const COST = 78 
+const SIZE = 3
+const ACTION = ActionType.LEVER_ACTION
+const SWAY = 77
+const RATE_OF_FIRE = 35
+const CYCLE_TIME = 1.2
+const RELOAD_TIME = 17.9
+const MAGAZINE = 17
+const HAS_EXTRA_BULLET = true
+const MELEE_DAMAGE = 27
+const STAMINA_CONSUMPTION = 12
+const HEAVY_MELEE_DAMAGE = 54
+const HEAVY_STAMINA_CONSUMPTION = 25
+const IMAGE = "https://huntshowdown.wiki.gg/images/5/56/Weapon_Infantry_73L.png"
+
 const AMMO = [
     new AmmoStats({
         info: AmmoInfo.COMPACT,
@@ -85,24 +101,24 @@ const AMMO = [
 ]
 
 export const INFANTRY_37L: Weapon = new Weapon({
-    name: "Infantry 37L",
-    cost: 78,
-    size: 3,
-    action: ActionType.LEVER_ACTION,
+    name: NAME,
+    cost: COST,
+    size: SIZE,
+    action: ACTION,
 
     availableAmmo: AMMO,
 
-    sway: 77,
-    rateOfFire: 35,
-    cycleTime: 1.2,
-    reloadTime: 17.9,
-    magazine: 17,
-    hasExtraBullet: true,
+    sway: SWAY,
+    rateOfFire: RATE_OF_FIRE,
+    cycleTime: CYCLE_TIME,
+    reloadTime: RELOAD_TIME,
+    magazine: MAGAZINE,
+    hasExtraBullet: HAS_EXTRA_BULLET,
 
-    meleeDamage: 27,
-    staminaConsumption: 12,
-    heavyMeleeDamage: 54,
-    heavyStaminaConsumption: 25,
+    meleeDamage: MELEE_DAMAGE,
+    staminaConsumption: STAMINA_CONSUMPTION,
+    heavyMeleeDamage: HEAVY_MELEE_DAMAGE,
+    heavyStaminaConsumption: HEAVY_STAMINA_CONSUMPTION,
 
-    image: "https://huntshowdown.wiki.gg/images/5/56/Weapon_Infantry_73L.png"
+    image: IMAGE
 })

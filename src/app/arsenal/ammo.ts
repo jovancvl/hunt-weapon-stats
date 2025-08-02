@@ -268,6 +268,12 @@ export class AmmoInfo {
         cost: 50,
         icon: "/ammo-icons/ammo_long-subsonic.svg"
     })
+    static readonly LONG_SPITZER = new AmmoInfo({
+        name: AmmoName.SPITZER,
+        description: AmmoDescription.SPITZER,
+        cost: 50,
+        icon: "/ammo-icons/ammo_long-spitzer.svg"
+    })
 
     static readonly SHELL_DRAGONBREATH = new AmmoInfo({
         name: AmmoName.DRAGON_BREATH,
@@ -304,6 +310,24 @@ export class AmmoInfo {
         description: AmmoDescription.INCENDIARY,
         cost: 50,
         icon: "/ammo-icons/ammo_shell-starshell.svg"
+    })
+    static readonly DOLCH = new AmmoInfo({
+        name: AmmoName.DOLCH,
+        description: AmmoDescription.DUMDUM,
+        cost: 0,
+        icon: "/ammo-icons/ammo_dolch-base.svg"
+    })
+    static readonly DOLCH_DUMDUM = new AmmoInfo({
+        name: AmmoName.DUMDUM,
+        description: AmmoDescription.DUMDUM,
+        cost: 0,
+        icon: "/ammo-icons/ammo_dolch-dumdum.svg"
+    })
+    static readonly DOLCH_FMJ = new AmmoInfo({
+        name: AmmoName.FMJ,
+        description: AmmoDescription.FMJ,
+        cost: 0,
+        icon: "/ammo-icons/ammo_dolch-fmj.svg"
     })
 }
 

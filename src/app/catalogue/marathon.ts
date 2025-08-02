@@ -9,6 +9,22 @@ const VERTICAL_RECOIL = 7
 const MUZZLE_VELOCITY = 430
 const AMMO_RESERVE = 24
 
+const NAME = "Marathon"
+const COST = 68 
+const SIZE = 3
+const ACTION = ActionType.PUMP_ACTION
+const SWAY = 77
+const RATE_OF_FIRE = 31
+const CYCLE_TIME = 1
+const RELOAD_TIME = 19.2
+const MAGAZINE = 15
+const HAS_EXTRA_BULLET = true
+const MELEE_DAMAGE = 27
+const STAMINA_CONSUMPTION = 12
+const HEAVY_MELEE_DAMAGE = 54
+const HEAVY_STAMINA_CONSUMPTION = 25
+const IMAGE = "https://huntshowdown.wiki.gg/images/thumb/b/b5/Weapon_Marathon.png/256px-Weapon_Marathon.png"
+
 const AMMO = [
     new AmmoStats({
         info: AmmoInfo.COMPACT,
@@ -73,24 +89,24 @@ const AMMO = [
 ]
 
 export const MARATHON: Weapon = new Weapon({
-    name: "Marathon",
-    cost: 68,
-    size: 3,
-    action: ActionType.PUMP_ACTION,
+    name: NAME,
+    cost: COST,
+    size: SIZE,
+    action: ACTION,
 
     availableAmmo: AMMO,
 
-    sway: 77,
-    rateOfFire: 31,
-    cycleTime: 1,
-    reloadTime: 19.2,
-    magazine: 15,
-    hasExtraBullet: true,
+    sway: SWAY,
+    rateOfFire: RATE_OF_FIRE,
+    cycleTime: CYCLE_TIME,
+    reloadTime: RELOAD_TIME,
+    magazine: MAGAZINE,
+    hasExtraBullet: HAS_EXTRA_BULLET,
 
-    meleeDamage: 27,
-    staminaConsumption: 12,
-    heavyMeleeDamage: 54,
-    heavyStaminaConsumption: 25,
+    meleeDamage: MELEE_DAMAGE,
+    staminaConsumption: STAMINA_CONSUMPTION,
+    heavyMeleeDamage: HEAVY_MELEE_DAMAGE,
+    heavyStaminaConsumption: HEAVY_STAMINA_CONSUMPTION,
 
-    image: "https://huntshowdown.wiki.gg/images/thumb/b/b5/Weapon_Marathon.png/256px-Weapon_Marathon.png"
+    image: IMAGE
 })
