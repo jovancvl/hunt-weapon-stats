@@ -1,23 +1,27 @@
 <div class="filters-container">
-    <input placeholder="Search something"/>
-    <button>1</button>
-    <button>2</button>
-    <button>3</button>
-    <button>C</button>
-    <button>M</button>
-    <button>L</button>
-    <button>B</button>
-    <button>S</button>
-    <button>E</button>
-    <button>D</button>
-    <button>I</button>
-    <button>P</button>
-    <button>FMJ</button>
-    <button>SUB</button>
-    <button>HV</button>
+    <div class="search-container">
+        <span><img src="/ammo-icons/ammo_filter-search.svg"></span>
+        <input placeholder="Search something" (input)="query.set($any($event.target).value)"/>
+    </div>
+    <button (click)="isOneSlotActive.set(!isOneSlotActive())" [class.active]="isOneSlotActive()"><img src="/ammo-icons/ammo_filter-1-slot.svg"></button>
+    <button (click)="isTwoSlotActive.set(!isTwoSlotActive())" [class.active]="isTwoSlotActive()"><img src="/ammo-icons/ammo_filter-2-slot.svg"></button>
+    <button (click)="isThreeSlotActive.set(!isThreeSlotActive())" [class.active]="isThreeSlotActive()"><img src="/ammo-icons/ammo_filter-3-slot.svg"></button>
+    <button (click)="isCompactActive.set(!isCompactActive())" [class.active]="isCompactActive()"><img src="/ammo-icons/ammo_filter-compact.svg"></button>
+    <button (click)="isMediumActive.set(!isMediumActive())" [class.active]="isMediumActive()"><img src="/ammo-icons/ammo_filter-medium.svg"></button>
+    <button (click)="isLongActive.set(!isLongActive())" [class.active]="isLongActive()"><img src="/ammo-icons/ammo_filter-long.svg"></button>
+    <button (click)="isShellActive.set(!isShellActive())" [class.active]="isShellActive()"><img src="/ammo-icons/ammo_filter-shell.svg"></button>
+    <button (click)="isSpecialActive.set(!isSpecialActive())" [class.active]="isSpecialActive()"><img src="/ammo-icons/ammo_filter-special-ammo.svg"></button>
+    <button (click)="isExplosiveActive.set(!isExplosiveActive())" [class.active]="isExplosiveActive()"><img src="/ammo-icons/ammo_filter-explosive.svg"></button>
+    <button (click)="isDumDumActive.set(!isDumDumActive())" [class.active]="isDumDumActive()"><img src="/ammo-icons/ammo_filter-dumdum.svg"></button>
+    <button (click)="isBurnActive.set(!isBurnActive())" [class.active]="isBurnActive()"><img src="/ammo-icons/ammo_filter-burn.svg"></button>
+    <button (click)="isPoisonActive.set(!isPoisonActive())" [class.active]="isPoisonActive()"><img src="/ammo-icons/ammo_filter-poison.svg"></button>
+    <button (click)="isFmjActive.set(!isFmjActive())" [class.active]="isFmjActive()"><img src="/ammo-icons/ammo_filter-fmj.svg"></button>
+    <button (click)="isSubsonicActive.set(!isSubsonicActive())" [class.active]="isSubsonicActive()"><img src="/ammo-icons/ammo_filter-subsonic.svg"></button>
+    <button (click)="isHvActive.set(!isHvActive())" [class.active]="isHvActive()"><img src="/ammo-icons/ammo_filter-hv.svg"></button>
+
 </div>
 <div class="equipment-card-list-container">
-    @for (item of weapons; track $index) {
+    @for (item of filteredWeapons(); track $index) {
         <a (click)="goToWeapon(item)" (mouseenter)="hoverOverWeapon(item)"><hunt-equipment-card-component [weapon]="item"></hunt-equipment-card-component></a>
     }
 </div>

@@ -83,7 +83,7 @@ export enum AmmoDescription {
 }
 
 export interface AmmoInfoInterface {
-    name: string
+    name: AmmoName
     effect?: AmmoEffectType
     severity?: AmmoEffectSeverity
     description: AmmoDescription | string
@@ -92,7 +92,7 @@ export interface AmmoInfoInterface {
 }
 
 export class AmmoInfo {
-    name: string
+    name: AmmoName
     effect?: AmmoEffectType
     severity?: AmmoEffectSeverity
     description: string // format custom ammo description to input the severity
