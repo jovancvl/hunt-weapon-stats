@@ -1,26 +1,74 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<!-- Created with Inkscape (http://www.inkscape.org/) -->
+<!-- Generator: Adobe Illustrator 23.0.1, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
 
 <svg
-   width="12.700012mm"
-   height="12.700005mm"
-   viewBox="0 0 12.700012 12.700005"
    version="1.1"
-   id="svg5"
+   x="0px"
+   y="0px"
+   viewBox="0 0 72 72"
    xml:space="preserve"
+   id="svg969"
+   width="72"
+   height="72"
    xmlns="http://www.w3.org/2000/svg"
    xmlns:svg="http://www.w3.org/2000/svg"><defs
-     id="defs2"><linearGradient
-       id="linearGradient13302"><stop
-         style="stop-color:#ff0000;stop-opacity:1;"
-         offset="0"
-         id="stop13300" /></linearGradient></defs><g
-     id="g4679"
-     style="opacity:1"
-     transform="matrix(0.79029216,0,0,0.79029216,-75.743679,-52.516968)"><path
-       id="path4677"
-       style="opacity:1;fill:#ffffff;stroke:none;stroke-width:0.2;stroke-linecap:round;stroke-linejoin:round"
-       d="m 102.57927,73.938123 v 6.133475 h 2.62309 v -6.133475 z m 0,6.770129 v 1.364258 h -0.32711 v 0.450101 h 0.32711 2.62309 0.32712 V 82.07251 h -0.32712 v -1.364258 z" /><path
-       id="rect4735"
-       style="display:inline;opacity:1;fill:#7f8036;fill-opacity:1;stroke-width:0.2;stroke-linecap:round;stroke-linejoin:round"
-       d="m 103.87764,66.452599 c -1.61914,0 -2.62794,0.975627 -3.05149,1.718241 h 6.10246 c -0.42356,-0.742611 -1.43185,-1.718241 -3.05097,-1.718241 z m -3.28249,2.181263 v 3.742923 h 6.56498 v -3.742923 z" /></g></svg>
+   id="defs973" />
+<style
+   type="text/css"
+   id="style2">
+	.st0{fill:#FFFFFF;}
+	.st1{fill:#B65A27;}
+	.st2{fill:#898966;}
+	.st3{fill:#417E24;}
+	.st4{fill:#4D545E;}
+	.st5{fill:#781907;}
+	.st6{fill:#838383;}
+	.st7{fill:#D6A648;}
+	.st8{fill:#AE4025;}
+	.st9{fill:#727272;}
+	.st10{fill:#A15841;}
+	.st11{fill:#7F8036;}
+	.st12{fill:#DF6F5A;}
+	.st13{enable-background:new    ;}
+	.st14{fill:#B14D39;}
+	.st15{fill:none;stroke:#FFFFFF;stroke-width:2.9294;stroke-miterlimit:10;}
+	.st16{fill:#515A65;enable-background:new    ;}
+	.st17{fill:#617F92;}
+	.st18{fill:#555F47;}
+	.st19{fill:#686868;}
+	.st20{fill:#635956;}
+	.st21{fill:#636363;}
+</style>
+<g
+   id="layer29"
+   transform="translate(-1447.9402,20.624046)"><g
+     id="g323"
+     transform="matrix(1.2201816,0,0,1.2201816,1264.9786,-332.85923)">
+					<g
+   id="g317">
+						<rect
+   x="175.10001"
+   y="286.79999"
+   class="st0"
+   width="8.6999998"
+   height="20.4"
+   id="rect313" />
+						<polygon
+   class="st0"
+   points="175.1,313.4 174,313.4 174,314.9 175.1,314.9 183.8,314.9 184.9,314.9 184.9,313.4 183.8,313.4 183.8,308.9 175.1,308.9 "
+   id="polygon315" />
+					</g>
+					<rect
+   x="168.60001"
+   y="266.20001"
+   class="st11"
+   width="21.700001"
+   height="13.3"
+   id="rect319" />
+					<path
+   class="st11"
+   d="m 188.2,264.2 h -17.6 c 0,-2.2 3.9,-4 8.8,-4 4.9,0 8.8,1.8 8.8,4 z"
+   id="path321" />
+				</g></g>
+
+</svg>
