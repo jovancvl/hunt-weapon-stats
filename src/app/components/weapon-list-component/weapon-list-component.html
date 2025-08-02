@@ -22,6 +22,6 @@
 </div>
 <div class="equipment-card-list-container">
     @for (item of filteredWeapons(); track $index) {
-        <a (click)="goToWeapon(item)" (mouseenter)="hoverOverWeapon(item)"><hunt-equipment-card-component [weapon]="item"></hunt-equipment-card-component></a>
+        <hunt-equipment-card-component (click)="goToWeapon(item)" (mouseenter)="hoverOverWeapon(item)" [weapon]="item"></hunt-equipment-card-component>
     }
 </div>

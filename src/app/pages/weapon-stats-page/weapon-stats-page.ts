@@ -4,7 +4,7 @@ import { HunterBodyComponent } from "../../components/hunter-body-component/hunt
 import { FRONTIER_73C } from '../../catalogue/frontier-73c';
 import { ActivatedRoute, Router } from '@angular/router';
 import { NavBarComponent } from "../../components/nav-bar-component/nav-bar-component";
-import { WEAPON_LIST } from '../../catalogue/all-weapons';
+import { WEAPON_LIST } from '../../catalogue/___all-weapons';
 
 @Component({
   selector: 'hunt-weapon-stats-page',

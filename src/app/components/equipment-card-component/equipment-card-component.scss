@@ -4,8 +4,13 @@
     overflow: hidden;
     box-sizing: border-box;
     border: 1px solid white;
-    background-color: rgb(12, 12, 12);
+    background-color: rgb(10, 10, 10);
     padding: 1rem;
+    transition: background-color 200ms ease-in-out;
+
+    &:hover {
+        background-color: rgb(20, 20, 20);
+    }
 
     img {
         width: 100%;
