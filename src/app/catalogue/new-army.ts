@@ -1,33 +1,33 @@
-import { AmmoStats, AmmoInfo } from "../arsenal/ammo";
-import { ActionType, Weapon } from "../arsenal/weapon";
+import { AmmoInfo, AmmoStats } from "../arsenal/ammo"
+import { Weapon, ActionType } from "../arsenal/weapon"
 
-const BASE_DAMAGE = 132
-const OPTIMAL_RANGE = 40
-const DROP_RANGE = 120
-const SPREAD = 77
-const VERTICAL_RECOIL = 9
-const MUZZLE_VELOCITY = 630
-const AMMO_RESERVE = 5
+const BASE_DAMAGE = 97
+const OPTIMAL_RANGE = 20
+const DROP_RANGE = 75
+const SPREAD = 47.5
+const VERTICAL_RECOIL = 5
+const MUZZLE_VELOCITY = 230
+const AMMO_RESERVE = 12
 
-const NAME = "Lebel 1886"
-const COST = 397
-const SIZE = 3
-const ACTION = ActionType.BOLT_ACTION
-const SWAY = 77
-const RATE_OF_FIRE = 20
-const CYCLE_TIME = 1.8
-const RELOAD_TIME = 18.7
-const MAGAZINE = 10
+const NAME = "New Army"
+const COST = 90
+const SIZE = 1
+const ACTION = ActionType.DOUBLE_ACTION
+const SWAY = 128
+const RATE_OF_FIRE = 30
+const CYCLE_TIME = 0.5
+const RELOAD_TIME = 9.5
+const MAGAZINE = 6
 const HAS_EXTRA_BULLET = false
-const MELEE_DAMAGE = 27
+const MELEE_DAMAGE = 13
 const STAMINA_CONSUMPTION = 12
-const HEAVY_MELEE_DAMAGE = 54
-const HEAVY_STAMINA_CONSUMPTION = 25
-const IMAGE = "https://huntshowdown.wiki.gg/images/b/b2/Weapon_Lebel_1886.png"
+const HEAVY_MELEE_DAMAGE = 31
+const HEAVY_STAMINA_CONSUMPTION = 20
+const IMAGE = "https://huntshowdown.wiki.gg/images/3/3f/Weapon_New_Army.png"
 
 const AMMO = [
     new AmmoStats({
-        info: AmmoInfo.LONG,
+        info: AmmoInfo.COMPACT,
         scarce: false,
 
         baseDamage: BASE_DAMAGE,
@@ -39,32 +39,32 @@ const AMMO = [
         ammoReserve: AMMO_RESERVE
     }),
     new AmmoStats({
-        info: AmmoInfo.LONG_SPITZER,
+        info: AmmoInfo.COMPACT_FMJ,
         scarce: false,
 
-        baseDamage: BASE_DAMAGE -19,
-        optimalRange: OPTIMAL_RANGE,
-        dropRange: DROP_RANGE +25,
+        baseDamage: BASE_DAMAGE,
+        optimalRange: OPTIMAL_RANGE + 10,
+        dropRange: DROP_RANGE - 5,
         spread: SPREAD,
-        verticalRecoil: VERTICAL_RECOIL +4,
-        muzzleVelocity: MUZZLE_VELOCITY +220,
-        ammoReserve: AMMO_RESERVE -2
+        verticalRecoil: VERTICAL_RECOIL + 2,
+        muzzleVelocity: MUZZLE_VELOCITY - 30,
+        ammoReserve: AMMO_RESERVE
     }),
     new AmmoStats({
-        info: AmmoInfo.LONG_INCENDIARY,
+        info: AmmoInfo.COMPACT_DUMDUM,
         scarce: false,
 
         baseDamage: BASE_DAMAGE,
         optimalRange: OPTIMAL_RANGE,
-        dropRange: DROP_RANGE,
+        dropRange: DROP_RANGE - 5,
         spread: SPREAD,
         verticalRecoil: VERTICAL_RECOIL,
-        muzzleVelocity: MUZZLE_VELOCITY,
+        muzzleVelocity: MUZZLE_VELOCITY - 30,
         ammoReserve: AMMO_RESERVE
     }),
 ]
 
-export const LEBEL_1886: Weapon = new Weapon({
+export const NEW_ARMY: Weapon = new Weapon({
     name: NAME,
     cost: COST,
     size: SIZE,
