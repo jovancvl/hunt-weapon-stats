@@ -7,12 +7,15 @@ $nav-bar-height: 3rem;
 body,
 html {
   margin: 0;
-  // height: 100vh;
-  // min-height: 100vh;
   font-family: 'Crimson Text', serif;
   font-size: 18px;
   color: white;
   background-color: black;
+}
+
+h1,
+p {
+  margin: 0px;
 }
 
 @keyframes in-from-down {

@@ -25,7 +25,7 @@ export class WeaponSelectPage {
     this.weaponLeft = FRONTIER_73C
     this.weaponLeftSelected = false
     this.weaponRight = __NAME
-    this.weaponLeftSelected = false
+    this.weaponRightSelected = false
   }
 
   onWeaponHover(w: Weapon) {

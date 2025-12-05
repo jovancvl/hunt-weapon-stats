@@ -11,11 +11,22 @@ table {
   }
 }
 
+.select-box {
+  padding: 1rem;
+  box-sizing: border-box;
+  border: 1px solid transparent
+}
+
+.selecting {
+  border: 1px solid white;
+}
+
 .button-container {
   display: flex;
   justify-content: center;
   gap: 3px;
   height: 3rem;
+  margin-top: 10px;
 
   button {
     height: 100%;

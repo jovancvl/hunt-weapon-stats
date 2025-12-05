@@ -11,7 +11,9 @@ import { __NAME } from '../../catalogue/___template';
 })
 export class RifleCompareComponent {
   left = input.required<Weapon>()
+  leftSelected = input.required<boolean>()
   right = input.required<Weapon>()
+  rightSelected = input.required<boolean>()
 
   comparisonModeFlipped = output<boolean>()
 
