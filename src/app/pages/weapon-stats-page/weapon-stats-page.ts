@@ -3,7 +3,7 @@ import { RifleStatsComponent } from "../../components/rifle-stats-component/rifl
 import { HunterBodyComponent } from "../../components/hunter-body-component/hunter-body-component";
 import { FRONTIER_73C } from '../../catalogue/frontier-73c';
 import { ActivatedRoute, Router } from '@angular/router';
-import { WEAPON_LIST } from '../../catalogue/___all-weapons';
+import { WEAPON_LIST } from '../../catalogue/__all-weapons';
 
 @Component({
   selector: 'hunt-weapon-stats-page',

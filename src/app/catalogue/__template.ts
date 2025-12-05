@@ -7,7 +7,7 @@ const DROP_RANGE = 999
 const SPREAD = 999
 const VERTICAL_RECOIL = 999
 const MUZZLE_VELOCITY = 999
-const AMMO_RESERVE = 999 
+const AMMO_RESERVE = 999
 
 const NAME = "<choose weapon>"
 const COST = 999
@@ -29,39 +29,39 @@ const IMAGE = "999"
  * Includes all available ammo types, including the base ammo, which is always first.
  */
 const AMMO = [
-    new AmmoStats({
-        info: AmmoInfo.LONG,
-        scarce: false,
+  new AmmoStats({
+    info: AmmoInfo.LONG,
+    scarce: false,
 
-        baseDamage: BASE_DAMAGE,
-        optimalRange: OPTIMAL_RANGE,
-        dropRange: DROP_RANGE,
-        spread: SPREAD,
-        verticalRecoil: VERTICAL_RECOIL,
-        muzzleVelocity: MUZZLE_VELOCITY,
-        ammoReserve: AMMO_RESERVE
-    }),
+    baseDamage: BASE_DAMAGE,
+    optimalRange: OPTIMAL_RANGE,
+    dropRange: DROP_RANGE,
+    spread: SPREAD,
+    verticalRecoil: VERTICAL_RECOIL,
+    muzzleVelocity: MUZZLE_VELOCITY,
+    ammoReserve: AMMO_RESERVE
+  }),
 ]
 
 export const __NAME: Weapon = new Weapon({
-    name: NAME,
-    cost: COST,
-    size: SIZE,
-    action: ACTION,
+  name: NAME,
+  cost: COST,
+  size: SIZE,
+  action: ACTION,
 
-    availableAmmo: AMMO,
+  availableAmmo: AMMO,
 
-    sway: SWAY,
-    rateOfFire: RATE_OF_FIRE,
-    cycleTime: CYCLE_TIME,
-    reloadTime: RELOAD_TIME,
-    magazine: MAGAZINE,
-    hasExtraBullet: HAS_EXTRA_BULLET,
+  sway: SWAY,
+  rateOfFire: RATE_OF_FIRE,
+  cycleTime: CYCLE_TIME,
+  reloadTime: RELOAD_TIME,
+  magazine: MAGAZINE,
+  hasExtraBullet: HAS_EXTRA_BULLET,
 
-    meleeDamage: MELEE_DAMAGE,
-    staminaConsumption: STAMINA_CONSUMPTION,
-    heavyMeleeDamage: HEAVY_MELEE_DAMAGE,
-    heavyStaminaConsumption: HEAVY_STAMINA_CONSUMPTION,
+  meleeDamage: MELEE_DAMAGE,
+  staminaConsumption: STAMINA_CONSUMPTION,
+  heavyMeleeDamage: HEAVY_MELEE_DAMAGE,
+  heavyStaminaConsumption: HEAVY_STAMINA_CONSUMPTION,
 
-    image: IMAGE
+  image: IMAGE
 })

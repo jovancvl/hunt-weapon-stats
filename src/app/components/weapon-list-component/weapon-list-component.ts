@@ -2,7 +2,7 @@ import { Component, computed, inject, OnInit, output, Signal, signal } from '@an
 import { EquipmentCardComponent } from "../equipment-card-component/equipment-card-component";
 import { Router } from '@angular/router';
 import { Weapon } from '../../arsenal/weapon';
-import { WEAPON_LIST } from '../../catalogue/___all-weapons';
+import { WEAPON_LIST } from '../../catalogue/__all-weapons';
 import { AmmoName } from '../../arsenal/ammo';
 
 @Component({

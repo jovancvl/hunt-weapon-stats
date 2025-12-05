@@ -4,7 +4,7 @@ import { Weapon } from '../../arsenal/weapon';
 import { WeaponListComponent } from '../../components/weapon-list-component/weapon-list-component';
 import { Router } from '@angular/router';
 import { RifleCompareComponent } from "../../components/rifle-compare-component/rifle-compare-component";
-import { __NAME } from '../../catalogue/___template';
+import { __NAME } from '../../catalogue/__template';
 
 @Component({
   selector: 'hunt-weapon-select-page',
