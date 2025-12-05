@@ -11,7 +11,6 @@ import { StatComparatorComponent } from '../stat-comparator-component/stat-compa
 export class RifleStatsComponent implements OnInit{
   rifle = input.required<Weapon>();
 
-
   ngOnInit(): void {
   }
 }

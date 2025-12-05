@@ -1,13 +1,13 @@
 import { Component, inject } from '@angular/core';
-import { RifleStatsComponent } from "../../components/rifle-stats-component/rifle-stats-component";
 import { FRONTIER_73C } from '../../catalogue/frontier-73c';
 import { Weapon } from '../../arsenal/weapon';
 import { WeaponListComponent } from '../../components/weapon-list-component/weapon-list-component';
 import { Router } from '@angular/router';
+import { RifleCompareComponent } from "../../components/rifle-compare-component/rifle-compare-component";
 
 @Component({
   selector: 'hunt-weapon-select-page',
-  imports: [WeaponListComponent, RifleStatsComponent],
+  imports: [WeaponListComponent, RifleCompareComponent],
   templateUrl: './weapon-select-page.html',
   styleUrl: './weapon-select-page.scss'
 })

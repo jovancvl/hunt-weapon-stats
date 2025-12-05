@@ -281,7 +281,7 @@ export class AmmoInfo {
     severity: AmmoEffectSeverity.MEDIUM,
     description: AmmoDescription.INCENDIARY,
     cost: 50,
-    icon: "/ammo-icons/ammo_shell-base.svg"
+    icon: "/ammo-icons/ammo_shell-dragobreath.svg"
   })
   static readonly SHELL_FLECHETTE = new AmmoInfo({
     name: AmmoName.FLECHETTE,
