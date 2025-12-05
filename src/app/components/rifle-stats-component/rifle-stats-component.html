@@ -1,147 +1,145 @@
 <div class="flex-container">
-    <div>
-        <h1>{{rifle().name}} {{rifle().activeAmmo !== rifle().baseAmmo ? rifle().activeAmmo.info.name : '' }}</h1>
-        <p>Cost: {{rifle().cost}} | Size: {{rifle().size}} | Ammo type: {{rifle().baseAmmo.info.name}}</p>
-        <p>Ammo description: {{rifle().baseAmmo.info.description}} </p>
+  <div>
+    <h1>{{rifle().name}} {{rifle().activeAmmo !== rifle().baseAmmo ? rifle().activeAmmo.info.name : '' }}</h1>
+    <p>Cost: {{rifle().cost}} | Size: {{rifle().size}} | Ammo type: {{rifle().baseAmmo.info.name}}</p>
+    <p>Ammo description: {{rifle().baseAmmo.info.description}} </p>
 
-        <div class="button-container">
-            @for (ammo of rifle().availableAmmo; track $index) {
-                <button (click)="rifle().activeAmmo = ammo" [class.active]="ammo.info.name === rifle().activeAmmo.info.name">
-                    <!-- {{ammo.info.name}} -->
-                     <img [src]="ammo.info.icon">
-                </button>
-            }
-        </div>
-
-        <table>
-            <tr>
-                <td>
-                    <div>
-                        <span>Damage:</span>
-                    </div>
-                    <hunt-stat-comparator-component [max]="150" [originalValue]="rifle().baseAmmo.baseDamage"
-                        [newValue]="rifle().activeAmmo.baseDamage"
-                        [showComparison]="rifle().activeAmmo !== rifle().baseAmmo"></hunt-stat-comparator-component>
-                </td>
-                <td>
-                    <div>
-                        <span>Effective Range:</span>
-                    </div>
-                    <hunt-stat-comparator-component [max]="50" [originalValue]="rifle().baseAmmo.optimalRange"
-                        [newValue]="rifle().activeAmmo.optimalRange"
-                        [showComparison]="rifle().activeAmmo !== rifle().baseAmmo"></hunt-stat-comparator-component>
-
-                </td>
-            </tr>
-            <tr>
-                <td>
-                    <div>
-                        <span>Drop range:</span>
-                    </div>
-                    <hunt-stat-comparator-component [max]="200" [originalValue]="rifle().baseAmmo.dropRange"
-                        [newValue]="rifle().activeAmmo.dropRange"
-                        [showComparison]="rifle().activeAmmo !== rifle().baseAmmo"></hunt-stat-comparator-component>
-                </td>
-                <td>
-                    <div>
-                        <span>Muzzle Velocity:</span>
-                    </div>
-                    <hunt-stat-comparator-component [max]="1000" [originalValue]="rifle().baseAmmo.muzzleVelocity"
-                        [newValue]="rifle().activeAmmo.muzzleVelocity"
-                        [showComparison]="rifle().activeAmmo !== rifle().baseAmmo"></hunt-stat-comparator-component>
-                </td>
-            </tr>
-            <tr>
-                <td>
-                    <div>
-                        <span>Rate of fire:</span>
-                    </div>
-                    <hunt-stat-comparator-component [max]="100" [originalValue]="rifle().rateOfFire"
-                        [newValue]="rifle().rateOfFire"
-                        [showComparison]="rifle().activeAmmo !== rifle().baseAmmo"></hunt-stat-comparator-component>
-                </td>
-                <td>
-                    <div>
-                        <span>Cycle time:</span>
-                    </div>
-                    <hunt-stat-comparator-component [max]="8" [originalValue]="rifle().cycleTime"
-                        [newValue]="rifle().cycleTime"
-                        [showComparison]="rifle().activeAmmo !== rifle().baseAmmo"></hunt-stat-comparator-component>
-                </td>
-            </tr>
-            <tr>
-                <td>
-                    <div>
-                        <span>Reload Speed:</span>
-                    </div>
-                    <hunt-stat-comparator-component [max]="20" [originalValue]="rifle().reloadTime"
-                        [newValue]="rifle().reloadTime"
-                        [showComparison]="rifle().activeAmmo !== rifle().baseAmmo"></hunt-stat-comparator-component>
-                </td>
-                <td>
-                    <div>
-                        <span>Spread:</span>
-                    </div>
-                    <hunt-stat-comparator-component [max]="200" [originalValue]="rifle().baseAmmo.spread"
-                        [newValue]="rifle().activeAmmo.spread"
-                        [showComparison]="rifle().activeAmmo !== rifle().baseAmmo"></hunt-stat-comparator-component>
-                </td>
-            </tr>
-            <tr>
-                <td>
-                    <div>
-                        <span>Sway:</span>
-                    </div>
-                    <hunt-stat-comparator-component [max]="150" [originalValue]="rifle().sway"
-                        [newValue]="rifle().sway"
-                        [showComparison]="rifle().activeAmmo !== rifle().baseAmmo"></hunt-stat-comparator-component>
-                </td>
-                <td>
-                    <div>
-                        <span>Vertical Recoil:</span>
-                    </div>
-                    <hunt-stat-comparator-component [max]="50" [originalValue]="rifle().baseAmmo.verticalRecoil"
-                        [newValue]="rifle().activeAmmo.verticalRecoil"
-                        [showComparison]="rifle().activeAmmo !== rifle().baseAmmo"></hunt-stat-comparator-component>
-                </td>
-            </tr>
-            <tr>
-                <td>
-                    <div>
-                        <span>Melee damage:</span>
-                    </div>
-                    <hunt-stat-comparator-component [max]="150" [originalValue]="rifle().meleeDamage"
-                        [newValue]="rifle().meleeDamage"
-                        [showComparison]="rifle().activeAmmo !== rifle().baseAmmo"></hunt-stat-comparator-component>
-                </td>
-                <td>
-                    <div>
-                        <span>Stamina consumption:</span>
-                    </div>
-                    <hunt-stat-comparator-component [max]="100" [originalValue]="rifle().staminaConsumption"
-                        [newValue]="rifle().staminaConsumption"
-                        [showComparison]="rifle().activeAmmo !== rifle().baseAmmo"></hunt-stat-comparator-component>
-                </td>
-            </tr>
-            <tr>
-                <td>
-                    <div>
-                        <span>Melee damage (Heavy):</span>
-                    </div>
-                    <hunt-stat-comparator-component [max]="150" [originalValue]="rifle().heavyMeleeDamage"
-                        [newValue]="rifle().heavyMeleeDamage"
-                        [showComparison]="rifle().activeAmmo !== rifle().baseAmmo"></hunt-stat-comparator-component>
-                <td>
-                    <div>
-                        <span>Stamina consumption (Heavy):</span>
-                    </div>
-                    <hunt-stat-comparator-component [max]="100" [originalValue]="rifle().heavyStaminaConsumption"
-                        [newValue]="rifle().heavyStaminaConsumption"
-                        [showComparison]="rifle().activeAmmo !== rifle().baseAmmo"></hunt-stat-comparator-component>
-
-                </td>
-            </tr>
-
-        </table>
+    <div class="button-container">
+      @for (ammo of rifle().availableAmmo; track $index) {
+      <button (click)="rifle().activeAmmo = ammo" [class.active]="ammo.info.name === rifle().activeAmmo.info.name">
+        <!-- {{ammo.info.name}} -->
+        <img [src]="ammo.info.icon">
+      </button>
+      }
     </div>
+
+    <table>
+      <tr>
+        <td>
+          <div>
+            <span>Damage:</span>
+          </div>
+          <hunt-stat-comparator-component [max]="150" [originalValue]="rifle().baseAmmo.baseDamage"
+            [newValue]="rifle().activeAmmo.baseDamage"
+            [showComparison]="rifle().activeAmmo !== rifle().baseAmmo"></hunt-stat-comparator-component>
+        </td>
+        <td>
+          <div>
+            <span>Effective Range:</span>
+          </div>
+          <hunt-stat-comparator-component [max]="50" [originalValue]="rifle().baseAmmo.optimalRange"
+            [newValue]="rifle().activeAmmo.optimalRange"
+            [showComparison]="rifle().activeAmmo !== rifle().baseAmmo"></hunt-stat-comparator-component>
+
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <div>
+            <span>Drop range:</span>
+          </div>
+          <hunt-stat-comparator-component [max]="200" [originalValue]="rifle().baseAmmo.dropRange"
+            [newValue]="rifle().activeAmmo.dropRange"
+            [showComparison]="rifle().activeAmmo !== rifle().baseAmmo"></hunt-stat-comparator-component>
+        </td>
+        <td>
+          <div>
+            <span>Muzzle Velocity:</span>
+          </div>
+          <hunt-stat-comparator-component [max]="1000" [originalValue]="rifle().baseAmmo.muzzleVelocity"
+            [newValue]="rifle().activeAmmo.muzzleVelocity"
+            [showComparison]="rifle().activeAmmo !== rifle().baseAmmo"></hunt-stat-comparator-component>
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <div>
+            <span>Rate of fire:</span>
+          </div>
+          <hunt-stat-comparator-component [max]="100" [originalValue]="rifle().rateOfFire"
+            [newValue]="rifle().rateOfFire"
+            [showComparison]="rifle().activeAmmo !== rifle().baseAmmo"></hunt-stat-comparator-component>
+        </td>
+        <td>
+          <div>
+            <span>Cycle time:</span>
+          </div>
+          <hunt-stat-comparator-component [max]="8" [originalValue]="rifle().cycleTime" [newValue]="rifle().cycleTime"
+            [showComparison]="rifle().activeAmmo !== rifle().baseAmmo"></hunt-stat-comparator-component>
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <div>
+            <span>Reload Speed:</span>
+          </div>
+          <hunt-stat-comparator-component [max]="20" [originalValue]="rifle().reloadTime"
+            [newValue]="rifle().reloadTime"
+            [showComparison]="rifle().activeAmmo !== rifle().baseAmmo"></hunt-stat-comparator-component>
+        </td>
+        <td>
+          <div>
+            <span>Spread:</span>
+          </div>
+          <hunt-stat-comparator-component [max]="200" [originalValue]="rifle().baseAmmo.spread"
+            [newValue]="rifle().activeAmmo.spread"
+            [showComparison]="rifle().activeAmmo !== rifle().baseAmmo"></hunt-stat-comparator-component>
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <div>
+            <span>Sway:</span>
+          </div>
+          <hunt-stat-comparator-component [max]="150" [originalValue]="rifle().sway" [newValue]="rifle().sway"
+            [showComparison]="rifle().activeAmmo !== rifle().baseAmmo"></hunt-stat-comparator-component>
+        </td>
+        <td>
+          <div>
+            <span>Vertical Recoil:</span>
+          </div>
+          <hunt-stat-comparator-component [max]="50" [originalValue]="rifle().baseAmmo.verticalRecoil"
+            [newValue]="rifle().activeAmmo.verticalRecoil"
+            [showComparison]="rifle().activeAmmo !== rifle().baseAmmo"></hunt-stat-comparator-component>
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <div>
+            <span>Melee damage:</span>
+          </div>
+          <hunt-stat-comparator-component [max]="150" [originalValue]="rifle().meleeDamage"
+            [newValue]="rifle().meleeDamage"
+            [showComparison]="rifle().activeAmmo !== rifle().baseAmmo"></hunt-stat-comparator-component>
+        </td>
+        <td>
+          <div>
+            <span>Stamina consumption:</span>
+          </div>
+          <hunt-stat-comparator-component [max]="100" [originalValue]="rifle().staminaConsumption"
+            [newValue]="rifle().staminaConsumption"
+            [showComparison]="rifle().activeAmmo !== rifle().baseAmmo"></hunt-stat-comparator-component>
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <div>
+            <span>Melee damage (Heavy):</span>
+          </div>
+          <hunt-stat-comparator-component [max]="150" [originalValue]="rifle().heavyMeleeDamage"
+            [newValue]="rifle().heavyMeleeDamage"
+            [showComparison]="rifle().activeAmmo !== rifle().baseAmmo"></hunt-stat-comparator-component>
+        <td>
+          <div>
+            <span>Stamina consumption (Heavy):</span>
+          </div>
+          <hunt-stat-comparator-component [max]="100" [originalValue]="rifle().heavyStaminaConsumption"
+            [newValue]="rifle().heavyStaminaConsumption"
+            [showComparison]="rifle().activeAmmo !== rifle().baseAmmo"></hunt-stat-comparator-component>
+
+        </td>
+      </tr>
+
+    </table>
+  </div>
 </div>

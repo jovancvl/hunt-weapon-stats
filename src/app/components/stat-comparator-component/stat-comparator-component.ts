@@ -13,13 +13,15 @@ export class StatComparatorComponent {
   showComparison = input.required<boolean>();
 
   originalValueStatBarStyle = computed(() => {
-    const percentage = this.originalValue() * 100 / this.max();
+    let percentage = this.originalValue() * 100 / this.max();
+    percentage = percentage < 100 ? percentage : 100
     const background = "#dddddd";
     return `width: ${percentage}%; background: ${background};`;
   });
 
   newValueStatBarStyle = computed(() => {
-    const percentage = this.newValue() * 100 / this.max();
+    let percentage = this.newValue() * 100 / this.max();
+    percentage = percentage < 100 ? percentage : 100
     const background = "#e0c528ff";
     return `width: ${percentage}%; background: ${background};`;
   });

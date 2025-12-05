@@ -65,7 +65,7 @@ export class Weapon {
         this.action = weapon.action
 
         if (weapon.availableAmmo.length === 0) {
-            throw new Error("Weapon must have at least 1 available ammo - MUST be regualar ammo for the weapon")
+            throw new Error("Weapon must have at least 1 available ammo - MUST be regular ammo for the weapon")
         }
         this.availableAmmo = weapon.availableAmmo
         this.baseAmmo = this.availableAmmo[0]

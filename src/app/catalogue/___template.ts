@@ -25,6 +25,9 @@ const HEAVY_MELEE_DAMAGE = 222222
 const HEAVY_STAMINA_CONSUMPTION = 222222
 const IMAGE = "222222"
 
+/**
+ * Includes all available ammo types, including the base ammo, which is always first.
+ */
 const AMMO = [
     new AmmoStats({
         info: AmmoInfo.LONG,
