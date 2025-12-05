@@ -4,7 +4,7 @@
   </span>
   <span class="stat-value">{{originalValue()}}</span>
 </div>
-<div class="compare" [style]="`opacity:` + (showComparison() ? '100%' : '0%')">
+<div class="compare" [class.show]="showComparison()">
   <span class="meter">
     <div class="stat-bar" [style]="newValueStatBarStyle()"></div>
   </span>

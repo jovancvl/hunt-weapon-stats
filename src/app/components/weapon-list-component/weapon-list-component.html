@@ -1,7 +1,7 @@
 <div class="filters-container">
     <div class="search-container">
-        <span><img src="/ammo-icons/ammo_filter-search.svg"></span>
-        <input placeholder="Search something" (input)="query.set($any($event.target).value)"/>
+        <img src="/ammo-icons/ammo_filter-search.svg">
+        <input placeholder="Search" (input)="query.set($any($event.target).value)"/>
     </div>
     <button (click)="isOneSlotActive.set(!isOneSlotActive())" [class.active]="isOneSlotActive()"><img src="/ammo-icons/ammo_filter-1-slot.svg"></button>
     <button (click)="isTwoSlotActive.set(!isTwoSlotActive())" [class.active]="isTwoSlotActive()"><img src="/ammo-icons/ammo_filter-2-slot.svg"></button>
@@ -18,8 +18,8 @@
     <button (click)="isFmjActive.set(!isFmjActive())" [class.active]="isFmjActive()"><img src="/ammo-icons/ammo_filter-fmj.svg"></button>
     <button (click)="isSubsonicActive.set(!isSubsonicActive())" [class.active]="isSubsonicActive()"><img src="/ammo-icons/ammo_filter-subsonic.svg"></button>
     <button (click)="isHvActive.set(!isHvActive())" [class.active]="isHvActive()"><img src="/ammo-icons/ammo_filter-hv.svg"></button>
-
 </div>
+
 <div class="equipment-card-list-container">
     @for (item of filteredWeapons(); track $index) {
         <hunt-equipment-card-component (click)="goToWeapon(item)" (mouseenter)="hoverOverWeapon(item)" [weapon]="item"></hunt-equipment-card-component>

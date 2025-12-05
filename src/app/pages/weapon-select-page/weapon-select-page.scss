@@ -1,12 +1,13 @@
+@import '../../../styles.scss';
+
 .content-container {
     display: grid;
     grid-template-columns: 2fr minmax(auto, 1fr);
     transition: grid-template-columns 500ms ease-in-out;
-    height: calc(100vh - 4rem);
+    height: calc(100vh - $nav-bar-height);
     overflow: hidden;
     
     hunt-weapon-list-component, hunt-rifle-stats-component {
-        height: calc(100vh - 4rem);
         overflow-y: scroll;
     }
 }
