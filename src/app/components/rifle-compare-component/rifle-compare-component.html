@@ -1,8 +1,8 @@
 <div class="flex-container">
   <div>
-    <div>
-      <span>Comparison mode:</span>
-      <input #toggle class="toggle" type="checkbox" (change)="flipComparisonMode($event.target)">
+    <div class="toggle">
+      <input #toggle type="checkbox" (change)="flipComparisonMode($event.target)">
+      <span>Compare</span>
     </div>
     <div class="select-box" [class.selecting]="toggle.checked && !leftSelected()">
       <h1>{{left().name}} {{left().baseAmmo !== left().activeAmmo ? left().activeAmmo.info.name : '' }}</h1>

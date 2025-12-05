@@ -64,6 +64,11 @@ table {
 }
 
 .toggle {
-  aspect-ratio: 1/1;
-  height: 1rem;
+  display: flex;
+  align-items: center;
+  margin-bottom: 5px;
+  input {
+    aspect-ratio: 1/1;
+    height: 24px;
+  }
 }
