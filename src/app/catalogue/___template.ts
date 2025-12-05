@@ -1,29 +1,29 @@
 import { AmmoStats, AmmoInfo } from "../arsenal/ammo";
 import { ActionType, Weapon } from "../arsenal/weapon";
 
-const BASE_DAMAGE = 23232323
-const OPTIMAL_RANGE = 2232323
-const DROP_RANGE = 2323232
-const SPREAD = 232323223
-const VERTICAL_RECOIL = 23232323
-const MUZZLE_VELOCITY = 2323323223
-const AMMO_RESERVE = 232322323 
+const BASE_DAMAGE = 999
+const OPTIMAL_RANGE = 999
+const DROP_RANGE = 999
+const SPREAD = 999
+const VERTICAL_RECOIL = 999
+const MUZZLE_VELOCITY = 999
+const AMMO_RESERVE = 999 
 
-const NAME = "asdasdasdasdasd"
-const COST = 222222
-const SIZE = 222222
+const NAME = "<choose weapon>"
+const COST = 999
+const SIZE = 999
 const ACTION = ActionType.BOLT_ACTION
-const SWAY = 222222
-const RATE_OF_FIRE = 222222
-const CYCLE_TIME = 222222
-const RELOAD_TIME = 222222
-const MAGAZINE = 222222
+const SWAY = 999
+const RATE_OF_FIRE = 999
+const CYCLE_TIME = 999
+const RELOAD_TIME = 999
+const MAGAZINE = 999
 const HAS_EXTRA_BULLET = false
-const MELEE_DAMAGE = 222222
-const STAMINA_CONSUMPTION = 222222
-const HEAVY_MELEE_DAMAGE = 222222
-const HEAVY_STAMINA_CONSUMPTION = 222222
-const IMAGE = "222222"
+const MELEE_DAMAGE = 999
+const STAMINA_CONSUMPTION = 999
+const HEAVY_MELEE_DAMAGE = 999
+const HEAVY_STAMINA_CONSUMPTION = 999
+const IMAGE = "999"
 
 /**
  * Includes all available ammo types, including the base ammo, which is always first.
@@ -43,7 +43,7 @@ const AMMO = [
     }),
 ]
 
-export const ____NAME: Weapon = new Weapon({
+export const __NAME: Weapon = new Weapon({
     name: NAME,
     cost: COST,
     size: SIZE,

@@ -1,4 +1,4 @@
 <div class="content-container">
     <hunt-weapon-list-component (onWeaponHover)="onWeaponHover($event)" (onWeaponSelect)="onWeaponSelect($event)"></hunt-weapon-list-component>
-    <hunt-rifle-compare-component [left]="weapon" [right]="weapon"></hunt-rifle-compare-component>
+    <hunt-rifle-compare-component [left]="weaponLeft" [right]="weaponRight" (comparisonModeFlipped)="onComparisonModeFlipped($event)"></hunt-rifle-compare-component>
 </div>

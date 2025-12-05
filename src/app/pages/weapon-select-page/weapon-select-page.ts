@@ -4,6 +4,7 @@ import { Weapon } from '../../arsenal/weapon';
 import { WeaponListComponent } from '../../components/weapon-list-component/weapon-list-component';
 import { Router } from '@angular/router';
 import { RifleCompareComponent } from "../../components/rifle-compare-component/rifle-compare-component";
+import { __NAME } from '../../catalogue/___template';
 
 @Component({
   selector: 'hunt-weapon-select-page',
@@ -13,13 +14,50 @@ import { RifleCompareComponent } from "../../components/rifle-compare-component/
 })
 export class WeaponSelectPage {
   router = inject(Router)
-  weapon: Weapon = FRONTIER_73C
+  weaponLeft: Weapon = FRONTIER_73C
+  weaponLeftSelected = false
+  weaponRight: Weapon = __NAME
+  weaponRightSelected = false
+
+  showComparison = false
+
+  reset() {
+    this.weaponLeft = FRONTIER_73C
+    this.weaponLeftSelected = false
+    this.weaponRight = __NAME
+    this.weaponLeftSelected = false
+  }
 
   onWeaponHover(w: Weapon) {
-    this.weapon = w
+    if (!this.showComparison) {
+      this.weaponLeft = w
+      return
+    } 
+
+    if (!this.weaponLeftSelected) {
+      this.weaponLeft = this.weaponLeft === w ? this.weaponLeft : w
+    } else if (!this.weaponRightSelected) {
+      this.weaponRight = this.weaponRight === w ? this.weaponRight : w
+    }
   }
 
   onWeaponSelect(w: Weapon) {
-    this.router.navigate([w.name])
+    if (!this.showComparison) {
+      this.router.navigate([w.name])
+      return
+    }
+
+    if (!this.weaponLeftSelected) {
+      this.weaponLeft = w
+      this.weaponLeftSelected = true
+    } else {
+      this.weaponRight = w
+      this.weaponRightSelected = true
+    }
+  }
+
+  onComparisonModeFlipped(checked: boolean) {
+    this.reset()
+    this.showComparison = checked
   }
 }

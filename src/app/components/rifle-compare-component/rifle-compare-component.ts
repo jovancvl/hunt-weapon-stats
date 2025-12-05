@@ -1,6 +1,7 @@
-import { Component, computed, input } from '@angular/core';
+import { Component, computed, input, model, output, ViewChild } from '@angular/core';
 import { Weapon } from '../../arsenal/weapon';
 import { StatComparatorComponent } from '../stat-comparator-component/stat-comparator-component';
+import { __NAME } from '../../catalogue/___template';
 
 @Component({
   selector: 'hunt-rifle-compare-component',
@@ -12,7 +13,9 @@ export class RifleCompareComponent {
   left = input.required<Weapon>()
   right = input.required<Weapon>()
 
-  showComparison = computed(() => {
-    return this.left().name !== this.right().name
-  })
+  comparisonModeFlipped = output<boolean>()
+
+  flipComparisonMode(input: HTMLInputElement) {
+    this.comparisonModeFlipped.emit(input.checked)
+  }
 }
