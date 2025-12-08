@@ -1,0 +1,42 @@
+@use '../../../styles.scss';
+
+.content-container {
+  display: grid;
+  grid-template-columns: 2fr minmax(auto, 1fr);
+  transition: grid-template-columns 500ms ease-in-out;
+  height: calc(100vh - styles.$nav-bar-height);
+  overflow: hidden;
+
+  .left,
+  .right {
+    overflow-y: scroll;
+  }
+}
+
+.box {
+  aspect-ratio: 1/1;
+  height: 10rem;
+  background-color: #FABADA;
+  margin: 2rem;
+  padding: 1rem;
+  color: black;
+}
+
+.equipment-card-list-container {
+  padding: 1rem;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  gap: 6px;
+}
+
+.cdk-drag-placeholder {
+  display: none;
+}
+
+.placeholder-equipment-card {
+  aspect-ratio: 21/9;
+  border: 1px solid white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}

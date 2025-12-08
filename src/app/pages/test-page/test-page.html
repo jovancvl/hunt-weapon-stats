@@ -1,0 +1,40 @@
+<div class="content-container">
+  <div #weaponList="cdkDropList" class="left equipment-card-list-container" cdkDropList cdkDropListSortingDisabled
+    cdkDropListHasAnchor [cdkDropListData]="weapons" [cdkDropListConnectedTo]="[one, two]"
+    (cdkDropListDropped)="moveFromCompare($event)">
+    @for (item of weapons; track $index) {
+    <hunt-equipment-card-component [weapon]="item" cdkDrag [cdkDragData]="item"></hunt-equipment-card-component>
+    }
+  </div>
+  <div class="right">
+    <div #one="cdkDropList" cdkDropList cdkDropListSortingDisabled cdkDropListHasAnchor
+      [cdkDropListData]="comparisonOne" (cdkDropListDropped)="moveToComparisonOne($event)"
+      [cdkDropListConnectedTo]="[weaponList]">
+      @for (item of comparisonOne; track $index) {
+      <hunt-equipment-card-component [weapon]="item" cdkDrag [cdkDragData]="item">
+        <div class="placeholder-equipment-card" *cdkDragPlaceholder>
+          <span>Drag a weapon here to start comparing</span>
+        </div>
+      </hunt-equipment-card-component>
+      } @empty {
+      <div class="placeholder-equipment-card">
+        <span>Drag a weapon here to start comparing</span>
+      </div>
+      }
+    </div>
+    <div #two="cdkDropList" cdkDropList [cdkDropListData]="comparisonTwo"
+      (cdkDropListDropped)="moveToComparisonTwo($event)" [cdkDropListConnectedTo]="[weaponList]">
+      @for (item of comparisonTwo; track $index) {
+      <hunt-equipment-card-component [weapon]="item" cdkDrag [cdkDragData]="item">
+        <!-- <div class="placeholder-equipment-card" *cdkDragPlaceholder>
+          <span>Drag a weapon here to start comparing</span>
+        </div> -->
+      </hunt-equipment-card-component>
+      } @empty {
+      <div class="placeholder-equipment-card">
+        <span>Drag a weapon here to start comparing</span>
+      </div>
+      }
+    </div>
+  </div>
+</div>
