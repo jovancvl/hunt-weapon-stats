@@ -8,19 +8,19 @@
     }
   </div>
   <div class="right">
-    <div #one="cdkDropList" cdkDropList cdkDropListSortingDisabled cdkDropListHasAnchor
-      [cdkDropListData]="comparisonOne" (cdkDropListDropped)="moveToComparisonOne($event)"
-      [cdkDropListConnectedTo]="[weaponList]">
+    <div #one="cdkDropList" class="comparison-container" cdkDropList cdkDropListSortingDisabled cdkDropListHasAnchor [cdkDropListData]="comparisonOne"
+      (cdkDropListDropped)="moveToComparisonOne($event)" [cdkDropListConnectedTo]="[weaponList]">
       @for (item of comparisonOne; track $index) {
-      <hunt-equipment-card-component [weapon]="item" cdkDrag [cdkDragData]="item">
-        <div class="placeholder-equipment-card" *cdkDragPlaceholder>
-          <span>Drag a weapon here to start comparing</span>
-        </div>
-      </hunt-equipment-card-component>
+      <hunt-compare-equipment-card-component [weapon]="item" cdkDrag [cdkDragData]="item">
+        <ng-template cdkDragPlaceholder>
+          <ng-container [ngTemplateOutlet]="placeholder"></ng-container>
+        </ng-template>
+        <ng-template cdkDragPreview [matchSize]="true">
+          <ng-container [ngTemplateOutlet]="preview" [ngTemplateOutletContext]="{item}"></ng-container>
+        </ng-template>
+      </hunt-compare-equipment-card-component>
       } @empty {
-      <div class="placeholder-equipment-card">
-        <span>Drag a weapon here to start comparing</span>
-      </div>
+      <ng-container [ngTemplateOutlet]="placeholder"></ng-container>
       }
     </div>
     <div>
@@ -28,20 +28,30 @@
         <span class="material-symbols-outlined">sync_alt</span>
       </button>
     </div>
-    <div #two="cdkDropList" cdkDropList cdkDropListSortingDisabled cdkDropListHasAnchor
-      [cdkDropListData]="comparisonTwo" (cdkDropListDropped)="moveToComparisonTwo($event)"
-      [cdkDropListConnectedTo]="[weaponList]">
+    <div #two="cdkDropList" class="comparison-container" cdkDropList cdkDropListSortingDisabled cdkDropListHasAnchor [cdkDropListData]="comparisonTwo"
+      (cdkDropListDropped)="moveToComparisonTwo($event)" [cdkDropListConnectedTo]="[weaponList]">
       @for (item of comparisonTwo; track $index) {
-      <hunt-equipment-card-component [weapon]="item" cdkDrag [cdkDragData]="item">
-        <div class="placeholder-equipment-card" *cdkDragPlaceholder>
-          <span>Drag a weapon here to start comparing</span>
-        </div>
-      </hunt-equipment-card-component>
+      <hunt-compare-equipment-card-component [weapon]="item" cdkDrag [cdkDragData]="item">
+        <ng-template cdkDragPlaceholder>
+          <ng-container [ngTemplateOutlet]="placeholder"></ng-container>
+        </ng-template>
+        <ng-template cdkDragPreview [matchSize]="true">
+          <ng-container [ngTemplateOutlet]="preview" [ngTemplateOutletContext]="{item}"></ng-container>
+        </ng-template>
+      </hunt-compare-equipment-card-component>
       } @empty {
-      <div class="placeholder-equipment-card">
-        <span>Drag a weapon here to start comparing</span>
-      </div>
+      <ng-container [ngTemplateOutlet]="placeholder"></ng-container>
       }
     </div>
   </div>
 </div>
+
+<ng-template #placeholder>
+  <div class="placeholder-equipment-card">
+    <span>Drag a weapon here to start comparing</span>
+  </div>
+</ng-template>
+
+<ng-template #preview let-item="item">
+  <hunt-equipment-card-component [weapon]="item"></hunt-equipment-card-component>
+</ng-template>

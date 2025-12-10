@@ -23,7 +23,7 @@ const MELEE_DAMAGE = 27
 const STAMINA_CONSUMPTION = 12
 const HEAVY_MELEE_DAMAGE = 54
 const HEAVY_STAMINA_CONSUMPTION = 25
-const IMAGE = "https://huntshowdown.wiki.gg/images/2/2e/Weapon_Krag.png"
+const IMAGE = "https://huntshowdown.wiki.gg/images/Weapon_Krag.png"
 
 const AMMO = [
   new AmmoStats({

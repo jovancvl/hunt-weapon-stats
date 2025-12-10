@@ -1,13 +1,16 @@
-import { CdkDrag, CdkDragDrop, CdkDragPlaceholder, CdkDropList } from '@angular/cdk/drag-drop';
-import { Component, ViewChild } from '@angular/core';
+import { CdkDrag, CdkDragDrop, CdkDragPlaceholder, CdkDragPreview, CdkDropList } from '@angular/cdk/drag-drop';
+import { Component, viewChild } from '@angular/core';
 import { Weapon } from '../../arsenal/weapon';
 import { WEAPON_LIST } from '../../catalogue/__all-weapons';
 import { EquipmentCardComponent } from "../../components/equipment-card-component/equipment-card-component";
 import { FRONTIER_73C } from '../../catalogue/frontier-73c';
+import { CompareEquipmentCardComponent } from "../../components/compare-equipment-card-component/compare-equipment-card-component";
+import { NgTemplateOutlet } from '@angular/common';
+
 
 @Component({
   selector: 'hunt-test-page',
-  imports: [CdkDrag, EquipmentCardComponent, CdkDropList, CdkDragPlaceholder],
+  imports: [CdkDrag, EquipmentCardComponent, CdkDropList, CdkDragPlaceholder, CompareEquipmentCardComponent, CdkDragPreview, NgTemplateOutlet],
   templateUrl: './test-page.html',
   styleUrl: './test-page.scss',
 })
@@ -15,9 +18,9 @@ export class TestPage {
   weapons: Weapon[] = [...WEAPON_LIST]
   comparisonOne: Weapon[] = [FRONTIER_73C]
   comparisonTwo: Weapon[] = [FRONTIER_73C]
-  @ViewChild('weaponList') weaponListRef!: CdkDropList<Weapon[]>
-  @ViewChild('one') one!: CdkDropList<Weapon[]>
-  @ViewChild('two') two!: CdkDropList<Weapon[]>
+  weaponListRef = viewChild.required<CdkDropList<Weapon[]>>('weaponList')
+  oneRef = viewChild.required<CdkDropList<Weapon[]>>('one')
+  twoRef = viewChild.required<CdkDropList<Weapon[]>>('two')
 
   switch() {
     const one = this.comparisonOne
@@ -38,12 +41,12 @@ export class TestPage {
       return
     }
 
-    if (event.previousContainer === this.one) {
+    if (event.previousContainer === this.oneRef()) {
       this.comparisonOne = []
       return
     }
 
-    if (event.previousContainer === this.two) {
+    if (event.previousContainer === this.twoRef()) {
       this.comparisonTwo = []
       return
     }

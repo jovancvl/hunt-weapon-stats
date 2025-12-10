@@ -23,7 +23,7 @@ const MELEE_DAMAGE = 13
 const STAMINA_CONSUMPTION = 10
 const HEAVY_MELEE_DAMAGE = 31
 const HEAVY_STAMINA_CONSUMPTION = 20
-const IMAGE = "https://huntshowdown.wiki.gg/images/6/6c/Weapon_Dolch_96.png"
+const IMAGE = "https://huntshowdown.wiki.gg/images/Weapon_Dolch_96.png"
 
 const AMMO = [
     new AmmoStats({

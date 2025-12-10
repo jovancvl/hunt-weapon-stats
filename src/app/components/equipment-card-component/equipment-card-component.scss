@@ -7,7 +7,7 @@
     box-sizing: border-box;
     border: 1px solid white;
     background-color: styles.$item-bg-color;
-    padding: 1rem;
+    padding: 0rem 1rem;
     transition: background-color 200ms ease-in-out;
 
     &:hover {

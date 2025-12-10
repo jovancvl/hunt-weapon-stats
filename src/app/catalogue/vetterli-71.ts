@@ -23,7 +23,7 @@ const MELEE_DAMAGE = 27
 const STAMINA_CONSUMPTION = 12
 const HEAVY_MELEE_DAMAGE = 54
 const HEAVY_STAMINA_CONSUMPTION = 25
-const IMAGE = "https://huntshowdown.wiki.gg/images/thumb/7/71/Weapon_Vetterli_71.png/256px-Weapon_Vetterli_71.png"
+const IMAGE = "https://huntshowdown.wiki.gg/images/Weapon_Vetterli_71.png"
 
 const AMMO = [
     new AmmoStats({

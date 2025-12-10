@@ -1,0 +1,7 @@
+<div class="compare-card">
+  <img [src]="weapon().image">
+  <span class="top-left">
+    {{weapon().name }} {{weapon().baseAmmo !== weapon().activeAmmo ? weapon().activeAmmo.info.name : '' }}
+  </span>
+  <!-- <span class="bottom-right">{{weapon().cost}}</span> -->
+</div>

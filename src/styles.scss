@@ -19,6 +19,11 @@ p {
   margin: 0px;
 }
 
+// cdkDrag doesn't allow putting this css inside the component
+.equipment-card-list-container .cdk-drag-placeholder {
+  display: none;
+}
+
 @keyframes in-from-down {
   from {
     transform: translateY(100vh);
