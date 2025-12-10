@@ -38,13 +38,18 @@ export class TestPage {
     // console.log("weaponList", this.weaponListRef)
     // console.log("one", this.one)
     // console.log("two", this.two)
-    if (event.previousContainer !== event.container) {
-      if (event.previousContainer === this.one) {
-        this.comparisonOne = []
-      }
-      if (event.previousContainer === this.two) {
-        this.comparisonTwo = []
-      }
+    if (event.previousContainer === event.container) {
+      return
+    }
+    
+    if (event.previousContainer === this.one) {
+      this.comparisonOne = []
+      return
+    }
+
+    if (event.previousContainer === this.two) {
+      this.comparisonTwo = []
+      return
     }
   }
 }
