@@ -29,11 +29,11 @@ export class TestPage {
   }
 
   moveToComparisonOne(event: CdkDragDrop<Weapon[]>) {
-    this.comparisonOne = [event.item.data]
+    this.comparisonOne = [Object.assign({ ...event.item.data })]
   }
 
   moveToComparisonTwo(event: CdkDragDrop<Weapon[]>) {
-    this.comparisonTwo = [event.item.data]
+    this.comparisonTwo = [Object.assign({ ...event.item.data })]
   }
 
   moveFromCompare(event: CdkDragDrop<Weapon[]>) {

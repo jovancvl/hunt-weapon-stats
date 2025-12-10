@@ -2,6 +2,7 @@
 
 .compare-card {
   position: relative;
+  width: 100%;
   aspect-ratio: 21 / 9;
   overflow: hidden;
   box-sizing: border-box;
@@ -16,7 +17,10 @@
     box-sizing: border-box;
   }
 
-  span {
+  span, h1, h2, h3, h4 {
+    display: inline;
+    margin: 0;
+    padding: 0;
     position: absolute;
     color: white;
     user-select: none;
@@ -35,10 +39,43 @@
   .bottom-left {
     bottom: 0.5rem;
     left: 0.5rem;
+
+    position: absolute;
   }
 
   .bottom-right {
     bottom: 0.5rem;
     right: 0.5rem;
+  }
+}
+
+.button-container {
+  display: grid;
+  // height: 2rem;
+  grid-template-columns: repeat(4, 2rem);
+  gap: 3px;
+
+
+  button {
+    height: 100%;
+    aspect-ratio: 1/1;
+    background-color: red; // rgb(15, 15, 15);
+    border: 0px solid white;
+    box-sizing: border-box;
+    padding: 4px;
+    transition: border 200ms ease-in-out, background-color 200ms ease-in-out;
+
+    // img {
+    //   height: 100%;
+    //   aspect-ratio: 1/1;
+    // }
+
+    &:hover {
+      background-color: rgb(31, 31, 31);
+    }
+
+    &.active {
+      border-color: gold;
+    }
   }
 }
