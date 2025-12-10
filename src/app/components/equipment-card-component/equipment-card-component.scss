@@ -1,15 +1,17 @@
+@use '../../../styles.scss';
+
 .equipment-card {
     position: relative;
     aspect-ratio: 21 / 9;
     overflow: hidden;
     box-sizing: border-box;
     border: 1px solid white;
-    background-color: rgb(10, 10, 10);
+    background-color: styles.$item-bg-color;
     padding: 1rem;
     transition: background-color 200ms ease-in-out;
 
     &:hover {
-        background-color: rgb(25, 25, 25);
+        background-color: styles.$item-bg-hover-color;
     }
 
     img {

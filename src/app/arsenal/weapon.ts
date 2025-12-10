@@ -1,4 +1,4 @@
-import { AmmoStats, AmmoInfo } from "./ammo"
+import { AmmoStats } from "./ammo"
 
 export enum ActionType {
     BOLT_ACTION,

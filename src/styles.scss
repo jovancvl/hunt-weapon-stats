@@ -1,8 +1,9 @@
 /* You can add global styles to this file, and also import other style files */
-// @use '/src/app/pages/weapon-select-page/weapon-select-page.scss';
 @import url('https://fonts.googleapis.com/css2?family=Crimson+Text:ital,wght@0,400;0,600;0,700;1,400;1,600;1,700&display=swap');
 
 $nav-bar-height: 3rem;
+$item-bg-hover-color: rgb(25, 25, 25);
+$item-bg-color: rgb(10, 10, 10);
 
 body,
 html {

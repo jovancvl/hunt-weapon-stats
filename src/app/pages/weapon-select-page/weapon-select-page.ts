@@ -4,7 +4,6 @@ import { Weapon } from '../../arsenal/weapon';
 import { WeaponListComponent } from '../../components/weapon-list-component/weapon-list-component';
 import { Router } from '@angular/router';
 import { RifleCompareComponent } from "../../components/rifle-compare-component/rifle-compare-component";
-import { __NAME } from '../../catalogue/__template';
 
 @Component({
   selector: 'hunt-weapon-select-page',
@@ -16,7 +15,7 @@ export class WeaponSelectPage {
   router = inject(Router)
   weaponLeft: Weapon = FRONTIER_73C
   weaponLeftSelected = false
-  weaponRight: Weapon = __NAME
+  weaponRight: Weapon = Weapon.EMPTY
   weaponRightSelected = false
 
   showComparison = false
@@ -24,7 +23,7 @@ export class WeaponSelectPage {
   reset() {
     this.weaponLeft = FRONTIER_73C
     this.weaponLeftSelected = false
-    this.weaponRight = __NAME
+    this.weaponRight = Weapon.EMPTY
     this.weaponRightSelected = false
   }
 

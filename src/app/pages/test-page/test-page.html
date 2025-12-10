@@ -3,7 +3,8 @@
     cdkDropListHasAnchor [cdkDropListData]="weapons" [cdkDropListConnectedTo]="[one, two]"
     (cdkDropListDropped)="moveFromCompare($event)">
     @for (item of weapons; track $index) {
-    <hunt-equipment-card-component class="placeholder" [weapon]="item" cdkDrag [cdkDragData]="item"></hunt-equipment-card-component>
+    <hunt-equipment-card-component class="always-show" [weapon]="item" cdkDrag
+      [cdkDragData]="item"></hunt-equipment-card-component>
     }
   </div>
   <div class="right">
@@ -21,6 +22,11 @@
         <span>Drag a weapon here to start comparing</span>
       </div>
       }
+    </div>
+    <div>
+      <button class="button-icon-only" (click)="switch()">
+        <span class="material-symbols-outlined">sync_alt</span>
+      </button>
     </div>
     <div #two="cdkDropList" cdkDropList cdkDropListSortingDisabled cdkDropListHasAnchor
       [cdkDropListData]="comparisonTwo" (cdkDropListDropped)="moveToComparisonTwo($event)"

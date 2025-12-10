@@ -1,9 +1,8 @@
-import { CdkDrag, CdkDragDrop, CdkDragPlaceholder, CdkDropList, copyArrayItem, moveItemInArray } from '@angular/cdk/drag-drop';
+import { CdkDrag, CdkDragDrop, CdkDragPlaceholder, CdkDropList } from '@angular/cdk/drag-drop';
 import { Component, ViewChild } from '@angular/core';
 import { Weapon } from '../../arsenal/weapon';
 import { WEAPON_LIST } from '../../catalogue/__all-weapons';
 import { EquipmentCardComponent } from "../../components/equipment-card-component/equipment-card-component";
-import { __NAME } from '../../catalogue/__template';
 import { FRONTIER_73C } from '../../catalogue/frontier-73c';
 
 @Component({
@@ -13,17 +12,17 @@ import { FRONTIER_73C } from '../../catalogue/frontier-73c';
   styleUrl: './test-page.scss',
 })
 export class TestPage {
-  weapons: Weapon[] = [...WEAPON_LIST, ...WEAPON_LIST]
+  weapons: Weapon[] = [...WEAPON_LIST]
   comparisonOne: Weapon[] = [FRONTIER_73C]
   comparisonTwo: Weapon[] = [FRONTIER_73C]
   @ViewChild('weaponList') weaponListRef!: CdkDropList<Weapon[]>
   @ViewChild('one') one!: CdkDropList<Weapon[]>
   @ViewChild('two') two!: CdkDropList<Weapon[]>
 
-  drop(event: CdkDragDrop<Weapon[]>) {
-    if (event.previousContainer !== event.container) {
-      copyArrayItem(event.previousContainer.data, event.container.data, event.previousIndex, event.currentIndex)
-    }
+  switch() {
+    const one = this.comparisonOne
+    this.comparisonOne = [...this.comparisonTwo]
+    this.comparisonTwo = one
   }
 
   moveToComparisonOne(event: CdkDragDrop<Weapon[]>) {
@@ -35,13 +34,10 @@ export class TestPage {
   }
 
   moveFromCompare(event: CdkDragDrop<Weapon[]>) {
-    // console.log("weaponList", this.weaponListRef)
-    // console.log("one", this.one)
-    // console.log("two", this.two)
     if (event.previousContainer === event.container) {
       return
     }
-    
+
     if (event.previousContainer === this.one) {
       this.comparisonOne = []
       return

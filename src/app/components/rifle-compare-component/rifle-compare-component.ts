@@ -1,7 +1,6 @@
 import { Component, computed, input, model, output, ViewChild } from '@angular/core';
 import { Weapon } from '../../arsenal/weapon';
 import { StatComparatorComponent } from '../stat-comparator-component/stat-comparator-component';
-import { __NAME } from '../../catalogue/__template';
 
 @Component({
   selector: 'hunt-rifle-compare-component',
