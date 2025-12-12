@@ -315,13 +315,15 @@ export class AmmoInfo {
   })
   static readonly DOLCH = new AmmoInfo({
     name: AmmoName.DOLCH,
-    description: AmmoDescription.DUMDUM,
+    description: AmmoDescription.MEDIUM,
     cost: 0,
     icon: "/ammo-icons/ammo_dolch-base.svg"
   })
   static readonly DOLCH_DUMDUM = new AmmoInfo({
     name: AmmoName.DUMDUM,
     description: AmmoDescription.DUMDUM,
+    severity: AmmoEffectSeverity.MEDIUM,
+    effect: AmmoEffectType.BLEED,
     cost: 0,
     icon: "/ammo-icons/ammo_dolch-dumdum.svg"
   })

@@ -3,10 +3,9 @@
 .compare-card {
   position: relative;
   width: 100%;
-  aspect-ratio: 21 / 9;
+  aspect-ratio: 3 / 1;
   box-sizing: border-box;
   background-color: transparent;
-  // padding: 0rem 0.5rem;
   transition: background-color 200ms ease-in-out;
 
   h2 {
@@ -30,7 +29,7 @@
     background-color: rgb(15, 15, 15);
     border: 1px solid white;
     box-sizing: border-box;
-    padding: 4px;
+    padding: 3px;
     transition: border 200ms ease-in-out, background-color 200ms ease-in-out;
 
     img {
