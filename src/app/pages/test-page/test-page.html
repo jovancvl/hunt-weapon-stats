@@ -1,17 +1,66 @@
 <div class="content-container">
-  <div #weaponList="cdkDropList" class="equipment-card-list-container" cdkDropList cdkDropListSortingDisabled
-    cdkDropListHasAnchor [cdkDropListData]="weapons" [cdkDropListConnectedTo]="[one, two]"
-    (cdkDropListDropped)="moveFromCompare($event)">
-    @for (item of weapons; track $index) {
-    <hunt-equipment-card-component class="always-show" [weapon]="item" cdkDrag
-      [cdkDragData]="item"></hunt-equipment-card-component>
-    }
-  </div>
+  <!-- left start -->
   <div>
-    <div #one="cdkDropList" class="comparison-container" cdkDropList cdkDropListSortingDisabled cdkDropListHasAnchor [cdkDropListData]="comparisonOne"
-      (cdkDropListDropped)="moveToComparisonOne($event)" [cdkDropListConnectedTo]="[weaponList]">
+    <div class="filters-container">
+      <div class="search-container">
+        <img src="/ammo-icons/ammo_filter-search.svg">
+        <input placeholder="Search" (input)="query.set($any($event.target).value)" />
+      </div>
+      <button (click)="isOneSlotActive.set(!isOneSlotActive())" [class.active]="isOneSlotActive()"><img
+          src="/ammo-icons/ammo_filter-1-slot.svg"></button>
+      <button (click)="isTwoSlotActive.set(!isTwoSlotActive())" [class.active]="isTwoSlotActive()"><img
+          src="/ammo-icons/ammo_filter-2-slot.svg"></button>
+      <button (click)="isThreeSlotActive.set(!isThreeSlotActive())" [class.active]="isThreeSlotActive()"><img
+          src="/ammo-icons/ammo_filter-3-slot.svg"></button>
+      <button (click)="isCompactActive.set(!isCompactActive())" [class.active]="isCompactActive()"><img
+          src="/ammo-icons/ammo_filter-compact.svg"></button>
+      <button (click)="isMediumActive.set(!isMediumActive())" [class.active]="isMediumActive()"><img
+          src="/ammo-icons/ammo_filter-medium.svg"></button>
+      <button (click)="isLongActive.set(!isLongActive())" [class.active]="isLongActive()"><img
+          src="/ammo-icons/ammo_filter-long.svg"></button>
+      <button (click)="isShellActive.set(!isShellActive())" [class.active]="isShellActive()"><img
+          src="/ammo-icons/ammo_filter-shell.svg"></button>
+      <button (click)="isSpecialActive.set(!isSpecialActive())" [class.active]="isSpecialActive()"><img
+          src="/ammo-icons/ammo_filter-special-ammo.svg"></button>
+      <button (click)="isExplosiveActive.set(!isExplosiveActive())" [class.active]="isExplosiveActive()"><img
+          src="/ammo-icons/ammo_filter-explosive.svg"></button>
+      <button (click)="isDumDumActive.set(!isDumDumActive())" [class.active]="isDumDumActive()"><img
+          src="/ammo-icons/ammo_filter-dumdum.svg"></button>
+      <button (click)="isBurnActive.set(!isBurnActive())" [class.active]="isBurnActive()"><img
+          src="/ammo-icons/ammo_filter-burn.svg"></button>
+      <button (click)="isPoisonActive.set(!isPoisonActive())" [class.active]="isPoisonActive()"><img
+          src="/ammo-icons/ammo_filter-poison.svg"></button>
+      <button (click)="isFmjActive.set(!isFmjActive())" [class.active]="isFmjActive()"><img
+          src="/ammo-icons/ammo_filter-fmj.svg"></button>
+      <button (click)="isSubsonicActive.set(!isSubsonicActive())" [class.active]="isSubsonicActive()"><img
+          src="/ammo-icons/ammo_filter-subsonic.svg"></button>
+      <button (click)="isHvActive.set(!isHvActive())" [class.active]="isHvActive()"><img
+          src="/ammo-icons/ammo_filter-hv.svg"></button>
+    </div>
+
+    <div #weaponList="cdkDropList" class="equipment-card-list-container" cdkDropList cdkDropListSortingDisabled
+      cdkDropListHasAnchor [cdkDropListData]="weapons" [cdkDropListConnectedTo]="[one, two]"
+      (cdkDropListDropped)="moveFromCompare($event)">
+      @for (item of filteredWeapons(); track $index) {
+      <hunt-equipment-card-component class="always-show" [weapon]="item" (click)="goToWeapon(item)"
+        (mouseenter)="hoverOverWeapon(item)" cdkDrag [cdkDragDisabled]="!isComparing"
+        [cdkDragData]="item"></hunt-equipment-card-component>
+      }
+    </div>
+  </div>
+  <!-- left end -->
+  <!-- right start -->
+  <div>
+    <div class="toggle">
+      <input #toggle type="checkbox" (change)="onToggle($event.target.checked)">
+      <span>Compare</span>
+    </div>
+    <div #one="cdkDropList" cdkDropList cdkDropListSortingDisabled cdkDropListHasAnchor
+      [cdkDropListData]="comparisonOne" (cdkDropListDropped)="moveToComparisonOne($event)"
+      [cdkDropListConnectedTo]="[weaponList]">
       @for (item of comparisonOne; track $index) {
-      <hunt-compare-equipment-card-component [weapon]="item" cdkDrag [cdkDragData]="item">
+      <hunt-compare-equipment-card-component [weapon]="item" cdkDrag [cdkDragDisabled]="!isComparing"
+        [cdkDragData]="item">
         <ng-template cdkDragPlaceholder>
           <ng-container [ngTemplateOutlet]="placeholder"></ng-container>
         </ng-template>
@@ -23,15 +72,10 @@
       <ng-container [ngTemplateOutlet]="placeholder"></ng-container>
       }
     </div>
-    
-    <div>
-      <button class="button-icon-only" (click)="switch()">
-        <span class="material-symbols-outlined">sync_alt</span>
-      </button>
-    </div>
 
-    <div #two="cdkDropList" class="comparison-container" cdkDropList cdkDropListSortingDisabled cdkDropListHasAnchor [cdkDropListData]="comparisonTwo"
-      (cdkDropListDropped)="moveToComparisonTwo($event)" [cdkDropListConnectedTo]="[weaponList]">
+    <div #two="cdkDropList" cdkDropList cdkDropListSortingDisabled cdkDropListHasAnchor
+      [cdkDropListData]="comparisonTwo" (cdkDropListDropped)="moveToComparisonTwo($event)"
+      [cdkDropListConnectedTo]="[weaponList]" [hidden]="!isComparing">
       @for (item of comparisonTwo; track $index) {
       <hunt-compare-equipment-card-component [weapon]="item" cdkDrag [cdkDragData]="item">
         <ng-template cdkDragPlaceholder>
@@ -45,9 +89,9 @@
       <ng-container [ngTemplateOutlet]="placeholder"></ng-container>
       }
     </div>
-
-    <hunt-comparison-table-component [left]="comparisonOne[0]" [right]="comparisonTwo[0]"></hunt-comparison-table-component>
+    <hunt-comparison-table-component [left]="weaponOne" [right]="weaponTwo"></hunt-comparison-table-component>
   </div>
+  <!-- right end -->
 </div>
 
 <ng-template #placeholder>
