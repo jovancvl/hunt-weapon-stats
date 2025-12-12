@@ -43,23 +43,23 @@
       (cdkDropListDropped)="moveFromCompare($event)">
       @for (item of filteredWeapons(); track $index) {
       <hunt-equipment-card-component class="always-show" [weapon]="item" (click)="goToWeapon(item)"
-        (mouseenter)="hoverOverWeapon(item)" cdkDrag [cdkDragDisabled]="!isComparing"
+        (mouseenter)="hoverOverWeapon(item)" cdkDrag (cdkDragStarted)="onDragStart()" (cdkDragEnded)="onDragEnd()" [cdkDragDisabled]="!isComparing"
         [cdkDragData]="item"></hunt-equipment-card-component>
       }
     </div>
   </div>
   <!-- left end -->
   <!-- right start -->
-  <div>
+  <div class="right">
     <div class="toggle">
-      <input #toggle type="checkbox" (change)="onToggle($event.target.checked)">
       <span>Compare</span>
+      <input #toggle type="checkbox" (change)="onToggle($event.target.checked)">
     </div>
     <div #one="cdkDropList" cdkDropList cdkDropListSortingDisabled cdkDropListHasAnchor
       [cdkDropListData]="comparisonOne" (cdkDropListDropped)="moveToComparisonOne($event)"
       [cdkDropListConnectedTo]="[weaponList]">
       @for (item of comparisonOne; track $index) {
-      <hunt-compare-equipment-card-component [weapon]="item" cdkDrag [cdkDragDisabled]="true" [cdkDragData]="item">
+      <hunt-compare-equipment-card-component [weapon]="item" [showBorder]="isDragging" cdkDrag [cdkDragDisabled]="true" [cdkDragData]="item">
         <ng-template cdkDragPlaceholder>
           <ng-container [ngTemplateOutlet]="placeholder"></ng-container>
         </ng-template>
@@ -76,7 +76,7 @@
       [cdkDropListData]="comparisonTwo" (cdkDropListDropped)="moveToComparisonTwo($event)"
       [cdkDropListConnectedTo]="[weaponList]" [hidden]="!isComparing">
       @for (item of comparisonTwo; track $index) {
-      <hunt-compare-equipment-card-component [weapon]="item" cdkDrag [cdkDragData]="item">
+      <hunt-compare-equipment-card-component [weapon]="item" [showBorder]="isDragging" cdkDrag [cdkDragData]="item">
         <ng-template cdkDragPlaceholder>
           <ng-container [ngTemplateOutlet]="placeholder"></ng-container>
         </ng-template>

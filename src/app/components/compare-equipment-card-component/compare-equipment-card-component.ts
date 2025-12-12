@@ -9,6 +9,7 @@ import { Weapon } from '../../arsenal/weapon';
 })
 export class CompareEquipmentCardComponent {
   weapon = input.required<Weapon>()
+  showBorder = input<boolean>(false)
 
   get bgImage() {
     return {

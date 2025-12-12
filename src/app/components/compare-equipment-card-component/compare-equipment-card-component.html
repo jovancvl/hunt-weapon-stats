@@ -1,4 +1,4 @@
-<div class="compare-card" [style]="bgImage">
+<div class="compare-card" [class.show-border]="showBorder()" [style]="bgImage">
   <h2>
     {{weapon().name }} {{weapon().baseAmmo !== weapon().activeAmmo ? weapon().activeAmmo.info.name : '' }}
   </h2>

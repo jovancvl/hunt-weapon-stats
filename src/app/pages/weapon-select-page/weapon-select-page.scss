@@ -103,13 +103,25 @@ $filter-height: 2.2rem;
 .placeholder-equipment-card {
   aspect-ratio: 3/1;
   box-sizing: border-box;
-  border: 1px solid white;
+  border: 2px dashed white;
   display: flex;
   justify-content: center;
   align-items: center;
 }
 
+.right {
+  position: relative;
+
+  >* {
+    margin-bottom: 0.5rem;
+  }
+}
+
 .toggle {
+  position: absolute;
+  z-index: 10;
+  right: 6px;
+  top: 6px;
   display: flex;
   align-items: center;
   margin-bottom: 5px;

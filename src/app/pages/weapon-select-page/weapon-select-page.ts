@@ -34,6 +34,7 @@ export class WeaponSelectPage {
   }
 
   isComparing = false
+  isDragging = false
 
   // filters
   query = signal('')
@@ -130,5 +131,13 @@ export class WeaponSelectPage {
     if (!on) {
       this.comparisonTwo = []
     }
+  }
+
+  onDragStart() {
+    this.isDragging = true
+  }
+
+  onDragEnd() {
+    this.isDragging = false
   }
 }
