@@ -79,7 +79,9 @@ export enum AmmoDescription {
   FMJ = `Increases penetration and the range at which the gun deals maximum damage at the cost of reduced muzzle velocity and reduced drop range.`,
   INCENDIARY = `Inflicts <EFFECT_SEVERITY> burning in a single hit within optimal range at the cost of removed penetration.`,
   EXPLOSIVE = `Explodes on impact.`,
-  SPITZER = `Increases penetration and muzzle velocity at the cost of reduced damage and reduced ammo reserves.`
+  SPITZER = `Increases penetration and muzzle velocity at the cost of reduced damage and reduced ammo reserves.`,
+
+  BOLT = `Inflicts <EFFECT_SEVERITY> bleeding, can be retrieved and reused.`
 }
 
 export interface AmmoInfoInterface {
@@ -328,6 +330,34 @@ export class AmmoInfo {
     description: AmmoDescription.FMJ,
     cost: 0,
     icon: "/ammo-icons/ammo_dolch-fmj.svg"
+  })
+  static readonly BOLT = new AmmoInfo({
+    name: AmmoName.BOLT,
+    description: AmmoDescription.BOLT,
+    severity: AmmoEffectSeverity.INTENSE,
+    cost: 0,
+    icon: "/ammo-icons/ammo_xbow-base.svg"
+  })
+  static readonly BOLT_EXPLOSIVE = new AmmoInfo({
+    name: AmmoName.EXPLOSIVE_BOLT,
+    description: AmmoDescription.BOLT,
+    severity: AmmoEffectSeverity.INTENSE,
+    cost: 0,
+    icon: "/ammo-icons/ammo_xbow-explosive.svg"
+  })
+  static readonly BOLT_SHOTBOLT = new AmmoInfo({
+    name: AmmoName.SHOT_BOLT,
+    description: AmmoDescription.BOLT,
+    severity: AmmoEffectSeverity.INTENSE,
+    cost: 0,
+    icon: "/ammo-icons/ammo_xbow-shotbolt.svg"
+  })
+  static readonly BOLT_STEEL = new AmmoInfo({
+    name: AmmoName.STEEL_BOLT,
+    description: AmmoDescription.BOLT,
+    severity: AmmoEffectSeverity.INTENSE,
+    cost: 0,
+    icon: "/ammo-icons/ammo_xbow-steel.svg"
   })
 }
 

@@ -9,7 +9,7 @@ const VERTICAL_RECOIL = 999
 const MUZZLE_VELOCITY = 999
 const AMMO_RESERVE = 999
 
-const NAME = "<choose weapon>"
+const NAME = "NAME"
 const COST = 999
 const SIZE = 999
 const ACTION = ActionType.BOLT_ACTION

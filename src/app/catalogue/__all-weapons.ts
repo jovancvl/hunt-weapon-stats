@@ -1,5 +1,6 @@
 import { Weapon } from "../arsenal/weapon";
 import { BERTHIER_1892 } from "./berthier-1892";
+import { CROSSBOW } from "./crossbow";
 import { DOLCH } from "./dolch";
 import { FRONTIER_73C } from "./frontier-73c";
 import { HAYMAKER } from "./haymaker";
@@ -26,7 +27,8 @@ export const WEAPON_LIST: Weapon[] = [
   LEBEL_1886,
   NEW_ARMY,
   RANGER_73,
-  VANDAL_73C
+  VANDAL_73C,
+  CROSSBOW
 ].sort((a, b) => {
   if (a.name > b.name) {
     return 1;
