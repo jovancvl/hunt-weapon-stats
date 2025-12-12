@@ -3,7 +3,7 @@
 .compare-card {
   position: relative;
   width: 100%;
-  aspect-ratio: 18 / 7;
+  aspect-ratio: styles.$compare-card-ratio;
   box-sizing: border-box;
   padding: 6px;
   border: 2px dashed transparent;

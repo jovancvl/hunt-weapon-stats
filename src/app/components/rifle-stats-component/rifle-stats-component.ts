@@ -1,16 +1,24 @@
 import { Component, input, OnInit } from '@angular/core';
 import { Weapon } from '../../arsenal/weapon';
 import { StatComparatorComponent } from '../stat-comparator-component/stat-comparator-component';
+import { ComparisonTableComponent } from "../comparison-table-component/comparison-table-component";
+import { AmmoInfo, AmmoStats } from '../../arsenal/ammo';
 
 @Component({
   selector: 'hunt-rifle-stats-component',
-  imports: [StatComparatorComponent],
+  imports: [StatComparatorComponent, ComparisonTableComponent],
   templateUrl: './rifle-stats-component.html',
   styleUrl: './rifle-stats-component.scss'
 })
 export class RifleStatsComponent implements OnInit{
   rifle = input.required<Weapon>();
+  copy = Weapon.EMPTY
 
   ngOnInit(): void {
+    this.copy = Object.assign({ ...this.rifle() })
+  }
+
+  activateAmmo(ammo: AmmoStats) {
+    this.copy.activeAmmo = ammo
   }
 }

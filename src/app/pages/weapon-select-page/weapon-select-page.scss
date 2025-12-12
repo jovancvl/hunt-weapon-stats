@@ -27,12 +27,11 @@ $filter-height: 2.2rem;
   padding: 0.5rem 1rem;
 
   >* {
-    height: 2.5rem;
+    height: $filter-height;
   }
 
   button {
     aspect-ratio: 1/1;
-    height: $filter-height;
     background-color: rgb(15, 15, 15);
     color: white;
     padding: 0px;
@@ -101,7 +100,7 @@ $filter-height: 2.2rem;
 }
 
 .placeholder-equipment-card {
-  aspect-ratio: 3/1;
+  aspect-ratio: styles.$compare-card-ratio;
   box-sizing: border-box;
   border: 2px dashed white;
   display: flex;
