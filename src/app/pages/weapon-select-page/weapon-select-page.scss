@@ -130,33 +130,3 @@ $filter-height: 2.2rem;
     height: 24px;
   }
 }
-
-.button-container {
-  display: flex;
-  justify-content: center;
-  gap: 3px;
-  height: 3rem;
-  margin-top: 10px;
-
-  button {
-    height: 100%;
-    aspect-ratio: 1/1;
-    background-color: rgb(15, 15, 15);
-    border: 1px solid white;
-    padding: 4px;
-    transition: border 200ms ease-in-out, background-color 200ms ease-in-out;
-
-    img {
-      height: 100%;
-      aspect-ratio: 1/1;
-    }
-
-    &:hover {
-      background-color: rgb(31, 31, 31);
-    }
-
-    &.active {
-      border-color: gold;
-    }
-  }
-}
