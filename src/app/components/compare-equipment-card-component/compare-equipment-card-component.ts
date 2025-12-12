@@ -9,4 +9,13 @@ import { Weapon } from '../../arsenal/weapon';
 })
 export class CompareEquipmentCardComponent {
   weapon = input.required<Weapon>()
+
+  get bgImage() {
+    return {
+      'background-image': `url("${this.weapon().image}")`,
+      'background-repeat': 'no-repeat',
+      'background-position': "center",
+      "background-size": "90%"
+    }
+  }
 }
