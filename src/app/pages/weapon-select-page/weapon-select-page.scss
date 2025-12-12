@@ -7,7 +7,7 @@
     height: calc(100vh - styles.$nav-bar-height);
     overflow: hidden;
     
-    hunt-weapon-list-component, hunt-rifle-compare-component {
+    >* {
         overflow-y: scroll;
     }
 }

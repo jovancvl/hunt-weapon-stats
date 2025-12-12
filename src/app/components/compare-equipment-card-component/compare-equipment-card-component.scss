@@ -6,7 +6,7 @@
   aspect-ratio: 21 / 9;
   box-sizing: border-box;
   background-color: transparent;
-  padding: 0rem 1rem;
+  // padding: 0rem 0.5rem;
   transition: background-color 200ms ease-in-out;
 
   h2 {
@@ -16,7 +16,7 @@
 
 .button-container {
   position: absolute;
-  bottom: 0px;
+  bottom: 0.5rem;
   display: grid;
   grid-template-columns: repeat(4, 2rem);
   grid-auto-rows: 2rem;

@@ -6,18 +6,19 @@ import { EquipmentCardComponent } from "../../components/equipment-card-componen
 import { FRONTIER_73C } from '../../catalogue/frontier-73c';
 import { CompareEquipmentCardComponent } from "../../components/compare-equipment-card-component/compare-equipment-card-component";
 import { NgTemplateOutlet } from '@angular/common';
+import { ComparisonTableComponent } from "../../components/comparison-table-component/comparison-table-component";
 
 
 @Component({
   selector: 'hunt-test-page',
-  imports: [CdkDrag, EquipmentCardComponent, CdkDropList, CdkDragPlaceholder, CompareEquipmentCardComponent, CdkDragPreview, NgTemplateOutlet],
+  imports: [CdkDrag, EquipmentCardComponent, CdkDropList, CdkDragPlaceholder, CompareEquipmentCardComponent, CdkDragPreview, NgTemplateOutlet, ComparisonTableComponent],
   templateUrl: './test-page.html',
   styleUrl: './test-page.scss',
 })
 export class TestPage {
   weapons: Weapon[] = [...WEAPON_LIST]
-  comparisonOne: Weapon[] = [FRONTIER_73C]
-  comparisonTwo: Weapon[] = [FRONTIER_73C]
+  comparisonOne: Weapon[] = [Weapon.EMPTY]
+  comparisonTwo: Weapon[] = [Weapon.EMPTY]
   weaponListRef = viewChild.required<CdkDropList<Weapon[]>>('weaponList')
   oneRef = viewChild.required<CdkDropList<Weapon[]>>('one')
   twoRef = viewChild.required<CdkDropList<Weapon[]>>('two')
@@ -42,12 +43,12 @@ export class TestPage {
     }
 
     if (event.previousContainer === this.oneRef()) {
-      this.comparisonOne = []
+      this.comparisonOne = [Weapon.EMPTY]
       return
     }
 
     if (event.previousContainer === this.twoRef()) {
-      this.comparisonTwo = []
+      this.comparisonTwo = [Weapon.EMPTY]
       return
     }
   }

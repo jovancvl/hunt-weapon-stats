@@ -7,19 +7,9 @@
   height: calc(100vh - styles.$nav-bar-height);
   overflow: hidden;
 
-  .left,
-  .right {
+  >* {
     overflow-y: scroll;
   }
-}
-
-.box {
-  aspect-ratio: 1/1;
-  height: 10rem;
-  background-color: #FABADA;
-  margin: 2rem;
-  padding: 1rem;
-  color: black;
 }
 
 .equipment-card-list-container {

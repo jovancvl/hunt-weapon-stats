@@ -1,5 +1,5 @@
 <div class="content-container">
-  <div #weaponList="cdkDropList" class="left equipment-card-list-container" cdkDropList cdkDropListSortingDisabled
+  <div #weaponList="cdkDropList" class="equipment-card-list-container" cdkDropList cdkDropListSortingDisabled
     cdkDropListHasAnchor [cdkDropListData]="weapons" [cdkDropListConnectedTo]="[one, two]"
     (cdkDropListDropped)="moveFromCompare($event)">
     @for (item of weapons; track $index) {
@@ -7,7 +7,7 @@
       [cdkDragData]="item"></hunt-equipment-card-component>
     }
   </div>
-  <div class="right">
+  <div>
     <div #one="cdkDropList" class="comparison-container" cdkDropList cdkDropListSortingDisabled cdkDropListHasAnchor [cdkDropListData]="comparisonOne"
       (cdkDropListDropped)="moveToComparisonOne($event)" [cdkDropListConnectedTo]="[weaponList]">
       @for (item of comparisonOne; track $index) {
@@ -23,11 +23,13 @@
       <ng-container [ngTemplateOutlet]="placeholder"></ng-container>
       }
     </div>
+    
     <div>
       <button class="button-icon-only" (click)="switch()">
         <span class="material-symbols-outlined">sync_alt</span>
       </button>
     </div>
+
     <div #two="cdkDropList" class="comparison-container" cdkDropList cdkDropListSortingDisabled cdkDropListHasAnchor [cdkDropListData]="comparisonTwo"
       (cdkDropListDropped)="moveToComparisonTwo($event)" [cdkDropListConnectedTo]="[weaponList]">
       @for (item of comparisonTwo; track $index) {
@@ -43,6 +45,8 @@
       <ng-container [ngTemplateOutlet]="placeholder"></ng-container>
       }
     </div>
+
+    <hunt-comparison-table-component [left]="comparisonOne[0]" [right]="comparisonTwo[0]"></hunt-comparison-table-component>
   </div>
 </div>
 

@@ -1,10 +1,10 @@
-import { Component, computed, input, model, output, ViewChild } from '@angular/core';
+import { Component, input, output } from '@angular/core';
 import { Weapon } from '../../arsenal/weapon';
-import { StatComparatorComponent } from '../stat-comparator-component/stat-comparator-component';
+import { ComparisonTableComponent } from "../comparison-table-component/comparison-table-component";
 
 @Component({
   selector: 'hunt-rifle-compare-component',
-  imports: [StatComparatorComponent],
+  imports: [ComparisonTableComponent],
   templateUrl: './rifle-compare-component.html',
   styleUrl: './rifle-compare-component.scss',
 })
