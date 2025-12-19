@@ -40,3 +40,5 @@ export const WEAPON_LIST: Weapon[] = [
 
   return 0
 })
+
+export const WEAPON_MAP: Map<string, Weapon> = new Map(WEAPON_LIST.map(w => [w.name, w]))

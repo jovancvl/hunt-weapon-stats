@@ -3,7 +3,7 @@ import { RifleStatsComponent } from "../../components/rifle-stats-component/rifl
 import { HunterBodyComponent } from "../../components/hunter-body-component/hunter-body-component";
 import { FRONTIER_73C } from '../../catalogue/frontier-73c';
 import { ActivatedRoute, Router } from '@angular/router';
-import { WEAPON_LIST } from '../../catalogue/__all-weapons';
+import { WEAPON_MAP } from '../../catalogue/__all-weapons';
 
 @Component({
   selector: 'hunt-weapon-stats-page',
@@ -17,12 +17,18 @@ export class WeaponStatsPage implements OnInit {
   private router = inject(Router)
 
   constructor() {
-    let wn = WEAPON_LIST.find(w => w.name === this.activatedRoute.snapshot.paramMap.get('id'))
-    if (wn) {
-      this.rifle = wn
-    } else {
+    const id = this.activatedRoute.snapshot.paramMap.get('id')
+    if (!id) {
       alert("weapon name not set, reload the page")
       throw new Error("weapon name not set")
+    }
+
+    const wn = WEAPON_MAP.get(id)
+    if (wn) {
+      this.rifle = { ...wn }
+    } else {
+      alert("weapon name not found")
+      this.router.navigate([''])
     }
   }
 

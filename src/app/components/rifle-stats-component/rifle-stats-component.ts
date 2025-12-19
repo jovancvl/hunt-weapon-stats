@@ -11,13 +11,12 @@ import { AmmoStats } from '../../arsenal/ammo';
 })
 export class RifleStatsComponent implements OnInit{
   rifle = input.required<Weapon>();
-  copy = Weapon.EMPTY
+  // copy = Weapon.EMPTY
 
   ngOnInit(): void {
-    this.copy = Object.assign({ ...this.rifle() })
   }
 
   activateAmmo(ammo: AmmoStats) {
-    this.copy.activeAmmo = ammo
+    this.rifle().activeAmmo = ammo
   }
 }
