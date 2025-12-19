@@ -99,6 +99,9 @@ export class WeaponSelectPage {
   }
 
   goToWeapon(weapon: Weapon) {
+    // if (this.isComparing) {
+    //   return
+    // }
     this.router.navigate([weapon.name])
   }
 

@@ -13,10 +13,7 @@ export class CompareEquipmentCardComponent {
 
   get bgImage() {
     return {
-      'background-image': `url("${this.weapon().image}")`,
-      'background-repeat': 'no-repeat',
-      'background-position': "center",
-      "background-size": "90%"
+      'background-image': `url("${this.weapon().image}")`
     }
   }
 }
