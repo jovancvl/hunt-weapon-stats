@@ -1,0 +1,17 @@
+<div class="flex-container">
+  <div>
+    <h1>{{weapon().name}} {{weapon().activeAmmo !== weapon().baseAmmo ? weapon().activeAmmo.info.name : '' }}</h1>
+    <p>Cost: {{weapon().cost}} | Size: {{weapon().size}} | Ammo type: {{weapon().baseAmmo.info.name}}</p>
+    <p>Ammo description: {{weapon().baseAmmo.info.description}}</p>
+
+    <div class="button-container">
+      @for (ammo of weapon().availableAmmo; track $index) {
+      <button (click)="activateAmmo(ammo)" [class.active]="ammo.info.name === weapon().activeAmmo.info.name">
+        <img [src]="ammo.info.icon">
+      </button>
+      }
+    </div>
+
+    <hunt-comparison-table-component [left]="weapon()" [right]="weapon()"></hunt-comparison-table-component>
+  </div>
+</div>
