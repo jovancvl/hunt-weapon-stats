@@ -117,25 +117,25 @@ export class AmmoInfo {
     name: AmmoName.COMPACT,
     description: AmmoDescription.COMPACT,
     cost: 0,
-    icon: "/ammo-icons/ammo_compact-base.svg"
+    icon: "ammo-icons/ammo_compact-base.svg"
   })
   static readonly MEDIUM = new AmmoInfo({
     name: AmmoName.MEDIUM,
     description: AmmoDescription.MEDIUM,
     cost: 0,
-    icon: "/ammo-icons/ammo_medium-base.svg"
+    icon: "ammo-icons/ammo_medium-base.svg"
   })
   static readonly LONG = new AmmoInfo({
     name: AmmoName.LONG,
     description: AmmoDescription.LONG,
     cost: 0,
-    icon: "/ammo-icons/ammo_long-base.svg"
+    icon: "ammo-icons/ammo_long-base.svg"
   })
   static readonly BUCKSHOT = new AmmoInfo({
     name: AmmoName.BUCKSHOT,
     description: AmmoDescription.BUCKSHOT,
     cost: 0,
-    icon: "/ammo-icons/ammo_shell-base.svg"
+    icon: "ammo-icons/ammo_shell-base.svg"
   })
 
   static readonly COMPACT_DUMDUM = new AmmoInfo({
@@ -144,19 +144,19 @@ export class AmmoInfo {
     severity: AmmoEffectSeverity.MEDIUM,
     description: AmmoDescription.DUMDUM,
     cost: 50,
-    icon: "/ammo-icons/ammo_compact-dumdum.svg"
+    icon: "ammo-icons/ammo_compact-dumdum.svg"
   })
   static readonly COMPACT_FMJ = new AmmoInfo({
     name: AmmoName.FMJ,
     description: AmmoDescription.FMJ,
     cost: 50,
-    icon: "/ammo-icons/ammo_compact-fmj.svg"
+    icon: "ammo-icons/ammo_compact-fmj.svg"
   })
   static readonly COMPACT_HIGH_VELOCITY = new AmmoInfo({
     name: AmmoName.HIGH_VELOCITY,
     description: AmmoDescription.HIGH_VELOCITY,
     cost: 50,
-    icon: "/ammo-icons/ammo_compact-hv.svg"
+    icon: "ammo-icons/ammo_compact-hv.svg"
   })
   static readonly COMPACT_INCENDIARY = new AmmoInfo({
     name: AmmoName.INCENDIARY,
@@ -164,7 +164,7 @@ export class AmmoInfo {
     severity: AmmoEffectSeverity.MEDIUM,
     description: AmmoDescription.INCENDIARY,
     cost: 50,
-    icon: "/ammo-icons/ammo_compact-incendiary.svg"
+    icon: "ammo-icons/ammo_compact-incendiary.svg"
   })
   static readonly COMPACT_POISON = new AmmoInfo({
     name: AmmoName.POISON,
@@ -172,13 +172,13 @@ export class AmmoInfo {
     severity: AmmoEffectSeverity.MEDIUM,
     description: AmmoDescription.POISON,
     cost: 50,
-    icon: "/ammo-icons/ammo_compact-poison.svg"
+    icon: "ammo-icons/ammo_compact-poison.svg"
   })
   static readonly COMPACT_SUBSONIC = new AmmoInfo({
     name: AmmoName.SUBSONIC,
     description: AmmoDescription.SUBSONIC,
     cost: 50,
-    icon: "/ammo-icons/ammo_compact-subsonic.svg"
+    icon: "ammo-icons/ammo_compact-subsonic.svg"
   })
 
   static readonly MEDIUM_DUMDUM = new AmmoInfo({
@@ -187,25 +187,25 @@ export class AmmoInfo {
     severity: AmmoEffectSeverity.INTENSE,
     description: AmmoDescription.DUMDUM,
     cost: 50,
-    icon: "/ammo-icons/ammo_medium-dumdum.svg"
+    icon: "ammo-icons/ammo_medium-dumdum.svg"
   })
   static readonly MEDIUM_EXPLOSIVE = new AmmoInfo({
     name: AmmoName.EXPLOSIVE,
     description: AmmoDescription.EXPLOSIVE,
     cost: 50,
-    icon: "/ammo-icons/ammo_medium-explosive.svg"
+    icon: "ammo-icons/ammo_medium-explosive.svg"
   })
   static readonly MEDIUM_FMJ = new AmmoInfo({
     name: AmmoName.FMJ,
     description: AmmoDescription.FMJ,
     cost: 50,
-    icon: "/ammo-icons/ammo_medium-fmj.svg"
+    icon: "ammo-icons/ammo_medium-fmj.svg"
   })
   static readonly MEDIUM_HIGH_VELOCITY = new AmmoInfo({
     name: AmmoName.HIGH_VELOCITY,
     description: AmmoDescription.HIGH_VELOCITY,
     cost: 50,
-    icon: "/ammo-icons/ammo_medium-hv.svg"
+    icon: "ammo-icons/ammo_medium-hv.svg"
   })
   static readonly MEDIUM_INCENDIARY = new AmmoInfo({
     name: AmmoName.INCENDIARY,
@@ -213,7 +213,7 @@ export class AmmoInfo {
     severity: AmmoEffectSeverity.MEDIUM,
     description: AmmoDescription.INCENDIARY,
     cost: 50,
-    icon: "/ammo-icons/ammo_medium-incendiary.svg"
+    icon: "ammo-icons/ammo_medium-incendiary.svg"
   })
   static readonly MEDIUM_POISON = new AmmoInfo({
     name: AmmoName.POISON,
@@ -221,32 +221,32 @@ export class AmmoInfo {
     severity: AmmoEffectSeverity.MEDIUM,
     description: AmmoDescription.POISON,
     cost: 50,
-    icon: "/ammo-icons/ammo_medium-poison.svg"
+    icon: "ammo-icons/ammo_medium-poison.svg"
   })
   static readonly MEDIUM_SUBSONIC = new AmmoInfo({
     name: AmmoName.SUBSONIC,
     description: AmmoDescription.SUBSONIC,
     cost: 50,
-    icon: "/ammo-icons/ammo_medium-subsonic.svg"
+    icon: "ammo-icons/ammo_medium-subsonic.svg"
   })
 
   static readonly LONG_EXPLOSIVE = new AmmoInfo({
     name: AmmoName.EXPLOSIVE,
     description: AmmoDescription.EXPLOSIVE,
     cost: 50,
-    icon: "/ammo-icons/ammo_long-explosive.svg"
+    icon: "ammo-icons/ammo_long-explosive.svg"
   })
   static readonly LONG_FMJ = new AmmoInfo({
     name: AmmoName.FMJ,
     description: AmmoDescription.FMJ,
     cost: 50,
-    icon: "/ammo-icons/ammo_long-fmj.svg"
+    icon: "ammo-icons/ammo_long-fmj.svg"
   })
   static readonly LONG_HIGH_VELOCITY = new AmmoInfo({
     name: AmmoName.HIGH_VELOCITY,
     description: AmmoDescription.HIGH_VELOCITY,
     cost: 50,
-    icon: "/ammo-icons/ammo_long-hv.svg"
+    icon: "ammo-icons/ammo_long-hv.svg"
   })
   static readonly LONG_INCENDIARY = new AmmoInfo({
     name: AmmoName.INCENDIARY,
@@ -254,7 +254,7 @@ export class AmmoInfo {
     severity: AmmoEffectSeverity.MEDIUM,
     description: AmmoDescription.INCENDIARY,
     cost: 50,
-    icon: "/ammo-icons/ammo_long-incendiary.svg"
+    icon: "ammo-icons/ammo_long-incendiary.svg"
   })
   static readonly LONG_POISON = new AmmoInfo({
     name: AmmoName.POISON,
@@ -262,19 +262,19 @@ export class AmmoInfo {
     severity: AmmoEffectSeverity.MEDIUM,
     description: AmmoDescription.POISON,
     cost: 50,
-    icon: "/ammo-icons/ammo_long-poison.svg"
+    icon: "ammo-icons/ammo_long-poison.svg"
   })
   static readonly LONG_SUBSONIC = new AmmoInfo({
     name: AmmoName.SUBSONIC,
     description: AmmoDescription.SUBSONIC,
     cost: 50,
-    icon: "/ammo-icons/ammo_long-subsonic.svg"
+    icon: "ammo-icons/ammo_long-subsonic.svg"
   })
   static readonly LONG_SPITZER = new AmmoInfo({
     name: AmmoName.SPITZER,
     description: AmmoDescription.SPITZER,
     cost: 50,
-    icon: "/ammo-icons/ammo_long-spitzer.svg"
+    icon: "ammo-icons/ammo_long-spitzer.svg"
   })
 
   static readonly SHELL_DRAGONBREATH = new AmmoInfo({
@@ -283,7 +283,7 @@ export class AmmoInfo {
     severity: AmmoEffectSeverity.MEDIUM,
     description: AmmoDescription.INCENDIARY,
     cost: 50,
-    icon: "/ammo-icons/ammo_shell-dragobreath.svg"
+    icon: "ammo-icons/ammo_shell-dragobreath.svg"
   })
   static readonly SHELL_FLECHETTE = new AmmoInfo({
     name: AmmoName.FLECHETTE,
@@ -291,19 +291,19 @@ export class AmmoInfo {
     severity: AmmoEffectSeverity.MEDIUM,
     description: AmmoDescription.DUMDUM,
     cost: 50,
-    icon: "/ammo-icons/ammo_shell-flechette.svg"
+    icon: "ammo-icons/ammo_shell-flechette.svg"
   })
   static readonly SHELL_PENNYSHOT = new AmmoInfo({
     name: AmmoName.PENNY,
     description: AmmoDescription.DUMDUM,
     cost: 50,
-    icon: "/ammo-icons/ammo_shell-pennyshot.svg"
+    icon: "ammo-icons/ammo_shell-pennyshot.svg"
   })
   static readonly SHELL_SLUG = new AmmoInfo({
     name: AmmoName.SLUG,
     description: AmmoDescription.DUMDUM,
     cost: 50,
-    icon: "/ammo-icons/ammo_shell-slug.svg"
+    icon: "ammo-icons/ammo_shell-slug.svg"
   })
   static readonly SHELL_STARSHELL = new AmmoInfo({
     name: AmmoName.STARSHELL,
@@ -311,13 +311,13 @@ export class AmmoInfo {
     severity: AmmoEffectSeverity.INTENSE,
     description: AmmoDescription.INCENDIARY,
     cost: 50,
-    icon: "/ammo-icons/ammo_shell-starshell.svg"
+    icon: "ammo-icons/ammo_shell-starshell.svg"
   })
   static readonly DOLCH = new AmmoInfo({
     name: AmmoName.DOLCH,
     description: AmmoDescription.MEDIUM,
     cost: 0,
-    icon: "/ammo-icons/ammo_dolch-base.svg"
+    icon: "ammo-icons/ammo_dolch-base.svg"
   })
   static readonly DOLCH_DUMDUM = new AmmoInfo({
     name: AmmoName.DUMDUM,
@@ -325,41 +325,41 @@ export class AmmoInfo {
     severity: AmmoEffectSeverity.MEDIUM,
     effect: AmmoEffectType.BLEED,
     cost: 0,
-    icon: "/ammo-icons/ammo_dolch-dumdum.svg"
+    icon: "ammo-icons/ammo_dolch-dumdum.svg"
   })
   static readonly DOLCH_FMJ = new AmmoInfo({
     name: AmmoName.FMJ,
     description: AmmoDescription.FMJ,
     cost: 0,
-    icon: "/ammo-icons/ammo_dolch-fmj.svg"
+    icon: "ammo-icons/ammo_dolch-fmj.svg"
   })
   static readonly BOLT = new AmmoInfo({
     name: AmmoName.BOLT,
     description: AmmoDescription.BOLT,
     severity: AmmoEffectSeverity.INTENSE,
     cost: 0,
-    icon: "/ammo-icons/ammo_xbow-base.svg"
+    icon: "ammo-icons/ammo_xbow-base.svg"
   })
   static readonly BOLT_EXPLOSIVE = new AmmoInfo({
     name: AmmoName.EXPLOSIVE_BOLT,
     description: AmmoDescription.BOLT,
     severity: AmmoEffectSeverity.INTENSE,
     cost: 0,
-    icon: "/ammo-icons/ammo_xbow-explosive.svg"
+    icon: "ammo-icons/ammo_xbow-explosive.svg"
   })
   static readonly BOLT_SHOTBOLT = new AmmoInfo({
     name: AmmoName.SHOT_BOLT,
     description: AmmoDescription.BOLT,
     severity: AmmoEffectSeverity.INTENSE,
     cost: 0,
-    icon: "/ammo-icons/ammo_xbow-shotbolt.svg"
+    icon: "ammo-icons/ammo_xbow-shotbolt.svg"
   })
   static readonly BOLT_STEEL = new AmmoInfo({
     name: AmmoName.STEEL_BOLT,
     description: AmmoDescription.BOLT,
     severity: AmmoEffectSeverity.INTENSE,
     cost: 0,
-    icon: "/ammo-icons/ammo_xbow-steel.svg"
+    icon: "ammo-icons/ammo_xbow-steel.svg"
   })
 }
 

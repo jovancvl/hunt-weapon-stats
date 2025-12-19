@@ -3,7 +3,7 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "hunt-wiki": {
+    "hunt-weapon-stats": {
       "projectType": "application",
       "schematics": {
         "@schematics/angular:component": {
@@ -31,7 +31,8 @@
             ],
             "styles": [
               "src/styles.scss"
-            ]
+            ],
+            "outputPath": "dist"
           },
           "configurations": {
             "production": {
@@ -61,10 +62,10 @@
           "builder": "@angular/build:dev-server",
           "configurations": {
             "production": {
-              "buildTarget": "hunt-wiki:build:production"
+              "buildTarget": "hunt-weapon-stats:build:production"
             },
             "development": {
-              "buildTarget": "hunt-wiki:build:development"
+              "buildTarget": "hunt-weapon-stats:build:development"
             }
           },
           "defaultConfiguration": "development"
@@ -91,6 +92,9 @@
               "src/styles.scss"
             ]
           }
+        },
+        "deploy": {
+          "builder": "angular-cli-ghpages:deploy"
         }
       }
     }
