@@ -1,7 +1,7 @@
 import { Component, computed, inject, signal, viewChild } from '@angular/core';
 import { FRONTIER_73C } from '../../catalogue/frontier-73c';
 import { Weapon } from '../../arsenal/weapon';
-import { Router } from '@angular/router';
+import { Router, RouterLink } from '@angular/router';
 import { CdkDropList, CdkDragDrop, CdkDrag, CdkDragPlaceholder, CdkDragPreview } from '@angular/cdk/drag-drop';
 import { AmmoName } from '../../arsenal/ammo';
 import { WEAPON_LIST } from '../../catalogue/__all-weapons';
@@ -12,7 +12,7 @@ import { NgTemplateOutlet } from '@angular/common';
 
 @Component({
   selector: 'hunt-weapon-select-page',
-  imports: [CdkDrag, EquipmentCardComponent, CdkDropList, CdkDragPlaceholder, CompareEquipmentCardComponent, CdkDragPreview, NgTemplateOutlet, ComparisonTableComponent],
+  imports: [CdkDrag, EquipmentCardComponent, CdkDropList, CdkDragPlaceholder, CompareEquipmentCardComponent, CdkDragPreview, NgTemplateOutlet, ComparisonTableComponent, RouterLink],
   templateUrl: './weapon-select-page.html',
   styleUrl: './weapon-select-page.scss'
 })

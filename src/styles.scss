@@ -4,7 +4,7 @@
 $nav-bar-height: 3rem;
 $item-bg-hover-color: rgb(25, 25, 25);
 $item-bg-color: rgb(10, 10, 10);
-$compare-card-ratio: math.div(9, 2);
+$compare-card-ratio: math.div(12, 3);
 
 body,
 html {
@@ -13,10 +13,9 @@ html {
   font-size: 18px;
   color: white;
   background-color: black;
-  scrollbar-width: none;
 
-  *::-webkit-scrollbar {
-    display: none;
+  * {
+    scrollbar-width: none;
   }
 }
 

@@ -42,7 +42,7 @@
       cdkDropListHasAnchor [cdkDropListData]="weapons" [cdkDropListConnectedTo]="[one, two]"
       (cdkDropListDropped)="moveFromCompare($event)">
       @for (item of filteredWeapons(); track $index) {
-      <hunt-equipment-card-component class="always-show" [weapon]="item" (click)="goToWeapon(item)"
+      <hunt-equipment-card-component class="always-show" [weapon]="item" [routerLink]="item.name"
         (mouseenter)="hoverOverWeapon(item)" cdkDrag (cdkDragStarted)="onDragStart()" (cdkDragEnded)="onDragEnd()" [cdkDragDisabled]="!isComparing"
         [cdkDragData]="item"></hunt-equipment-card-component>
       }
@@ -59,14 +59,7 @@
       [cdkDropListData]="comparisonOne" (cdkDropListDropped)="moveToComparisonOne($event)"
       [cdkDropListConnectedTo]="[weaponList]">
       @for (item of comparisonOne; track $index) {
-      <hunt-compare-equipment-card-component [weapon]="item" [showBorder]="isDragging" cdkDrag [cdkDragDisabled]="true" [cdkDragData]="item">
-        <ng-template cdkDragPlaceholder>
-          <ng-container [ngTemplateOutlet]="placeholder"></ng-container>
-        </ng-template>
-        <ng-template cdkDragPreview [matchSize]="true">
-          <ng-container [ngTemplateOutlet]="preview" [ngTemplateOutletContext]="{item}"></ng-container>
-        </ng-template>
-      </hunt-compare-equipment-card-component>
+      <hunt-compare-equipment-card-component [weapon]="item" [showBorder]="isDragging" cdkDrag [cdkDragDisabled]="true" [cdkDragData]="item"></hunt-compare-equipment-card-component>
       } @empty {
       <ng-container [ngTemplateOutlet]="placeholder"></ng-container>
       }
@@ -95,7 +88,7 @@
 
 <ng-template #placeholder>
   <div class="placeholder-equipment-card">
-    <span>Drag a weapon here to start comparing</span>
+    <span>Drag a weapon here or above to start comparing</span>
   </div>
 </ng-template>
 

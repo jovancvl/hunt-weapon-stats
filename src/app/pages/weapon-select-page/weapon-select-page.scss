@@ -10,15 +10,15 @@ $filter-height: 2.2rem;
   overflow: hidden;
 
   >* {
-    overflow-y: scroll;
+    overflow-y: auto;
   }
 }
 
 .filters-container {
-  z-index: 10;
   box-sizing: border-box;
-  background-color: black;
+  z-index: 10;
   position: sticky;
+  background-color: black;
   top: 0px;
   display: flex;
   flex-wrap: wrap;
@@ -110,7 +110,6 @@ $filter-height: 2.2rem;
 
 .right {
   position: relative;
-  // padding-bottom: 3rem;
 
   >* {
     margin-bottom: 0.5rem;
