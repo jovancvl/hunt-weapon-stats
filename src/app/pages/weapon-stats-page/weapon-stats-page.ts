@@ -25,7 +25,7 @@ export class WeaponStatsPage implements OnInit {
 
     const wn = WEAPON_MAP.get(id)
     if (wn) {
-      this.weapon = { ...wn }
+      this.weapon = Object.assign({ ...wn })
     } else {
       alert("weapon name not found")
       this.router.navigate([''])

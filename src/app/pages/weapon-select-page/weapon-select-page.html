@@ -76,7 +76,7 @@
       [cdkDropListData]="comparisonTwo" (cdkDropListDropped)="moveToComparisonTwo($event)"
       [cdkDropListConnectedTo]="[weaponList]" [hidden]="!isComparing">
       @for (item of comparisonTwo; track $index) {
-      <hunt-compare-equipment-card-component [weapon]="item" [showBorder]="isDragging" cdkDrag [cdkDragData]="item">
+      <hunt-compare-equipment-card-component [weapon]="item" [showBorder]="isDragging" cdkDrag [cdkDragDisabled]="true" [cdkDragData]="item">
         <ng-template cdkDragPlaceholder>
           <ng-container [ngTemplateOutlet]="placeholder"></ng-container>
         </ng-template>

@@ -110,11 +110,22 @@ $filter-height: 2.2rem;
 
 .right {
   position: relative;
+  padding-bottom: 3rem;
 
   >* {
     margin-bottom: 0.5rem;
   }
 }
+
+// .card-container {
+//   display: flex;
+//   gap: 5px;
+  
+//   >* {
+//     width: calc(50% - 5px);
+//     flex: 1 0 auto;
+//   }
+// }
 
 .toggle {
   position: absolute;

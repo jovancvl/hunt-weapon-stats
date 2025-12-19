@@ -19,9 +19,12 @@ div {
   }
 
   .stat-value {
+    $text-size: 16px;
     text-align: right;
     width: 6ch;
-    font-weight: 500;
+    margin-right: 1ch;
+    font-size: $text-size;
+    line-height: $text-size;
   }
 }
 

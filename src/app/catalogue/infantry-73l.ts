@@ -10,7 +10,7 @@ const MUZZLE_VELOCITY = 400
 const AMMO_RESERVE = 20
 
 const NAME = "Infantry 73L"
-const COST = 78 
+const COST = 78
 const SIZE = 3
 const ACTION = ActionType.LEVER_ACTION
 const SWAY = 77
@@ -26,99 +26,99 @@ const HEAVY_STAMINA_CONSUMPTION = 25
 const IMAGE = "https://huntshowdown.wiki.gg/images/Weapon_Infantry_73L.png"
 
 const AMMO = [
-    new AmmoStats({
-        info: AmmoInfo.COMPACT,
-        scarce: false,
+  new AmmoStats({
+    info: AmmoInfo.COMPACT,
+    scarce: false,
 
-        baseDamage: BASE_DAMAGE,
-        optimalRange: OPTIMAL_RANGE,
-        dropRange: DROP_RANGE,
-        spread: SPREAD,
-        verticalRecoil: VERTICAL_RECOIL,
-        muzzleVelocity: MUZZLE_VELOCITY,
-        ammoReserve: AMMO_RESERVE
-    }),
-    new AmmoStats({
-        info: AmmoInfo.COMPACT_FMJ,
-        scarce: false,
+    baseDamage: BASE_DAMAGE,
+    optimalRange: OPTIMAL_RANGE,
+    dropRange: DROP_RANGE,
+    spread: SPREAD,
+    verticalRecoil: VERTICAL_RECOIL,
+    muzzleVelocity: MUZZLE_VELOCITY,
+    ammoReserve: AMMO_RESERVE
+  }),
+  new AmmoStats({
+    info: AmmoInfo.COMPACT_FMJ,
+    scarce: false,
 
-        baseDamage: BASE_DAMAGE,
-        optimalRange: OPTIMAL_RANGE + 10,
-        dropRange: DROP_RANGE - 15,
-        spread: SPREAD,
-        verticalRecoil: VERTICAL_RECOIL + 2,
-        muzzleVelocity: MUZZLE_VELOCITY - 70,
-        ammoReserve: AMMO_RESERVE
-    }),
-    new AmmoStats({
-        info: AmmoInfo.COMPACT_HIGH_VELOCITY,
-        scarce: false,
+    baseDamage: BASE_DAMAGE,
+    optimalRange: OPTIMAL_RANGE + 10,
+    dropRange: DROP_RANGE - 15,
+    spread: SPREAD,
+    verticalRecoil: VERTICAL_RECOIL + 2,
+    muzzleVelocity: MUZZLE_VELOCITY - 70,
+    ammoReserve: AMMO_RESERVE
+  }),
+  new AmmoStats({
+    info: AmmoInfo.COMPACT_HIGH_VELOCITY,
+    scarce: false,
 
-        baseDamage: BASE_DAMAGE - 8,
-        optimalRange: OPTIMAL_RANGE,
-        dropRange: DROP_RANGE + 30,
-        spread: SPREAD,
-        verticalRecoil: VERTICAL_RECOIL + 2,
-        muzzleVelocity: MUZZLE_VELOCITY + 125,
-        ammoReserve: AMMO_RESERVE - 8
-    }),
-    new AmmoStats({
-        info: AmmoInfo.COMPACT_POISON,
-        scarce: false,
+    baseDamage: BASE_DAMAGE - 8,
+    optimalRange: OPTIMAL_RANGE,
+    dropRange: DROP_RANGE + 30,
+    spread: SPREAD,
+    verticalRecoil: VERTICAL_RECOIL + 2,
+    muzzleVelocity: MUZZLE_VELOCITY + 125,
+    ammoReserve: AMMO_RESERVE - 8
+  }),
+  new AmmoStats({
+    info: AmmoInfo.COMPACT_INCENDIARY,
+    scarce: false,
 
-        baseDamage: BASE_DAMAGE,
-        optimalRange: OPTIMAL_RANGE,
-        dropRange: DROP_RANGE,
-        spread: SPREAD,
-        verticalRecoil: VERTICAL_RECOIL,
-        muzzleVelocity: MUZZLE_VELOCITY,
-        ammoReserve: AMMO_RESERVE
-    }),
-    new AmmoStats({
-        info: AmmoInfo.COMPACT_INCENDIARY,
-        scarce: false,
+    baseDamage: BASE_DAMAGE,
+    optimalRange: OPTIMAL_RANGE,
+    dropRange: DROP_RANGE,
+    spread: SPREAD,
+    verticalRecoil: VERTICAL_RECOIL,
+    muzzleVelocity: MUZZLE_VELOCITY,
+    ammoReserve: AMMO_RESERVE
+  }),
+  new AmmoStats({
+    info: AmmoInfo.COMPACT_POISON,
+    scarce: false,
 
-        baseDamage: BASE_DAMAGE,
-        optimalRange: OPTIMAL_RANGE,
-        dropRange: DROP_RANGE,
-        spread: SPREAD,
-        verticalRecoil: VERTICAL_RECOIL,
-        muzzleVelocity: MUZZLE_VELOCITY,
-        ammoReserve: AMMO_RESERVE
-    }),
-    new AmmoStats({
-        info: AmmoInfo.COMPACT_SUBSONIC,
-        scarce: false,
+    baseDamage: BASE_DAMAGE,
+    optimalRange: OPTIMAL_RANGE,
+    dropRange: DROP_RANGE,
+    spread: SPREAD,
+    verticalRecoil: VERTICAL_RECOIL,
+    muzzleVelocity: MUZZLE_VELOCITY,
+    ammoReserve: AMMO_RESERVE
+  }),
+  new AmmoStats({
+    info: AmmoInfo.COMPACT_SUBSONIC,
+    scarce: false,
 
-        baseDamage: BASE_DAMAGE,
-        optimalRange: OPTIMAL_RANGE,
-        dropRange: DROP_RANGE - 30,
-        spread: SPREAD,
-        verticalRecoil: VERTICAL_RECOIL,
-        muzzleVelocity: MUZZLE_VELOCITY - 137,
-        ammoReserve: AMMO_RESERVE + 4
-    }),
+    baseDamage: BASE_DAMAGE,
+    optimalRange: OPTIMAL_RANGE,
+    dropRange: DROP_RANGE - 30,
+    spread: SPREAD,
+    verticalRecoil: VERTICAL_RECOIL,
+    muzzleVelocity: MUZZLE_VELOCITY - 137,
+    ammoReserve: AMMO_RESERVE + 4
+  }),
 ]
 
 export const INFANTRY_37L: Weapon = new Weapon({
-    name: NAME,
-    cost: COST,
-    size: SIZE,
-    action: ACTION,
+  name: NAME,
+  cost: COST,
+  size: SIZE,
+  action: ACTION,
 
-    availableAmmo: AMMO,
+  availableAmmo: AMMO,
 
-    sway: SWAY,
-    rateOfFire: RATE_OF_FIRE,
-    cycleTime: CYCLE_TIME,
-    reloadTime: RELOAD_TIME,
-    magazine: MAGAZINE,
-    hasExtraBullet: HAS_EXTRA_BULLET,
+  sway: SWAY,
+  rateOfFire: RATE_OF_FIRE,
+  cycleTime: CYCLE_TIME,
+  reloadTime: RELOAD_TIME,
+  magazine: MAGAZINE,
+  hasExtraBullet: HAS_EXTRA_BULLET,
 
-    meleeDamage: MELEE_DAMAGE,
-    staminaConsumption: STAMINA_CONSUMPTION,
-    heavyMeleeDamage: HEAVY_MELEE_DAMAGE,
-    heavyStaminaConsumption: HEAVY_STAMINA_CONSUMPTION,
+  meleeDamage: MELEE_DAMAGE,
+  staminaConsumption: STAMINA_CONSUMPTION,
+  heavyMeleeDamage: HEAVY_MELEE_DAMAGE,
+  heavyStaminaConsumption: HEAVY_STAMINA_CONSUMPTION,
 
-    image: IMAGE
+  image: IMAGE
 })

@@ -16,7 +16,7 @@ export class CompareEquipmentCardComponent {
       'background-image': `url("${this.weapon().image}")`,
       'background-repeat': 'no-repeat',
       'background-position': "center",
-      "background-size": "95%"
+      "background-size": "90%"
     }
   }
 }
