@@ -13,3 +13,4 @@ chest + lower, chest + arm, arm + leg etc
 ### better comparison
 ### redo visuals
 ### animations
+### add variants

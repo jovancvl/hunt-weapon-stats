@@ -9,6 +9,8 @@ import { HAYMAKER } from "./haymaker";
 import { INFANTRY_37L } from "./infantry-73l";
 import { KRAG } from "./krag";
 import { LEBEL_1886 } from "./lebel-1886";
+import { LEMAT } from "./lemat";
+import { LEMAT_SHOTGUN } from "./lemat-shotgun";
 import { MARATHON } from "./marathon";
 import { NEW_ARMY } from "./new-army";
 import { RANGER_73 } from "./ranger-73";
@@ -32,7 +34,9 @@ export const WEAPON_LIST: Weapon[] = [
   VANDAL_73C,
   CROSSBOW,
   BORNHEIM_NO3,
-  CONVERSION
+  CONVERSION,
+  LEMAT,
+  LEMAT_SHOTGUN
 ].sort((a, b) => {
   if (a.name > b.name) {
     return 1;
