@@ -41,6 +41,8 @@ Right:
 
 ### Comparison Page - lowest prio
 
+Compare 2 different weapons or different ammo for the same weapon
+
 Middle 
 - weapon stats that allows to select ammo and a range slider
 

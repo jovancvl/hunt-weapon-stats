@@ -1,17 +1,18 @@
-import { Component, inject, OnInit } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { HunterBodyComponent } from "../../components/hunter-body-component/hunter-body-component";
 import { FRONTIER_73C } from '../../catalogue/frontier-73c';
 import { ActivatedRoute, Router } from '@angular/router';
 import { WEAPON_MAP } from '../../catalogue/__all-weapons';
-import { WeaponStatsComponent } from '../../components/weapon-stats-component/weapon-stats-component';
+import { AmmoStats } from '../../arsenal/ammo';
+import { StatTableComponent } from "../../components/stat-table-component/stat-table-component";
 
 @Component({
   selector: 'hunt-weapon-stats-page',
-  imports: [WeaponStatsComponent, HunterBodyComponent],
+  imports: [HunterBodyComponent, StatTableComponent],
   templateUrl: './weapon-stats-page.html',
   styleUrl: './weapon-stats-page.scss'
 })
-export class WeaponStatsPage implements OnInit {
+export class WeaponStatsPage {
   weapon = FRONTIER_73C
   private activatedRoute = inject(ActivatedRoute)
   private router = inject(Router)
@@ -32,7 +33,7 @@ export class WeaponStatsPage implements OnInit {
     }
   }
 
-  ngOnInit(): void {
-    
+  activateAmmo(ammo: AmmoStats) {
+    this.weapon.activeAmmo = ammo
   }
 }

@@ -1,18 +1,18 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { ComparisonTableComponent } from './comparison-table-component';
+import { StatBarComponent } from './stat-bar-component';
 
-describe('ComparisonTableComponent', () => {
-  let component: ComparisonTableComponent;
-  let fixture: ComponentFixture<ComparisonTableComponent>;
+describe('StatBarComponent', () => {
+  let component: StatBarComponent;
+  let fixture: ComponentFixture<StatBarComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [ComparisonTableComponent]
+      imports: [StatBarComponent]
     })
     .compileComponents();
 
-    fixture = TestBed.createComponent(ComparisonTableComponent);
+    fixture = TestBed.createComponent(StatBarComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

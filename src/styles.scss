@@ -29,6 +29,18 @@ p {
   display: none;
 }
 
+.stat-table {
+  font-size: 16px;
+    width: max(400px, 100%);
+  
+    tr {
+      td {
+        width: 50%;
+        padding: 0px 0.5rem;
+      }
+    }
+}
+
 @keyframes in-from-down {
   from {
     transform: translateY(100vh);

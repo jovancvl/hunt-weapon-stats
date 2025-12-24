@@ -1,0 +1,99 @@
+<table class="stat-table">
+  <tr>
+    <td>
+      <div>
+        <span>Damage:</span>
+      </div>
+      <hunt-stat-bar-component [max]="150" [value]="weapon().activeAmmo.baseDamage"></hunt-stat-bar-component>
+    </td>
+    <td>
+      <div>
+        <span>Effective Range:</span>
+      </div>
+      <hunt-stat-bar-component [max]="50" [value]="weapon().activeAmmo.optimalRange"></hunt-stat-bar-component>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <div>
+        <span>Drop range:</span>
+      </div>
+      <hunt-stat-bar-component [max]="200" [value]="weapon().activeAmmo.dropRange"></hunt-stat-bar-component>
+    </td>
+    <td>
+      <div>
+        <span>Muzzle Velocity:</span>
+      </div>
+      <hunt-stat-bar-component [max]="1000" [value]="weapon().activeAmmo.muzzleVelocity"></hunt-stat-bar-component>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <div>
+        <span>Rate of fire:</span>
+      </div>
+      <hunt-stat-bar-component [max]="100" [value]="weapon().rateOfFire"></hunt-stat-bar-component>
+    </td>
+    <td>
+      <div>
+        <span>Cycle time:</span>
+      </div>
+      <hunt-stat-bar-component [max]="8" [value]="weapon().cycleTime"></hunt-stat-bar-component>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <div>
+        <span>Reload Speed:</span>
+      </div>
+      <hunt-stat-bar-component [max]="20" [value]="weapon().reloadTime"></hunt-stat-bar-component>
+    </td>
+    <td>
+      <div>
+        <span>Spread:</span>
+      </div>
+      <hunt-stat-bar-component [max]="200" [value]="weapon().activeAmmo.spread"></hunt-stat-bar-component>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <div>
+        <span>Sway:</span>
+      </div>
+      <hunt-stat-bar-component [max]="150" [value]="weapon().sway"></hunt-stat-bar-component>
+    </td>
+    <td>
+      <div>
+        <span>Vertical Recoil:</span>
+      </div>
+      <hunt-stat-bar-component [max]="50" [value]="weapon().activeAmmo.verticalRecoil"></hunt-stat-bar-component>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <div>
+        <span>Melee damage:</span>
+      </div>
+      <hunt-stat-bar-component [max]="150" [value]="weapon().meleeDamage"></hunt-stat-bar-component>
+    </td>
+    <td>
+      <div>
+        <span>Stamina consumption:</span>
+      </div>
+      <hunt-stat-bar-component [max]="100" [value]="weapon().staminaConsumption"></hunt-stat-bar-component>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <div>
+        <span>Melee damage (Heavy):</span>
+      </div>
+      <hunt-stat-bar-component [max]="150" [value]="weapon().heavyMeleeDamage"></hunt-stat-bar-component>
+    <td>
+      <div>
+        <span>Stamina consumption (Heavy):</span>
+      </div>
+      <hunt-stat-bar-component [max]="100" [value]="weapon().heavyStaminaConsumption"></hunt-stat-bar-component>
+    </td>
+  </tr>
+</table>

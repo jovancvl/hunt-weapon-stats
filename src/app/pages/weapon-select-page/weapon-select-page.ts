@@ -7,12 +7,12 @@ import { AmmoName } from '../../arsenal/ammo';
 import { WEAPON_LIST } from '../../catalogue/__all-weapons';
 import { CompareEquipmentCardComponent } from "../../components/compare-equipment-card-component/compare-equipment-card-component";
 import { EquipmentCardComponent } from "../../components/equipment-card-component/equipment-card-component";
-import { ComparisonTableComponent } from "../../components/comparison-table-component/comparison-table-component";
 import { NgTemplateOutlet } from '@angular/common';
+import { StatComparisonTableComponent } from "../../components/stat-comparison-table-component/stat-comparison-table-component";
 
 @Component({
   selector: 'hunt-weapon-select-page',
-  imports: [CdkDrag, EquipmentCardComponent, CdkDropList, CdkDragPlaceholder, CompareEquipmentCardComponent, CdkDragPreview, NgTemplateOutlet, ComparisonTableComponent, RouterLink],
+  imports: [CdkDrag, EquipmentCardComponent, CdkDropList, CdkDragPlaceholder, CompareEquipmentCardComponent, CdkDragPreview, NgTemplateOutlet, RouterLink, StatComparisonTableComponent],
   templateUrl: './weapon-select-page.html',
   styleUrl: './weapon-select-page.scss'
 })
