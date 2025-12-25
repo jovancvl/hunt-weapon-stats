@@ -1,4 +1,5 @@
-import { AmmoStats, AmmoInfo } from "../arsenal/ammo";
+import { AmmoInfo } from "../arsenal/ammo-info";
+import { AmmoStats } from "../arsenal/ammo-stats";
 import { ActionType, Weapon } from "../arsenal/weapon";
 
 const BASE_DAMAGE = 246

@@ -1,13 +1,19 @@
 import { Routes } from '@angular/router';
+import { WeaponSelectPage } from './pages/weapon-select-page/weapon-select-page';
+import { WeaponStatsPage } from './pages/weapon-stats-page/weapon-stats-page';
 
 export const routes: Routes = [
   {
     path: '',
-    loadComponent: () => import('./pages/weapon-select-page/weapon-select-page').then(m => m.WeaponSelectPage)
+    component: WeaponSelectPage
+  },
+  {
+    path: 'test',
+    loadComponent: () => import('./pages/test-page/test-page').then(m => m.TestPage)
   },
   {
     path: ':id',
-    loadComponent: () => import('./pages/weapon-stats-page/weapon-stats-page').then(m => m.WeaponStatsPage)
+    component: WeaponStatsPage
   },
   {
     path: '**',

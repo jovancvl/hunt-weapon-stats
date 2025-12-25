@@ -1,146 +1,90 @@
-import { Component, computed, inject, signal, viewChild } from '@angular/core';
-import { FRONTIER_73C } from '../../catalogue/frontier-73c';
+import { Component, computed, inject, signal, WritableSignal } from '@angular/core';
 import { Weapon } from '../../arsenal/weapon';
 import { Router, RouterLink } from '@angular/router';
-import { CdkDropList, CdkDragDrop, CdkDrag, CdkDragPlaceholder, CdkDragPreview } from '@angular/cdk/drag-drop';
-import { AmmoName } from '../../arsenal/ammo';
 import { WEAPON_LIST } from '../../catalogue/__all-weapons';
-import { CompareEquipmentCardComponent } from "../../components/compare-equipment-card-component/compare-equipment-card-component";
 import { EquipmentCardComponent } from "../../components/equipment-card-component/equipment-card-component";
-import { NgTemplateOutlet } from '@angular/common';
-import { StatComparisonTableComponent } from "../../components/stat-comparison-table-component/stat-comparison-table-component";
+import { FRONTIER_73C } from '../../catalogue/frontier-73c';
+import { WeaponInfoComponent } from "../../components/weapon-info-component/weapon-info-component";
+import { AmmoName, EXPLOSIVE_AMMO_TYPES, BLEED_AMMO_TYPES, INCENDIARY_AMMO_TYPES, POISON_AMMO_TYPES, FMJ_AMMO_TYPES, SUBSONIC_AMMO_TYPES, HIGH_VELOCITY_AMMO_TYPES, RegularAmmo, SpecialAmmo } from '../../arsenal/ammo-name';
+import { ALL_FILTERS, BASE_AMMO_FILTERS, CUSTOM_AMMO_FILTERS, CustomAmmoFilter, Filter, RegularAmmoFilter, SIZE_FILTERS, SizeFilter, SpecialAmmoFilter } from '../../arsenal/filter';
 
 @Component({
   selector: 'hunt-weapon-select-page',
-  imports: [CdkDrag, EquipmentCardComponent, CdkDropList, CdkDragPlaceholder, CompareEquipmentCardComponent, CdkDragPreview, NgTemplateOutlet, RouterLink, StatComparisonTableComponent],
+  imports: [EquipmentCardComponent, RouterLink, WeaponInfoComponent],
   templateUrl: './weapon-select-page.html',
   styleUrl: './weapon-select-page.scss'
 })
 export class WeaponSelectPage {
   router = inject(Router)
-  weapons: Weapon[] = [...WEAPON_LIST]
-  comparisonOne: Weapon[] = [Object.assign({ ...FRONTIER_73C })]
-  comparisonTwo: Weapon[] = []
-  weaponListRef = viewChild.required<CdkDropList<Weapon[]>>('weaponList')
-  oneRef = viewChild.required<CdkDropList<Weapon[]>>('one')
-  twoRef = viewChild.required<CdkDropList<Weapon[]>>('two')
-
-  get weaponOne() {
-    return this.comparisonOne.length > 0 ? this.comparisonOne[0] : Weapon.EMPTY
-  }
-
-  get weaponTwo() {
-    return this.comparisonTwo.length > 0 ? this.comparisonTwo[0] : Weapon.EMPTY
-  }
-
-  isComparing = false
-  isDragging = false
+  weaponsList: Weapon[] = [...WEAPON_LIST]
+  weapon = FRONTIER_73C
 
   // filters
-  query = signal('')
+  sizeFilters = SIZE_FILTERS
+  baseAmmoFilters = BASE_AMMO_FILTERS
+  customAmmoFilters = CUSTOM_AMMO_FILTERS
 
-  isOneSlotActive = signal(false);
-  isTwoSlotActive = signal(false);
-  isThreeSlotActive = signal(false);
+  searchQuery = signal<string>('')
+  appliedSizeFilters = signal<SizeFilter[]>([])
+  appliedBaseAmmoFilters = signal<(RegularAmmoFilter | SpecialAmmoFilter)[]>([])
+  appliedCustomAmmoFilters = signal<CustomAmmoFilter[]>([])
 
-  isCompactActive = signal(false);
-  isMediumActive = signal(false);
-  isLongActive = signal(false);
-  isShellActive = signal(false);
-  isSpecialActive = signal(false);
+  filteredWeapons2 = computed(() => {
+    return this.weaponsList.filter((w) => {
+      const searchText = this.searchQuery().toLowerCase()
+      const sizeFilters = this.appliedSizeFilters()
+      const baseAmmoFilters = this.appliedBaseAmmoFilters()
+      const customAmmoFilters = this.appliedCustomAmmoFilters()
 
-  isExplosiveActive = signal(false);
-  isDumDumActive = signal(false);
-  isBurnActive = signal(false);
-  isPoisonActive = signal(false);
-  isFmjActive = signal(false);
-  isSubsonicActive = signal(false);
-  isHvActive = signal(false);
+      const isSearchFilterOff = searchText.length === 0
+      const isSizeFilterOff = sizeFilters.length === 0
+      const isBaseAmmoFilterOff = baseAmmoFilters.length === 0
+      const isCustomAmmoFilterOff = customAmmoFilters.length === 0
 
-  filteredWeapons = computed(() => {
-    return this.weapons.filter((w) => {
-      const isNameFilterOff = this.query().length < 1
-      const name = w.name.toLowerCase().includes(this.query().toLowerCase())
+      const isSearchApplied = w.name.toLowerCase().includes(searchText)
+      const isSizeApplied = sizeFilters.some(f => f.apply(w))
+      const isBaseAmmoApplied = baseAmmoFilters.some(f => f.apply(w));
+      const isCustomAmmoApplied = customAmmoFilters.some(f => f.apply(w));
 
-      const isSizeFilterOff = !this.isOneSlotActive() && !this.isTwoSlotActive() && !this.isThreeSlotActive()
-      const size = this.isOneSlotActive() && w.size === 1 || this.isTwoSlotActive() && w.size === 2 || this.isThreeSlotActive() && w.size === 3
-
-      const isAmmoFilterOff = !this.isCompactActive() && !this.isMediumActive() && !this.isLongActive() && !this.isShellActive() && !this.isSpecialActive()
-      const ammo = (this.isCompactActive() && w.baseAmmo.info.name === AmmoName.COMPACT) ||
-        (this.isMediumActive() && w.baseAmmo.info.name === AmmoName.MEDIUM) ||
-        (this.isLongActive() && w.baseAmmo.info.name === AmmoName.LONG) ||
-        (this.isShellActive() && w.baseAmmo.info.name === AmmoName.BUCKSHOT) ||
-        (this.isSpecialActive() && [AmmoName.ARROW, AmmoName.BOLT, AmmoName.CHUKONU, AmmoName.HAND_CROSSBOW, AmmoName.DOLCH, AmmoName.LANCE, AmmoName.NITRO].includes(w.baseAmmo.info.name))
-
-      const isCustomAmmoFilterOff = !this.isExplosiveActive() &&
-        !this.isDumDumActive() &&
-        !this.isBurnActive() &&
-        !this.isPoisonActive() &&
-        !this.isFmjActive() &&
-        !this.isSubsonicActive() &&
-        !this.isHvActive()
-      const customAmmo = (this.isExplosiveActive() && w.availableAmmo.filter((a) => [AmmoName.EXPLOSIVE, AmmoName.EXPLOSIVE_BOLT, AmmoName.EXPLOSIVE_CHUKONU, AmmoName.FRAG_ARROW, AmmoName.WAXED_FRAG_CHARGE].includes(a.info.name)).length > 0) ||
-        (this.isDumDumActive() && w.availableAmmo.filter((a) => [AmmoName.DUMDUM, AmmoName.ARROW, AmmoName.FLECHETTE, AmmoName.FRAG_ARROW, AmmoName.WAXED_FRAG_CHARGE, AmmoName.BOLT, AmmoName.CHUKONU, AmmoName.HAND_CROSSBOW, AmmoName.HARPOON, AmmoName.STEEL_BOLT, AmmoName.CONCERTINA_ARROW, AmmoName.SHREDDER].includes(a.info.name)).length > 0) ||
-        (this.isBurnActive() && w.availableAmmo.filter((a) => [AmmoName.INCENDIARY, AmmoName.INCENDIARY_CHUKONU, AmmoName.DRAGON_BREATH, AmmoName.DRAGON_BREATH_BOLT, AmmoName.DRAGON_BREATH_CHARGE].includes(a.info.name)).length > 0) ||
-        (this.isPoisonActive() && w.availableAmmo.filter((a) => [AmmoName.POISON, AmmoName.POISON_ARROW, AmmoName.POISON_BOLT].includes(a.info.name)).length > 0) ||
-        (this.isFmjActive() && w.availableAmmo.filter((a) => a.info.name === AmmoName.FMJ).length > 0) ||
-        (this.isSubsonicActive() && w.availableAmmo.filter((a) => a.info.name === AmmoName.SUBSONIC).length > 0) ||
-        (this.isHvActive() && w.availableAmmo.filter((a) => a.info.name === AmmoName.HIGH_VELOCITY).length > 0)
-
-      return (name || isNameFilterOff) && (size || isSizeFilterOff) && (ammo || isAmmoFilterOff) && (customAmmo || isCustomAmmoFilterOff)
+      return (
+        (isSearchFilterOff || isSearchApplied) && 
+        (isSizeFilterOff || isSizeApplied) && 
+        (isBaseAmmoFilterOff || isBaseAmmoApplied) && 
+        (isCustomAmmoFilterOff || isCustomAmmoApplied)
+      )
     })
   })
 
-  hoverOverWeapon(weapon: Weapon) {
-    if (this.isComparing) {
-      return
-    }
-    this.comparisonOne = [weapon]
+  onHover(w: Weapon) {
+    this.weapon = w
   }
 
-  goToWeapon(weapon: Weapon) {
-    // if (this.isComparing) {
-    //   return
-    // }
-    this.router.navigate([weapon.name])
+  updateSearchQuery(event: HTMLInputElement) {
+    this.searchQuery.set(event.value)
   }
 
-  moveToComparisonOne(event: CdkDragDrop<Weapon[]>) {
-    this.comparisonOne = [Object.assign({ ...event.item.data })]
+  updateSizeFilter(filter: SizeFilter) {
+    this.toggleFilter(this.appliedSizeFilters, filter);
   }
 
-  moveToComparisonTwo(event: CdkDragDrop<Weapon[]>) {
-    this.comparisonTwo = [Object.assign({ ...event.item.data })]
+  updateBaseAmmoFilter(filter: RegularAmmoFilter | SpecialAmmoFilter) {
+    this.toggleFilter(this.appliedBaseAmmoFilters, filter);
   }
 
-  moveFromCompare(event: CdkDragDrop<Weapon[]>) {
-    if (event.previousContainer === event.container) {
-      return
-    }
+  updateCustomAmmoFilter(filter: CustomAmmoFilter) {
+    this.toggleFilter(this.appliedCustomAmmoFilters, filter);
+  }
 
-    if (event.previousContainer === this.oneRef()) {
-      this.comparisonOne = []
-      return
+  private toggleFilter(filterList: WritableSignal<Filter[]>, filter: Filter) {
+    const list = filterList()
+    const index = list.findIndex(f => f.icon === filter.icon);
+    
+    if (index >= 0) {
+      list.splice(index, 1)
+    } else {
+      list.push(filter);
     }
 
-    if (event.previousContainer === this.twoRef()) {
-      this.comparisonTwo = []
-      return
-    }
-  }
-
-  onToggle(on: boolean) {
-    this.isComparing = on
-    if (!on) {
-      this.comparisonTwo = []
-    }
-  }
-
-  onDragStart() {
-    this.isDragging = true
-  }
-
-  onDragEnd() {
-    this.isDragging = false
+    filterList.set([...list])
   }
 }

@@ -1,59 +1,18 @@
 .content-container {
-    display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
+  display: grid;
+  grid-template-columns: repeat(3, minmax(400px, 33.3vw));
 
-    .left {
-        // background-color: #222831;
-    }
-
-    .middle {
-        // background-color: #393E46;
-        margin-left: auto;
-        margin-right: auto;
-    }
-
-    .right {
-        // background-color: #948979;
-    }
-}
-
-.button-container {
-  $button-size: 3rem;
-
-  display: flex;
-  flex-flow: row wrap;
-  justify-content: center;
-  gap: 4px;
-
-  button {
-    aspect-ratio: 1/1;
-    height: $button-size;
-    // width: 100%;
-    // height: 100%;
-    background-color: rgb(15, 15, 15);
-    border: 1px solid white;
-    box-sizing: border-box;
-    padding: 3px;
-    transition: border 200ms ease-in-out, background-color 200ms ease-in-out;
-
-    img {
-      aspect-ratio: 1/1;
-      height: 100%;
-      width: 100%;
-    }
-
-    &:hover {
-      background-color: rgb(31, 31, 31);
-    }
-
-    &.active {
-      border-color: gold;
-    }
+  .left {
+    // background-color: #222831;
   }
-}
 
-.gun-img {
-  padding: 1rem;
-  width: 100%;
-  box-sizing: border-box;
+  .middle {
+    // background-color: #393E46;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .right {
+    // background-color: #948979;
+  }
 }

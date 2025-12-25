@@ -1,0 +1,43 @@
+.button-container {
+  $button-size: 3rem;
+
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: center;
+  gap: 4px;
+
+  margin-bottom: 1rem;
+
+  button {
+    aspect-ratio: 1/1;
+    height: $button-size;
+    background-color: rgb(15, 15, 15);
+    border: 1px solid white;
+    box-sizing: border-box;
+    padding: 3px;
+    transition: border 200ms ease-in-out, background-color 200ms ease-in-out;
+
+    img {
+      aspect-ratio: 1/1;
+      height: 100%;
+    }
+
+    &:hover {
+      background-color: rgb(31, 31, 31);
+    }
+
+    &.active {
+      border-color: gold;
+    }
+  }
+}
+
+.gun-img {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  img {
+    width: max(400px, 75%);
+  }
+}

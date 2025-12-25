@@ -1,19 +1,18 @@
 import { Component, inject } from '@angular/core';
 import { HunterBodyComponent } from "../../components/hunter-body-component/hunter-body-component";
-import { FRONTIER_73C } from '../../catalogue/frontier-73c';
 import { ActivatedRoute, Router } from '@angular/router';
 import { WEAPON_MAP } from '../../catalogue/__all-weapons';
-import { AmmoStats } from '../../arsenal/ammo';
-import { StatTableComponent } from "../../components/stat-table-component/stat-table-component";
+import { Weapon } from '../../arsenal/weapon';
+import { WeaponInfoComponent } from "../../components/weapon-info-component/weapon-info-component";
 
 @Component({
   selector: 'hunt-weapon-stats-page',
-  imports: [HunterBodyComponent, StatTableComponent],
+  imports: [HunterBodyComponent, WeaponInfoComponent],
   templateUrl: './weapon-stats-page.html',
   styleUrl: './weapon-stats-page.scss'
 })
 export class WeaponStatsPage {
-  weapon = FRONTIER_73C
+  weapon = Weapon.EMPTY
   private activatedRoute = inject(ActivatedRoute)
   private router = inject(Router)
 
@@ -31,9 +30,5 @@ export class WeaponStatsPage {
       alert("weapon name not found")
       this.router.navigate([''])
     }
-  }
-
-  activateAmmo(ammo: AmmoStats) {
-    this.weapon.activeAmmo = ammo
   }
 }

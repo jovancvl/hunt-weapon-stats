@@ -19,8 +19,7 @@ html {
   }
 }
 
-h1,
-p {
+h1 {
   margin: 0px;
 }
 
@@ -31,14 +30,14 @@ p {
 
 .stat-table {
   font-size: 16px;
-    width: max(400px, 100%);
-  
-    tr {
-      td {
-        width: 50%;
-        padding: 0px 0.5rem;
-      }
+  width: 100%;
+
+  tr {
+    td {
+      width: 50%;
+      padding: 0px 0.5rem;
     }
+  }
 }
 
 @keyframes in-from-down {

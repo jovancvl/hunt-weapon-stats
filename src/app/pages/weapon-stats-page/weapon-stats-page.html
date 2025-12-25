@@ -1,20 +1,5 @@
 <div class="content-container">
-  <div class="left">
-    <h1>{{weapon.name}} {{weapon.activeAmmo !== weapon.baseAmmo ? weapon.activeAmmo.info.name : '' }}</h1>
-    <img class="gun-img" [src]="weapon.image" />
-    <p>Cost: {{weapon.cost}} | Size: {{weapon.size}} | Ammo type: {{weapon.baseAmmo.info.name}}</p>
-    <p>Ammo description: {{weapon.baseAmmo.info.description}}</p>
-
-    <div class="button-container">
-      @for (ammo of weapon.availableAmmo; track $index) {
-      <button (click)="activateAmmo(ammo)" [class.active]="ammo.info.name === weapon.activeAmmo.info.name">
-        <img [src]="ammo.info.icon">
-      </button>
-      }
-    </div>
-
-    <hunt-stat-table-component [weapon]="weapon"></hunt-stat-table-component>
-  </div>
+  <hunt-weapon-info-component class="left" [weapon]="weapon" [showCustomAmmo]="true"></hunt-weapon-info-component>
   <hunt-hunter-body-component class="middle" [weapon]="weapon"></hunt-hunter-body-component>
   <div class="right">
     <!-- extended stats -->

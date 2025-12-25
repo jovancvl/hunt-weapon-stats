@@ -1,4 +1,5 @@
-import { AmmoStats } from "./ammo"
+import { AmmoStats } from "./ammo-stats"
+import { AmmoName, SPECIAL_AMMO_TYPES } from "./ammo-name"
 
 export enum ActionType {
   BOLT_ACTION,
@@ -86,6 +87,18 @@ export class Weapon {
     this.image = weapon.image
   }
 
+  baseAmmoEquals(ammoType: AmmoName) {
+    return this.baseAmmo.info.name === ammoType
+  }
+
+  isBaseAmmoSpecialAmmo() {
+    return SPECIAL_AMMO_TYPES.has(this.baseAmmo.info.name)
+  }
+
+  hasAnyOfTheseCustomAmmoTypes(ammoTypes: Set<AmmoName>) {
+    return this.availableAmmo.find(a => ammoTypes.has(a.info.name)) !== undefined
+  }
+
   /**
    * Used to initialize a variable without using undefined or null
    */
@@ -108,7 +121,7 @@ export class Weapon {
     staminaConsumption: 0,
     heavyMeleeDamage: 0,
     heavyStaminaConsumption: 0,
-    image: "https://huntshowdown.wiki.gg/images/thumb/0/0f/Weapon_Frontier_73C.png/256px-Weapon_Frontier_73C.png"
+    image: "https://huntshowdown.wiki.gg/images/Weapon_Frontier_73C.png"
   })
 }
 
