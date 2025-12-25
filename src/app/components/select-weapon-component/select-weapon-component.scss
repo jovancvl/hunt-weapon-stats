@@ -1,12 +1,17 @@
+@use '../../../styles.scss';
 
 $filter-height: 40px;
 
+:host {
+  display: flex;
+  flex-direction: column;
+}
+
 .filters-container {
+  flex: 0 0 auto;
+
   box-sizing: border-box;
-  z-index: 10;
-  position: sticky;
   background-color: black;
-  top: 0px;
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
@@ -16,7 +21,7 @@ $filter-height: 40px;
   button {
     aspect-ratio: 1/1;
     height: $filter-height;
-    background-color: rgb(15, 15, 15);
+    background-color: styles.$item-bg-color;
     color: white;
     padding: 0px;
     border: 1px solid white;
@@ -30,7 +35,7 @@ $filter-height: 40px;
     }
 
     &:hover {
-      background-color: rgb(31, 31, 31);
+      background-color: styles.$item-bg-hover-color;
     }
 
     &.active {
@@ -41,12 +46,13 @@ $filter-height: 40px;
 
 .search-container {
   display: flex;
-  background-color: rgb(15, 15, 15);
+  background-color: styles.$item-bg-color;
   border: 1px solid white;
   border-radius: 0px;
   box-sizing: border-box;
   height: $filter-height;
   width: $filter-height * 6;
+  min-width: $filter-height * 3;
 
   img {
     box-sizing: border-box;
@@ -58,7 +64,7 @@ $filter-height: 40px;
     box-sizing: border-box;
     height: 100%;
     width: 100%;
-    background-color: rgb(15, 15, 15);
+    background-color: styles.$item-bg-color;
     color: white;
     border: none;
     font-size: large;
@@ -69,11 +75,16 @@ $filter-height: 40px;
   }
 }
 
+
+
 .equipment-card-list-container {
   padding: 0.5rem;
+  box-sizing: border-box;
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
   gap: 6px;
+
+  overflow-y: auto;
 
   .always-show {
     display: block !important;

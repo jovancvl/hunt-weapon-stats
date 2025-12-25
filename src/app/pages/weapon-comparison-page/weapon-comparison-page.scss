@@ -1,0 +1,107 @@
+@use '../../../styles.scss';
+
+.content-container {
+  display: grid;
+  grid-template-columns: minmax(300px, 1fr) minmax(300px, 3fr) minmax(300px, 1fr);
+}
+
+.hunter-body-left {
+  margin-left: auto;
+}
+
+.hunter-body-right {
+  margin-right: auto;
+}
+
+.left-weapon, .right-weapon {
+  display: inline-block;
+  // border: 2px solid white;
+  box-sizing: border-box;
+  border-radius: 25px;
+  aspect-ratio: 1/1;
+  height: 1.2rem;
+}
+
+.left-weapon {
+  background-color: white;
+}
+
+.right-weapon {
+  background-color: #e0c528ff;
+}
+
+.weapon-info-container {
+  padding: 0.5rem;
+}
+
+.weapon-title-container {
+  display: flex;
+  flex-flow: row nowrap;
+  align-items: center;
+  gap: 1rem;
+
+  h1 {
+    display: inline;
+  }
+
+  button {
+    margin-right: 1rem;
+  }
+}
+
+.button-container {
+  $button-size: 3rem;
+
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: center;
+  gap: 4px;
+
+  margin-bottom: 1rem;
+
+  button {
+    aspect-ratio: 1/1;
+    height: $button-size;
+    background-color: styles.$item-bg-color;
+    border: 1px solid white;
+    box-sizing: border-box;
+    padding: 3px;
+    transition: border 200ms ease-in-out, background-color 200ms ease-in-out;
+
+    img {
+      aspect-ratio: 1/1;
+      height: 100%;
+    }
+
+    &:hover {
+      background-color: styles.$item-bg-hover-color;
+    }
+
+    &.active {
+      border-color: gold;
+    }
+  }
+}
+
+.gun-img {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  img {
+    width: max(300px, 75%);
+  }
+}
+
+.compare-container {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(300px, 50%));
+  grid-auto-rows: auto;
+
+  h1 {
+    width: 100%;
+    text-overflow: ellipsis;
+    white-space:nowrap;
+    overflow: hidden;
+  }
+}

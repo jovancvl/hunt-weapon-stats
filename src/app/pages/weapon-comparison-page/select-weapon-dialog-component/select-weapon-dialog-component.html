@@ -1,0 +1,9 @@
+<div class="inner-container">
+  <div class="title-container">
+    <h1>Select weapon for comparison</h1>
+    <button class="icon-only-button" (click)="close()">
+      <span class="material-symbols-outlined">close</span>
+    </button>
+  </div>
+  <hunt-select-weapon-component (onSelect)="onSelect($event)"></hunt-select-weapon-component>
+</div>

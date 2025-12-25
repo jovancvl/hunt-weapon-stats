@@ -1,49 +1,52 @@
 @use '../../../styles.scss';
 
 .equipment-card {
-    position: relative;
-    aspect-ratio: 21 / 9;
-    overflow: hidden;
+  position: relative;
+  aspect-ratio: 21 / 9;
+  overflow: hidden;
+  box-sizing: border-box;
+  border: 1px solid white;
+  background-color: styles.$item-bg-color;
+  transition: background-color 200ms ease-in-out;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  &:hover {
+    background-color: styles.$item-bg-hover-color;
+  }
+
+  img {
+    width: 90%;
+    height: 90%;
+    object-fit: contain;
     box-sizing: border-box;
-    border: 1px solid white;
-    background-color: styles.$item-bg-color;
-    padding: 0rem 1rem;
-    transition: background-color 200ms ease-in-out;
+  }
 
-    &:hover {
-        background-color: styles.$item-bg-hover-color;
-    }
+  span {
+    position: absolute;
+    color: white;
+    user-select: none;
+  }
 
-    img {
-        width: 100%;
-        height: 100%;
-        object-fit: contain;
-        box-sizing: border-box;
-    }
+  .top-left {
+    top: 0.5rem;
+    left: 0.5rem;
+  }
 
-    span {
-        position: absolute;
-        color: white;
-        user-select: none;
-    }
+  .top-right {
+    top: 0.5rem;
+    right: 0.5rem;
+  }
 
-    .top-left {
-        top: 0.5rem;
-        left: 0.5rem;
-    }
+  .bottom-left {
+    bottom: 0.5rem;
+    left: 0.5rem;
+  }
 
-    .top-right {
-        top: 0.5rem;
-        right: 0.5rem;
-    }
-
-    .bottom-left {
-        bottom: 0.5rem;
-        left: 0.5rem;
-    }
-
-    .bottom-right {
-        bottom: 0.5rem;
-        right: 0.5rem;
-    }
+  .bottom-right {
+    bottom: 0.5rem;
+    right: 0.5rem;
+  }
 }

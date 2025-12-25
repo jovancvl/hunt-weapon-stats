@@ -1,0 +1,64 @@
+<div class="content-container">
+  <hunt-hunter-body-component class="hunter-body-left" [weapon]="left"></hunt-hunter-body-component>
+  <div class="weapon-info-container">
+    <div class="compare-container">
+      <div>
+          <div class="weapon-title-container">
+            <span class="left-weapon"></span>
+            <h1>
+              {{left.name}} {{left.activeAmmo !== left.baseAmmo ? left.activeAmmo.info.name : '' }}
+            </h1>
+            <button class="icon-only-button" (click)="openWeaponSelectDialog('left')">
+              <span class="material-symbols-outlined">swap_vert</span>
+            </button>
+          </div>
+        <div class="gun-img">
+          <img [src]="left.image" />
+        </div>
+        <!-- <p>Cost: {{left.cost}} | Size: {{left.size}} | Ammo type: {{left.baseAmmo.info.name}}</p>
+        <p>Ammo description: {{left.baseAmmo.info.description}}</p> -->
+
+        <div class="button-container">
+          @for (ammo of left.availableAmmo; track $index) {
+          <button (click)="activateAmmo(left, ammo)" [class.active]="ammo.info.name === left.activeAmmo.info.name">
+            <img [src]="ammo.info.icon">
+          </button>
+          }
+        </div>
+      </div>
+      <div>
+        <div class="weapon-title-container">
+          <span class="right-weapon"></span>
+          <h1>
+            {{right.name}} {{right.activeAmmo !== right.baseAmmo ? right.activeAmmo.info.name : '' }}
+          </h1>
+          <button class="icon-only-button" (click)="openWeaponSelectDialog('right')">
+            <span class="material-symbols-outlined">swap_vert</span>
+          </button>
+        </div>
+
+        <div class="gun-img">
+          <img [src]="right.image" />
+        </div>
+        <!-- <p>Cost: {{right.cost}} | Size: {{right.size}} | Ammo type: {{right.baseAmmo.info.name}}</p>
+        <p>Ammo description: {{right.baseAmmo.info.description}}</p> -->
+
+        <div class="button-container">
+          @for (ammo of right.availableAmmo; track $index) {
+          <button (click)="activateAmmo(right, ammo)" [class.active]="ammo.info.name === right.activeAmmo.info.name">
+            <img [src]="ammo.info.icon">
+          </button>
+          }
+        </div>
+      </div>
+    </div>
+    <hr>
+    <div class="compare-container">
+      <hunt-stat-comparison-table-component [left]="left" [right]="right"></hunt-stat-comparison-table-component>
+      <div>
+        <h2>Two tap ranges go here</h2>
+      </div>
+    </div>
+  </div>
+  <hunt-hunter-body-component class="hunter-body-right" [weapon]="right"></hunt-hunter-body-component>
+</div>

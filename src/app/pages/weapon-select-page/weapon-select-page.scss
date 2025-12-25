@@ -4,8 +4,7 @@
 .content-container {
   display: grid;
   grid-template-columns: minmax(550px, 2fr) minmax(400px, 1fr);
-  height: calc(100vh - styles.$nav-bar-height);
-  overflow-y: hidden;
+  height: 100%;
 
   >* {
     overflow-y: auto;

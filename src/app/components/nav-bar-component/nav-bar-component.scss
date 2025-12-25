@@ -1,20 +1,32 @@
 nav {
   display: flex;
-  gap: 10px;
+  gap: 1rem;
   align-items: center;
   height: 3rem;
+  padding: 5px 1rem;
 
   a {
     display: flex;
     align-items: center;
     height: 100%;
-    font-size: xx-large;
-    font-weight: 600;
+    font-size: x-large;
+    // font-weight: 600;
+    padding: 5px;
+    margin: 5px;
+    box-sizing: border-box;
+
+    &:hover {
+      text-decoration:underline;
+    }
 
     img {
       box-sizing: border-box;
       height: 100%;
-      padding: 10px;
+      // padding: 10px;
     }
   }
+}
+
+.spacer {
+  flex-grow: 1;
 }

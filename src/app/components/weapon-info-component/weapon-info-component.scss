@@ -1,3 +1,5 @@
+@use '../../../styles.scss';
+
 .weapon-info-container {
   padding: 0.5rem;
 }
@@ -15,7 +17,7 @@
   button {
     aspect-ratio: 1/1;
     height: $button-size;
-    background-color: rgb(15, 15, 15);
+    background-color: styles.$item-bg-color;
     border: 1px solid white;
     box-sizing: border-box;
     padding: 3px;
@@ -27,7 +29,7 @@
     }
 
     &:hover {
-      background-color: rgb(31, 31, 31);
+      background-color: styles.$item-bg-hover-color;
     }
 
     &.active {

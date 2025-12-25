@@ -2,7 +2,7 @@
 @use "sass:math";
 
 $nav-bar-height: 3rem;
-$item-bg-hover-color: rgb(25, 25, 25);
+$item-bg-hover-color: rgb(30, 30, 30);
 $item-bg-color: rgb(10, 10, 10);
 $compare-card-ratio: math.div(12, 3);
 
@@ -19,13 +19,48 @@ html {
   }
 }
 
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
 h1 {
   margin: 0px;
 }
 
+.material-symbols-outlined {
+  font-variation-settings:
+    'FILL' 0,
+    'wght' 300,
+    'GRAD' 0,
+    'opsz' 24
+}
+
+
 // cdkDrag doesn't allow putting this css inside the component
 .equipment-card-list-container .cdk-drag-placeholder {
   display: none;
+}
+
+.icon-only-button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  box-sizing: border-box;
+  border: none;
+  border-radius: 100%;
+  padding: 3px;
+  background: none;
+  transition: background-color ease-in-out 200ms;
+
+  .material-symbols-outlined {
+    font-size: xx-large;
+    color: white;
+  }
+
+  &:hover {
+    background: $item-bg-hover-color;
+  }
 }
 
 .stat-table {
