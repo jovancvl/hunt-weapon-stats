@@ -1,0 +1,81 @@
+
+$filter-height: 40px;
+
+.filters-container {
+  box-sizing: border-box;
+  z-index: 10;
+  position: sticky;
+  background-color: black;
+  top: 0px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 5px;
+  padding: 0.5rem 1rem;
+
+  button {
+    aspect-ratio: 1/1;
+    height: $filter-height;
+    background-color: rgb(15, 15, 15);
+    color: white;
+    padding: 0px;
+    border: 1px solid white;
+    box-sizing: border-box;
+    transition: border 200ms ease-in-out, background-color 200ms ease-in-out;
+
+    img {
+      height: 100%;
+      aspect-ratio: 1/1;
+      transition: border 200ms ease-in-out, background-color 200ms ease-in-out;
+    }
+
+    &:hover {
+      background-color: rgb(31, 31, 31);
+    }
+
+    &.active {
+      border-color: gold;
+    }
+  }
+}
+
+.search-container {
+  display: flex;
+  background-color: rgb(15, 15, 15);
+  border: 1px solid white;
+  border-radius: 0px;
+  box-sizing: border-box;
+  height: $filter-height;
+  width: $filter-height * 6;
+
+  img {
+    box-sizing: border-box;
+    padding: 5px;
+    height: 100%;
+  }
+
+  input {
+    box-sizing: border-box;
+    height: 100%;
+    width: 100%;
+    background-color: rgb(15, 15, 15);
+    color: white;
+    border: none;
+    font-size: large;
+
+    &:focus {
+      outline: none;
+    }
+  }
+}
+
+.equipment-card-list-container {
+  padding: 0.5rem;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  gap: 6px;
+
+  .always-show {
+    display: block !important;
+  }
+}

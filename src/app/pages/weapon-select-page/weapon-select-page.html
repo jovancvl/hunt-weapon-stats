@@ -1,40 +1,4 @@
 <div class="content-container">
-  <!-- left start -->
-  <div>
-    <div class="filters-container">
-      <div class="search-container">
-        <img src="ammo-icons/ammo_filter-search.svg">
-        <input placeholder="Search" (input)="updateSearchQuery($event.target)" />
-      </div>
-      @for (filter of sizeFilters; track $index) {
-        <button (click)="updateSizeFilter(filter)" [class.active]="appliedSizeFilters().includes(filter)">
-          <img [src]="filter.icon" />
-        </button>
-      }
-      @for (filter of baseAmmoFilters; track $index) {
-        <button (click)="updateBaseAmmoFilter(filter)" [class.active]="appliedBaseAmmoFilters().includes(filter)">
-          <img [src]="filter.icon" />
-        </button>
-      }
-
-      @for (filter of customAmmoFilters; track $index) {
-        <button (click)="updateCustomAmmoFilter(filter)" [class.active]="appliedCustomAmmoFilters().includes(filter)">
-          <img [src]="filter.icon" />
-        </button>
-      }
-    </div>
-
-    <div class="equipment-card-list-container">
-      @for (item of filteredWeapons2(); track $index) {
-      <hunt-equipment-card-component class="always-show" [weapon]="item" [routerLink]="item.name"
-        (mouseover)="onHover(item)"></hunt-equipment-card-component>
-      }
-    </div>
-  </div>
-  <!-- left end -->
-  <!-- right start -->
-  <div class="right">
-    <hunt-weapon-info-component [weapon]="weapon"></hunt-weapon-info-component>
-  </div>
-  <!-- right end -->
+  <hunt-select-weapon-component (onHover)="onHover($event)" (onSelect)="onSelect($event)"></hunt-select-weapon-component>
+  <hunt-weapon-info-component [weapon]="weapon"></hunt-weapon-info-component>
 </div>

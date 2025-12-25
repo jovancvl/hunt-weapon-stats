@@ -1,0 +1,29 @@
+<div class="filters-container">
+  <div class="search-container" (click)="search.focus()">
+    <img src="ammo-icons/ammo_filter-search.svg">
+    <input #search placeholder="Search" (input)="updateSearchQuery($event.target)" />
+  </div>
+  @for (filter of sizeFilters; track $index) {
+  <button (click)="updateSizeFilter(filter)" [class.active]="appliedSizeFilters().includes(filter)">
+    <img [src]="filter.icon" />
+  </button>
+  }
+  @for (filter of baseAmmoFilters; track $index) {
+  <button (click)="updateBaseAmmoFilter(filter)" [class.active]="appliedBaseAmmoFilters().includes(filter)">
+    <img [src]="filter.icon" />
+  </button>
+  }
+
+  @for (filter of customAmmoFilters; track $index) {
+  <button (click)="updateCustomAmmoFilter(filter)" [class.active]="appliedCustomAmmoFilters().includes(filter)">
+    <img [src]="filter.icon" />
+  </button>
+  }
+</div>
+
+<div class="equipment-card-list-container">
+  @for (item of filteredWeapons(); track $index) {
+  <hunt-equipment-card-component [weapon]="item" (click)="onWeaponSelect(item)"
+    (mouseover)="onWeaponHover(item)"></hunt-equipment-card-component>
+  }
+</div>
