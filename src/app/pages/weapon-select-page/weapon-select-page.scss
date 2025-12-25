@@ -1,6 +1,7 @@
 @use '../../../styles.scss';
+@use 'sass:math';
 
-$filter-height: 2.2rem;
+$filter-height: 40px;
 
 .content-container {
   display: grid;
@@ -26,12 +27,9 @@ $filter-height: 2.2rem;
   gap: 5px;
   padding: 0.5rem 1rem;
 
-  >* {
-    height: $filter-height;
-  }
-
   button {
     aspect-ratio: 1/1;
+    height: $filter-height;
     background-color: rgb(15, 15, 15);
     color: white;
     padding: 0px;
@@ -62,6 +60,7 @@ $filter-height: 2.2rem;
   border-radius: 0px;
   box-sizing: border-box;
   height: $filter-height;
+  width: $filter-height * 6;
 
   img {
     box-sizing: border-box;
@@ -72,7 +71,7 @@ $filter-height: 2.2rem;
   input {
     box-sizing: border-box;
     height: 100%;
-    width: 10rem;
+    width: 100%;
     background-color: rgb(15, 15, 15);
     color: white;
     border: none;
