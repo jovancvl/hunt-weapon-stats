@@ -4,27 +4,27 @@ import { ActionType, Weapon } from "../arsenal/weapon"
 
 const BASE_DAMAGE = 150
 const OPTIMAL_RANGE = 10
-const DROP_RANGE = 10
-const SPREAD = 40
-const VERTICAL_RECOIL = 35
-const MUZZLE_VELOCITY = 350
-const AMMO_RESERVE = 3
+const DROP_RANGE = 25
+const SPREAD = 35
+const VERTICAL_RECOIL = 15
+const MUZZLE_VELOCITY = 425
+const AMMO_RESERVE = 18
 
-const NAME = "LeMat Shotgun"
-const COST = 83
-const SIZE = 1
+const NAME = "LeMat Carbine Shotgun"
+const COST = 115
+const SIZE = 3
 const ACTION = ActionType.SINGLE_SHOT
-const SWAY = 128
-const RATE_OF_FIRE = 12
-const CYCLE_TIME = 5.2
-const RELOAD_TIME = 3.9
+const SWAY = 77
+const RATE_OF_FIRE = 10
+const CYCLE_TIME = 6.3
+const RELOAD_TIME = 5
 const MAGAZINE = 1
 const HAS_EXTRA_BULLET = false
-const MELEE_DAMAGE = 13
-const STAMINA_CONSUMPTION = 10
-const HEAVY_MELEE_DAMAGE = 31
-const HEAVY_STAMINA_CONSUMPTION = 20
-const IMAGE = "https://huntshowdown.wiki.gg/images/Weapon_LeMat.png"
+const MELEE_DAMAGE = 27
+const STAMINA_CONSUMPTION = 15
+const HEAVY_MELEE_DAMAGE = 54
+const HEAVY_STAMINA_CONSUMPTION = 25
+const IMAGE = "https://huntshowdown.wiki.gg/images/Weapon_LeMat_Carbine.png"
 
 /**
  * Includes all available ammo types, including the base ammo, which is always first.
@@ -46,22 +46,22 @@ const AMMO = [
     info: AmmoInfo.SHELL_DRAGONBREATH,
     scarce: false,
 
-    baseDamage: BASE_DAMAGE - 110,
+    baseDamage: BASE_DAMAGE - 100,
     optimalRange: OPTIMAL_RANGE - 6,
     dropRange: DROP_RANGE,
-    spread: SPREAD + 110,
+    spread: SPREAD + 90,
     verticalRecoil: VERTICAL_RECOIL,
-    muzzleVelocity: MUZZLE_VELOCITY - 250,
+    muzzleVelocity: MUZZLE_VELOCITY - 325,
     ammoReserve: AMMO_RESERVE
   }),
   new AmmoStats({
     info: AmmoInfo.SHELL_SLUG,
     scarce: false,
 
-    baseDamage: BASE_DAMAGE + 7,
+    baseDamage: BASE_DAMAGE + 15,
     optimalRange: OPTIMAL_RANGE + 2,
     dropRange: DROP_RANGE,
-    spread: SPREAD + 75,
+    spread: SPREAD + 60,
     verticalRecoil: VERTICAL_RECOIL,
     muzzleVelocity: MUZZLE_VELOCITY,
     ammoReserve: AMMO_RESERVE - 1
@@ -70,17 +70,17 @@ const AMMO = [
     info: AmmoInfo.SHELL_STARSHELL,
     scarce: false,
 
-    baseDamage: BASE_DAMAGE - BASE_DAMAGE + 1,
-    optimalRange: OPTIMAL_RANGE - OPTIMAL_RANGE + 1,
+    baseDamage: 1,
+    optimalRange: 1,
     dropRange: DROP_RANGE,
-    spread: SPREAD + 10,
+    spread: SPREAD + 15,
     verticalRecoil: VERTICAL_RECOIL,
-    muzzleVelocity: MUZZLE_VELOCITY - 275,
+    muzzleVelocity: MUZZLE_VELOCITY - 350,
     ammoReserve: AMMO_RESERVE
   }),
 ]
 
-export const LEMAT_SHOTGUN: Weapon = new Weapon({
+export const LEMAT_CARBINE_SHOTGUN: Weapon = new Weapon({
   name: NAME,
   cost: COST,
   size: SIZE,

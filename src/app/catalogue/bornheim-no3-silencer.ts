@@ -2,29 +2,29 @@ import { AmmoInfo } from "../arsenal/ammo-info";
 import { AmmoStats } from "../arsenal/ammo-stats";
 import { ActionType, Weapon } from "../arsenal/weapon";
 
-const BASE_DAMAGE = 97
+const BASE_DAMAGE = 70
 const OPTIMAL_RANGE = 20
-const DROP_RANGE = 75
-const SPREAD = 40
+const DROP_RANGE = 70
+const SPREAD = 25
 const VERTICAL_RECOIL = 6
-const MUZZLE_VELOCITY = 375
-const AMMO_RESERVE = 18
+const MUZZLE_VELOCITY = 323
+const AMMO_RESERVE = 15
 
-const NAME = "LeMat"
-const COST = 83
+const NAME = "Bornheim No. 3 Silencer"
+const COST = 174
 const SIZE = 1
-const ACTION = ActionType.SINGLE_ACTION
+const ACTION = ActionType.SEMI_OR_FULL_AUTO
 const SWAY = 128
-const RATE_OF_FIRE = 25
-const CYCLE_TIME = 1.3
-const RELOAD_TIME = 15.8
-const MAGAZINE = 9
-const HAS_EXTRA_BULLET = false
+const RATE_OF_FIRE = 65
+const CYCLE_TIME = 0.2
+const RELOAD_TIME = 7.4
+const MAGAZINE = 5
+const HAS_EXTRA_BULLET = true
 const MELEE_DAMAGE = 13
-const STAMINA_CONSUMPTION = 10
+const STAMINA_CONSUMPTION = 12
 const HEAVY_MELEE_DAMAGE = 31
 const HEAVY_STAMINA_CONSUMPTION = 20
-const IMAGE = "https://huntshowdown.wiki.gg/images/Weapon_LeMat.png"
+const IMAGE = "https://huntshowdown.wiki.gg/images/Weapon_Bornheim_No._3_Silencer.png"
 
 /**
  * Includes all available ammo types, including the base ammo, which is always first.
@@ -43,16 +43,16 @@ const AMMO = [
     ammoReserve: AMMO_RESERVE
   }),
   new AmmoStats({
-    info: AmmoInfo.COMPACT_FMJ,
+    info: AmmoInfo.COMPACT_HIGH_VELOCITY,
     scarce: false,
 
-    baseDamage: BASE_DAMAGE,
-    optimalRange: OPTIMAL_RANGE + 10,
-    dropRange: DROP_RANGE - 5,
+    baseDamage: BASE_DAMAGE - 4,
+    optimalRange: OPTIMAL_RANGE,
+    dropRange: DROP_RANGE + 5,
     spread: SPREAD,
-    verticalRecoil: VERTICAL_RECOIL + 2,
-    muzzleVelocity: MUZZLE_VELOCITY - 40,
-    ammoReserve: AMMO_RESERVE
+    verticalRecoil: VERTICAL_RECOIL + 1.5,
+    muzzleVelocity: MUZZLE_VELOCITY + 75,
+    ammoReserve: AMMO_RESERVE - 5
   }),
   new AmmoStats({
     info: AmmoInfo.COMPACT_INCENDIARY,
@@ -66,9 +66,21 @@ const AMMO = [
     muzzleVelocity: MUZZLE_VELOCITY,
     ammoReserve: AMMO_RESERVE
   }),
+  new AmmoStats({
+    info: AmmoInfo.COMPACT_SUBSONIC,
+    scarce: false,
+
+    baseDamage: BASE_DAMAGE,
+    optimalRange: OPTIMAL_RANGE,
+    dropRange: DROP_RANGE - 15,
+    spread: SPREAD,
+    verticalRecoil: VERTICAL_RECOIL,
+    muzzleVelocity: MUZZLE_VELOCITY - 87,
+    ammoReserve: AMMO_RESERVE + 3
+  }),
 ]
 
-export const LEMAT: Weapon = new Weapon({
+export const BORNHEIM_NO3_SILENCER: Weapon = new Weapon({
   name: NAME,
   cost: COST,
   size: SIZE,

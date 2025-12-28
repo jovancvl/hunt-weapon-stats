@@ -1,34 +1,37 @@
-import { AmmoInfo } from "../arsenal/ammo-info"
-import { AmmoStats } from "../arsenal/ammo-stats"
-import { ActionType, Weapon } from "../arsenal/weapon"
+import { AmmoInfo } from "../arsenal/ammo-info";
+import { AmmoStats } from "../arsenal/ammo-stats";
+import { ActionType, Weapon } from "../arsenal/weapon";
 
-const BASE_DAMAGE = 110
-const OPTIMAL_RANGE = 20
+const BASE_DAMAGE = 123
+const OPTIMAL_RANGE = 30
 const DROP_RANGE = 140
-const SPREAD = 17.5
-const VERTICAL_RECOIL = 5
-const MUZZLE_VELOCITY = 400
-const AMMO_RESERVE = 28
+const SPREAD = 25
+const VERTICAL_RECOIL = 11
+const MUZZLE_VELOCITY = 600
+const AMMO_RESERVE = 12
 
-const NAME = "Frontier 73C"
-const COST = 41
+const NAME = "Centennial"
+const COST = 157
 const SIZE = 3
 const ACTION = ActionType.LEVER_ACTION
 const SWAY = 77
-const RATE_OF_FIRE = 29
-const CYCLE_TIME = 1.2
-const RELOAD_TIME = 10.1
-const MAGAZINE = 7
+const RATE_OF_FIRE = 23
+const CYCLE_TIME = 1.6
+const RELOAD_TIME = 15.5
+const MAGAZINE = 9
 const HAS_EXTRA_BULLET = true
 const MELEE_DAMAGE = 27
-const STAMINA_CONSUMPTION = 12
+const STAMINA_CONSUMPTION = 15
 const HEAVY_MELEE_DAMAGE = 54
 const HEAVY_STAMINA_CONSUMPTION = 25
-const IMAGE = "https://huntshowdown.wiki.gg/images/Weapon_Frontier_73C.png"
+const IMAGE = "https://huntshowdown.wiki.gg/images/Weapon_Centennial.png"
 
+/**
+ * Includes all available ammo types, including the base ammo, which is always first.
+ */
 const AMMO = [
   new AmmoStats({
-    info: AmmoInfo.COMPACT,
+    info: AmmoInfo.MEDIUM,
     scarce: false,
 
     baseDamage: BASE_DAMAGE,
@@ -40,31 +43,43 @@ const AMMO = [
     ammoReserve: AMMO_RESERVE
   }),
   new AmmoStats({
-    info: AmmoInfo.COMPACT_FMJ,
+    info: AmmoInfo.MEDIUM_DUMDUM,
+    scarce: true,
+
+    baseDamage: BASE_DAMAGE,
+    optimalRange: OPTIMAL_RANGE,
+    dropRange: DROP_RANGE - 15,
+    spread: SPREAD,
+    verticalRecoil: VERTICAL_RECOIL,
+    muzzleVelocity: MUZZLE_VELOCITY - 120,
+    ammoReserve: AMMO_RESERVE
+  }),
+  new AmmoStats({
+    info: AmmoInfo.MEDIUM_FMJ,
     scarce: false,
 
     baseDamage: BASE_DAMAGE,
     optimalRange: OPTIMAL_RANGE + 10,
     dropRange: DROP_RANGE - 15,
-    spread: SPREAD + 10,
+    spread: SPREAD,
     verticalRecoil: VERTICAL_RECOIL + 3,
-    muzzleVelocity: MUZZLE_VELOCITY - 70,
+    muzzleVelocity: MUZZLE_VELOCITY - 120,
     ammoReserve: AMMO_RESERVE
   }),
   new AmmoStats({
-    info: AmmoInfo.COMPACT_HIGH_VELOCITY,
+    info: AmmoInfo.MEDIUM_HIGH_VELOCITY,
     scarce: false,
 
-    baseDamage: BASE_DAMAGE - 6,
+    baseDamage: BASE_DAMAGE - 7,
     optimalRange: OPTIMAL_RANGE,
-    dropRange: DROP_RANGE + 20,
+    dropRange: DROP_RANGE + 15,
     spread: SPREAD,
     verticalRecoil: VERTICAL_RECOIL + 3,
-    muzzleVelocity: MUZZLE_VELOCITY + 100,
-    ammoReserve: AMMO_RESERVE - 10
+    muzzleVelocity: MUZZLE_VELOCITY + 125,
+    ammoReserve: AMMO_RESERVE - 4
   }),
   new AmmoStats({
-    info: AmmoInfo.COMPACT_INCENDIARY,
+    info: AmmoInfo.MEDIUM_POISON,
     scarce: false,
 
     baseDamage: BASE_DAMAGE,
@@ -76,32 +91,20 @@ const AMMO = [
     ammoReserve: AMMO_RESERVE
   }),
   new AmmoStats({
-    info: AmmoInfo.COMPACT_POISON,
+    info: AmmoInfo.MEDIUM_SUBSONIC,
     scarce: false,
 
     baseDamage: BASE_DAMAGE,
     optimalRange: OPTIMAL_RANGE,
-    dropRange: DROP_RANGE,
+    dropRange: DROP_RANGE - 35,
     spread: SPREAD,
     verticalRecoil: VERTICAL_RECOIL,
-    muzzleVelocity: MUZZLE_VELOCITY,
-    ammoReserve: AMMO_RESERVE
+    muzzleVelocity: MUZZLE_VELOCITY - 267,
+    ammoReserve: AMMO_RESERVE + 2
   }),
-  new AmmoStats({
-    info: AmmoInfo.COMPACT_SUBSONIC,
-    scarce: false,
-
-    baseDamage: BASE_DAMAGE,
-    optimalRange: OPTIMAL_RANGE,
-    dropRange: DROP_RANGE - 30,
-    spread: SPREAD,
-    verticalRecoil: VERTICAL_RECOIL,
-    muzzleVelocity: MUZZLE_VELOCITY - 137,
-    ammoReserve: AMMO_RESERVE + 6
-  })
 ]
 
-export const FRONTIER_73C: Weapon = new Weapon({
+export const CENTENNIAL: Weapon = new Weapon({
   name: NAME,
   cost: COST,
   size: SIZE,

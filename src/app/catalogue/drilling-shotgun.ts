@@ -1,30 +1,30 @@
-import { AmmoInfo } from "../arsenal/ammo-info"
-import { AmmoStats } from "../arsenal/ammo-stats"
-import { ActionType, Weapon } from "../arsenal/weapon"
+import { AmmoInfo } from "../arsenal/ammo-info";
+import { AmmoStats } from "../arsenal/ammo-stats";
+import { ActionType, Weapon } from "../arsenal/weapon";
 
 const BASE_DAMAGE = 150
-const OPTIMAL_RANGE = 10
-const DROP_RANGE = 10
-const SPREAD = 40
-const VERTICAL_RECOIL = 35
-const MUZZLE_VELOCITY = 350
-const AMMO_RESERVE = 3
+const OPTIMAL_RANGE = 12
+const DROP_RANGE = 20
+const SPREAD = 30
+const VERTICAL_RECOIL = 32
+const MUZZLE_VELOCITY = 450
+const AMMO_RESERVE = 5
 
-const NAME = "LeMat Shotgun"
-const COST = 83
-const SIZE = 1
+const NAME = "Drilling Shotgun"
+const COST = 510
+const SIZE = 3
 const ACTION = ActionType.SINGLE_SHOT
-const SWAY = 128
-const RATE_OF_FIRE = 12
-const CYCLE_TIME = 5.2
-const RELOAD_TIME = 3.9
+const SWAY = 77
+const RATE_OF_FIRE = 9
+const CYCLE_TIME = 6.2
+const RELOAD_TIME = 5.1
 const MAGAZINE = 1
 const HAS_EXTRA_BULLET = false
-const MELEE_DAMAGE = 13
-const STAMINA_CONSUMPTION = 10
-const HEAVY_MELEE_DAMAGE = 31
-const HEAVY_STAMINA_CONSUMPTION = 20
-const IMAGE = "https://huntshowdown.wiki.gg/images/Weapon_LeMat.png"
+const MELEE_DAMAGE = 27
+const STAMINA_CONSUMPTION = 15
+const HEAVY_MELEE_DAMAGE = 54
+const HEAVY_STAMINA_CONSUMPTION = 25
+const IMAGE = "https://huntshowdown.wiki.gg/images/Weapon_Drilling.png"
 
 /**
  * Includes all available ammo types, including the base ammo, which is always first.
@@ -43,44 +43,44 @@ const AMMO = [
     ammoReserve: AMMO_RESERVE
   }),
   new AmmoStats({
-    info: AmmoInfo.SHELL_DRAGONBREATH,
+    info: AmmoInfo.SHELL_FLECHETTE,
     scarce: false,
 
-    baseDamage: BASE_DAMAGE - 110,
-    optimalRange: OPTIMAL_RANGE - 6,
+    baseDamage: BASE_DAMAGE - 18,
+    optimalRange: OPTIMAL_RANGE,
     dropRange: DROP_RANGE,
-    spread: SPREAD + 110,
+    spread: SPREAD - 8.8,
     verticalRecoil: VERTICAL_RECOIL,
-    muzzleVelocity: MUZZLE_VELOCITY - 250,
+    muzzleVelocity: MUZZLE_VELOCITY,
     ammoReserve: AMMO_RESERVE
+  }),
+  new AmmoStats({
+    info: AmmoInfo.SHELL_PENNYSHOT,
+    scarce: false,
+
+    baseDamage: BASE_DAMAGE + 40,
+    optimalRange: OPTIMAL_RANGE,
+    dropRange: DROP_RANGE,
+    spread: SPREAD + 45,
+    verticalRecoil: VERTICAL_RECOIL,
+    muzzleVelocity: MUZZLE_VELOCITY,
+    ammoReserve: AMMO_RESERVE + 3
   }),
   new AmmoStats({
     info: AmmoInfo.SHELL_SLUG,
     scarce: false,
 
-    baseDamage: BASE_DAMAGE + 7,
-    optimalRange: OPTIMAL_RANGE + 2,
+    baseDamage: BASE_DAMAGE + 30,
+    optimalRange: OPTIMAL_RANGE,
     dropRange: DROP_RANGE,
-    spread: SPREAD + 75,
+    spread: SPREAD + 35,
     verticalRecoil: VERTICAL_RECOIL,
     muzzleVelocity: MUZZLE_VELOCITY,
-    ammoReserve: AMMO_RESERVE - 1
-  }),
-  new AmmoStats({
-    info: AmmoInfo.SHELL_STARSHELL,
-    scarce: false,
-
-    baseDamage: BASE_DAMAGE - BASE_DAMAGE + 1,
-    optimalRange: OPTIMAL_RANGE - OPTIMAL_RANGE + 1,
-    dropRange: DROP_RANGE,
-    spread: SPREAD + 10,
-    verticalRecoil: VERTICAL_RECOIL,
-    muzzleVelocity: MUZZLE_VELOCITY - 275,
-    ammoReserve: AMMO_RESERVE
+    ammoReserve: AMMO_RESERVE - 2
   }),
 ]
 
-export const LEMAT_SHOTGUN: Weapon = new Weapon({
+export const DRILLING_SHOTGUN: Weapon = new Weapon({
   name: NAME,
   cost: COST,
   size: SIZE,

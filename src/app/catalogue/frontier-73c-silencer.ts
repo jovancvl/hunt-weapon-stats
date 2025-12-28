@@ -2,16 +2,16 @@ import { AmmoInfo } from "../arsenal/ammo-info"
 import { AmmoStats } from "../arsenal/ammo-stats"
 import { ActionType, Weapon } from "../arsenal/weapon"
 
-const BASE_DAMAGE = 110
+const BASE_DAMAGE = 104
 const OPTIMAL_RANGE = 20
-const DROP_RANGE = 140
-const SPREAD = 17.5
+const DROP_RANGE = 120
+const SPREAD = 25
 const VERTICAL_RECOIL = 5
-const MUZZLE_VELOCITY = 400
+const MUZZLE_VELOCITY = 340
 const AMMO_RESERVE = 28
 
-const NAME = "Frontier 73C"
-const COST = 41
+const NAME = "Frontier 73C Silencer"
+const COST = 55
 const SIZE = 3
 const ACTION = ActionType.LEVER_ACTION
 const SWAY = 77
@@ -24,7 +24,7 @@ const MELEE_DAMAGE = 27
 const STAMINA_CONSUMPTION = 12
 const HEAVY_MELEE_DAMAGE = 54
 const HEAVY_STAMINA_CONSUMPTION = 25
-const IMAGE = "https://huntshowdown.wiki.gg/images/Weapon_Frontier_73C.png"
+const IMAGE = "https://huntshowdown.wiki.gg/images/Weapon_Frontier_73C_Silencer.png"
 
 const AMMO = [
   new AmmoStats({
@@ -46,9 +46,9 @@ const AMMO = [
     baseDamage: BASE_DAMAGE,
     optimalRange: OPTIMAL_RANGE + 10,
     dropRange: DROP_RANGE - 15,
-    spread: SPREAD + 10,
+    spread: SPREAD,
     verticalRecoil: VERTICAL_RECOIL + 3,
-    muzzleVelocity: MUZZLE_VELOCITY - 70,
+    muzzleVelocity: MUZZLE_VELOCITY - 68,
     ammoReserve: AMMO_RESERVE
   }),
   new AmmoStats({
@@ -57,9 +57,9 @@ const AMMO = [
 
     baseDamage: BASE_DAMAGE - 6,
     optimalRange: OPTIMAL_RANGE,
-    dropRange: DROP_RANGE + 20,
+    dropRange: DROP_RANGE + 15,
     spread: SPREAD,
-    verticalRecoil: VERTICAL_RECOIL + 3,
+    verticalRecoil: VERTICAL_RECOIL + 2,
     muzzleVelocity: MUZZLE_VELOCITY + 100,
     ammoReserve: AMMO_RESERVE - 10
   }),
@@ -93,15 +93,15 @@ const AMMO = [
 
     baseDamage: BASE_DAMAGE,
     optimalRange: OPTIMAL_RANGE,
-    dropRange: DROP_RANGE - 30,
+    dropRange: DROP_RANGE - 20,
     spread: SPREAD,
     verticalRecoil: VERTICAL_RECOIL,
-    muzzleVelocity: MUZZLE_VELOCITY - 137,
+    muzzleVelocity: MUZZLE_VELOCITY - 98,
     ammoReserve: AMMO_RESERVE + 6
   })
 ]
 
-export const FRONTIER_73C: Weapon = new Weapon({
+export const FRONTIER_73C_SILENCER: Weapon = new Weapon({
   name: NAME,
   cost: COST,
   size: SIZE,
