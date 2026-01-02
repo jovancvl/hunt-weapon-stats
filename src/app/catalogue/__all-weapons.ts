@@ -1,4 +1,4 @@
-import { Weapon } from "../arsenal/weapon";
+import { Weapon } from "../model/weapon";
 import { CARBINE_1865 } from "./1865-carbine"
 import { CARBINE_1865_SILENCER } from "./1865-carbine-silencer"
 import { BERTHIER_1892 } from "./berthier-1892";

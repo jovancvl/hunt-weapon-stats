@@ -1,7 +1,10 @@
 <div class="content-container">
   <hunt-weapon-info-component class="left" [weapon]="weapon" [showCustomAmmo]="true"></hunt-weapon-info-component>
-  <hunt-hunter-body-component class="middle" [weapon]="weapon"></hunt-hunter-body-component>
+  <hunt-hunter-body-component class="middle" [weapon]="weapon" [range]="0"></hunt-hunter-body-component>
   <div class="right">
     <!-- extended stats -->
+    <div class="chart-container">
+      <canvas baseChart [data]="chartConfiguration.data" [options]="chartConfiguration.options" type="line"></canvas>
+    </div>
   </div>
 </div>

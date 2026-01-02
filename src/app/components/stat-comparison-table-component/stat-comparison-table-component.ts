@@ -1,6 +1,6 @@
 import { Component, input } from '@angular/core';
 import { StatBarComponent } from "../stat-bar-component/stat-bar-component";
-import { Weapon } from '../../arsenal/weapon';
+import { Weapon } from '../../model/weapon';
 
 @Component({
   selector: 'hunt-stat-comparison-table-component',

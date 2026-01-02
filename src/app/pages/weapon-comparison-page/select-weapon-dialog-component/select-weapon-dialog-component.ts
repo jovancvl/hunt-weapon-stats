@@ -1,7 +1,7 @@
 import { Component, inject} from '@angular/core';
 import { SelectWeaponComponent } from "../../../components/select-weapon-component/select-weapon-component";
 import { DialogRef } from '@angular/cdk/dialog'
-import { Weapon } from '../../../arsenal/weapon'
+import { Weapon } from '../../../model/weapon'
 
 @Component({
   selector: 'hunt-select-weapon-dialog-component',

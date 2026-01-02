@@ -1,5 +1,5 @@
 import { Component, input } from '@angular/core';
-import { Weapon } from '../../arsenal/weapon';
+import { Weapon } from '../../model/weapon';
 
 @Component({
   selector: 'hunt-equipment-card-component',

@@ -2,8 +2,8 @@ import { Component, inject } from '@angular/core';
 import { SelectWeaponComponent } from "../../components/select-weapon-component/select-weapon-component";
 import { HunterBodyComponent } from "../../components/hunter-body-component/hunter-body-component";
 import { FRONTIER_73C } from '../../catalogue/frontier-73c'
-import { AmmoStats } from '../../arsenal/ammo-stats'
-import { Weapon } from '../../arsenal/weapon'
+import { AmmoStats } from '../../model/ammo-stats'
+import { Weapon } from '../../model/weapon'
 import { StatComparisonTableComponent } from "../../components/stat-comparison-table-component/stat-comparison-table-component";
 import { BERTHIER_1892 } from '../../catalogue/berthier-1892'
 import { Dialog } from '@angular/cdk/dialog'

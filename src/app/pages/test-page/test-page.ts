@@ -1,14 +1,14 @@
 import { CdkDropList, CdkDragDrop, CdkDrag, CdkDragPlaceholder, CdkDragPreview } from '@angular/cdk/drag-drop';
 import { Component, computed, inject, signal, viewChild } from '@angular/core';
 import { Router, RouterLink } from '@angular/router';
-import { Weapon } from '../../arsenal/weapon';
+import { Weapon } from '../../model/weapon';
 import { WEAPON_LIST } from '../../catalogue/__all-weapons';
 import { FRONTIER_73C } from '../../catalogue/frontier-73c';
 import { StatComparisonTableComponent } from "../../components/stat-comparison-table-component/stat-comparison-table-component";
 import { EquipmentCardComponent } from "../../components/equipment-card-component/equipment-card-component";
 import { CompareEquipmentCardComponent } from "../../components/compare-equipment-card-component/compare-equipment-card-component";
 import { NgTemplateOutlet } from '@angular/common';
-import { AmmoName, BLEED_AMMO_TYPES, EXPLOSIVE_AMMO_TYPES, FMJ_AMMO_TYPES, HIGH_VELOCITY_AMMO_TYPES, INCENDIARY_AMMO_TYPES, POISON_AMMO_TYPES, SUBSONIC_AMMO_TYPES } from '../../arsenal/ammo-name';
+import { AmmoName, BLEED_AMMO_TYPES, EXPLOSIVE_AMMO_TYPES, FMJ_AMMO_TYPES, HIGH_VELOCITY_AMMO_TYPES, INCENDIARY_AMMO_TYPES, POISON_AMMO_TYPES, SUBSONIC_AMMO_TYPES } from '../../model/ammo-name';
 
 @Component({
   selector: 'hunt-test-page',

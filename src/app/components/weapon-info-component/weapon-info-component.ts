@@ -1,7 +1,7 @@
 import { Component, input } from '@angular/core';
-import { Weapon } from '../../arsenal/weapon';
+import { Weapon } from '../../model/weapon';
 import { StatTableComponent } from "../stat-table-component/stat-table-component";
-import { AmmoStats } from '../../arsenal/ammo-stats';
+import { AmmoStats } from '../../model/ammo-stats';
 
 @Component({
   selector: 'hunt-weapon-info-component',

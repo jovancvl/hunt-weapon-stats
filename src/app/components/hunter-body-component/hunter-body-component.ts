@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
-import { Component, ElementRef, input, OnInit, viewChild, ViewChild } from '@angular/core';
+import { Component, computed, ElementRef, input, OnInit, viewChild, ViewChild } from '@angular/core';
 import { interval } from 'rxjs';
-import { Weapon } from '../../arsenal/weapon';
+import { Weapon } from '../../model/weapon';
 
 @Component({
   selector: 'hunt-hunter-body-component',
@@ -11,20 +11,10 @@ import { Weapon } from '../../arsenal/weapon';
 })
 export class HunterBodyComponent  {
   weapon = input.required<Weapon>()
+  range = input.required<number>()
 
-  get chestDamage() {
-    return Math.floor(this.weapon().activeAmmo.baseDamage)
-  }
-
-  get cockDamage() {
-    return Math.floor(this.weapon().activeAmmo.baseDamage * 0.9)
-  }
-
-  get armDamage() {
-    return Math.floor(this.weapon().activeAmmo.baseDamage * 0.7)
-  }
-
-  get legDamage() {
-    return Math.floor(this.weapon().activeAmmo.baseDamage * 0.6)
-  }
+  chest = computed(() => this.weapon().activeAmmo.calculateDamage(this.range()).chest)
+  cock = computed(() => this.weapon().activeAmmo.calculateDamage(this.range()).cock)
+  arms = computed(() => this.weapon().activeAmmo.calculateDamage(this.range()).arms)
+  legs = computed(() => this.weapon().activeAmmo.calculateDamage(this.range()).legs)
 }

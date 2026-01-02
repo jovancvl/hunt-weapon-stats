@@ -3,7 +3,7 @@ import { Router } from '@angular/router';
 import { WeaponInfoComponent } from "../../components/weapon-info-component/weapon-info-component";
 import { SelectWeaponComponent } from "../../components/select-weapon-component/select-weapon-component";
 import { FRONTIER_73C } from '../../catalogue/frontier-73c';
-import { Weapon } from '../../arsenal/weapon';
+import { Weapon } from '../../model/weapon';
 
 @Component({
   selector: 'hunt-weapon-select-page',
