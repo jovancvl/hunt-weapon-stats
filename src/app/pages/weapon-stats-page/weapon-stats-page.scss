@@ -1,25 +1,18 @@
 .content-container {
   display: grid;
-  grid-template-columns: repeat(3, minmax(400px, 33.3vw));
+  grid-template-columns: minmax(400px, 30vw) minmax(400px, 25vw) minmax(400px, 45vw);
 
   .left {
-    // background-color: #222831;
+    padding: 0 1rem;
   }
 
   .middle {
-    // background-color: #393E46;
     margin-left: auto;
     margin-right: auto;
   }
 
   .right {
-    // background-color: #948979;
+    padding: 0 1rem;
   }
 }
 
-.chart-container {
-  position: relative;
-  width: 100%;
-  padding: 1rem;
-  box-sizing: border-box;
-}

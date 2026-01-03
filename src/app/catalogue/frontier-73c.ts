@@ -26,24 +26,6 @@ const STAMINA_CONSUMPTION = 12
 const HEAVY_MELEE_DAMAGE = 54
 const HEAVY_STAMINA_CONSUMPTION = 25
 const IMAGE = "https://huntshowdown.wiki.gg/images/Weapon_Frontier_73C.png"
-const BASE_AMMO_DAMAGE_BREAKPOINTS: DamageBreakpoint[] = [
-  {
-    range: 0,
-    damage: BASE_DAMAGE
-  },
-  {
-    range: OPTIMAL_RANGE,
-    damage: BASE_DAMAGE
-  },
-  {
-    range: 50,
-    damage: 68
-  },
-  {
-    range: 100,
-    damage: 55
-  }
-]
 
 const AMMO = [
   new AmmoStats({
@@ -57,7 +39,24 @@ const AMMO = [
     verticalRecoil: VERTICAL_RECOIL,
     muzzleVelocity: MUZZLE_VELOCITY,
     ammoReserve: AMMO_RESERVE,
-    damageBreakpoints: BASE_AMMO_DAMAGE_BREAKPOINTS
+    damageBreakpoints: [
+      {
+        range: 0,
+        damage: BASE_DAMAGE
+      },
+      {
+        range: OPTIMAL_RANGE,
+        damage: BASE_DAMAGE
+      },
+      {
+        range: 50,
+        damage: 68
+      },
+      {
+        range: 100,
+        damage: 55
+      }
+    ]
   }),
   new AmmoStats({
     info: AmmoInfo.COMPACT_FMJ,
@@ -70,7 +69,24 @@ const AMMO = [
     verticalRecoil: VERTICAL_RECOIL + 3,
     muzzleVelocity: MUZZLE_VELOCITY - 70,
     ammoReserve: AMMO_RESERVE,
-    damageBreakpoints: BASE_AMMO_DAMAGE_BREAKPOINTS
+    damageBreakpoints: [
+      {
+        range: 0,
+        damage: BASE_DAMAGE
+      },
+      {
+        range: OPTIMAL_RANGE + 10,
+        damage: BASE_DAMAGE
+      },
+      {
+        range: 60,
+        damage: 68
+      },
+      {
+        range: 100,
+        damage: 58
+      }
+    ]
   }),
   new AmmoStats({
     info: AmmoInfo.COMPACT_HIGH_VELOCITY,
@@ -83,7 +99,24 @@ const AMMO = [
     verticalRecoil: VERTICAL_RECOIL + 3,
     muzzleVelocity: MUZZLE_VELOCITY + 100,
     ammoReserve: AMMO_RESERVE - 10,
-    damageBreakpoints: BASE_AMMO_DAMAGE_BREAKPOINTS
+    damageBreakpoints: [
+      {
+        range: 0,
+        damage: BASE_DAMAGE - 6
+      },
+      {
+        range: OPTIMAL_RANGE,
+        damage: BASE_DAMAGE - 6
+      },
+      {
+        range: 50,
+        damage: 63
+      },
+      {
+        range: 100,
+        damage: 52
+      }
+    ]
   }),
   new AmmoStats({
     info: AmmoInfo.COMPACT_INCENDIARY,
@@ -96,7 +129,24 @@ const AMMO = [
     verticalRecoil: VERTICAL_RECOIL,
     muzzleVelocity: MUZZLE_VELOCITY,
     ammoReserve: AMMO_RESERVE,
-    damageBreakpoints: BASE_AMMO_DAMAGE_BREAKPOINTS
+    damageBreakpoints: [
+      {
+        range: 0,
+        damage: BASE_DAMAGE
+      },
+      {
+        range: OPTIMAL_RANGE,
+        damage: BASE_DAMAGE
+      },
+      {
+        range: 50,
+        damage: 68
+      },
+      {
+        range: 100,
+        damage: 55
+      }
+    ]
   }),
   new AmmoStats({
     info: AmmoInfo.COMPACT_POISON,
@@ -109,7 +159,24 @@ const AMMO = [
     verticalRecoil: VERTICAL_RECOIL,
     muzzleVelocity: MUZZLE_VELOCITY,
     ammoReserve: AMMO_RESERVE,
-    damageBreakpoints: BASE_AMMO_DAMAGE_BREAKPOINTS
+    damageBreakpoints: [
+      {
+        range: 0,
+        damage: BASE_DAMAGE
+      },
+      {
+        range: OPTIMAL_RANGE,
+        damage: BASE_DAMAGE
+      },
+      {
+        range: 50,
+        damage: 68
+      },
+      {
+        range: 100,
+        damage: 55
+      }
+    ]
   }),
   new AmmoStats({
     info: AmmoInfo.COMPACT_SUBSONIC,
@@ -122,7 +189,24 @@ const AMMO = [
     verticalRecoil: VERTICAL_RECOIL,
     muzzleVelocity: MUZZLE_VELOCITY - 137,
     ammoReserve: AMMO_RESERVE + 6,
-    damageBreakpoints: BASE_AMMO_DAMAGE_BREAKPOINTS
+    damageBreakpoints: [
+      {
+        range: 0,
+        damage: BASE_DAMAGE
+      },
+      {
+        range: OPTIMAL_RANGE,
+        damage: BASE_DAMAGE
+      },
+      {
+        range: 50,
+        damage: 68
+      },
+      {
+        range: 100,
+        damage: 55
+      }
+    ]
   })
 ]
 

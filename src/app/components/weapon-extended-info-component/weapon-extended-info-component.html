@@ -1,0 +1,37 @@
+<h1>Damage Information</h1>
+<hunt-chart-component class="right" [ammo]="weapon().activeAmmo"></hunt-chart-component>
+<h2>2 tap ranges</h2>
+<!-- <div>
+  <p>Chest + chest: {{chestChestRange()}}</p>
+  <p>Chest + crotch: {{chestCockRange()}}</p>
+  <p>Chest + arm: {{chestArmRange()}}</p>
+  <p>Chest + leg: {{chestLegRange()}}</p>
+  <p>Crotch + crotch: {{cockCockRange()}}</p>
+  <p>Crotch + arm: {{cockArmRange()}}</p>
+  <p>Crotch + leg: {{cockLegRange()}}</p>
+  <p>Arm + arm: {{armArmRange()}}</p>
+  <p>Arm + leg: {{armLegRange()}}</p>
+  <p>Leg + leg: {{legLegRange()}}</p>
+</div> -->
+<table>
+  <tr>
+    <td>Chest + chest: {{chestChestRange()}}</td>
+    <td>Crotch + crotch: {{cockCockRange()}}</td>
+    <td>Arm + arm: {{armArmRange()}}</td>
+    <td>Leg + leg: {{legLegRange()}}</td>
+  </tr>
+  <tr>
+  </tr>
+  <tr>
+    <td>Chest + crotch: {{chestCockRange()}}</td>
+    <td>Crotch + arm: {{cockArmRange()}}</td>
+    <td>Arm + leg: {{armLegRange()}}</td>
+  </tr>
+  <tr>
+    <td>Chest + arm: {{chestArmRange()}}</td>
+    <td>Crotch + leg: {{cockLegRange()}}</td>
+  </tr>
+  <tr>
+    <td>Chest + leg: {{chestLegRange()}}</td>
+  </tr>
+</table>
