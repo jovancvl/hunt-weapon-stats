@@ -35,6 +35,18 @@ const BASE_AMMO_DAMAGE_BREAKPOINTS: DamageBreakpoint[] = [
     range: OPTIMAL_RANGE,
     damage: BASE_DAMAGE
   },
+  {
+    range: 50,
+    damage: 40
+  },
+  {
+    range: 60,
+    damage: 35
+  },
+  {
+    range: 100,
+    damage: 35
+  },
 ]
 /**
  * Includes all available ammo types, including the base ammo, which is always first.
@@ -44,8 +56,6 @@ const AMMO = [
     info: AmmoInfo.COMPACT,
     scarce: false,
 
-    // baseDamage: BASE_DAMAGE,
-    // optimalRange: OPTIMAL_RANGE,
     dropRange: DROP_RANGE,
     spread: SPREAD,
     verticalRecoil: VERTICAL_RECOIL,
@@ -57,21 +67,38 @@ const AMMO = [
     info: AmmoInfo.COMPACT_HIGH_VELOCITY,
     scarce: false,
 
-    // baseDamage: BASE_DAMAGE - 4,
-    // optimalRange: OPTIMAL_RANGE,
-    dropRange: DROP_RANGE + 5,
+    dropRange: 85,
     spread: SPREAD,
-    verticalRecoil: VERTICAL_RECOIL + 1.5,
-    muzzleVelocity: MUZZLE_VELOCITY + 75,
-    ammoReserve: AMMO_RESERVE - 5,
-    damageBreakpoints: BASE_AMMO_DAMAGE_BREAKPOINTS
+    verticalRecoil: 7.5,
+    muzzleVelocity: 455,
+    ammoReserve: 10,
+    damageBreakpoints: [
+      {
+        range: 0,
+        damage: 70
+      },
+      {
+        range: OPTIMAL_RANGE,
+        damage: 70
+      },
+      {
+        range: 50,
+        damage: 39
+      },
+      {
+        range: 60,
+        damage: 33
+      },
+      {
+        range: 100,
+        damage: 33
+      },
+    ]
   }),
   new AmmoStats({
     info: AmmoInfo.COMPACT_INCENDIARY,
     scarce: false,
 
-    // baseDamage: BASE_DAMAGE,
-    // optimalRange: OPTIMAL_RANGE,
     dropRange: DROP_RANGE,
     spread: SPREAD,
     verticalRecoil: VERTICAL_RECOIL,
@@ -83,13 +110,11 @@ const AMMO = [
     info: AmmoInfo.COMPACT_SUBSONIC,
     scarce: false,
 
-    // baseDamage: BASE_DAMAGE,
-    // optimalRange: OPTIMAL_RANGE,
-    dropRange: DROP_RANGE - 20,
+    dropRange: 60,
     spread: SPREAD,
     verticalRecoil: VERTICAL_RECOIL,
-    muzzleVelocity: MUZZLE_VELOCITY - 124,
-    ammoReserve: AMMO_RESERVE + 3,
+    muzzleVelocity: 256,
+    ammoReserve: 18,
     damageBreakpoints: BASE_AMMO_DAMAGE_BREAKPOINTS
   }),
 ]

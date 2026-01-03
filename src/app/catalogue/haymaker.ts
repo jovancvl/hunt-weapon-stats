@@ -42,8 +42,6 @@ const AMMO = [
     info: AmmoInfo.LONG,
     scarce: false,
 
-    // baseDamage: BASE_DAMAGE,
-    // optimalRange: OPTIMAL_RANGE,
     dropRange: DROP_RANGE,
     spread: SPREAD,
     verticalRecoil: VERTICAL_RECOIL,
@@ -55,12 +53,10 @@ const AMMO = [
     info: AmmoInfo.LONG_FMJ,
     scarce: false,
 
-    // baseDamage: BASE_DAMAGE,
-    // optimalRange: OPTIMAL_RANGE + 10,
-    dropRange: DROP_RANGE - 15,
+    dropRange: 50,
     spread: SPREAD,
-    verticalRecoil: VERTICAL_RECOIL + 2,
-    muzzleVelocity: MUZZLE_VELOCITY - 155,
+    verticalRecoil: 25,
+    muzzleVelocity: 375,
     ammoReserve: AMMO_RESERVE,
     damageBreakpoints: BASE_AMMO_DAMAGE_BREAKPOINTS
   }),
@@ -68,8 +64,6 @@ const AMMO = [
     info: AmmoInfo.LONG_POISON,
     scarce: false,
 
-    // baseDamage: BASE_DAMAGE,
-    // optimalRange: OPTIMAL_RANGE,
     dropRange: DROP_RANGE,
     spread: SPREAD,
     verticalRecoil: VERTICAL_RECOIL,

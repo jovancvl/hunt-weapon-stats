@@ -42,8 +42,6 @@ const AMMO = [
     info: AmmoInfo.MEDIUM,
     scarce: false,
 
-    //baseDamage: BASE_DAMAGE,
-    //optimalRange: OPTIMAL_RANGE,
     dropRange: DROP_RANGE,
     spread: SPREAD,
     verticalRecoil: VERTICAL_RECOIL,
@@ -55,34 +53,46 @@ const AMMO = [
     info: AmmoInfo.MEDIUM_FMJ,
     scarce: false,
 
-    // baseDamage: BASE_DAMAGE,
-    // optimalRange: OPTIMAL_RANGE + 10,
-    dropRange: DROP_RANGE - 10,
+    dropRange: 115,
     spread: SPREAD,
-    verticalRecoil: VERTICAL_RECOIL + 4,
-    muzzleVelocity: MUZZLE_VELOCITY - 60,
+    verticalRecoil: 9,
+    muzzleVelocity: 350,
     ammoReserve: AMMO_RESERVE,
-    damageBreakpoints: BASE_AMMO_DAMAGE_BREAKPOINTS
+    damageBreakpoints: [
+      {
+        range: 0,
+        damage: BASE_DAMAGE
+      },
+      {
+        range: OPTIMAL_RANGE,
+        damage: BASE_DAMAGE
+      },
+    ]
   }),
   new AmmoStats({
     info: AmmoInfo.MEDIUM_HIGH_VELOCITY,
     scarce: false,
 
-    // baseDamage: BASE_DAMAGE - 7,
-    // optimalRange: OPTIMAL_RANGE,
-    dropRange: DROP_RANGE + 15,
+    dropRange: 140,
     spread: SPREAD,
-    verticalRecoil: VERTICAL_RECOIL + 4,
-    muzzleVelocity: MUZZLE_VELOCITY + 100,
-    ammoReserve: AMMO_RESERVE - 7,
-    damageBreakpoints: BASE_AMMO_DAMAGE_BREAKPOINTS
+    verticalRecoil: 9,
+    muzzleVelocity: 510,
+    ammoReserve: 13,
+    damageBreakpoints: [
+      {
+        range: 0,
+        damage: 123
+      },
+      {
+        range: OPTIMAL_RANGE,
+        damage: 123
+      },
+    ]
   }),
   new AmmoStats({
     info: AmmoInfo.MEDIUM_INCENDIARY,
     scarce: false,
 
-    //baseDamage: BASE_DAMAGE,
-    //optimalRange: OPTIMAL_RANGE,
     dropRange: DROP_RANGE,
     spread: SPREAD,
     verticalRecoil: VERTICAL_RECOIL,
@@ -94,13 +104,11 @@ const AMMO = [
     info: AmmoInfo.MEDIUM_SUBSONIC,
     scarce: false,
 
-    //baseDamage: BASE_DAMAGE,
-    //optimalRange: OPTIMAL_RANGE,
-    dropRange: DROP_RANGE - 25,
+    dropRange: 100,
     spread: SPREAD,
     verticalRecoil: VERTICAL_RECOIL,
-    muzzleVelocity: MUZZLE_VELOCITY - 144,
-    ammoReserve: AMMO_RESERVE,
+    muzzleVelocity: 266,
+    ammoReserve: 24,
     damageBreakpoints: BASE_AMMO_DAMAGE_BREAKPOINTS
   }),
 ]

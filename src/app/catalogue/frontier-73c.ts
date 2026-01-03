@@ -1,6 +1,5 @@
 import { AmmoInfo } from "../model/ammo-info"
 import { AmmoStats } from "../model/ammo-stats"
-import { DamageBreakpoint } from "../model/damage"
 import { ActionType, Weapon } from "../model/weapon"
 
 const BASE_DAMAGE = 110
@@ -27,47 +26,45 @@ const HEAVY_MELEE_DAMAGE = 54
 const HEAVY_STAMINA_CONSUMPTION = 25
 const IMAGE = "https://huntshowdown.wiki.gg/images/Weapon_Frontier_73C.png"
 
+const BASE_AMMO_DAMAGE_BREAKPOINTS = [
+  {
+    range: 0,
+    damage: BASE_DAMAGE
+  },
+  {
+    range: OPTIMAL_RANGE,
+    damage: BASE_DAMAGE
+  },
+  {
+    range: 50,
+    damage: 68
+  },
+  {
+    range: 100,
+    damage: 55
+  }
+]
+
 const AMMO = [
   new AmmoStats({
     info: AmmoInfo.COMPACT,
     scarce: false,
 
-    // baseDamage: BASE_DAMAGE,
-    // optimalRange: OPTIMAL_RANGE,
     dropRange: DROP_RANGE,
     spread: SPREAD,
     verticalRecoil: VERTICAL_RECOIL,
     muzzleVelocity: MUZZLE_VELOCITY,
     ammoReserve: AMMO_RESERVE,
-    damageBreakpoints: [
-      {
-        range: 0,
-        damage: BASE_DAMAGE
-      },
-      {
-        range: OPTIMAL_RANGE,
-        damage: BASE_DAMAGE
-      },
-      {
-        range: 50,
-        damage: 68
-      },
-      {
-        range: 100,
-        damage: 55
-      }
-    ]
+    damageBreakpoints: BASE_AMMO_DAMAGE_BREAKPOINTS
   }),
   new AmmoStats({
     info: AmmoInfo.COMPACT_FMJ,
     scarce: false,
 
-    // baseDamage: BASE_DAMAGE,
-    // optimalRange: OPTIMAL_RANGE + 10,
-    dropRange: DROP_RANGE - 15,
-    spread: SPREAD + 10,
-    verticalRecoil: VERTICAL_RECOIL + 3,
-    muzzleVelocity: MUZZLE_VELOCITY - 70,
+    dropRange: 125,
+    spread: SPREAD,
+    verticalRecoil: 8,
+    muzzleVelocity: 330,
     ammoReserve: AMMO_RESERVE,
     damageBreakpoints: [
       {
@@ -75,7 +72,7 @@ const AMMO = [
         damage: BASE_DAMAGE
       },
       {
-        range: OPTIMAL_RANGE + 10,
+        range: 30,
         damage: BASE_DAMAGE
       },
       {
@@ -92,21 +89,19 @@ const AMMO = [
     info: AmmoInfo.COMPACT_HIGH_VELOCITY,
     scarce: false,
 
-    // baseDamage: BASE_DAMAGE - 6,
-    // optimalRange: OPTIMAL_RANGE,
-    dropRange: DROP_RANGE + 20,
+    dropRange: 160,
     spread: SPREAD,
-    verticalRecoil: VERTICAL_RECOIL + 3,
-    muzzleVelocity: MUZZLE_VELOCITY + 100,
-    ammoReserve: AMMO_RESERVE - 10,
+    verticalRecoil: 8,
+    muzzleVelocity: 500,
+    ammoReserve: 18,
     damageBreakpoints: [
       {
         range: 0,
-        damage: BASE_DAMAGE - 6
+        damage: 104
       },
       {
-        range: OPTIMAL_RANGE,
-        damage: BASE_DAMAGE - 6
+        range: 20,
+        damage: 104
       },
       {
         range: 50,
@@ -122,91 +117,34 @@ const AMMO = [
     info: AmmoInfo.COMPACT_INCENDIARY,
     scarce: false,
 
-    // baseDamage: BASE_DAMAGE,
-    // optimalRange: OPTIMAL_RANGE,
     dropRange: DROP_RANGE,
     spread: SPREAD,
     verticalRecoil: VERTICAL_RECOIL,
     muzzleVelocity: MUZZLE_VELOCITY,
     ammoReserve: AMMO_RESERVE,
-    damageBreakpoints: [
-      {
-        range: 0,
-        damage: BASE_DAMAGE
-      },
-      {
-        range: OPTIMAL_RANGE,
-        damage: BASE_DAMAGE
-      },
-      {
-        range: 50,
-        damage: 68
-      },
-      {
-        range: 100,
-        damage: 55
-      }
-    ]
+    damageBreakpoints: BASE_AMMO_DAMAGE_BREAKPOINTS
   }),
   new AmmoStats({
     info: AmmoInfo.COMPACT_POISON,
     scarce: false,
 
-    // baseDamage: BASE_DAMAGE,
-    // optimalRange: OPTIMAL_RANGE,
     dropRange: DROP_RANGE,
     spread: SPREAD,
     verticalRecoil: VERTICAL_RECOIL,
     muzzleVelocity: MUZZLE_VELOCITY,
     ammoReserve: AMMO_RESERVE,
-    damageBreakpoints: [
-      {
-        range: 0,
-        damage: BASE_DAMAGE
-      },
-      {
-        range: OPTIMAL_RANGE,
-        damage: BASE_DAMAGE
-      },
-      {
-        range: 50,
-        damage: 68
-      },
-      {
-        range: 100,
-        damage: 55
-      }
-    ]
+    damageBreakpoints: BASE_AMMO_DAMAGE_BREAKPOINTS
   }),
   new AmmoStats({
     info: AmmoInfo.COMPACT_SUBSONIC,
     scarce: false,
 
-    // baseDamage: BASE_DAMAGE,
-    // optimalRange: OPTIMAL_RANGE,
-    dropRange: DROP_RANGE - 30,
+    dropRange: 110,
     spread: SPREAD,
     verticalRecoil: VERTICAL_RECOIL,
-    muzzleVelocity: MUZZLE_VELOCITY - 137,
-    ammoReserve: AMMO_RESERVE + 6,
-    damageBreakpoints: [
-      {
-        range: 0,
-        damage: BASE_DAMAGE
-      },
-      {
-        range: OPTIMAL_RANGE,
-        damage: BASE_DAMAGE
-      },
-      {
-        range: 50,
-        damage: 68
-      },
-      {
-        range: 100,
-        damage: 55
-      }
-    ]
+    muzzleVelocity: 263,
+    ammoReserve: 34,
+    damageBreakpoints: BASE_AMMO_DAMAGE_BREAKPOINTS
   })
 ]
 

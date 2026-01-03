@@ -42,8 +42,6 @@ const AMMO = [
     info: AmmoInfo.COMPACT,
     scarce: false,
 
-    //baseDamage: BASE_DAMAGE,
-    //optimalRange: OPTIMAL_RANGE,
     dropRange: DROP_RANGE,
     spread: SPREAD,
     verticalRecoil: VERTICAL_RECOIL,
@@ -55,34 +53,46 @@ const AMMO = [
     info: AmmoInfo.COMPACT_FMJ,
     scarce: false,
 
-    // baseDamage: BASE_DAMAGE,
-    // optimalRange: OPTIMAL_RANGE + 10,
-    dropRange: DROP_RANGE - 15,
+    dropRange: 125,
     spread: SPREAD,
-    verticalRecoil: VERTICAL_RECOIL + 2,
-    muzzleVelocity: MUZZLE_VELOCITY - 70,
+    verticalRecoil: 9,
+    muzzleVelocity: 360,
     ammoReserve: AMMO_RESERVE,
-    damageBreakpoints: BASE_AMMO_DAMAGE_BREAKPOINTS
+    damageBreakpoints: [
+      {
+        range: 0,
+        damage: BASE_DAMAGE
+      },
+      {
+        range: 30,
+        damage: BASE_DAMAGE
+      },
+    ]
   }),
   new AmmoStats({
     info: AmmoInfo.COMPACT_HIGH_VELOCITY,
     scarce: false,
 
-    // baseDamage: BASE_DAMAGE - 8,
-    // optimalRange: OPTIMAL_RANGE,
-    dropRange: DROP_RANGE + 30,
+    dropRange: 170,
     spread: SPREAD,
-    verticalRecoil: VERTICAL_RECOIL + 2,
-    muzzleVelocity: MUZZLE_VELOCITY + 125,
-    ammoReserve: AMMO_RESERVE - 8,
-    damageBreakpoints: BASE_AMMO_DAMAGE_BREAKPOINTS
+    verticalRecoil: 9,
+    muzzleVelocity: 555,
+    ammoReserve: 16,
+    damageBreakpoints: [
+      {
+        range: 0,
+        damage: 107
+      },
+      {
+        range: OPTIMAL_RANGE,
+        damage: 107
+      },
+    ]
   }),
   new AmmoStats({
     info: AmmoInfo.COMPACT_POISON,
     scarce: false,
 
-    //baseDamage: BASE_DAMAGE,
-    //optimalRange: OPTIMAL_RANGE,
     dropRange: DROP_RANGE,
     spread: SPREAD,
     verticalRecoil: VERTICAL_RECOIL,
@@ -94,8 +104,6 @@ const AMMO = [
     info: AmmoInfo.COMPACT_INCENDIARY,
     scarce: false,
 
-    //baseDamage: BASE_DAMAGE,
-    //optimalRange: OPTIMAL_RANGE,
     dropRange: DROP_RANGE,
     spread: SPREAD,
     verticalRecoil: VERTICAL_RECOIL,

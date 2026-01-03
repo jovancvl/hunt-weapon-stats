@@ -95,6 +95,9 @@ export class AmmoStats {
     while (i < this.damageFunctions.length && this.damageFunctions[i].range < range) {
       i++
     }
+    if (i === this.damageFunctions.length) {
+      i--
+    }
     return this.damageFunctions[i].calculate(range)
   }
 

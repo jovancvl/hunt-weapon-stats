@@ -36,14 +36,20 @@ const BASE_AMMO_DAMAGE_BREAKPOINTS: DamageBreakpoint[] = [
     range: OPTIMAL_RANGE,
     damage: BASE_DAMAGE
   },
+  {
+    range: 90,
+    damage: 81
+  },
+  {
+    range: 100,
+    damage: 81
+  }
 ]
 const AMMO = [
   new AmmoStats({
     info: AmmoInfo.LONG,
     scarce: false,
 
-    // baseDamage: BASE_DAMAGE,
-    // optimalRange: OPTIMAL_RANGE,
     dropRange: DROP_RANGE,
     spread: SPREAD,
     verticalRecoil: VERTICAL_RECOIL,
@@ -55,8 +61,6 @@ const AMMO = [
     info: AmmoInfo.LONG_INCENDIARY,
     scarce: false,
 
-    // baseDamage: BASE_DAMAGE,
-    // optimalRange: OPTIMAL_RANGE,
     dropRange: DROP_RANGE,
     spread: SPREAD,
     verticalRecoil: VERTICAL_RECOIL,
@@ -68,14 +72,29 @@ const AMMO = [
     info: AmmoInfo.LONG_SPITZER,
     scarce: false,
 
-    // baseDamage: BASE_DAMAGE - 20,
-    // optimalRange: OPTIMAL_RANGE,
-    dropRange: DROP_RANGE + 20,
+    dropRange: 140,
     spread: SPREAD,
-    verticalRecoil: VERTICAL_RECOIL + 4,
-    muzzleVelocity: MUZZLE_VELOCITY + 190,
-    ammoReserve: AMMO_RESERVE - 6,
-    damageBreakpoints: BASE_AMMO_DAMAGE_BREAKPOINTS
+    verticalRecoil: 16,
+    muzzleVelocity: 780,
+    ammoReserve: 12,
+    damageBreakpoints: [
+      {
+        range: 0,
+        damage: 113
+      },
+      {
+        range: OPTIMAL_RANGE,
+        damage: 113
+      },
+      {
+        range: 90,
+        damage: 70
+      },
+      {
+        range: 100,
+        damage: 68
+      }
+    ]
   })
 ]
 

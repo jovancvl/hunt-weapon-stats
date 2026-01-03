@@ -1,7 +1,5 @@
 import { Routes } from '@angular/router';
 import { WeaponSelectPage } from './pages/weapon-select-page/weapon-select-page';
-import { WeaponStatsPage } from './pages/weapon-stats-page/weapon-stats-page';
-import { WeaponComparisonPage } from './pages/weapon-comparison-page/weapon-comparison-page'
 
 export const routes: Routes = [
   {
@@ -14,11 +12,11 @@ export const routes: Routes = [
   },
   {
     path: 'compare',
-    component: WeaponComparisonPage
+    loadComponent: () => import("./pages/weapon-comparison-page/weapon-comparison-page").then(m => m.WeaponComparisonPage)
   },
   {
     path: ':id',
-    component: WeaponStatsPage
+    loadComponent: () => import("./pages/weapon-stats-page/weapon-stats-page").then(m => m.WeaponStatsPage)
   },
   {
     path: '**',

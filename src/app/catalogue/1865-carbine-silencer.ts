@@ -35,6 +35,17 @@ const BASE_AMMO_DAMAGE_BREAKPOINTS: DamageBreakpoint[] = [
     range: OPTIMAL_RANGE,
     damage: BASE_DAMAGE
   },
+  {
+    range: 60,
+    damage: 67
+  }, {
+    range: 80,
+    damage: 59
+  },
+  {
+    range: 100,
+    damage: 59
+  }
 ]
 /**
  * Includes all available ammo types, including the base ammo, which is always first.
@@ -44,8 +55,6 @@ const AMMO = [
     info: AmmoInfo.MEDIUM,
     scarce: false,
 
-    // baseDamage: BASE_DAMAGE,
-    // optimalRange: OPTIMAL_RANGE,
     dropRange: DROP_RANGE,
     spread: SPREAD,
     verticalRecoil: VERTICAL_RECOIL,
@@ -57,26 +66,43 @@ const AMMO = [
     info: AmmoInfo.MEDIUM_FMJ,
     scarce: false,
 
-    // baseDamage: BASE_DAMAGE,
-    // optimalRange: OPTIMAL_RANGE + 10,
-    dropRange: DROP_RANGE - 15,
+    dropRange: 90,
     spread: SPREAD,
-    verticalRecoil: VERTICAL_RECOIL + 3,
-    muzzleVelocity: MUZZLE_VELOCITY - 81,
+    verticalRecoil: 7,
+    muzzleVelocity: 218,
     ammoReserve: AMMO_RESERVE,
-    damageBreakpoints: BASE_AMMO_DAMAGE_BREAKPOINTS
+    damageBreakpoints: [
+      {
+        range: 0,
+        damage: BASE_DAMAGE
+      },
+      {
+        range: 40,
+        damage: BASE_DAMAGE
+      },
+      {
+        range: 70,
+        damage: 67
+      },
+      {
+        range: 80,
+        damage: 62,
+      },
+      {
+        range: 100,
+        damage: 62,
+      }
+    ]
   }),
   new AmmoStats({
     info: AmmoInfo.MEDIUM_SUBSONIC,
     scarce: false,
 
-    // baseDamage: BASE_DAMAGE,
-    // optimalRange: OPTIMAL_RANGE,
-    dropRange: DROP_RANGE - 10,
+    dropRange: 95,
     spread: SPREAD,
     verticalRecoil: VERTICAL_RECOIL,
-    muzzleVelocity: MUZZLE_VELOCITY - 60,
-    ammoReserve: AMMO_RESERVE + 4,
+    muzzleVelocity: 229,
+    ammoReserve: 25,
     damageBreakpoints: BASE_AMMO_DAMAGE_BREAKPOINTS
   }),
 ]

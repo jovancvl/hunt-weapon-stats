@@ -26,7 +26,8 @@ const STAMINA_CONSUMPTION = 12
 const HEAVY_MELEE_DAMAGE = 54
 const HEAVY_STAMINA_CONSUMPTION = 25
 const IMAGE = "https://huntshowdown.wiki.gg/images/Weapon_Ranger_73.png"
-const BASE_AMMO_DAMAGE_BREAKPOINTS: DamageBreakpoint[] = [
+
+const BASE_AMMO_DAMAGE_BREAKPOINTS = [
   {
     range: 0,
     damage: BASE_DAMAGE
@@ -35,18 +36,21 @@ const BASE_AMMO_DAMAGE_BREAKPOINTS: DamageBreakpoint[] = [
     range: OPTIMAL_RANGE,
     damage: BASE_DAMAGE
   },
+  {
+    range: 50,
+    damage: 68
+  },
+  {
+    range: 100,
+    damage: 55
+  }
 ]
 
-/**
- * Includes all available ammo types, including the base ammo, which is always first.
- */
 const AMMO = [
   new AmmoStats({
     info: AmmoInfo.COMPACT,
     scarce: false,
 
-    //baseDamage: BASE_DAMAGE,
-    //optimalRange: OPTIMAL_RANGE,
     dropRange: DROP_RANGE,
     spread: SPREAD,
     verticalRecoil: VERTICAL_RECOIL,
@@ -58,34 +62,62 @@ const AMMO = [
     info: AmmoInfo.COMPACT_FMJ,
     scarce: false,
 
-    // baseDamage: BASE_DAMAGE,
-    // optimalRange: OPTIMAL_RANGE + 10,
-    dropRange: DROP_RANGE - 15,
-    spread: SPREAD + 10,
-    verticalRecoil: VERTICAL_RECOIL + 3,
-    muzzleVelocity: MUZZLE_VELOCITY - 70,
+    dropRange: 125,
+    spread: SPREAD,
+    verticalRecoil: 6,
+    muzzleVelocity: 330,
     ammoReserve: AMMO_RESERVE,
-    damageBreakpoints: BASE_AMMO_DAMAGE_BREAKPOINTS
+    damageBreakpoints: [
+      {
+        range: 0,
+        damage: BASE_DAMAGE
+      },
+      {
+        range: 30,
+        damage: BASE_DAMAGE
+      },
+      {
+        range: 60,
+        damage: 68
+      },
+      {
+        range: 100,
+        damage: 58
+      }
+    ]
   }),
   new AmmoStats({
     info: AmmoInfo.COMPACT_HIGH_VELOCITY,
     scarce: false,
 
-    // baseDamage: BASE_DAMAGE - 6,
-    // optimalRange: OPTIMAL_RANGE,
-    dropRange: DROP_RANGE + 20,
+    dropRange: 160,
     spread: SPREAD,
-    verticalRecoil: VERTICAL_RECOIL + 3,
-    muzzleVelocity: MUZZLE_VELOCITY + 100,
-    ammoReserve: AMMO_RESERVE - 7,
-    damageBreakpoints: BASE_AMMO_DAMAGE_BREAKPOINTS
+    verticalRecoil: 6,
+    muzzleVelocity: 500,
+    ammoReserve: 13,
+    damageBreakpoints: [
+      {
+        range: 0,
+        damage: 104
+      },
+      {
+        range: 20,
+        damage: 104
+      },
+      {
+        range: 50,
+        damage: 63
+      },
+      {
+        range: 100,
+        damage: 52
+      }
+    ]
   }),
   new AmmoStats({
     info: AmmoInfo.COMPACT_INCENDIARY,
     scarce: false,
 
-    //baseDamage: BASE_DAMAGE,
-    //optimalRange: OPTIMAL_RANGE,
     dropRange: DROP_RANGE,
     spread: SPREAD,
     verticalRecoil: VERTICAL_RECOIL,
@@ -97,8 +129,6 @@ const AMMO = [
     info: AmmoInfo.COMPACT_POISON,
     scarce: false,
 
-    //baseDamage: BASE_DAMAGE,
-    //optimalRange: OPTIMAL_RANGE,
     dropRange: DROP_RANGE,
     spread: SPREAD,
     verticalRecoil: VERTICAL_RECOIL,
@@ -110,13 +140,11 @@ const AMMO = [
     info: AmmoInfo.COMPACT_SUBSONIC,
     scarce: false,
 
-    //baseDamage: BASE_DAMAGE,
-    //optimalRange: OPTIMAL_RANGE,
-    dropRange: DROP_RANGE - 30,
+    dropRange: 110,
     spread: SPREAD,
     verticalRecoil: VERTICAL_RECOIL,
-    muzzleVelocity: MUZZLE_VELOCITY - 137,
-    ammoReserve: AMMO_RESERVE + 4,
+    muzzleVelocity: 263,
+    ammoReserve: 24,
     damageBreakpoints: BASE_AMMO_DAMAGE_BREAKPOINTS
   })
 ]
