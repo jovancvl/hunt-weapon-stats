@@ -35,6 +35,18 @@ const BASE_AMMO_DAMAGE_BREAKPOINTS: DamageBreakpoint[] = [
     range: OPTIMAL_RANGE,
     damage: BASE_DAMAGE
   },
+  {
+    range: 50,
+    damage: 57
+  },
+  {
+    range: 60,
+    damage: 49
+  },
+  {
+    range: 100,
+    damage: 49
+  }
 ]
 /**
  * Includes all available ammo types, including the base ammo, which is always first.
@@ -77,9 +89,21 @@ const AMMO = [
         damage: BASE_DAMAGE
       },
       {
-        range: 30,
+        range: OPTIMAL_RANGE,
         damage: BASE_DAMAGE
       },
+      {
+        range: 60,
+        damage: 57
+      },
+      {
+        range: 70,
+        damage: 52
+      },
+      {
+        range: 100,
+        damage: 52
+      }
     ]
   }),
 ]

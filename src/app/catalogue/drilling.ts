@@ -35,6 +35,14 @@ const BASE_AMMO_DAMAGE_BREAKPOINTS: DamageBreakpoint[] = [
     range: OPTIMAL_RANGE,
     damage: BASE_DAMAGE
   },
+  {
+    range: 80,
+    damage: 76
+  },
+  {
+    range: 100,
+    damage: 70
+  },
 ]
 /**
  * Includes all available ammo types, including the base ammo, which is always first.
@@ -71,7 +79,24 @@ const AMMO = [
     verticalRecoil: 16,
     muzzleVelocity: 371,
     ammoReserve: AMMO_RESERVE,
-    damageBreakpoints: BASE_AMMO_DAMAGE_BREAKPOINTS
+    damageBreakpoints: [
+      {
+        range: 0,
+        damage: BASE_DAMAGE
+      },
+      {
+        range: 40,
+        damage: BASE_DAMAGE
+      },
+      {
+        range: 90,
+        damage: 76
+      },
+      {
+        range: 100,
+        damage: 74 
+      },
+    ]
   }),
   new AmmoStats({
     info: AmmoInfo.MEDIUM_HIGH_VELOCITY,
@@ -82,7 +107,24 @@ const AMMO = [
     verticalRecoil: 16,
     muzzleVelocity: 655,
     ammoReserve: 13,
-    damageBreakpoints: BASE_AMMO_DAMAGE_BREAKPOINTS
+    damageBreakpoints: [
+      {
+        range: 0,
+        damage: 114
+      },
+      {
+        range: OPTIMAL_RANGE,
+        damage: 114
+      },
+      {
+        range: 80,
+        damage: 72
+      },
+      {
+        range: 100,
+        damage: 66
+      },
+    ]
   }),
 ]
 

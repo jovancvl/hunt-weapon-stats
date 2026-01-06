@@ -1,7 +1,7 @@
-import { AmmoInfo } from "../model/ammo-info";
-import { AmmoStats } from "../model/ammo-stats";
+import { AmmoInfo } from "../model/ammo-info"
+import { AmmoStats } from "../model/ammo-stats"
 import { DamageBreakpoint } from "../model/damage"
-import { ActionType, Weapon } from "../model/weapon";
+import { ActionType, Weapon } from "../model/weapon"
 
 const BASE_DAMAGE = 91
 const OPTIMAL_RANGE = 20
@@ -35,6 +35,14 @@ const BASE_AMMO_DAMAGE_BREAKPOINTS: DamageBreakpoint[] = [
     range: OPTIMAL_RANGE,
     damage: BASE_DAMAGE
   },
+  {
+    range: 50,
+    damage: 49
+  },
+  {
+    range: 100,
+    damage: 42
+  }
 ]
 
 /**
@@ -81,6 +89,14 @@ const AMMO = [
         range: OPTIMAL_RANGE,
         damage: 87
       },
+      {
+        range: 50,
+        damage: 48
+      },
+      {
+        range: 100,
+        damage: 41
+      }
     ]
   }),
   new AmmoStats({
