@@ -40,8 +40,6 @@ export class AmmoStats {
     this.info = ammoStatsInterface.info
     this.scarce = ammoStatsInterface.scarce
 
-    // this.baseDamage = ammoStatsInterface.baseDamage
-    // this.optimalRange = ammoStatsInterface.optimalRange
     this.dropRange = ammoStatsInterface.dropRange
     this.spread = ammoStatsInterface.spread
     this.verticalRecoil = ammoStatsInterface.verticalRecoil
@@ -50,14 +48,10 @@ export class AmmoStats {
 
     this.damageFunctions = this.calculateDamageFunctions(ammoStatsInterface.damageBreakpoints)
     this.baseDamage = this.calculateDamage(0).chest
-    this.optimalRange = this.damageFunctions.length > 1 ? this.damageFunctions[0].range : 0
+    this.optimalRange = this.damageFunctions.length > 0 ? this.damageFunctions[0].range : 0
   }
 
   private calculateDamageFunctions(breakpoints: DamageBreakpoint[]) {
-    // return [
-    //   new DamageFunction(1, 0, 20),
-    //   new DamageFunction(1, 0, 100)
-    // ]
     const functions: DamageFunction[] = []
     const length = breakpoints.length - 1
     let i = 0
