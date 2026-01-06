@@ -1,6 +1,6 @@
 import { Component, computed, input } from '@angular/core';
-import { Weapon } from '../../model/weapon'
 import { ChartComponent } from "../chart-component/chart-component";
+import { AmmoStats } from '../../model/ammo-stats'
 
 @Component({
   selector: 'hunt-weapon-extended-info-component',
@@ -9,7 +9,7 @@ import { ChartComponent } from "../chart-component/chart-component";
   styleUrl: './weapon-extended-info-component.scss',
 })
 export class WeaponExtendedInfoComponent {
-  weapon = input.required<Weapon>()
+  ammo = input.required<AmmoStats>()
 
   chestChestRange = computed(() => this.findRange('chest', 'chest'))
   cockCockRange = computed(() => this.findRange('cock', 'cock'))
@@ -29,8 +29,8 @@ export class WeaponExtendedInfoComponent {
     let found = false
     let range = 0
     while (range < 100 && !found) {
-      const leftDamage = this.weapon().activeAmmo.calculateDamage(range)[bodypartOne]
-      const rightDamage = this.weapon().activeAmmo.calculateDamage(range)[bodypartTwo]
+      const leftDamage = this.ammo().calculateDamage(range)[bodypartOne]
+      const rightDamage = this.ammo().calculateDamage(range)[bodypartTwo]
       if (leftDamage + rightDamage < 150) {
         found = true
       } else {

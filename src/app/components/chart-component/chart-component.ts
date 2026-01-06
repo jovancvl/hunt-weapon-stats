@@ -1,5 +1,5 @@
-import { Component, computed, effect, input, viewChild } from '@angular/core'
-import { Chart, ChartConfiguration, ChartData, ChartEvent, ChartOptions, Point, PointElement } from 'chart.js'
+import { Component, effect, input } from '@angular/core'
+import { ChartData, ChartEvent, ChartOptions, Point } from 'chart.js'
 import { BaseChartDirective } from "ng2-charts"
 import { AmmoStats } from '../../model/ammo-stats'
 

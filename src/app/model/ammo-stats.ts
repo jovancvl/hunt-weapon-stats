@@ -97,7 +97,7 @@ export class AmmoStats {
 
   getDamageArray() {
     const result: number[] = []
-    const maxRange = this.damageFunctions[this.damageFunctions.length - 1].range
+    const maxRange = this.damageFunctions[this.damageFunctions.length - 1].range + 1
     for(let i = 0; i < maxRange; i++) {
       const value = Math.round(this.calculateDamage(i).chest * 100) / 100
       result.push(value)
@@ -109,8 +109,6 @@ export class AmmoStats {
     info: AmmoInfo.COMPACT,
     scarce: false,
 
-    // baseDamage: 0,
-    // optimalRange: 0,
     dropRange: 0,
     spread: 0,
     verticalRecoil: 0,
@@ -119,11 +117,11 @@ export class AmmoStats {
     damageBreakpoints: [
       {
         range: 0,
-        damage: 999
+        damage: 150
       },
       {
-        range: 20,
-        damage: 999
+        range: 100,
+        damage: 0
       }
     ]
   })
