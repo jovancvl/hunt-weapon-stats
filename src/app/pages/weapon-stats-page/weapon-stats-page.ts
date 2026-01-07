@@ -17,8 +17,8 @@ export class WeaponStatsPage {
   private router = inject(Router)
 
   weapon = Weapon.EMPTY
+  range = 0
   
-
   constructor () {
     const id = this.activatedRoute.snapshot.paramMap.get('id')
     if (!id) {
@@ -35,5 +35,9 @@ export class WeaponStatsPage {
 
     this.weapon = Object.assign({ ...wn })
     
+  }
+
+  onRangeSelected(event: number) {
+    this.range = event
   }
 }

@@ -1,3 +1,4 @@
 <div class="chart-container">
-  <canvas baseChart [data]="data" [options]="options" type="line" (chartClick)="onChartClick($event)"></canvas>
+  <!-- <canvas baseChart [data]="data" [options]="options" type="line" (chartClick)="onChartClick($event)"></canvas> -->
+  <div echarts [options]="chartOptions" (chartClick)="onChartClick($event)" class="chart"></div>
 </div>

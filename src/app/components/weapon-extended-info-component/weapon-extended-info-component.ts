@@ -1,4 +1,4 @@
-import { Component, computed, input } from '@angular/core';
+import { Component, computed, input, output } from '@angular/core';
 import { ChartComponent } from "../chart-component/chart-component";
 import { AmmoStats } from '../../model/ammo-stats'
 
@@ -10,6 +10,7 @@ import { AmmoStats } from '../../model/ammo-stats'
 })
 export class WeaponExtendedInfoComponent {
   ammo = input.required<AmmoStats>()
+  rangeSelected = output<number>()
 
   chestChestRange = computed(() => this.findRange('chest', 'chest'))
   cockCockRange = computed(() => this.findRange('cock', 'cock'))
@@ -45,5 +46,9 @@ export class WeaponExtendedInfoComponent {
       return "100m+"
     }
     return `${result}m`
+  }
+
+  onRangeSelected(range: number) {
+    this.rangeSelected.emit(range)
   }
 }

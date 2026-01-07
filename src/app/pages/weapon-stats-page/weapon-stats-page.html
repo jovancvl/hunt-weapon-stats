@@ -1,5 +1,5 @@
 <div class="content-container">
   <hunt-weapon-info-component class="left" [weapon]="weapon" [showCustomAmmo]="true"></hunt-weapon-info-component>
-  <hunt-hunter-body-component class="middle" [weapon]="weapon" [range]="0"></hunt-hunter-body-component>
-  <hunt-weapon-extended-info-component [ammo]="weapon.activeAmmo"></hunt-weapon-extended-info-component>
+  <hunt-hunter-body-component class="middle" [ammo]="weapon.activeAmmo" [range]="range"></hunt-hunter-body-component>
+  <hunt-weapon-extended-info-component [ammo]="weapon.activeAmmo" (rangeSelected)="onRangeSelected($event)"></hunt-weapon-extended-info-component>
 </div>

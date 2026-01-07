@@ -1,96 +1,181 @@
-import { Component, effect, input } from '@angular/core'
-import { ChartData, ChartEvent, ChartOptions, Point } from 'chart.js'
-import { BaseChartDirective } from "ng2-charts"
+import { Component, effect, input, output } from '@angular/core'
 import { AmmoStats } from '../../model/ammo-stats'
+import { NgxEchartsDirective } from 'ngx-echarts'
+import { ECElementEvent, ECharts, EChartsCoreOption, EChartsType } from 'echarts/core'
 
 @Component({
   selector: 'hunt-chart-component',
-  imports: [BaseChartDirective],
+  imports: [NgxEchartsDirective],
   templateUrl: './chart-component.html',
   styleUrl: './chart-component.scss',
 })
 export class ChartComponent {
   ammo = input.required<AmmoStats>()
+  rangeSelected = output<number>()
+  
+  chartOptions: EChartsCoreOption = {
+    xAxis: {
+      type: 'value',
+      min: 0,
+      max: 100,
+      name: 'Range',
+      nameLocation: 'start',
+      splitLine: { show: false },
+    },
 
-  config = effect(() => {
-    this.data.datasets[0].data = this.ammo().getDamageArray().map((value, i) => ({ x: i, y: value }) as Point)
-    this.data = { ...this.data }
-  })
+    yAxis: {
+      type: 'value',
+      min: 0,
+      max: 150,
+      name: 'Damage',
+      nameLocation: 'middle',
+      interval: 25,
+      splitLine: { show: false },
+    },
 
-  data: ChartData = {
-    datasets: [{
-      data: [],
-      tension: 0.1,
-      borderWidth: 5,
-
-      pointBackgroundColor: 'transparent',
-      pointBorderColor: 'transparent',
-      pointHoverBackgroundColor: 'white',
-      pointHoverRadius: 6,
-      pointHoverBorderColor: 'transparent',
-
-      segment: {
-        borderColor: (ctx: any) => {
-          const y = ctx.p1.parsed.y!
-          if (y < 50) return '#ECEFF1'
-          if (y < 75) return '#CCFF90' //'#f1c40f'
-          if (y < 100) return '#64DD17'
-          if (y < 125) return '#FFD600' //'#e74c3c'
-          if (y < 150) return '#FF6D00' //'#9b59b6'
-          return '#DD2C00'
-        }
-      }
-    }]
-  }
-
-  options: ChartOptions = {
-    responsive: true,
-    scales: {
-      x: {
-        type: 'linear',
-        min: 0,
-        max: 100,
-        title: {
-          display: true,
-          text: 'Range'
-        }
+    tooltip: {
+      trigger: 'axis',
+      axisPointer: {
+        type: 'none'
       },
-      y: {
-        min: 0,
-        max: 150,
-        title: {
-          display: true,
-          text: 'Damage'
-        },
-        ticks: {
-          stepSize: 25
-        }
+      formatter: (params: any[]) => {
+        const p = params[0]
+        const damage = Math.floor(p.value[1])
+        const range = p.value[0]
+        return `Damage: ${damage}\nRange: ${range}m`
       }
     },
-    plugins: {
-      legend: {
-        display: false
-      },
-      tooltip: {
-        callbacks: {
-          title: (context) => {
-            const x = context[0].parsed.x
-            const y = context[0].parsed.y
-            return `${y} dmg | ${x}m`
+
+    grid: {
+      left: 0,
+      top: 0,
+      right: 0,
+      bottom: 50
+    },
+
+    visualMap: [{
+      pieces: [
+        { gt: 0, lte: 50, color: '#ECEFF1' },
+        { gt: 50, lte: 75, color: '#CCFF90' },
+        { gt: 75, lte: 100, color: '#64DD17' },
+        { gt: 100, lte: 125, color: '#FFD600' },
+        { gt: 125, lte: 150, color: '#FF6D00' },
+        { gt: 150, color: '#DD2C00' }
+      ],
+      outOfRange: { color: '#999' },
+      show: false
+    }],
+  };
+
+
+  config = effect(() => {
+    const damageArray = this.ammo().getDamageArray()
+
+    this.chartOptions = {
+      ...this.chartOptions,
+      series: [
+        {
+          name: 'Damage',
+          type: 'line',
+          smooth: true,
+          symbol: 'emptyCircle',
+          showSymbol: false,
+          lineStyle: {
+            width: 4
           },
-          label: () => {
-            return ``
+          data: damageArray.map((damage, range) => [range, damage]),
+
+          markLine: {
+            symbol: 'none',
+            z: 0,
+            animationDuration: 500,
+            animationEasing: 'sinusoidalInOut',
+            lineStyle: {
+              color: '#303030',
+              type: 'dashed',
+              width: 1,
+            },
+            label: {
+              show: false,
+            },
+            emphasis: {
+              lineStyle: {
+                // type: 'solid',
+                color: '#606060',
+                width: 2,
+              },
+              label: {
+                show: true,
+                position: 'bottom',
+                align: 'center',
+                verticalAlign: 'top',
+                distance: 41,
+                color: 'white',
+                borderWidth: 0,
+                formatter: (params: any) => {
+                  return params.name
+                }
+              }
+            },
+            data: this.calculateCombinations()
           }
+        },
+      ]
+    }
+  });
+
+  calculateCombinations() {
+    const result: { xAxis: number, name: string }[] = []
+
+    const parts = ['chest', 'cock', 'arms', 'legs']
+
+    // loop over all unique pairs (including same-part pairs)
+    for (let i = 0; i < parts.length; i++) {
+      for (let j = i; j < parts.length; j++) {
+        let part1 = parts[i]
+        let part2 = parts[j]
+
+        const range = this.findRange(part1 as any, part2 as any)
+
+        if (range > 0 && range <= 100) {
+          part1 = part1 === 'cock' ? 'crotch' : part1
+          part2 = part2 === 'cock' ? 'crotch' : part2
+          const name = `${range}m\n\n${part1} + ${part2}`
+
+          result.push({ xAxis: range, name })
         }
       }
     }
+
+    return result
   }
 
-  onChartClick(event: { event?: ChartEvent, active?: any[] }) {
-    if (!event.active || event.active.length === 0) {
+
+  findRange(bodypartOne: 'chest' | 'cock' | 'legs' | 'arms', bodypartTwo: 'chest' | 'cock' | 'legs' | 'arms') {
+    let found = false
+    let range = 0
+    while (range <= 100 && !found) {
+      const leftDamage = this.ammo().calculateDamage(range)[bodypartOne]
+      const rightDamage = this.ammo().calculateDamage(range)[bodypartTwo]
+      if (leftDamage + rightDamage < 150) {
+        found = true
+      } else {
+        range++
+      }
+    }
+
+    if (found) {
+      range--
+    }
+    
+    return range
+  }
+
+  onChartClick(event: ECElementEvent) {
+    if (event.componentType !== "series" && event.componentType !== "markLine") {
       return
     }
-    const range = event.active[0].element.parsed.x
-    const damage = event.active[0].element.parsed.y
+    const range: number = Array.isArray(event.value) ? event.value[0] as number : event.value as number
+    this.rangeSelected.emit(range)
   }
 }

@@ -3,7 +3,14 @@ import { provideRouter, withComponentInputBinding, withViewTransitions } from '@
 
 import { routes } from './app.routes'
 import { provideHttpClient } from '@angular/common/http'
-import { provideCharts, withDefaultRegisterables } from 'ng2-charts'
+
+import { provideEchartsCore } from 'ngx-echarts'
+import * as echarts from 'echarts/core'
+import { LineChart } from 'echarts/charts'
+import { GridComponent, LegendComponent, MarkLineComponent, TooltipComponent, VisualMapComponent } from 'echarts/components'
+import { CanvasRenderer } from 'echarts/renderers'
+
+echarts.use([CanvasRenderer, LineChart, TooltipComponent, GridComponent, MarkLineComponent, VisualMapComponent]);
 
 export const appConfig: ApplicationConfig = {
   providers: [
@@ -11,6 +18,6 @@ export const appConfig: ApplicationConfig = {
     provideZoneChangeDetection({ eventCoalescing: true }),
     provideRouter(routes, withComponentInputBinding(), withViewTransitions()),
     provideHttpClient(),
-    provideCharts(withDefaultRegisterables()),
+    provideEchartsCore({ echarts }),
   ]
 }
