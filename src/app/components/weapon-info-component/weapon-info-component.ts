@@ -13,7 +13,7 @@ import { AmmoName } from '../../model/ammo-name'
 })
 export class WeaponInfoComponent {
   weapon = input.required<Weapon>()
-  showCustomAmmo = input<boolean>(false)
+  canChangeActiveAmmo = input<boolean>(false)
 
   ammoTypeSrc = computed(() => {
     switch (this.weapon().baseAmmo.info.name) {
@@ -40,6 +40,9 @@ export class WeaponInfoComponent {
   })
 
   activateAmmo(ammo: AmmoStats) {
+    if (!this.canChangeActiveAmmo()) {
+      return
+    }
     this.weapon().activeAmmo = ammo
   }
 }

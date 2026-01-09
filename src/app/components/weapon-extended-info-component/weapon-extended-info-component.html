@@ -7,10 +7,7 @@
 <p>
   The vertical dashed lines represent the different thresholds for downing a full HP hunter with 2 shots. Hover over the vertical lines to
   see which bodypart combination the threshold corresponds to.
+  @if (chestChestRange() !== "not possible") {
+  For example: This weapon will down a hunter with 2 shots up to {{ chestChestRange() }} if both shots hit the chest. <br>
+  }
 </p>
-@if (chestChestRange() !== "not possible") {
-<p>
-  For example: <br>
-  This weapon will down a hunter with 2 shots up to {{ chestChestRange() }} if both shots hit the chest. <br>
-</p>
-}

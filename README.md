@@ -2,14 +2,14 @@
 
 ## TODO
 
-### 2 shot combinations and ranges
-chest + lower, chest + arm, arm + leg etc
-### damage dropoff charts
-### damage range slider
 ### trait filter, status effect intensity filter 
 - levering, iron eye, scopesmith etc
 - light/medium/intense bleed/burn/poison
 ### expanded weapon stats
+- cycle time hipfire (w/ trait - levering, fanning) - allow traits to be applied, dual wielding
+- cycle time ads (w/ trait - iron eye, scopesmith) - allow traits to be applied
+- stamina consumption: light vs heavy
+- full reload time vs reload only one shot
 ### better comparison
 ### redo visuals
 ### animations
@@ -41,12 +41,3 @@ Right:
 
 ### Comparison Page - lowest prio
 
-Compare 2 different weapons or different ammo for the same weapon
-
-Middle 
-- weapon stats that allows to select ammo and a range slider
-
-Left/Right:
-
-- Before selecting weapons - smaller version of the Arsenal page
-- After selecting weapons - hunter body

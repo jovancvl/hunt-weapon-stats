@@ -20,6 +20,6 @@ export class WeaponSelectPage {
   }
 
   onSelect(w: Weapon) {
-    this.router.navigate([w.name])
+    this.router.navigate(['weapons', w.name])
   }
 }

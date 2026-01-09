@@ -1,6 +1,9 @@
+@use '../../../styles.scss';
+
 .content-container {
   display: grid;
   grid-template-columns: minmax(400px, 30vw) minmax(400px, 25vw) minmax(400px, 45vw);
+  min-height: calc(100vh - styles.$nav-bar-height);
 
   .left {
     padding: 0 1rem;

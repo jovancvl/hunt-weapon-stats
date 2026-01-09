@@ -1,8 +1,18 @@
 @use '../../../styles.scss';
 
+:host {
+  padding: 0px 0.5rem;
+}
+
+.spread-content {
+  min-height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
 
 .button-container {
-  $button-size: 3rem;
+  $button-size: 48px;
 
   display: flex;
   flex-flow: row wrap;
@@ -25,6 +35,10 @@
       height: 100%;
     }
 
+
+  }
+
+  .can-hover {
     &:hover {
       background-color: styles.$item-bg-hover-color;
     }
@@ -36,12 +50,20 @@
 }
 
 .gun-img {
+  position: relative;
+  aspect-ratio: 5;
   display: flex;
   justify-content: center;
-  align-items: center;
+  align-items: flex-start;
 
   img {
     width: max(300px, 75%);
+  }
+
+  div {
+    position: absolute;
+    left: 0px;
+    bottom: 0px;
   }
 }
 
@@ -51,7 +73,7 @@
 
 .flex-center {
   display: flex;
-    align-items: center;
+  align-items: center;
 }
 
 .flex-center-center {
@@ -60,14 +82,27 @@
   justify-content: center;
 }
 
-// to zoom in the icon
-.ammo-type-icon {
-  height: 32px;
-  width: 24px;
-  overflow: hidden;
 
-  img {
-    aspect-ratio: 1;
-    height: 36px;
+.ammo-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  span {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 32px;
+    width: 24px;
+    overflow: hidden;
+
+    img {
+      aspect-ratio: 1;
+      height: 36px;
+    }
   }
+}
+
+.margin-bottom {
+  margin-bottom: 2rem;
 }

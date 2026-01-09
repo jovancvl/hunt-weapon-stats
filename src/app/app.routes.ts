@@ -15,7 +15,7 @@ export const routes: Routes = [
     loadComponent: () => import("./pages/weapon-comparison-page/weapon-comparison-page").then(m => m.WeaponComparisonPage)
   },
   {
-    path: ':id',
+    path: 'weapons/:id',
     loadComponent: () => import("./pages/weapon-stats-page/weapon-stats-page").then(m => m.WeaponStatsPage)
   },
   {
