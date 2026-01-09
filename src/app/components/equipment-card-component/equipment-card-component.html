@@ -1,5 +1,11 @@
 <div class="equipment-card">
-    <img [src]="weapon().image">
+    <img class="weapon-img" [src]="weapon().image">
     <span class="top-left">{{weapon().name}}</span>
-    <span class="bottom-right">{{weapon().cost}}</span>
+    <span class="bottom-left size-icon">
+      <img [src]="sizeSrc()">
+    </span>
+    <span class="bottom-right hunt-dollars">
+      <hunt-dollar-icon></hunt-dollar-icon>
+      {{weapon().cost}}
+    </span>
 </div>
