@@ -24,7 +24,7 @@ export class WeaponInfoComponent {
       case AmmoName.LONG:
         return "ammo-icons/ammo_filter-long.svg"
       default:
-        return "ammo-icons/ammo_filter-compact.svg"
+        return "ammo-icons/ammo_filter-special-ammo.svg"
     }
   })
 
