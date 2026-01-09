@@ -35,6 +35,18 @@ const BASE_AMMO_DAMAGE_BREAKPOINTS: DamageBreakpoint[] = [
     range: OPTIMAL_RANGE,
     damage: BASE_DAMAGE
   },
+  {
+    range: 70,
+    damage: 72
+  },
+  {
+    range: 90,
+    damage: 58
+  },
+  {
+    range: 100,
+    damage: 58
+  },
 ]
 
 const AMMO = [
@@ -58,7 +70,28 @@ const AMMO = [
     verticalRecoil: 25,
     muzzleVelocity: 375,
     ammoReserve: AMMO_RESERVE,
-    damageBreakpoints: BASE_AMMO_DAMAGE_BREAKPOINTS
+    damageBreakpoints: [
+      {
+        range: 0,
+        damage: BASE_DAMAGE
+      },
+      {
+        range: 50,
+        damage: BASE_DAMAGE
+      },
+      {
+        range: 80,
+        damage: 72
+      },
+      {
+        range: 90,
+        damage: 61
+      },
+      {
+        range: 100,
+        damage: 61
+      },
+    ]
   }),
   new AmmoStats({
     info: AmmoInfo.LONG_POISON,
