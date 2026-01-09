@@ -44,3 +44,30 @@
     width: max(300px, 75%);
   }
 }
+
+.gap-5 {
+  gap: 5px;
+}
+
+.flex-center {
+  display: flex;
+    align-items: center;
+}
+
+.flex-center-center {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+// to zoom in the icon
+.ammo-type-icon {
+  height: 32px;
+  width: 24px;
+  overflow: hidden;
+
+  img {
+    aspect-ratio: 1;
+    height: 36px;
+  }
+}

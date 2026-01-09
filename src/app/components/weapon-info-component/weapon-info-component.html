@@ -2,8 +2,21 @@
 <div class="gun-img">
   <img [src]="weapon().image" />
 </div>
-<p>Cost: {{weapon().cost}} | Size: {{weapon().size}} | Ammo type: {{weapon().baseAmmo.info.name}}</p>
-<p>Ammo description: {{weapon().baseAmmo.info.description}}</p>
+<div class="flex-center-center gap-5">
+  <span class="flex-center-center">
+    <span class="flex-center-center ammo-type-icon">
+      <img [src]="ammoTypeSrc()">
+    </span> 
+    {{weapon().magazine}}{{weapon().hasExtraBullet ? '+1' : ''}}/{{weapon().activeAmmo.ammoReserve}}
+  </span>
+  <img [src]="sizeSrc()">
+  <span class="flex-center-center gap-5">
+    <hunt-dollar-icon></hunt-dollar-icon>
+    {{weapon().cost}}
+  </span>
+</div>
+<!-- <p>Cost: {{weapon().cost}} | Size: {{weapon().size}} | Ammo type: {{weapon().baseAmmo.info.name}}</p>
+<p>Ammo description: {{weapon().baseAmmo.info.description}}</p> -->
 
 @if (showCustomAmmo()) {
 <div class="button-container">

@@ -20,6 +20,7 @@ export class ChartComponent {
       max: 100,
       name: 'Range',
       nameLocation: 'start',
+      interval: 10,
       splitLine: { show: false },
     },
 
