@@ -11,19 +11,13 @@ nav {
     align-items: center;
     height: 100%;
     font-size: x-large;
-    // font-weight: 600;
     padding: 5px;
     margin: 5px;
     box-sizing: border-box;
 
-    &:hover {
-      text-decoration:underline;
-    }
-
     img {
       box-sizing: border-box;
       height: 100%;
-      // padding: 10px;
     }
   }
 }

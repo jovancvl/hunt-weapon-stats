@@ -3,7 +3,9 @@
 .content-container {
   display: grid;
   grid-template-columns: minmax(400px, 30vw) minmax(400px, 25vw) minmax(400px, 45vw);
+  box-sizing: border-box;
   min-height: calc(100vh - styles.$nav-bar-height);
+  padding-bottom: 2rem;
 
   .left {
     padding: 0 1rem;

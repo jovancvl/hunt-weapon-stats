@@ -87,11 +87,11 @@ export class Weapon {
     this.image = weapon.image
   }
 
-  baseAmmoEquals(ammoType: AmmoName) {
+  baseAmmoEquals(ammoType: AmmoName) { // can remove
     return this.baseAmmo.info.name === ammoType
   }
 
-  isBaseAmmoSpecialAmmo() {
+  isBaseAmmoSpecialAmmo() { // can remove
     return SPECIAL_AMMO_TYPES.has(this.baseAmmo.info.name)
   }
 

@@ -1,43 +1,38 @@
-<div class="spread-content">
-  <div>
-    <h1>{{weapon().name}} {{weapon().activeAmmo !== weapon().baseAmmo ? weapon().activeAmmo.info.name : '' }}</h1>
-    <div class="gun-img">
-      <img [src]="weapon().image" />
-      <div class="flex-center-center gap-5">
-        <span class="ammo-icon">
-          <span>
-            <img [src]="ammoTypeSrc()">
-          </span>
-          {{weapon().magazine}}{{weapon().hasExtraBullet ? '+1' : ''}}/{{weapon().activeAmmo.ammoReserve}}
-        </span>
-        <img [src]="sizeSrc()">
-        <span class="flex-center-center gap-5">
-          <hunt-dollar-icon></hunt-dollar-icon>
-          {{weapon().cost}}
-        </span>
-      </div>
-    </div>
+<h1>{{weapon().name}} {{weapon().activeAmmo !== weapon().baseAmmo ? weapon().activeAmmo.info.name : '' }}</h1>
+<div class="gun-img">
+  <img [src]="weapon().image" />
+</div>
 
-    <p>
-      Weapon description goes here.
-    </p>
+<h3>Ammo Information</h3>
 
-    <h3>Ammo Information</h3>
+<p class="description-box">
+  {{weapon().activeAmmo.info.name}} - {{weapon().activeAmmo.info.description}}
+</p>
 
-    <p>
-      {{weapon().activeAmmo.info.name}} - {{weapon().activeAmmo.info.description}}
-    </p>
+<div class="flex-spread margin-bottom">
+  <div class="flex-center">
+    <span class="ammo-icon">
+      <span class="icon">
+        <img [src]="ammoTypeSrc()">
+      </span>
+      <span class="ammo">
+        {{weapon().magazine}}{{weapon().hasExtraBullet ? '+1' : ''}}/{{weapon().activeAmmo.ammoReserve}}
+      </span>
+    </span>
+    <img [src]="sizeSrc()">
+    <span class="flex-center">
+      <hunt-dollar-icon></hunt-dollar-icon>
+      {{weapon().cost}}
+    </span>
   </div>
-
-  <div class="margin-bottom">
-    <div class="button-container">
-      @for (ammo of weapon().availableAmmo; track $index) {
-      <button (click)="activateAmmo(ammo)" [class.can-hover]="canChangeActiveAmmo()" [class.active]="ammo.info.name === weapon().activeAmmo.info.name">
-        <img [src]="ammo.info.icon">
-      </button>
-      }
-    </div>
-
-    <hunt-stat-table-component [weapon]="weapon()"></hunt-stat-table-component>
+  <div class="button-container">
+    @for (ammo of weapon().availableAmmo; track $index) {
+    <button (click)="activateAmmo(ammo)" [class.can-hover]="canChangeActiveAmmo()"
+      [class.active]="ammo.info.name === weapon().activeAmmo.info.name">
+      <img [src]="ammo.info.icon">
+    </button>
+    }
   </div>
 </div>
+
+<hunt-stat-table-component [weapon]="weapon()"></hunt-stat-table-component>
