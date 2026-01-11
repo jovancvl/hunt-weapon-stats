@@ -41,7 +41,7 @@
     }
 
     &.active {
-      border-color: gold;
+      border-color: styles.$active-border-color;
     }
   }
 }

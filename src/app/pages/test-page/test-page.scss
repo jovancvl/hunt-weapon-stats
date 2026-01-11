@@ -50,7 +50,7 @@ $filter-height: 2.2rem;
     }
 
     &.active {
-      border-color: gold;
+      border-color: styles.$active-border-color;
     }
   }
 }

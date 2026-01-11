@@ -29,8 +29,8 @@
 </div>
 
 <div class="equipment-card-list-container">
-  @for (item of filteredWeapons(); track $index) {
-  <hunt-equipment-card-component [weapon]="item" (click)="onWeaponSelect(item, $event)"
-    (mouseover)="onWeaponHover(item)"></hunt-equipment-card-component>
+  @for (weapon of filteredWeapons(); track $index) {
+  <hunt-equipment-card-component [weapon]="weapon" [active]="selectedWeapon === weapon" (click)="onWeaponSelect(weapon)"
+    (mouseover)="onWeaponHover(weapon)"></hunt-equipment-card-component>
   }
 </div>

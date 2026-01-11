@@ -62,3 +62,7 @@
   aspect-ratio: 1;
   height: 42px;
 }
+
+.active {
+  border-color: styles.$active-border-color;
+}

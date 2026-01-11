@@ -1,4 +1,4 @@
-<div class="equipment-card">
+<div class="equipment-card" [class.active]="active()">
     <img class="weapon-img" [src]="weapon().image">
     <span class="top-left">{{weapon().name}}</span>
     <span class="bottom-left size-icon">

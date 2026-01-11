@@ -38,7 +38,7 @@ export class WeaponSelectPage implements OnDestroy {
     // this.weapon = w
   }
 
-  onSelect(w: Weapon, event: PointerEvent) {
+  onSelect(w: Weapon) {
     if ((this.isDoubleClickTimerRunning && this.weapon.name === w.name) || this.isSmallScreen) {
       this.router.navigate(['weapons', w.name])
     } else {
@@ -46,11 +46,11 @@ export class WeaponSelectPage implements OnDestroy {
 
       this.isDoubleClickTimerRunning = true
       this.doubleClickTimerSub = timer(500).subscribe(() => this.isDoubleClickTimerRunning = false)
-      this.showPopup(event)
+      this.showPopup()
     }
   }
 
-  showPopup(event: PointerEvent) {
+  showPopup() {
     const positionStrategy = this.overlay.position().global().centerHorizontally().top("-8px")
 
     if (this.overlayRef) {

@@ -4,6 +4,7 @@ import { Weapon } from '../../model/weapon'
 import { EquipmentCardComponent } from "../equipment-card-component/equipment-card-component"
 import { WEAPON_LIST } from '../../catalogue/__all-weapons'
 import { Field, form } from '@angular/forms/signals'
+import { FRONTIER_73C } from '../../catalogue/frontier-73c'
 
 @Component({
   selector: 'hunt-select-weapon-component',
@@ -13,8 +14,9 @@ import { Field, form } from '@angular/forms/signals'
 })
 export class SelectWeaponComponent {
   onHover = output<Weapon>()
-  onSelect = output<{ weapon: Weapon, event: PointerEvent }>()
+  onSelect = output<Weapon>()
   weaponsList: Weapon[] = [...WEAPON_LIST]
+  selectedWeapon = FRONTIER_73C
 
   search = viewChild.required<ElementRef<HTMLInputElement>>('search')
 
@@ -60,8 +62,9 @@ export class SelectWeaponComponent {
     })
   })
 
-  onWeaponSelect(w: Weapon, event: PointerEvent) {
-    this.onSelect.emit({ weapon: w, event: event })
+  onWeaponSelect(w: Weapon) {
+    this.selectedWeapon = w
+    this.onSelect.emit(w)
   }
 
   onWeaponHover(w: Weapon) {

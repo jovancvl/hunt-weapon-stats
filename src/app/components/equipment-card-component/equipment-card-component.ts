@@ -10,6 +10,7 @@ import { DollarIcon } from "../dollar-icon/dollar-icon";
 })
 export class EquipmentCardComponent {
   weapon = input.required<Weapon>()
+  active = input<boolean>(false)
 
   sizeSrc = computed(() => {
     switch (this.weapon().size) {
