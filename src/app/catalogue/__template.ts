@@ -21,10 +21,10 @@ const CYCLE_TIME = 999
 const RELOAD_TIME = 999
 const MAGAZINE = 999
 const HAS_EXTRA_BULLET = false
-const MELEE_DAMAGE = 999
-const STAMINA_CONSUMPTION = 999
-const HEAVY_MELEE_DAMAGE = 999
-const HEAVY_STAMINA_CONSUMPTION = 999
+const MELEE_DAMAGE = 27
+const STAMINA_CONSUMPTION = 12
+const HEAVY_MELEE_DAMAGE = 54
+const HEAVY_STAMINA_CONSUMPTION = 25
 const IMAGE = "999"
 const BASE_AMMO_DAMAGE_BREAKPOINTS: DamageBreakpoint[] = [
   {
@@ -45,8 +45,6 @@ const AMMO = [
     info: AmmoInfo.LONG,
     scarce: false,
 
-    // baseDamage: BASE_DAMAGE,
-    // optimalRange: OPTIMAL_RANGE,
     dropRange: DROP_RANGE,
     spread: SPREAD,
     verticalRecoil: VERTICAL_RECOIL,

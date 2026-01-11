@@ -56,12 +56,12 @@ export class ChartComponent {
 
     visualMap: [{
       pieces: [
-        { gt: 0, lte: 50, color: '#ECEFF1' },
-        { gt: 50, lte: 75, color: '#CCFF90' },
-        { gt: 75, lte: 100, color: '#64DD17' },
-        { gt: 100, lte: 125, color: '#FFD600' },
-        { gt: 125, lte: 150, color: '#FF6D00' },
-        { gt: 150, color: '#DD2C00' }
+        { gte: 0, lt: 50, color: '#ECEFF1' },
+        { gte: 50, lt: 75, color: '#CCFF90' },
+        { gte: 75, lt: 100, color: '#64DD17' },
+        { gte: 100, lt: 125, color: '#FFD600' },
+        { gte: 125, lt: 150, color: '#FF6D00' },
+        { gte: 150, color: '#DD2C00' }
       ],
       outOfRange: { color: '#999' },
       show: false

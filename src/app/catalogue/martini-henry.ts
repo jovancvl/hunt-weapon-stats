@@ -1,32 +1,32 @@
 import { AmmoInfo } from "../model/ammo-info";
 import { AmmoStats } from "../model/ammo-stats";
+import { DamageBreakpoint } from "../model/damage"
 import { ActionType, Weapon } from "../model/weapon";
 
-const BASE_DAMAGE = 110
-const OPTIMAL_RANGE = 20
-const DROP_RANGE = 140
-const SPREAD = 17.5
-const VERTICAL_RECOIL = 4
-const MUZZLE_VELOCITY = 40
+const BASE_DAMAGE = 143
+const OPTIMAL_RANGE = 40
+const DROP_RANGE = 125
+const SPREAD = 40
+const VERTICAL_RECOIL = 12
+const MUZZLE_VELOCITY = 400
 const AMMO_RESERVE = 20
 
-const NAME = "Ranger 73"
-const COST = 75
+const NAME = "Martini-Henry"
+const COST = 122
 const SIZE = 3
-const ACTION = ActionType.LEVER_ACTION
+const ACTION = ActionType.SINGLE_SHOT
 const SWAY = 77
-const RATE_OF_FIRE = 31
-const CYCLE_TIME = 1.2
-const RELOAD_TIME = 16.4
-const MAGAZINE = 15
-const HAS_EXTRA_BULLET = true
+const RATE_OF_FIRE = 18
+const CYCLE_TIME = 3.5
+const RELOAD_TIME = 2.7
+const MAGAZINE = 1
+const HAS_EXTRA_BULLET = false
 const MELEE_DAMAGE = 27
 const STAMINA_CONSUMPTION = 12
 const HEAVY_MELEE_DAMAGE = 54
 const HEAVY_STAMINA_CONSUMPTION = 25
-const IMAGE = "https://huntshowdown.wiki.gg/images/Weapon_Ranger_73.png"
-
-const BASE_AMMO_DAMAGE_BREAKPOINTS = [
+const IMAGE = "https://huntshowdown.wiki.gg/images/Weapon_Martini-Henry.png"
+const BASE_AMMO_DAMAGE_BREAKPOINTS: DamageBreakpoint[] = [
   {
     range: 0,
     damage: BASE_DAMAGE
@@ -36,18 +36,18 @@ const BASE_AMMO_DAMAGE_BREAKPOINTS = [
     damage: BASE_DAMAGE
   },
   {
-    range: 50,
-    damage: 68
+    range: 90,
+    damage: BASE_DAMAGE
   },
   {
     range: 100,
-    damage: 55
+    damage: BASE_DAMAGE
   }
 ]
 
 const AMMO = [
   new AmmoStats({
-    info: AmmoInfo.COMPACT,
+    info: AmmoInfo.LONG,
     scarce: false,
 
     dropRange: DROP_RANGE,
@@ -58,97 +58,91 @@ const AMMO = [
     damageBreakpoints: BASE_AMMO_DAMAGE_BREAKPOINTS
   }),
   new AmmoStats({
-    info: AmmoInfo.COMPACT_FMJ,
+    info: AmmoInfo.LONG_EXPLOSIVE,
     scarce: false,
 
-    dropRange: 125,
+    dropRange: 95,
     spread: SPREAD,
-    verticalRecoil: 6,
-    muzzleVelocity: 330,
+    verticalRecoil: VERTICAL_RECOIL,
+    muzzleVelocity: 300,
     ammoReserve: AMMO_RESERVE,
     damageBreakpoints: [
       {
         range: 0,
-        damage: BASE_DAMAGE
+        damage: 138
       },
       {
-        range: 30,
-        damage: BASE_DAMAGE
+        range: OPTIMAL_RANGE,
+        damage: 138
       },
-      {
-        range: 60,
-        damage: 68
-      },
-      {
-        range: 100,
-        damage: 58
-      }
     ]
   }),
   new AmmoStats({
-    info: AmmoInfo.COMPACT_HIGH_VELOCITY,
-    scarce: false,
-
-    dropRange: 160,
-    spread: SPREAD,
-    verticalRecoil: 6,
-    muzzleVelocity: 500,
-    ammoReserve: 13,
-    damageBreakpoints: [
-      {
-        range: 0,
-        damage: 104
-      },
-      {
-        range: 20,
-        damage: 104
-      },
-      {
-        range: 50,
-        damage: 63
-      },
-      {
-        range: 100,
-        damage: 52
-      }
-    ]
-  }),
-  new AmmoStats({
-    info: AmmoInfo.COMPACT_INCENDIARY,
-    scarce: false,
-
-    dropRange: DROP_RANGE,
-    spread: SPREAD,
-    verticalRecoil: VERTICAL_RECOIL,
-    muzzleVelocity: MUZZLE_VELOCITY,
-    ammoReserve: AMMO_RESERVE,
-    damageBreakpoints: BASE_AMMO_DAMAGE_BREAKPOINTS
-  }),
-  new AmmoStats({
-    info: AmmoInfo.COMPACT_POISON,
-    scarce: false,
-
-    dropRange: DROP_RANGE,
-    spread: SPREAD,
-    verticalRecoil: VERTICAL_RECOIL,
-    muzzleVelocity: MUZZLE_VELOCITY,
-    ammoReserve: AMMO_RESERVE,
-    damageBreakpoints: BASE_AMMO_DAMAGE_BREAKPOINTS
-  }),
-  new AmmoStats({
-    info: AmmoInfo.COMPACT_SUBSONIC,
+    info: AmmoInfo.LONG_FMJ,
     scarce: false,
 
     dropRange: 110,
     spread: SPREAD,
+    verticalRecoil: 16,
+    muzzleVelocity: 320,
+    ammoReserve: AMMO_RESERVE,
+    damageBreakpoints: [
+      {
+        range: 0,
+        damage: BASE_DAMAGE
+      },
+      {
+        range: 50,
+        damage: BASE_DAMAGE
+      },
+      {
+        range: 100,
+        damage: BASE_DAMAGE
+      }
+    ]
+  }),
+  new AmmoStats({
+    info: AmmoInfo.LONG_HIGH_VELOCITY,
+    scarce: false,
+
+    dropRange: 140,
+    spread: SPREAD,
+    verticalRecoil: 16,
+    muzzleVelocity: 500,
+    ammoReserve: 14,
+    damageBreakpoints: [
+      {
+        range: 0,
+        damage: 136
+      },
+      {
+        range: OPTIMAL_RANGE,
+        damage: 136
+      },
+      {
+        range: 90,
+        damage: BASE_DAMAGE
+      },
+      {
+        range: 100,
+        damage: BASE_DAMAGE
+      }
+    ]
+  }),
+  new AmmoStats({
+    info: AmmoInfo.LONG_INCENDIARY,
+    scarce: false,
+
+    dropRange: DROP_RANGE,
+    spread: SPREAD,
     verticalRecoil: VERTICAL_RECOIL,
-    muzzleVelocity: 263,
-    ammoReserve: 24,
+    muzzleVelocity: MUZZLE_VELOCITY,
+    ammoReserve: AMMO_RESERVE,
     damageBreakpoints: BASE_AMMO_DAMAGE_BREAKPOINTS
-  })
+  }),
 ]
 
-export const RANGER_73: Weapon = new Weapon({
+export const MARTINI_HENRY: Weapon = new Weapon({
   name: NAME,
   cost: COST,
   size: SIZE,

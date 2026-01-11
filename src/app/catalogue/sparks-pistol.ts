@@ -1,32 +1,32 @@
 import { AmmoInfo } from "../model/ammo-info";
 import { AmmoStats } from "../model/ammo-stats";
+import { DamageBreakpoint } from "../model/damage"
 import { ActionType, Weapon } from "../model/weapon";
 
-const BASE_DAMAGE = 110
-const OPTIMAL_RANGE = 20
-const DROP_RANGE = 140
-const SPREAD = 17.5
-const VERTICAL_RECOIL = 4
-const MUZZLE_VELOCITY = 40
-const AMMO_RESERVE = 20
+const BASE_DAMAGE = 149
+const OPTIMAL_RANGE = 40
+const DROP_RANGE = 95
+const SPREAD = 42.5
+const VERTICAL_RECOIL = 25
+const MUZZLE_VELOCITY = 453
+const AMMO_RESERVE = 14
 
-const NAME = "Ranger 73"
-const COST = 75
-const SIZE = 3
-const ACTION = ActionType.LEVER_ACTION
-const SWAY = 77
-const RATE_OF_FIRE = 31
-const CYCLE_TIME = 1.2
-const RELOAD_TIME = 16.4
-const MAGAZINE = 15
-const HAS_EXTRA_BULLET = true
-const MELEE_DAMAGE = 27
+const NAME = "Sparks Pistol"
+const COST = 155
+const SIZE = 1
+const ACTION = ActionType.SINGLE_SHOT
+const SWAY = 128
+const RATE_OF_FIRE = 15
+const CYCLE_TIME = 4.2
+const RELOAD_TIME = 3.4
+const MAGAZINE = 1
+const HAS_EXTRA_BULLET = false
+const MELEE_DAMAGE = 13
 const STAMINA_CONSUMPTION = 12
-const HEAVY_MELEE_DAMAGE = 54
-const HEAVY_STAMINA_CONSUMPTION = 25
-const IMAGE = "https://huntshowdown.wiki.gg/images/Weapon_Ranger_73.png"
-
-const BASE_AMMO_DAMAGE_BREAKPOINTS = [
+const HEAVY_MELEE_DAMAGE = 31
+const HEAVY_STAMINA_CONSUMPTION = 20
+const IMAGE = "https://huntshowdown.wiki.gg/images/Weapon_Sparks_Pistol.png"
+const BASE_AMMO_DAMAGE_BREAKPOINTS: DamageBreakpoint[] = [
   {
     range: 0,
     damage: BASE_DAMAGE
@@ -35,19 +35,11 @@ const BASE_AMMO_DAMAGE_BREAKPOINTS = [
     range: OPTIMAL_RANGE,
     damage: BASE_DAMAGE
   },
-  {
-    range: 50,
-    damage: 68
-  },
-  {
-    range: 100,
-    damage: 55
-  }
 ]
 
 const AMMO = [
   new AmmoStats({
-    info: AmmoInfo.COMPACT,
+    info: AmmoInfo.LONG,
     scarce: false,
 
     dropRange: DROP_RANGE,
@@ -58,63 +50,27 @@ const AMMO = [
     damageBreakpoints: BASE_AMMO_DAMAGE_BREAKPOINTS
   }),
   new AmmoStats({
-    info: AmmoInfo.COMPACT_FMJ,
+    info: AmmoInfo.LONG_FMJ,
     scarce: false,
 
-    dropRange: 125,
+    dropRange: 85,
     spread: SPREAD,
-    verticalRecoil: 6,
-    muzzleVelocity: 330,
+    verticalRecoil: 27,
+    muzzleVelocity: 362,
     ammoReserve: AMMO_RESERVE,
     damageBreakpoints: [
       {
         range: 0,
         damage: BASE_DAMAGE
-      },
-      {
-        range: 30,
-        damage: BASE_DAMAGE
-      },
-      {
-        range: 60,
-        damage: 68
-      },
-      {
-        range: 100,
-        damage: 58
-      }
-    ]
-  }),
-  new AmmoStats({
-    info: AmmoInfo.COMPACT_HIGH_VELOCITY,
-    scarce: false,
-
-    dropRange: 160,
-    spread: SPREAD,
-    verticalRecoil: 6,
-    muzzleVelocity: 500,
-    ammoReserve: 13,
-    damageBreakpoints: [
-      {
-        range: 0,
-        damage: 104
-      },
-      {
-        range: 20,
-        damage: 104
       },
       {
         range: 50,
-        damage: 63
+        damage: BASE_DAMAGE
       },
-      {
-        range: 100,
-        damage: 52
-      }
     ]
   }),
   new AmmoStats({
-    info: AmmoInfo.COMPACT_INCENDIARY,
+    info: AmmoInfo.LONG_INCENDIARY,
     scarce: false,
 
     dropRange: DROP_RANGE,
@@ -125,7 +81,7 @@ const AMMO = [
     damageBreakpoints: BASE_AMMO_DAMAGE_BREAKPOINTS
   }),
   new AmmoStats({
-    info: AmmoInfo.COMPACT_POISON,
+    info: AmmoInfo.LONG_POISON,
     scarce: false,
 
     dropRange: DROP_RANGE,
@@ -136,19 +92,19 @@ const AMMO = [
     damageBreakpoints: BASE_AMMO_DAMAGE_BREAKPOINTS
   }),
   new AmmoStats({
-    info: AmmoInfo.COMPACT_SUBSONIC,
+    info: AmmoInfo.LONG_SUBSONIC,
     scarce: false,
 
-    dropRange: 110,
+    dropRange: 75,
     spread: SPREAD,
     verticalRecoil: VERTICAL_RECOIL,
-    muzzleVelocity: 263,
-    ammoReserve: 24,
+    muzzleVelocity: 281,
+    ammoReserve: 16,
     damageBreakpoints: BASE_AMMO_DAMAGE_BREAKPOINTS
   })
 ]
 
-export const RANGER_73: Weapon = new Weapon({
+export const SPARKS_PISTOL: Weapon = new Weapon({
   name: NAME,
   cost: COST,
   size: SIZE,
