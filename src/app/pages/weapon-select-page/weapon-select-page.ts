@@ -6,9 +6,9 @@ import { FRONTIER_73C } from '../../catalogue/frontier-73c'
 import { Weapon } from '../../model/weapon'
 import { Overlay, OverlayRef } from '@angular/cdk/overlay'
 import { ComponentPortal } from '@angular/cdk/portal'
-import { BreakpointObserver} from '@angular/cdk/layout'
+import { BreakpointObserver } from '@angular/cdk/layout'
 import { PopupComponent } from './popup-component/popup-component'
-import { delay, Subscription, timer } from 'rxjs'
+import { Subscription, timer } from 'rxjs'
 
 @Component({
   selector: 'hunt-weapon-select-page',
@@ -22,9 +22,13 @@ export class WeaponSelectPage implements OnDestroy {
   breakpointObserver = inject(BreakpointObserver)
   weapon: Weapon = FRONTIER_73C
   overlayRef?: OverlayRef
-  timerSub: Subscription = Subscription.EMPTY
 
   isSmallScreen = false
+
+  popupTimerSub = Subscription.EMPTY
+
+  doubleClickTimerSub = Subscription.EMPTY
+  isDoubleClickTimerRunning = false
 
   breakpoint$ = this.breakpointObserver.observe('(max-width: 1024px)').subscribe(state => {
     this.isSmallScreen = state.matches
@@ -35,30 +39,23 @@ export class WeaponSelectPage implements OnDestroy {
   }
 
   onSelect(w: Weapon, event: PointerEvent) {
-    if (this.weapon.name === w.name || this.isSmallScreen) {
+    if ((this.isDoubleClickTimerRunning && this.weapon.name === w.name) || this.isSmallScreen) {
       this.router.navigate(['weapons', w.name])
     } else {
       this.weapon = w
 
+      this.isDoubleClickTimerRunning = true
+      this.doubleClickTimerSub = timer(500).subscribe(() => this.isDoubleClickTimerRunning = false)
       this.showPopup(event)
     }
   }
 
   showPopup(event: PointerEvent) {
-    const positionStrategy = this.overlay.position()
-      .flexibleConnectedTo({ x: event.clientX, y: event.clientY })
-      .withPositions([
-        {
-          originX: 'end',
-          originY: 'top',
-          overlayX: 'start',
-          overlayY: 'bottom',
-        },
-      ])
+    const positionStrategy = this.overlay.position().global().centerHorizontally().top("-8px")
 
     if (this.overlayRef) {
       this.overlayRef.dispose()
-      this.timerSub.unsubscribe()
+      this.popupTimerSub.unsubscribe()
     }
 
     this.overlayRef = this.overlay.create({
@@ -67,16 +64,18 @@ export class WeaponSelectPage implements OnDestroy {
     })
 
     const component = new ComponentPortal(PopupComponent)
-  
+
     this.overlayRef.attach(component)
 
-    this.timerSub = timer(2300).subscribe(() => {
+    this.popupTimerSub = timer(2300).subscribe(() => {
       this.overlayRef?.dispose()
     })
   }
 
   ngOnDestroy(): void {
     this.breakpoint$.unsubscribe()
-    this.timerSub.unsubscribe()
+    this.overlayRef?.dispose()
+    this.popupTimerSub.unsubscribe()
+    this.doubleClickTimerSub.unsubscribe()
   }
 }

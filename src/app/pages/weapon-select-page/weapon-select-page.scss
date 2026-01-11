@@ -23,7 +23,7 @@
     }
 
     > :last-child {
-      height: 100vh;
+      height: calc(100vh - styles.$nav-bar-height);
     }
   }
 }
