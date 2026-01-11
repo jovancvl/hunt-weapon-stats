@@ -4,22 +4,28 @@
     <input id="search" #search placeholder="Search" [field]="searchForm.query" [autocomplete]="false" />
     <span (click)="clearSearchQuery()" [class.hide]="searchForm.query().value().length === 0" class="material-symbols-outlined">close</span>
   </div>
-  @for (filter of sizeFilters; track $index) {
-  <button (click)="updateSizeFilter(filter)" [class.active]="appliedSizeFilters().includes(filter)">
-    <img [src]="filter.icon" />
-  </button>
-  }
-  @for (filter of baseAmmoFilters; track $index) {
-  <button (click)="updateBaseAmmoFilter(filter)" [class.active]="appliedBaseAmmoFilters().includes(filter)">
-    <img [src]="filter.icon" />
-  </button>
-  }
+  <div class="filter-group">
+    @for (filter of sizeFilters; track $index) {
+    <button (click)="updateSizeFilter(filter)" [class.active]="appliedSizeFilters().includes(filter)">
+      <img [src]="filter.icon" />
+    </button>
+    }
+  </div>
 
-  @for (filter of customAmmoFilters; track $index) {
-  <button (click)="updateCustomAmmoFilter(filter)" [class.active]="appliedCustomAmmoFilters().includes(filter)">
-    <img [src]="filter.icon" />
-  </button>
-  }
+  <div class="filter-group">
+    @for (filter of baseAmmoFilters; track $index) {
+    <button (click)="updateBaseAmmoFilter(filter)" [class.active]="appliedBaseAmmoFilters().includes(filter)">
+      <img [src]="filter.icon" />
+    </button>
+    }
+  </div>
+  <div class="filter-group">
+    @for (filter of customAmmoFilters; track $index) {
+    <button (click)="updateCustomAmmoFilter(filter)" [class.active]="appliedCustomAmmoFilters().includes(filter)">
+      <img [src]="filter.icon" />
+    </button>
+    }
+  </div>
 </div>
 
 <div class="equipment-card-list-container">

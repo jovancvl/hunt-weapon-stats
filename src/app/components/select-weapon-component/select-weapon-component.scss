@@ -15,11 +15,16 @@ $filter-height: 40px;
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
+  gap: 0.5rem 1.5rem;
+  padding: 0.5rem 0.5rem;
+}
+
+.filter-group {
+  display: flex;
   gap: 5px;
-  padding: 0.5rem 1rem;
 
   button {
-    aspect-ratio: 1/1;
+    aspect-ratio: 1;
     height: $filter-height;
     background-color: styles.$item-bg-color;
     color: white;
@@ -63,8 +68,6 @@ $filter-height: 40px;
   }
 
   .material-symbols-outlined {
-    position: absolute;
-    right: 0px;
     cursor: pointer;
   }
 
@@ -100,5 +103,11 @@ $filter-height: 40px;
 
   .always-show {
     display: block !important;
+  }
+}
+
+@media (max-width: 576px) {
+  .equipment-card-list-container {
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
   }
 }
