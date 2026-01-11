@@ -6,6 +6,7 @@ $filter-height: 40px;
   display: flex;
   flex-direction: column;
 }
+
 .filters-container {
   flex: 0 0 auto;
 
@@ -106,6 +107,26 @@ $filter-height: 40px;
 }
 
 @media (max-width: 576px) {
+  $filter-height: 32px;
+
+  .filters-container {
+    gap: 0.5rem;
+  }
+
+  .filter-group {
+    gap: 2px;
+
+    button {
+      height: $filter-height;
+    }
+  }
+
+  .search-container {
+    height: $filter-height;
+    width: $filter-height * 6;
+    min-width: $filter-height * 3;
+  }
+
   .equipment-card-list-container {
     grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
   }
