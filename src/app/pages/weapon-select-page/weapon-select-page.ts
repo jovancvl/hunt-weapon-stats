@@ -1,4 +1,4 @@
-import { Component, inject, OnDestroy } from '@angular/core'
+import { Component, inject, Injector, inputBinding, OnDestroy, ViewContainerRef } from '@angular/core'
 import { Router } from '@angular/router'
 import { WeaponInfoComponent } from "../../components/weapon-info-component/weapon-info-component"
 import { SelectWeaponComponent } from "../../components/select-weapon-component/select-weapon-component"
@@ -8,6 +8,7 @@ import { Overlay, OverlayRef } from '@angular/cdk/overlay'
 import { ComponentPortal } from '@angular/cdk/portal'
 import { BreakpointObserver} from '@angular/cdk/layout'
 import { PopupComponent } from './popup-component/popup-component'
+import { delay, Subscription, timer } from 'rxjs'
 
 @Component({
   selector: 'hunt-weapon-select-page',
@@ -21,6 +22,7 @@ export class WeaponSelectPage implements OnDestroy {
   breakpointObserver = inject(BreakpointObserver)
   weapon: Weapon = FRONTIER_73C
   overlayRef?: OverlayRef
+  timerSub: Subscription = Subscription.EMPTY
 
   isSmallScreen = false
 
@@ -56,6 +58,7 @@ export class WeaponSelectPage implements OnDestroy {
 
     if (this.overlayRef) {
       this.overlayRef.dispose()
+      this.timerSub.unsubscribe()
     }
 
     this.overlayRef = this.overlay.create({
@@ -63,14 +66,17 @@ export class WeaponSelectPage implements OnDestroy {
       scrollStrategy: this.overlay.scrollStrategies.close(),
     })
 
-    this.overlayRef.attach(new ComponentPortal(PopupComponent))
+    const component = new ComponentPortal(PopupComponent)
+  
+    this.overlayRef.attach(component)
 
-    setTimeout(() => {
+    this.timerSub = timer(2300).subscribe(() => {
       this.overlayRef?.dispose()
-    }, 3000)
+    })
   }
 
   ngOnDestroy(): void {
     this.breakpoint$.unsubscribe()
+    this.timerSub.unsubscribe()
   }
 }
