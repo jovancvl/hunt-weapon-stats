@@ -13,13 +13,17 @@ import { Weapon } from '../../model/weapon';
 })
 export class WeaponSelectPage {
   router = inject(Router)
-  weapon = FRONTIER_73C
+  weapon: Weapon = Object.assign(FRONTIER_73C)
 
   onHover(w: Weapon) {
-    this.weapon = w
+    // this.weapon = w
   }
 
   onSelect(w: Weapon) {
-    this.router.navigate(['weapons', w.name])
+    if (this.weapon.name === w.name) {
+      this.router.navigate(['weapons', w.name])
+    } else {
+      this.weapon = w
+    }
   }
 }
