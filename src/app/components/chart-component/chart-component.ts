@@ -1,11 +1,22 @@
 import { Component, effect, input, output } from '@angular/core'
 import { AmmoStats } from '../../model/ammo-stats'
 import { NgxEchartsDirective } from 'ngx-echarts'
-import { ECElementEvent, ECharts, EChartsCoreOption, EChartsType } from 'echarts/core'
+import { provideEchartsCore } from 'ngx-echarts'
+import * as echarts from 'echarts/core'
+import { LineChart } from 'echarts/charts'
+import { GridComponent, MarkLineComponent, TooltipComponent, VisualMapComponent } from 'echarts/components'
+import { CanvasRenderer } from 'echarts/renderers'
+
+import { ECElementEvent, EChartsCoreOption } from 'echarts/core'
+
+echarts.use([CanvasRenderer, LineChart, TooltipComponent, GridComponent, MarkLineComponent, VisualMapComponent]);
 
 @Component({
   selector: 'hunt-chart-component',
   imports: [NgxEchartsDirective],
+  providers: [
+    provideEchartsCore({ echarts }),
+  ],
   templateUrl: './chart-component.html',
   styleUrl: './chart-component.scss',
 })
@@ -173,7 +184,6 @@ export class ChartComponent {
   }
 
   onChartClick(event: ECElementEvent) {
-    console.log(event)
     if (event.componentType !== "series" && event.componentType !== "markLine") {
       return
     }
