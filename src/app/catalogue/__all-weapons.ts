@@ -7,6 +7,7 @@ import { BORNHEIM_NO3_MATCH } from "./bornheim-no3-match"
 import { BORNHEIM_NO3_SILENCER } from "./bornheim-no3-silencer"
 import { CENTENNIAL } from "./centennial"
 import { CENTENNIAL_SHORTY } from "./centennial-shorty"
+import { CENTENNIAL_SHORTY_SILENCER } from "./centennial-shorty-silencer"
 import { CONVERSION } from "./conversion";
 import { DOLCH } from "./dolch";
 import { DRILLING } from "./drilling"
@@ -16,6 +17,7 @@ import { FRONTIER_73C_SILENCER } from "./frontier-73c-silencer"
 import { HAYMAKER } from "./haymaker";
 import { INFANTRY_37L } from "./infantry-73l";
 import { KRAG } from "./krag";
+import { KRAG_SILENCER } from "./krag-silencer"
 import { LEBEL_1886 } from "./lebel-1886";
 import { LEMAT } from "./lemat";
 import { LEMAT_CARBINE } from "./lemat-carbine"
@@ -58,6 +60,7 @@ export const WEAPON_LIST: Weapon[] = [
   HAYMAKER,
   DOLCH,
   KRAG,
+  KRAG_SILENCER,
   LEBEL_1886,
   NEW_ARMY,
   RANGER_73,
@@ -77,6 +80,7 @@ export const WEAPON_LIST: Weapon[] = [
   CARBINE_1865_SILENCER,
   CENTENNIAL,
   CENTENNIAL_SHORTY,
+  CENTENNIAL_SHORTY_SILENCER,
   DRILLING,
   DRILLING_SHORTY,
   MAYNARD_SNIPER,
@@ -94,7 +98,6 @@ export const WEAPON_LIST: Weapon[] = [
   MOSIN_OBREZ,
   MOSIN_OBREZ_MATCH,
   MOSIN_NAGANT,
-  // below need testing
   SPARKS,
   SPARKS_PISTOL,
   SPARKS_SILENCER,

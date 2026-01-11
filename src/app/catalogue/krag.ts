@@ -5,7 +5,7 @@ import { ActionType, Weapon } from "../model/weapon";
 
 const BASE_DAMAGE = 126
 const OPTIMAL_RANGE = 40
-const DROP_RANGE = 120
+const DROP_RANGE = 140
 const SPREAD = 30
 const VERTICAL_RECOIL = 3
 const MUZZLE_VELOCITY = 610
