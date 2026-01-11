@@ -16,7 +16,7 @@
 
 @media (max-width: 1024px) {
   .content-container {
-    grid-template-columns: minmax(400px, 1fr);
+    grid-template-columns: minmax(350px, 1fr);
 
     > :first-child {
       display: none;
