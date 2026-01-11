@@ -33,7 +33,7 @@
   }
 
   .can-hover {
-    border: 1px solid #d0d0d0;
+    border: 1px solid styles.$button-border-color;
     background-color: styles.$item-bg-color;
 
     &:hover {

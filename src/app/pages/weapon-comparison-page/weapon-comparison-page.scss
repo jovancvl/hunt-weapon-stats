@@ -63,7 +63,7 @@
     aspect-ratio: 1/1;
     height: $button-size;
     background-color: styles.$item-bg-color;
-    border: 1px solid white;
+    border: 1px solid styles.$button-border-color;
     box-sizing: border-box;
     padding: 3px;
     transition: border 200ms ease-in-out, background-color 200ms ease-in-out;

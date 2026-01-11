@@ -35,7 +35,7 @@ $filter-height: 2.2rem;
     background-color: styles.$item-bg-color;
     color: white;
     padding: 0px;
-    border: 1px solid white;
+    border: 1px solid styles.$button-border-color;
     box-sizing: border-box;
     transition: border 200ms ease-in-out, background-color 200ms ease-in-out;
 
@@ -58,7 +58,7 @@ $filter-height: 2.2rem;
 .search-container {
   display: flex;
   background-color: styles.$item-bg-color;
-  border: 1px solid white;
+  border: 1px solid styles.$button-border-color;
   border-radius: 0px;
   box-sizing: border-box;
   height: $filter-height;
@@ -102,7 +102,7 @@ $filter-height: 2.2rem;
 .placeholder-equipment-card {
   aspect-ratio: styles.$compare-card-ratio;
   box-sizing: border-box;
-  border: 2px dashed white;
+  border: 2px dashed styles.$button-border-color;
   display: flex;
   justify-content: center;
   align-items: center;
