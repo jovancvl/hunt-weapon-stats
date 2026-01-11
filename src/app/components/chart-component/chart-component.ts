@@ -173,6 +173,7 @@ export class ChartComponent {
   }
 
   onChartClick(event: ECElementEvent) {
+    console.log(event)
     if (event.componentType !== "series" && event.componentType !== "markLine") {
       return
     }

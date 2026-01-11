@@ -1,33 +1,42 @@
-import { Component, computed, output, signal, WritableSignal } from '@angular/core';
-import { SIZE_FILTERS, BASE_AMMO_FILTERS, CUSTOM_AMMO_FILTERS, SizeFilter, BaseAmmoFilter, CustomAmmoFilter, Filter } from '../../model/filter';
-import { Weapon } from '../../model/weapon';
-import { EquipmentCardComponent } from "../equipment-card-component/equipment-card-component";
-import { WEAPON_LIST } from '../../catalogue/__all-weapons';
+import { Component, computed, ElementRef, HostListener, output, signal, viewChild, WritableSignal } from '@angular/core'
+import { SIZE_FILTERS, BASE_AMMO_FILTERS, CUSTOM_AMMO_FILTERS, SizeFilter, BaseAmmoFilter, CustomAmmoFilter, Filter } from '../../model/filter'
+import { Weapon } from '../../model/weapon'
+import { EquipmentCardComponent } from "../equipment-card-component/equipment-card-component"
+import { WEAPON_LIST } from '../../catalogue/__all-weapons'
+import { Field, form } from '@angular/forms/signals'
 
 @Component({
   selector: 'hunt-select-weapon-component',
-  imports: [EquipmentCardComponent],
+  imports: [EquipmentCardComponent, Field],
   templateUrl: './select-weapon-component.html',
   styleUrl: './select-weapon-component.scss',
 })
 export class SelectWeaponComponent {
-  weaponsList: Weapon[] = [...WEAPON_LIST]
   onHover = output<Weapon>()
-  onSelect = output<Weapon>()
+  onSelect = output<{ weapon: Weapon, event: PointerEvent }>()
+  weaponsList: Weapon[] = [...WEAPON_LIST]
+
+  search = viewChild.required<ElementRef<HTMLInputElement>>('search')
+
+  @HostListener('window:keydown')
+  onInput() {
+    this.search().nativeElement.focus()
+  }
 
   // filters
   sizeFilters = SIZE_FILTERS
   baseAmmoFilters = BASE_AMMO_FILTERS
   customAmmoFilters = CUSTOM_AMMO_FILTERS
 
-  searchQuery = signal<string>('')
+  searchForm = form(signal({query: ''}))
+
   appliedSizeFilters = signal<SizeFilter[]>([])
   appliedBaseAmmoFilters = signal<BaseAmmoFilter[]>([])
   appliedCustomAmmoFilters = signal<CustomAmmoFilter[]>([])
 
   filteredWeapons = computed(() => {
     return this.weaponsList.filter((w) => {
-      const searchText = this.searchQuery().toLowerCase()
+      const searchText = this.searchForm.query().value()
       const sizeFilters = this.appliedSizeFilters()
       const baseAmmoFilters = this.appliedBaseAmmoFilters()
       const customAmmoFilters = this.appliedCustomAmmoFilters()
@@ -39,50 +48,50 @@ export class SelectWeaponComponent {
 
       const isSearchApplied = w.name.toLowerCase().includes(searchText)
       const isSizeApplied = sizeFilters.some(f => f.apply(w))
-      const isBaseAmmoApplied = baseAmmoFilters.some(f => f.apply(w));
-      const isCustomAmmoApplied = customAmmoFilters.some(f => f.apply(w));
+      const isBaseAmmoApplied = baseAmmoFilters.some(f => f.apply(w))
+      const isCustomAmmoApplied = customAmmoFilters.some(f => f.apply(w))
 
       return (
-        (isSearchFilterOff || isSearchApplied) && 
-        (isSizeFilterOff || isSizeApplied) && 
-        (isBaseAmmoFilterOff || isBaseAmmoApplied) && 
+        (isSearchFilterOff || isSearchApplied) &&
+        (isSizeFilterOff || isSizeApplied) &&
+        (isBaseAmmoFilterOff || isBaseAmmoApplied) &&
         (isCustomAmmoFilterOff || isCustomAmmoApplied)
       )
     })
   })
 
-  onWeaponSelect(w: Weapon) {
-    this.onSelect.emit(w)
+  onWeaponSelect(w: Weapon, event: PointerEvent) {
+    this.onSelect.emit({ weapon: w, event: event })
   }
 
   onWeaponHover(w: Weapon) {
     this.onHover.emit(w)
   }
 
-  updateSearchQuery(event: HTMLInputElement) {
-    this.searchQuery.set(event.value)
+  clearSearchQuery() {
+    this.searchForm.query().setControlValue('')
   }
 
   updateSizeFilter(filter: SizeFilter) {
-    this.toggleFilter(this.appliedSizeFilters, filter);
+    this.toggleFilter(this.appliedSizeFilters, filter)
   }
 
   updateBaseAmmoFilter(filter: BaseAmmoFilter) {
-    this.toggleFilter(this.appliedBaseAmmoFilters, filter);
+    this.toggleFilter(this.appliedBaseAmmoFilters, filter)
   }
 
   updateCustomAmmoFilter(filter: CustomAmmoFilter) {
-    this.toggleFilter(this.appliedCustomAmmoFilters, filter);
+    this.toggleFilter(this.appliedCustomAmmoFilters, filter)
   }
 
   private toggleFilter(filterList: WritableSignal<Filter[]>, filter: Filter) {
     const list = filterList()
-    const index = list.findIndex(f => f.icon === filter.icon);
-    
+    const index = list.findIndex(f => f.icon === filter.icon)
+
     if (index >= 0) {
       list.splice(index, 1)
     } else {
-      list.push(filter);
+      list.push(filter)
     }
 
     filterList.set([...list])

@@ -1,7 +1,8 @@
 <div class="filters-container">
   <div class="search-container" (click)="search.focus()">
     <img src="ammo-icons/ammo_filter-search.svg">
-    <input #search placeholder="Search" (input)="updateSearchQuery($event.target)" />
+    <input id="search" #search placeholder="Search" [field]="searchForm.query" [autocomplete]="false" />
+    <span (click)="clearSearchQuery()" [class.hide]="searchForm.query().value().length === 0" class="material-symbols-outlined">close</span>
   </div>
   @for (filter of sizeFilters; track $index) {
   <button (click)="updateSizeFilter(filter)" [class.active]="appliedSizeFilters().includes(filter)">
@@ -23,7 +24,7 @@
 
 <div class="equipment-card-list-container">
   @for (item of filteredWeapons(); track $index) {
-  <hunt-equipment-card-component [weapon]="item" (click)="onWeaponSelect(item)"
+  <hunt-equipment-card-component [weapon]="item" (click)="onWeaponSelect(item, $event)"
     (mouseover)="onWeaponHover(item)"></hunt-equipment-card-component>
   }
 </div>

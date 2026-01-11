@@ -1,5 +1,4 @@
 import { Component, computed, input } from '@angular/core';
-import { Weapon } from '../../model/weapon';
 import { AmmoStats } from '../../model/ammo-stats'
 
 @Component({

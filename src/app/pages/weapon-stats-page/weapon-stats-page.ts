@@ -17,7 +17,7 @@ export class WeaponStatsPage {
   private router = inject(Router)
 
   weapon = Weapon.EMPTY
-  range = 0
+  range = 10
   
   constructor () {
     const id = this.activatedRoute.snapshot.paramMap.get('id')

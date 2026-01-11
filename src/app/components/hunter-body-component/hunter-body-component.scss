@@ -1,9 +1,15 @@
+:host {
+  display: flex;
+  justify-content: center;
+}
+
 .hunter-body-container {
   position: relative;
   width: fit-content;
-  height: max(500px, min(100%, 90vh));
+  height: 100%;
+  max-height: 90vh;
+  min-height: 500px;
   box-sizing: border-box;
-  // border: 1px solid aqua;
 
   p {
     position: absolute;
@@ -40,6 +46,12 @@
   .legs-damage {
     top: 70%;
     left: 15%;
+  }
+
+  .range {
+    position: absolute;
+    left: 16px;
+    top: 36px;
   }
 
   img {
