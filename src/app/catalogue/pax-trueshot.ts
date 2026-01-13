@@ -90,6 +90,10 @@ const AMMO = [
         damage: BASE_DAMAGE
       },
       {
+        range: 40,
+        damage: BASE_DAMAGE
+      },
+      {
         range: 70,
         damage: 72
       },
