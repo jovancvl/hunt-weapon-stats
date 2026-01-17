@@ -15,7 +15,7 @@ export class AmmoInfo {
   name: AmmoName
   effect: AmmoEffectType
   severity: AmmoEffectSeverity
-  description: string // format custom ammo description to input the severity
+  description: string // replace placeholder <EFFECT_SEVERITY> to add effect severity
   cost: number
   icon: string
 
@@ -23,11 +23,7 @@ export class AmmoInfo {
     this.name = ammoInfoInterface.name
     this.effect = ammoInfoInterface.effect
     this.severity = ammoInfoInterface.severity
-    if (ammoInfoInterface.severity) {
-      this.description = ammoInfoInterface.description.replace('<EFFECT_SEVERITY>', ammoInfoInterface.severity)
-    } else {
-      this.description = ammoInfoInterface.description
-    }
+    this.description = ammoInfoInterface.description.replace('<EFFECT_SEVERITY>', ammoInfoInterface.severity)
     this.cost = ammoInfoInterface.cost
     this.icon = ammoInfoInterface.icon
   }

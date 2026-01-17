@@ -1,4 +1,4 @@
-import { Component, inject, Injector, inputBinding, OnDestroy, ViewContainerRef } from '@angular/core'
+import { Component, inject, OnDestroy } from '@angular/core'
 import { Router } from '@angular/router'
 import { WeaponInfoComponent } from "../../components/weapon-info-component/weapon-info-component"
 import { SelectWeaponComponent } from "../../components/select-weapon-component/select-weapon-component"
