@@ -1,11 +1,16 @@
 <div class="equipment-card" [class.active]="active()">
-    <img class="weapon-img" [src]="weapon().image">
-    <span class="top-left">{{weapon().name}}</span>
-    <span class="bottom-left size-icon">
-      <img [src]="sizeSrc()">
-    </span>
-    <span class="bottom-right hunt-dollars">
-      <hunt-dollar-icon></hunt-dollar-icon>
-      {{weapon().cost}}
-    </span>
+  <img class="weapon-img" [src]="weapon().image">
+  <span class="top-left">{{weapon().name}}</span>
+  <span class="bottom-left size-icon">
+    <img [src]="sizeSrc()">
+  </span>
+  <span class="top-right">
+    <button class="nav-button" (click)="goToDetails()">
+      <span class="material-symbols-outlined">open_in_new</span>
+    </button>
+  </span>
+  <span class="bottom-right hunt-dollars">
+    <hunt-dollar-icon></hunt-dollar-icon>
+    {{weapon().cost}}
+  </span>
 </div>

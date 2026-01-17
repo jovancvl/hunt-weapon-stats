@@ -2,8 +2,8 @@
 @use "sass:math";
 
 $nav-bar-height: 3rem;
-$item-bg-hover-color: rgb(30, 30, 30);
-$item-bg-color: rgb(10, 10, 10);
+$item-bg-hover-color: #141414;
+$item-bg-color: #0a0a0a;
 $compare-card-ratio: math.div(12, 3);
 $button-border-color: #b0b0b0;
 $active-border-color: goldenrod;

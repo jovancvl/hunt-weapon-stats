@@ -6,6 +6,7 @@
   overflow: hidden;
   box-sizing: border-box;
   border: 1px solid styles.$button-border-color;
+  border-radius: 2px;
   background-color: styles.$item-bg-color;
   transition: background-color 200ms ease-in-out;
 
@@ -15,9 +16,13 @@
 
   &:hover {
     background-color: styles.$item-bg-hover-color;
+
+    .nav-button {
+      opacity: 1;
+    }
   }
 
-  span {
+  >span {
     position: absolute;
     color: white;
     user-select: none;
@@ -29,8 +34,8 @@
   }
 
   .top-right {
-    top: 0.5rem;
-    right: 0.5rem;
+    top: 5px;
+    right: 5px;
   }
 
   .bottom-left {
@@ -65,4 +70,25 @@
 
 .active {
   border-color: styles.$active-border-color;
+}
+
+.nav-button {
+  opacity: 0;
+  transition: opacity 100ms ease-in-out;
+  padding: 2px;
+  box-sizing: border-box;
+  display: flex;
+  color: white;
+  background-color: transparent;
+  border: none;
+  border-radius: 3px;
+  cursor: pointer;
+
+  transition: color 100ms ease-in-out;
+  transition: background-color 100ms ease-in-out;
+
+  &:hover {
+    color: black;
+    background-color: white;
+  }
 }

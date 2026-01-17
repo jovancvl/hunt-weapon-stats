@@ -4,11 +4,8 @@ import { WeaponInfoComponent } from "../../components/weapon-info-component/weap
 import { SelectWeaponComponent } from "../../components/select-weapon-component/select-weapon-component"
 import { FRONTIER_73C } from '../../catalogue/frontier-73c'
 import { Weapon } from '../../model/weapon'
-import { Overlay, OverlayRef } from '@angular/cdk/overlay'
-import { ComponentPortal } from '@angular/cdk/portal'
+import { Overlay } from '@angular/cdk/overlay'
 import { BreakpointObserver } from '@angular/cdk/layout'
-import { PopupComponent } from './popup-component/popup-component'
-import { Subscription, timer } from 'rxjs'
 
 @Component({
   selector: 'hunt-weapon-select-page',
@@ -21,61 +18,25 @@ export class WeaponSelectPage implements OnDestroy {
   overlay = inject(Overlay)
   breakpointObserver = inject(BreakpointObserver)
   weapon: Weapon = FRONTIER_73C
-  overlayRef?: OverlayRef
 
   isSmallScreen = false
-
-  popupTimerSub = Subscription.EMPTY
-
-  doubleClickTimerSub = Subscription.EMPTY
-  isDoubleClickTimerRunning = false
 
   breakpoint$ = this.breakpointObserver.observe('(max-width: 1024px)').subscribe(state => {
     this.isSmallScreen = state.matches
   })
 
-  onHover(w: Weapon) {
-    // this.weapon = w
+  goToDetails(w: Weapon) {
+    this.router.navigate(['weapons', w.name])
   }
 
   onSelect(w: Weapon) {
-    if ((this.isDoubleClickTimerRunning && this.weapon.name === w.name) || this.isSmallScreen) {
-      this.router.navigate(['weapons', w.name])
-    } else {
-      this.weapon = w
-
-      this.isDoubleClickTimerRunning = true
-      this.doubleClickTimerSub = timer(500).subscribe(() => this.isDoubleClickTimerRunning = false)
-      this.showPopup()
+    if (this.isSmallScreen) {
+      this.goToDetails(w)
     }
-  }
-
-  showPopup() {
-    const positionStrategy = this.overlay.position().global().centerHorizontally().top("-8px")
-
-    if (this.overlayRef) {
-      this.overlayRef.dispose()
-      this.popupTimerSub.unsubscribe()
-    }
-
-    this.overlayRef = this.overlay.create({
-      positionStrategy,
-      scrollStrategy: this.overlay.scrollStrategies.close(),
-    })
-
-    const component = new ComponentPortal(PopupComponent)
-
-    this.overlayRef.attach(component)
-
-    this.popupTimerSub = timer(2300).subscribe(() => {
-      this.overlayRef?.dispose()
-    })
+    this.weapon = w
   }
 
   ngOnDestroy(): void {
     this.breakpoint$.unsubscribe()
-    this.overlayRef?.dispose()
-    this.popupTimerSub.unsubscribe()
-    this.doubleClickTimerSub.unsubscribe()
   }
 }

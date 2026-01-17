@@ -13,8 +13,8 @@ import { FRONTIER_73C } from '../../catalogue/frontier-73c'
   styleUrl: './select-weapon-component.scss',
 })
 export class SelectWeaponComponent {
-  onHover = output<Weapon>()
   onSelect = output<Weapon>()
+  onDetailsClick = output<Weapon>()
   weaponsList: Weapon[] = [...WEAPON_LIST]
   selectedWeapon = FRONTIER_73C
 
@@ -30,7 +30,7 @@ export class SelectWeaponComponent {
   baseAmmoFilters = BASE_AMMO_FILTERS
   customAmmoFilters = CUSTOM_AMMO_FILTERS
 
-  searchForm = form(signal({query: ''}))
+  searchForm = form(signal({ query: '' }))
 
   appliedSizeFilters = signal<SizeFilter[]>([])
   appliedBaseAmmoFilters = signal<BaseAmmoFilter[]>([])
@@ -62,14 +62,15 @@ export class SelectWeaponComponent {
     })
   })
 
+  goToDetails(w: Weapon) {
+    this.onDetailsClick.emit(w)
+  }
+
   onWeaponSelect(w: Weapon) {
     this.selectedWeapon = w
     this.onSelect.emit(w)
   }
 
-  onWeaponHover(w: Weapon) {
-    this.onHover.emit(w)
-  }
 
   clearSearchQuery() {
     this.searchForm.query().setControlValue('')

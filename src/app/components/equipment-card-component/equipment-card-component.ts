@@ -1,4 +1,4 @@
-import { Component, computed, input } from '@angular/core';
+import { Component, computed, input, output } from '@angular/core';
 import { Weapon } from '../../model/weapon';
 import { DollarIcon } from "../dollar-icon/dollar-icon";
 
@@ -11,6 +11,7 @@ import { DollarIcon } from "../dollar-icon/dollar-icon";
 export class EquipmentCardComponent {
   weapon = input.required<Weapon>()
   active = input<boolean>(false)
+  onDetailsClick = output()
 
   sizeSrc = computed(() => {
     switch (this.weapon().size) {
@@ -22,4 +23,8 @@ export class EquipmentCardComponent {
         return "ammo-icons/ammo_filter-3-slot.svg"
     }
   })
+
+  goToDetails() {
+    this.onDetailsClick.emit()
+  }
 }
