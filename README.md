@@ -1,5 +1,7 @@
 # Hunt Weapon Stats
 
+You can find the website up on Github Pages [HERE](https://jovancvl.github.io/hunt-weapon-stats/)
+
 ## TODO
 
 ### trait filter, status effect intensity filter 
