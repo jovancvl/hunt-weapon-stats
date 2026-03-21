@@ -3,13 +3,13 @@ import { AmmoStats } from "../model/ammo-stats"
 import { DamageBreakpoint } from "../model/damage"
 import { Weapon, ActionType } from "../model/weapon"
 
-const BASE_DAMAGE = 124
+const BASE_DAMAGE = 120
 const OPTIMAL_RANGE = 30
 const DROP_RANGE = 100
 const SPREAD = 47.5
-const VERTICAL_RECOIL = 6
+const VERTICAL_RECOIL = 7
 const MUZZLE_VELOCITY = 370
-const AMMO_RESERVE = 20
+const AMMO_RESERVE = 16
 
 const NAME = "Vetterli 71 Cyclone"
 const COST = 280
@@ -37,11 +37,11 @@ const BASE_AMMO_DAMAGE_BREAKPOINTS: DamageBreakpoint[] = [
   },
   {
     range: 80,
-    damage: 79
+    damage: 76
   },
   {
     range: 100,
-    damage: 72
+    damage: 70
   },
 ]
 
@@ -77,11 +77,11 @@ const AMMO = [
       },
       {
         range: 90,
-        damage: 79
+        damage: 76
       },
       {
         range: 100,
-        damage: 75
+        damage: 74
       },
     ]
   }),
@@ -91,13 +91,13 @@ const AMMO = [
 
     dropRange: 120,
     spread: SPREAD,
-    verticalRecoil: 12,
+    verticalRecoil: 13,
     muzzleVelocity: 460,
     ammoReserve: 13,
     damageBreakpoints: [
       {
         range: 0,
-        damage: 116
+        damage: 116 // bugged, should be 112
       },
       {
         range: OPTIMAL_RANGE,
