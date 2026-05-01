@@ -5,6 +5,7 @@ import { WEAPON_MAP } from '../../catalogue/__all-weapons'
 import { Weapon } from '../../model/weapon'
 import { WeaponInfoComponent } from "../../components/weapon-info-component/weapon-info-component"
 import { WeaponExtendedInfoComponent } from "../../components/weapon-extended-info-component/weapon-extended-info-component";
+import { FRONTIER_73C } from '../../catalogue/v2/frontier-73c';
 
 @Component({
   selector: 'hunt-weapon-stats-page',
@@ -16,24 +17,24 @@ export class WeaponStatsPage {
   private activatedRoute = inject(ActivatedRoute)
   private router = inject(Router)
 
-  weapon = Weapon.EMPTY
+  weapon = FRONTIER_73C
   range = 10
   
   constructor () {
-    const id = this.activatedRoute.snapshot.paramMap.get('id')
-    if (!id) {
-      alert("weapon name not set, reload the page")
-      throw new Error("weapon name not set")
-    }
+    // const id = this.activatedRoute.snapshot.paramMap.get('id')
+    // if (!id) {
+    //   alert("weapon name not set, reload the page")
+    //   throw new Error("weapon name not set")
+    // }
 
-    const wn = WEAPON_MAP.get(id)
-    if (!wn) {
-      alert("weapon name not found")
-      this.router.navigate([''])
-      return
-    }
+    // const wn = WEAPON_MAP.get(id)
+    // if (!wn) {
+    //   alert("weapon name not found")
+    //   this.router.navigate([''])
+    //   return
+    // }
 
-    this.weapon = Object.assign({ ...wn })
+    // this.weapon = Object.assign({ ...wn })
     
   }
 

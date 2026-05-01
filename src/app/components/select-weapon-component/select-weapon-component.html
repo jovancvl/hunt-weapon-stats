@@ -1,7 +1,7 @@
 <div class="filters-container">
   <div class="search-container" (click)="search.focus()">
     <img src="ammo-icons/ammo_filter-search.svg">
-    <input id="search" #search placeholder="Search" [field]="searchForm.query" [autocomplete]="false" />
+    <input id="search" #search placeholder="Search" [formField]="searchForm.query" [autocomplete]="false" />
     <span (click)="clearSearchQuery()" [class.hide]="searchForm.query().value().length === 0" class="material-symbols-outlined">close</span>
   </div>
   <div class="filter-group">

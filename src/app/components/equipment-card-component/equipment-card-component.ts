@@ -1,6 +1,7 @@
 import { Component, computed, input, output } from '@angular/core';
 import { Weapon } from '../../model/weapon';
 import { DollarIcon } from "../dollar-icon/dollar-icon";
+import { WeaponV2 } from '../../model/v2/weapon-v2';
 
 @Component({
   selector: 'hunt-equipment-card-component',
@@ -9,7 +10,7 @@ import { DollarIcon } from "../dollar-icon/dollar-icon";
   styleUrl: './equipment-card-component.scss'
 })
 export class EquipmentCardComponent {
-  weapon = input.required<Weapon>()
+  weapon = input.required<WeaponV2>()
   active = input<boolean>(false)
   onDetailsClick = output()
 

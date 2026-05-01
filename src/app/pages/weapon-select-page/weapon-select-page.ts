@@ -2,10 +2,11 @@ import { Component, inject, OnDestroy } from '@angular/core'
 import { Router } from '@angular/router'
 import { WeaponInfoComponent } from "../../components/weapon-info-component/weapon-info-component"
 import { SelectWeaponComponent } from "../../components/select-weapon-component/select-weapon-component"
-import { FRONTIER_73C } from '../../catalogue/frontier-73c'
 import { Weapon } from '../../model/weapon'
 import { Overlay } from '@angular/cdk/overlay'
 import { BreakpointObserver } from '@angular/cdk/layout'
+import { WeaponV2 } from '../../model/v2/weapon-v2';
+import { FRONTIER_73C } from '../../catalogue/v2/frontier-73c';
 
 @Component({
   selector: 'hunt-weapon-select-page',
@@ -17,7 +18,7 @@ export class WeaponSelectPage implements OnDestroy {
   router = inject(Router)
   overlay = inject(Overlay)
   breakpointObserver = inject(BreakpointObserver)
-  weapon: Weapon = FRONTIER_73C
+  weapon: WeaponV2 = FRONTIER_73C
 
   isSmallScreen = false
 
@@ -25,11 +26,11 @@ export class WeaponSelectPage implements OnDestroy {
     this.isSmallScreen = state.matches
   })
 
-  goToDetails(w: Weapon) {
+  goToDetails(w: WeaponV2) {
     this.router.navigate(['weapons', w.name])
   }
 
-  onSelect(w: Weapon) {
+  onSelect(w: WeaponV2) {
     if (this.isSmallScreen) {
       this.goToDetails(w)
     }

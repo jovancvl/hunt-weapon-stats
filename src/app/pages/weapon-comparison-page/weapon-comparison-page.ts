@@ -8,6 +8,8 @@ import { StatComparisonTableComponent } from "../../components/stat-comparison-t
 import { BERTHIER_1892 } from '../../catalogue/berthier-1892'
 import { Dialog } from '@angular/cdk/dialog'
 import { SelectWeaponDialogComponent } from './select-weapon-dialog-component/select-weapon-dialog-component'
+import { WeaponV2 } from '../../model/v2/weapon-v2';
+import { Ammo } from '../../model/v2/ammo-v2';
 
 enum LeftOrRight {
   LEFT, 
@@ -22,17 +24,17 @@ enum LeftOrRight {
 })
 export class WeaponComparisonPage {
   dialog = inject(Dialog)
-  left: Weapon = Object.assign({ ...FRONTIER_73C })
-  right: Weapon = Object.assign({ ...BERTHIER_1892 })
+  left: WeaponV2 = Object.assign({ ...FRONTIER_73C })
+  right: WeaponV2 = Object.assign({ ...FRONTIER_73C })
 
   lor = LeftOrRight
 
-  activateAmmo(leftOrRight: Weapon, ammo: AmmoStats) {
+  activateAmmo(leftOrRight: WeaponV2, ammo: Ammo) {
     leftOrRight.activeAmmo = ammo
   }
 
   openWeaponSelectDialog(side: "left" | "right") {
-    const dialogRef = this.dialog.open<Weapon>(SelectWeaponDialogComponent)
+    const dialogRef = this.dialog.open<WeaponV2>(SelectWeaponDialogComponent)
     dialogRef.closed.subscribe(result => {
       if (!result) {
         return

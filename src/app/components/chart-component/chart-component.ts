@@ -8,6 +8,7 @@ import { GridComponent, MarkLineComponent, TooltipComponent, VisualMapComponent 
 import { CanvasRenderer } from 'echarts/renderers'
 
 import { ECElementEvent, EChartsCoreOption } from 'echarts/core'
+import { Ammo } from '../../model/v2/ammo-v2';
 
 echarts.use([CanvasRenderer, LineChart, TooltipComponent, GridComponent, MarkLineComponent, VisualMapComponent]);
 
@@ -21,7 +22,7 @@ echarts.use([CanvasRenderer, LineChart, TooltipComponent, GridComponent, MarkLin
   styleUrl: './chart-component.scss',
 })
 export class ChartComponent {
-  ammo = input.required<AmmoStats>()
+  ammo = input.required<Ammo>()
   rangeSelected = output<number>()
   
   chartOptions: EChartsCoreOption = {

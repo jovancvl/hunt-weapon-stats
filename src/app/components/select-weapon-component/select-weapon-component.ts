@@ -2,20 +2,21 @@ import { Component, computed, ElementRef, HostListener, output, signal, viewChil
 import { SIZE_FILTERS, BASE_AMMO_FILTERS, CUSTOM_AMMO_FILTERS, SizeFilter, BaseAmmoFilter, CustomAmmoFilter, Filter } from '../../model/filter'
 import { Weapon } from '../../model/weapon'
 import { EquipmentCardComponent } from "../equipment-card-component/equipment-card-component"
-import { WEAPON_LIST } from '../../catalogue/__all-weapons'
-import { Field, form } from '@angular/forms/signals'
-import { FRONTIER_73C } from '../../catalogue/frontier-73c'
+import { form, FormField } from '@angular/forms/signals'
+import { WeaponV2 } from '../../model/v2/weapon-v2';
+import { FRONTIER_73C } from '../../catalogue/v2/frontier-73c';
+import { WEAPON_LIST } from '../../catalogue/v2/__all-weapons';
 
 @Component({
   selector: 'hunt-select-weapon-component',
-  imports: [EquipmentCardComponent, Field],
+  imports: [EquipmentCardComponent, FormField],
   templateUrl: './select-weapon-component.html',
   styleUrl: './select-weapon-component.scss',
 })
 export class SelectWeaponComponent {
-  onSelect = output<Weapon>()
-  onDetailsClick = output<Weapon>()
-  weaponsList: Weapon[] = [...WEAPON_LIST]
+  onSelect = output<WeaponV2>()
+  onDetailsClick = output<WeaponV2>()
+  weaponsList: WeaponV2[] = [...WEAPON_LIST]
   selectedWeapon = FRONTIER_73C
 
   search = viewChild.required<ElementRef<HTMLInputElement>>('search')
@@ -62,18 +63,18 @@ export class SelectWeaponComponent {
     })
   })
 
-  goToDetails(w: Weapon) {
+  goToDetails(w: WeaponV2) {
     this.onDetailsClick.emit(w)
   }
 
-  onWeaponSelect(w: Weapon) {
+  onWeaponSelect(w: WeaponV2) {
     this.selectedWeapon = w
     this.onSelect.emit(w)
   }
 
 
   clearSearchQuery() {
-    this.searchForm.query().setControlValue('')
+    this.searchForm.query().controlValue.set('')
   }
 
   updateSizeFilter(filter: SizeFilter) {

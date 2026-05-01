@@ -25,7 +25,7 @@ const MELEE_DAMAGE = 13
 const STAMINA_CONSUMPTION = 12
 const HEAVY_MELEE_DAMAGE = 31
 const HEAVY_STAMINA_CONSUMPTION = 20
-const IMAGE = "https://huntshowdown.wiki.gg/images/Weapon_Haymaker.png?a1f197"
+const IMAGE = "https://huntshowdown.wiki.gg/images/Weapon_Haymaker.png"
 const BASE_AMMO_DAMAGE_BREAKPOINTS: DamageBreakpoint[] = [
   {
     range: 0,

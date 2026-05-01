@@ -4,6 +4,8 @@ import { StatTableComponent } from "../stat-table-component/stat-table-component
 import { AmmoStats } from '../../model/ammo-stats';
 import { DollarIcon } from "../dollar-icon/dollar-icon";
 import { AmmoName } from '../../model/ammo-name'
+import { WeaponV2 } from '../../model/v2/weapon-v2';
+import { Ammo } from '../../model/v2/ammo-v2';
 
 @Component({
   selector: 'hunt-weapon-info-component',
@@ -12,11 +14,11 @@ import { AmmoName } from '../../model/ammo-name'
   styleUrl: './weapon-info-component.scss',
 })
 export class WeaponInfoComponent {
-  weapon = input.required<Weapon>()
+  weapon = input.required<WeaponV2>()
   canChangeActiveAmmo = input<boolean>(false)
 
   ammoTypeSrc = computed(() => {
-    switch (this.weapon().baseAmmo.info.name) {
+    switch (this.weapon().baseAmmo.name) {
       case AmmoName.COMPACT:
         return "ammo-icons/ammo_filter-compact.svg"
       case AmmoName.MEDIUM:
@@ -39,7 +41,7 @@ export class WeaponInfoComponent {
     }
   })
 
-  activateAmmo(ammo: AmmoStats) {
+  activateAmmo(ammo: Ammo) {
     if (!this.canChangeActiveAmmo()) {
       return
     }

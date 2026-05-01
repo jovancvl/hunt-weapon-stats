@@ -1,4 +1,4 @@
-<h1>{{weapon().name}} {{weapon().activeAmmo !== weapon().baseAmmo ? weapon().activeAmmo.info.name : '' }}</h1>
+<h1>{{weapon().name}} {{weapon().activeAmmo !== weapon().baseAmmo ? weapon().activeAmmo.name : '' }}</h1>
 <div class="gun-img">
   <img [src]="weapon().image" />
 </div>
@@ -6,7 +6,7 @@
 <h3>Ammo Information</h3>
 
 <p class="description-box">
-  {{weapon().activeAmmo.info.name}} - {{weapon().activeAmmo.info.description}}
+  {{weapon().activeAmmo.name}} - {{weapon().activeAmmo.description}}
 </p>
 
 <div class="flex-column-center margin-bottom">
@@ -28,8 +28,8 @@
   <div class="button-container">
     @for (ammo of weapon().availableAmmo; track $index) {
     <button (click)="activateAmmo(ammo)" [class.can-hover]="canChangeActiveAmmo()"
-      [class.active]="ammo.info.name === weapon().activeAmmo.info.name">
-      <img [src]="ammo.info.icon">
+      [class.active]="ammo.name === weapon().activeAmmo.name">
+      <img [src]="ammo.icon">
     </button>
     }
   </div>

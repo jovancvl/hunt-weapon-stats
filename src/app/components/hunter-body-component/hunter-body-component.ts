@@ -1,5 +1,6 @@
 import { Component, computed, input } from '@angular/core';
 import { AmmoStats } from '../../model/ammo-stats'
+import { Ammo } from '../../model/v2/ammo-v2';
 
 @Component({
   selector: 'hunt-hunter-body-component',
@@ -8,7 +9,7 @@ import { AmmoStats } from '../../model/ammo-stats'
   styleUrl: './hunter-body-component.scss'
 })
 export class HunterBodyComponent  {
-  ammo = input.required<AmmoStats>()
+  ammo = input.required<Ammo>()
   range = input.required<number>()
 
   chest = computed(() => Math.floor(this.ammo().calculateDamage(this.range()).chest))

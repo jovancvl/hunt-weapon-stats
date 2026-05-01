@@ -7,10 +7,6 @@ export const routes: Routes = [
     component: WeaponSelectPage
   },
   {
-    path: 'test',
-    loadComponent: () => import('./pages/test-page/test-page').then(m => m.TestPage)
-  },
-  {
     path: 'compare',
     loadComponent: () => import("./pages/weapon-comparison-page/weapon-comparison-page").then(m => m.WeaponComparisonPage)
   },

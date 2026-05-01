@@ -6,7 +6,7 @@
           <div class="weapon-title-container">
             <span class="left-weapon"></span>
             <h1>
-              {{left.name}} {{left.activeAmmo !== left.baseAmmo ? left.activeAmmo.info.name : '' }}
+              {{left.name}} {{left.activeAmmo !== left.baseAmmo ? left.activeAmmo.name : '' }}
             </h1>
             <button class="icon-only-button" (click)="openWeaponSelectDialog('left')">
               <span class="material-symbols-outlined">swap_vert</span>
@@ -20,8 +20,8 @@
 
         <div class="button-container">
           @for (ammo of left.availableAmmo; track $index) {
-          <button (click)="activateAmmo(left, ammo)" [class.active]="ammo.info.name === left.activeAmmo.info.name">
-            <img [src]="ammo.info.icon">
+          <button (click)="activateAmmo(left, ammo)" [class.active]="ammo.name === left.activeAmmo.name">
+            <img [src]="ammo.icon">
           </button>
           }
         </div>
@@ -30,7 +30,7 @@
         <div class="weapon-title-container">
           <span class="right-weapon"></span>
           <h1>
-            {{right.name}} {{right.activeAmmo !== right.baseAmmo ? right.activeAmmo.info.name : '' }}
+            {{right.name}} {{right.activeAmmo !== right.baseAmmo ? right.activeAmmo.name : '' }}
           </h1>
           <button class="icon-only-button" (click)="openWeaponSelectDialog('right')">
             <span class="material-symbols-outlined">swap_vert</span>
@@ -45,8 +45,8 @@
 
         <div class="button-container">
           @for (ammo of right.availableAmmo; track $index) {
-          <button (click)="activateAmmo(right, ammo)" [class.active]="ammo.info.name === right.activeAmmo.info.name">
-            <img [src]="ammo.info.icon">
+          <button (click)="activateAmmo(right, ammo)" [class.active]="ammo.name === right.activeAmmo.name">
+            <img [src]="ammo.icon">
           </button>
           }
         </div>

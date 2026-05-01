@@ -1,6 +1,7 @@
 import { Component, computed, input, output } from '@angular/core';
 import { ChartComponent } from "../chart-component/chart-component";
 import { AmmoStats } from '../../model/ammo-stats'
+import { Ammo } from '../../model/v2/ammo-v2';
 
 @Component({
   selector: 'hunt-weapon-extended-info-component',
@@ -9,7 +10,7 @@ import { AmmoStats } from '../../model/ammo-stats'
   styleUrl: './weapon-extended-info-component.scss',
 })
 export class WeaponExtendedInfoComponent {
-  ammo = input.required<AmmoStats>()
+  ammo = input.required<Ammo>()
   rangeSelected = output<number>()
 
   chestChestRange = computed(() => this.findRange('chest', 'chest'))
