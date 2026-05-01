@@ -1,28 +1,28 @@
 import { AmmoName, BLEED_AMMO_TYPES, EXPLOSIVE_AMMO_TYPES, FMJ_AMMO_TYPES, HIGH_VELOCITY_AMMO_TYPES, INCENDIARY_AMMO_TYPES, POISON_AMMO_TYPES, SPECIAL_AMMO_TYPES, SUBSONIC_AMMO_TYPES } from "./ammo-name"
-import { WeaponV2 } from "./v2/weapon-v2";
+import { Weapon } from "./v2/weapon";
 
 export interface Filter {
   icon: string
-  apply(weapon: WeaponV2): boolean
+  apply(weapon: Weapon): boolean
 }
 
 export class SizeFilter implements Filter {
   constructor(readonly size: number, readonly icon: string) { }
-  apply(weapon: WeaponV2): boolean {
+  apply(weapon: Weapon): boolean {
     return weapon.size === this.size
   }
 }
 
 export class BaseAmmoFilter implements Filter {
   constructor(readonly baseAmmo: Set<AmmoName>, readonly icon: string) {}
-  apply(weapon: WeaponV2): boolean {
+  apply(weapon: Weapon): boolean {
     return this.baseAmmo.has(weapon.baseAmmo.name)
   }
 }
 
 export class CustomAmmoFilter implements Filter {
   constructor(readonly customAmmo: Set<AmmoName>, readonly icon: string){}
-  apply(weapon: WeaponV2): boolean {
+  apply(weapon: Weapon): boolean {
     return weapon.hasAnyOfTheseCustomAmmoTypes(this.customAmmo)
   }
 }

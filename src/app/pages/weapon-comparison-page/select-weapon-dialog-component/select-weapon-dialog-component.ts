@@ -1,7 +1,7 @@
 import { Component, inject} from '@angular/core';
 import { SelectWeaponComponent } from "../../../components/select-weapon-component/select-weapon-component";
 import { DialogRef } from '@angular/cdk/dialog'
-import { WeaponV2 } from '../../../model/v2/weapon-v2';
+import { Weapon } from '../../../model/v2/weapon';
 
 @Component({
   selector: 'hunt-select-weapon-dialog-component',
@@ -10,13 +10,13 @@ import { WeaponV2 } from '../../../model/v2/weapon-v2';
   styleUrl: './select-weapon-dialog-component.scss',
 })
 export class SelectWeaponDialogComponent {
-  dialogRef = inject(DialogRef<WeaponV2>)
+  dialogRef = inject(DialogRef<Weapon>)
 
   close() {
     this.dialogRef.close()
   }
 
-  onSelect(w: WeaponV2) {
+  onSelect(w: Weapon) {
     this.dialogRef.close(Object.assign({ ...w }))
   }
 }

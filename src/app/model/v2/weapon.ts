@@ -25,7 +25,7 @@ export interface WeaponInfo {
   image: string
 }
 
-export class WeaponV2 {
+export class Weapon {
   name: string
   cost: number
   size: number

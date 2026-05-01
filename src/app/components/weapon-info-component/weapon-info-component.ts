@@ -1,10 +1,8 @@
 import { Component, computed, input } from '@angular/core';
-import { Weapon } from '../../model/weapon';
 import { StatTableComponent } from "../stat-table-component/stat-table-component";
-import { AmmoStats } from '../../model/ammo-stats';
 import { DollarIcon } from "../dollar-icon/dollar-icon";
 import { AmmoName } from '../../model/ammo-name'
-import { WeaponV2 } from '../../model/v2/weapon-v2';
+import { Weapon } from '../../model/v2/weapon';
 import { Ammo } from '../../model/v2/ammo-v2';
 
 @Component({
@@ -14,7 +12,7 @@ import { Ammo } from '../../model/v2/ammo-v2';
   styleUrl: './weapon-info-component.scss',
 })
 export class WeaponInfoComponent {
-  weapon = input.required<WeaponV2>()
+  weapon = input.required<Weapon>()
   canChangeActiveAmmo = input<boolean>(false)
 
   ammoTypeSrc = computed(() => {

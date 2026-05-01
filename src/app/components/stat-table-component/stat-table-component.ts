@@ -1,7 +1,6 @@
 import { Component, input } from '@angular/core';
-import { Weapon } from '../../model/weapon';
 import { StatBarComponent } from "../stat-bar-component/stat-bar-component";
-import { WeaponV2 } from '../../model/v2/weapon-v2';
+import { Weapon } from '../../model/v2/weapon';
 
 @Component({
   selector: 'hunt-stat-table-component',
@@ -10,5 +9,5 @@ import { WeaponV2 } from '../../model/v2/weapon-v2';
   styleUrl: './stat-table-component.scss',
 })
 export class StatTableComponent {
-  weapon = input.required<WeaponV2>()
+  weapon = input.required<Weapon>()
 }

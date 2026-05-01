@@ -1,14 +1,10 @@
 import { Component, inject } from '@angular/core';
-import { SelectWeaponComponent } from "../../components/select-weapon-component/select-weapon-component";
 import { HunterBodyComponent } from "../../components/hunter-body-component/hunter-body-component";
 import { FRONTIER_73C } from '../../catalogue/frontier-73c'
-import { AmmoStats } from '../../model/ammo-stats'
-import { Weapon } from '../../model/weapon'
 import { StatComparisonTableComponent } from "../../components/stat-comparison-table-component/stat-comparison-table-component";
-import { BERTHIER_1892 } from '../../catalogue/berthier-1892'
 import { Dialog } from '@angular/cdk/dialog'
 import { SelectWeaponDialogComponent } from './select-weapon-dialog-component/select-weapon-dialog-component'
-import { WeaponV2 } from '../../model/v2/weapon-v2';
+import { Weapon } from '../../model/v2/weapon';
 import { Ammo } from '../../model/v2/ammo-v2';
 
 enum LeftOrRight {
@@ -24,17 +20,17 @@ enum LeftOrRight {
 })
 export class WeaponComparisonPage {
   dialog = inject(Dialog)
-  left: WeaponV2 = Object.assign({ ...FRONTIER_73C })
-  right: WeaponV2 = Object.assign({ ...FRONTIER_73C })
+  left: Weapon = Object.assign({ ...FRONTIER_73C })
+  right: Weapon = Object.assign({ ...FRONTIER_73C })
 
   lor = LeftOrRight
 
-  activateAmmo(leftOrRight: WeaponV2, ammo: Ammo) {
+  activateAmmo(leftOrRight: Weapon, ammo: Ammo) {
     leftOrRight.activeAmmo = ammo
   }
 
   openWeaponSelectDialog(side: "left" | "right") {
-    const dialogRef = this.dialog.open<WeaponV2>(SelectWeaponDialogComponent)
+    const dialogRef = this.dialog.open<Weapon>(SelectWeaponDialogComponent)
     dialogRef.closed.subscribe(result => {
       if (!result) {
         return

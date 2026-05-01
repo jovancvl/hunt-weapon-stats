@@ -1,25 +1,25 @@
-import { CompactAmmo, CompactFmjAmmo, CompactHighVelocityAmmo, CompactIncendiaryAmmo, CompactPoisonAmmo, CompactSubsonicAmmo } from "../../model/v2/ammo-v2";
+import { CompactAmmo, CompactFmjAmmo, CompactHighVelocityAmmo, CompactIncendiaryAmmo, CompactPoisonAmmo } from "../../model/v2/ammo-v2";
 import { Weapon } from "../../model/v2/weapon";
 import { ActionType } from "../../model/weapon";
 
-const BASE_DAMAGE = 110;
+const BASE_DAMAGE = 113;
 const DROP_RANGE = 140;
-const SPREAD = 17.5;
-const VERTICAL_RECOIL = 5;
-const MUZZLE_VELOCITY = 400;
-const AMMO_RESERVE = 28
+const SPREAD = 15;
+const VERTICAL_RECOIL = 7;
+const MUZZLE_VELOCITY = 430;
+const AMMO_RESERVE = 24;
 
-export const FRONTIER_73C: Weapon = new Weapon({
-  name: "Frontier 73C",
-  cost: 41,
+export const MARATHON: Weapon = new Weapon({
+  name: "Marathon",
+  cost: 68,
   size: 3,
-  action: ActionType.LEVER_ACTION,
+  action: ActionType.PUMP_ACTION,
 
   sway: 77,
-  rateOfFire: 29,
-  cycleTime: 1.2,
-  reloadTime: 10.1,
-  magazine: 7,
+  rateOfFire: 31,
+  cycleTime: 1,
+  reloadTime: 19.2,
+  magazine: 15,
   hasExtraBullet: true,
 
   meleeDamage: 27,
@@ -27,7 +27,7 @@ export const FRONTIER_73C: Weapon = new Weapon({
   heavyMeleeDamage: 54,
   heavyStaminaConsumption: 25,
 
-  image: "https://huntshowdown.wiki.gg/images/Weapon_Frontier_73C.png",
+  image: "https://huntshowdown.wiki.gg/images/Weapon_Marathon.png",
 
   availableAmmo: [
     new CompactAmmo({
@@ -42,17 +42,17 @@ export const FRONTIER_73C: Weapon = new Weapon({
       baseDamage: BASE_DAMAGE,
       dropRange: 125,
       spread: SPREAD,
-      verticalRecoil: 8,
-      muzzleVelocity: 330,
+      verticalRecoil: 9,
+      muzzleVelocity: 360,
       ammoReserve: AMMO_RESERVE,
     }),
     new CompactHighVelocityAmmo({
-      baseDamage: 104,
-      dropRange: 160,
+      baseDamage: 107,
+      dropRange: 170,
       spread: SPREAD,
-      verticalRecoil: 8,
-      muzzleVelocity: 500,
-      ammoReserve: 18,
+      verticalRecoil: 9,
+      muzzleVelocity: 555,
+      ammoReserve: 16,
     }),
     new CompactIncendiaryAmmo({
       baseDamage: BASE_DAMAGE,
@@ -69,14 +69,6 @@ export const FRONTIER_73C: Weapon = new Weapon({
       verticalRecoil: VERTICAL_RECOIL,
       muzzleVelocity: MUZZLE_VELOCITY,
       ammoReserve: AMMO_RESERVE,
-    }),
-    new CompactSubsonicAmmo({
-      baseDamage: BASE_DAMAGE,
-      dropRange: 110,
-      spread: SPREAD,
-      verticalRecoil: VERTICAL_RECOIL,
-      muzzleVelocity: 263,
-      ammoReserve: 34,
     })
   ]
-})
+});
