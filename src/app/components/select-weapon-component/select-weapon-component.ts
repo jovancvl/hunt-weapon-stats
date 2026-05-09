@@ -3,12 +3,12 @@ import { SIZE_FILTERS, BASE_AMMO_FILTERS, CUSTOM_AMMO_FILTERS, SizeFilter, BaseA
 import { Weapon } from '../../model/weapon'
 import { EquipmentCardComponent } from "../equipment-card-component/equipment-card-component"
 import { WEAPON_LIST } from '../../catalogue/__all-weapons'
-import { Field, form } from '@angular/forms/signals'
+import { form, FormField } from '@angular/forms/signals'
 import { FRONTIER_73C } from '../../catalogue/frontier-73c'
 
 @Component({
   selector: 'hunt-select-weapon-component',
-  imports: [EquipmentCardComponent, Field],
+  imports: [EquipmentCardComponent, FormField],
   templateUrl: './select-weapon-component.html',
   styleUrl: './select-weapon-component.scss',
 })
@@ -73,7 +73,7 @@ export class SelectWeaponComponent {
 
 
   clearSearchQuery() {
-    this.searchForm.query().setControlValue('')
+    this.searchForm.query().controlValue.set('')
   }
 
   updateSizeFilter(filter: SizeFilter) {
