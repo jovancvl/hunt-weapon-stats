@@ -5,7 +5,7 @@
    version="1.1"
    x="0px"
    y="0px"
-   viewBox="0 0 72 72"
+   viewBox="0 0 72 72.000001"
    xml:space="preserve"
    id="svg969"
    width="72"
@@ -41,7 +41,7 @@
 </style>
 <g
    id="layer58"
-   transform="translate(1663.6278,19.878299)"><g
+   transform="translate(1663.6281,19.878256)"><g
      id="g744"
      transform="matrix(1.1318991,0,0,1.1318991,-1909.8102,-620.9055)">
 						<rect
@@ -53,11 +53,11 @@
    id="rect742" />
 					</g><polygon
      class="st0"
-     points="254.7,587 251.9,584.1 251.9,591.3 255.7,594.6 "
+     points="251.9,591.3 255.7,594.6 254.7,587 251.9,584.1 "
      id="polygon746"
      transform="matrix(1.1318991,0,0,1.1318991,-1909.8102,-620.9055)" /><polygon
      class="st0"
-     points="243.8,587 246.6,584.1 246.6,591.3 242.8,594.6 "
+     points="246.6,591.3 242.8,594.6 243.8,587 246.6,584.1 "
      id="polygon748"
      transform="matrix(1.1318991,0,0,1.1318991,-1909.8102,-620.9055)" /><path
      class="st0"
