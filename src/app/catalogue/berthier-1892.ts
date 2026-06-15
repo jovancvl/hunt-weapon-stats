@@ -12,7 +12,7 @@ const MUZZLE_VELOCITY = 590
 const AMMO_RESERVE = 12
 
 const NAME = "Berthier 1892"
-const COST = 330
+const COST = 380
 const SIZE = 3
 const ACTION = ActionType.BOLT_ACTION
 const SWAY = 77
