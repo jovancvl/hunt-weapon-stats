@@ -12,7 +12,7 @@ const AMMO_RESERVE = 20
 
 const NAME = "Ranger 73"
 const COST = 75
-const SIZE = 3
+const SIZE = 4
 const ACTION = ActionType.LEVER_ACTION
 const SWAY = 77
 const RATE_OF_FIRE = 31

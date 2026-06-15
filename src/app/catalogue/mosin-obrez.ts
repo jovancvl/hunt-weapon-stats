@@ -13,7 +13,7 @@ const AMMO_RESERVE = 10
 
 const NAME = "Mosin Obrez"
 const COST = 290
-const SIZE = 3
+const SIZE = 2
 const ACTION = ActionType.BOLT_ACTION
 const SWAY = 100
 const RATE_OF_FIRE = 26

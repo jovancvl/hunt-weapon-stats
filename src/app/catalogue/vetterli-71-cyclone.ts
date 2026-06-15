@@ -13,7 +13,7 @@ const AMMO_RESERVE = 16
 
 const NAME = "Vetterli 71 Cyclone"
 const COST = 280
-const SIZE = 3
+const SIZE = 4
 const ACTION = ActionType.SEMI_OR_FULL_AUTO
 const SWAY = 77
 const RATE_OF_FIRE = 27

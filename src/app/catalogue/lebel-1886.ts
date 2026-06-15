@@ -13,7 +13,7 @@ const AMMO_RESERVE = 5
 
 const NAME = "Lebel 1886"
 const COST = 397
-const SIZE = 3
+const SIZE = 4
 const ACTION = ActionType.BOLT_ACTION
 const SWAY = 77
 const RATE_OF_FIRE = 20

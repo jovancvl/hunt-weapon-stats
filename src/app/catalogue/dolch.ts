@@ -13,7 +13,7 @@ const AMMO_RESERVE = 10
 
 const NAME = "Dolch 96"
 const COST = 690
-const SIZE = 1
+const SIZE = 2
 const ACTION = ActionType.SEMI_OR_FULL_AUTO
 const SWAY = 128
 const RATE_OF_FIRE = 64

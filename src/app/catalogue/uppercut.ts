@@ -13,7 +13,7 @@ const AMMO_RESERVE = 9
 
 const NAME = "Uppercut"
 const COST = 310
-const SIZE = 1
+const SIZE = 2
 const ACTION = ActionType.SINGLE_ACTION
 const SWAY = 128
 const RATE_OF_FIRE = 18
