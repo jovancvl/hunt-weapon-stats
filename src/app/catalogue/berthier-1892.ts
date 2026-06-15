@@ -9,7 +9,7 @@ const DROP_RANGE = 120
 const SPREAD = 42.5
 const VERTICAL_RECOIL = 12
 const MUZZLE_VELOCITY = 590
-const AMMO_RESERVE = 18
+const AMMO_RESERVE = 12
 
 const NAME = "Berthier 1892"
 const COST = 330

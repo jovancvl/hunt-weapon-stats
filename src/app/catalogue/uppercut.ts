@@ -9,7 +9,7 @@ const DROP_RANGE = 65
 const SPREAD = 40
 const VERTICAL_RECOIL = 23
 const MUZZLE_VELOCITY = 410
-const AMMO_RESERVE = 9
+const AMMO_RESERVE = 12
 
 const NAME = "Uppercut"
 const COST = 310

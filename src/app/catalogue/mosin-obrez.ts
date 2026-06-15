@@ -9,7 +9,7 @@ const DROP_RANGE = 100
 const SPREAD = 55
 const VERTICAL_RECOIL = 16
 const MUZZLE_VELOCITY = 520
-const AMMO_RESERVE = 10
+const AMMO_RESERVE = 7
 
 const NAME = "Mosin Obrez"
 const COST = 290

@@ -8,7 +8,7 @@ const DROP_RANGE = 140
 const SPREAD = 17.5
 const VERTICAL_RECOIL = 5
 const MUZZLE_VELOCITY = 400
-const AMMO_RESERVE = 28
+const AMMO_RESERVE = 21
 
 const NAME = "Frontier 73C"
 const COST = 41

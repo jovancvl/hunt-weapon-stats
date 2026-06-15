@@ -9,7 +9,7 @@ const DROP_RANGE = 120
 const SPREAD = 40
 const VERTICAL_RECOIL = 12
 const MUZZLE_VELOCITY = 440
-const AMMO_RESERVE = 24
+const AMMO_RESERVE = 20
 
 const NAME = "Springfield 1866 Shorty"
 const COST = 33
