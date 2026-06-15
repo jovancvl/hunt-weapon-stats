@@ -15,13 +15,11 @@ export class EquipmentCardComponent {
   onDetailsClick = output()
 
   sizeSrc = computed(() => {
-    switch (this.weapon().size) {
-      case 1:
-        return "ammo-icons/ammo_filter-1-slot.svg"
-      case 2:
-        return "ammo-icons/ammo_filter-2-slot.svg"
-      default: 
-        return "ammo-icons/ammo_filter-3-slot.svg"
+    const size = this.weapon().size
+    if (size > 0 || size <= 5) {
+      return `ammo-icons/ammo_filter-${size}-slot.svg`
+    } else {
+      return 'ammo-icons/ammo_filter-1-slot.svg'
     }
   })
 
