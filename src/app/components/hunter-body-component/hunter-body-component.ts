@@ -1,10 +1,11 @@
-import { Component, computed, input } from '@angular/core';
+import { Component, computed, input, ChangeDetectionStrategy } from '@angular/core';
 import { AmmoStats } from '../../model/ammo-stats'
 
 @Component({
   selector: 'hunt-hunter-body-component',
   imports: [],
   templateUrl: './hunter-body-component.html',
+  changeDetection: ChangeDetectionStrategy.Eager,
   styleUrl: './hunter-body-component.scss'
 })
 export class HunterBodyComponent  {

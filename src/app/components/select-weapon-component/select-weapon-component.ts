@@ -1,4 +1,4 @@
-import { Component, computed, ElementRef, HostListener, output, signal, viewChild, WritableSignal } from '@angular/core'
+import { Component, computed, ElementRef, HostListener, output, signal, viewChild, WritableSignal, ChangeDetectionStrategy } from '@angular/core'
 import { SIZE_FILTERS, BASE_AMMO_FILTERS, CUSTOM_AMMO_FILTERS, SizeFilter, BaseAmmoFilter, CustomAmmoFilter, Filter } from '../../model/filter'
 import { Weapon } from '../../model/weapon'
 import { EquipmentCardComponent } from "../equipment-card-component/equipment-card-component"
@@ -10,6 +10,7 @@ import { FRONTIER_73C } from '../../catalogue/frontier-73c'
   selector: 'hunt-select-weapon-component',
   imports: [EquipmentCardComponent, FormField],
   templateUrl: './select-weapon-component.html',
+  changeDetection: ChangeDetectionStrategy.Eager,
   styleUrl: './select-weapon-component.scss',
 })
 export class SelectWeaponComponent {

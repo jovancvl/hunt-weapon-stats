@@ -1,4 +1,4 @@
-import { Component, inject } from '@angular/core'
+import { Component, inject, ChangeDetectionStrategy } from '@angular/core'
 import { HunterBodyComponent } from "../../components/hunter-body-component/hunter-body-component"
 import { ActivatedRoute, Router } from '@angular/router'
 import { WEAPON_MAP } from '../../catalogue/__all-weapons'
@@ -10,6 +10,7 @@ import { WeaponExtendedInfoComponent } from "../../components/weapon-extended-in
   selector: 'hunt-weapon-stats-page',
   imports: [HunterBodyComponent, WeaponInfoComponent, WeaponExtendedInfoComponent],
   templateUrl: './weapon-stats-page.html',
+  changeDetection: ChangeDetectionStrategy.Eager,
   styleUrl: './weapon-stats-page.scss'
 })
 export class WeaponStatsPage {

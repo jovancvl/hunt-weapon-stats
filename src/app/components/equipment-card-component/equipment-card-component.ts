@@ -1,4 +1,4 @@
-import { Component, computed, input, output } from '@angular/core';
+import { Component, computed, input, output, ChangeDetectionStrategy } from '@angular/core';
 import { Weapon } from '../../model/weapon';
 import { DollarIcon } from "../dollar-icon/dollar-icon";
 
@@ -6,6 +6,7 @@ import { DollarIcon } from "../dollar-icon/dollar-icon";
   selector: 'hunt-equipment-card-component',
   imports: [DollarIcon],
   templateUrl: './equipment-card-component.html',
+  changeDetection: ChangeDetectionStrategy.Eager,
   styleUrl: './equipment-card-component.scss'
 })
 export class EquipmentCardComponent {

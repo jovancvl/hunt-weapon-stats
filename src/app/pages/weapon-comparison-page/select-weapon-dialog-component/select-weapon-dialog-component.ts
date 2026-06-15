@@ -1,4 +1,4 @@
-import { Component, inject} from '@angular/core';
+import { Component, inject, ChangeDetectionStrategy } from '@angular/core';
 import { SelectWeaponComponent } from "../../../components/select-weapon-component/select-weapon-component";
 import { DialogRef } from '@angular/cdk/dialog'
 import { Weapon } from '../../../model/weapon'
@@ -7,6 +7,7 @@ import { Weapon } from '../../../model/weapon'
   selector: 'hunt-select-weapon-dialog-component',
   imports: [SelectWeaponComponent],
   templateUrl: './select-weapon-dialog-component.html',
+  changeDetection: ChangeDetectionStrategy.Eager,
   styleUrl: './select-weapon-dialog-component.scss',
 })
 export class SelectWeaponDialogComponent {

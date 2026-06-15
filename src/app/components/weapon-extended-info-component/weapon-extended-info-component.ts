@@ -1,4 +1,4 @@
-import { Component, computed, input, output } from '@angular/core';
+import { Component, computed, input, output, ChangeDetectionStrategy } from '@angular/core';
 import { ChartComponent } from "../chart-component/chart-component";
 import { AmmoStats } from '../../model/ammo-stats'
 
@@ -6,6 +6,7 @@ import { AmmoStats } from '../../model/ammo-stats'
   selector: 'hunt-weapon-extended-info-component',
   imports: [ChartComponent],
   templateUrl: './weapon-extended-info-component.html',
+  changeDetection: ChangeDetectionStrategy.Eager,
   styleUrl: './weapon-extended-info-component.scss',
 })
 export class WeaponExtendedInfoComponent {

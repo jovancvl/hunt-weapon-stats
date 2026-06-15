@@ -1,4 +1,4 @@
-import { Component, effect, input, output } from '@angular/core'
+import { Component, effect, input, output, ChangeDetectionStrategy } from '@angular/core'
 import { AmmoStats } from '../../model/ammo-stats'
 import { NgxEchartsDirective } from 'ngx-echarts'
 import { provideEchartsCore } from 'ngx-echarts'
@@ -18,6 +18,7 @@ echarts.use([CanvasRenderer, LineChart, TooltipComponent, GridComponent, MarkLin
     provideEchartsCore({ echarts }),
   ],
   templateUrl: './chart-component.html',
+  changeDetection: ChangeDetectionStrategy.Eager,
   styleUrl: './chart-component.scss',
 })
 export class ChartComponent {

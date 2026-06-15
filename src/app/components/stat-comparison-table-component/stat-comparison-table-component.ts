@@ -1,4 +1,4 @@
-import { Component, input } from '@angular/core';
+import { Component, input, ChangeDetectionStrategy } from '@angular/core';
 import { StatBarComponent } from "../stat-bar-component/stat-bar-component";
 import { Weapon } from '../../model/weapon';
 
@@ -6,6 +6,7 @@ import { Weapon } from '../../model/weapon';
   selector: 'hunt-stat-comparison-table-component',
   imports: [StatBarComponent],
   templateUrl: './stat-comparison-table-component.html',
+  changeDetection: ChangeDetectionStrategy.Eager,
   styleUrl: './stat-comparison-table-component.scss',
 })
 export class StatComparisonTableComponent {

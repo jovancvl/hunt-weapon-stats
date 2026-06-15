@@ -1,9 +1,10 @@
-import { Component, computed, input } from '@angular/core';
+import { Component, computed, input, ChangeDetectionStrategy } from '@angular/core';
 
 @Component({
   selector: 'hunt-stat-bar-component',
   imports: [],
   templateUrl: './stat-bar-component.html',
+  changeDetection: ChangeDetectionStrategy.Eager,
   styleUrl: './stat-bar-component.scss',
 })
 export class StatBarComponent {
