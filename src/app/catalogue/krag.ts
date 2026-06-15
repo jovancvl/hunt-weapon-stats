@@ -47,7 +47,7 @@ const BASE_AMMO_DAMAGE_BREAKPOINTS: DamageBreakpoint[] = [
 
 const AMMO = [
   new AmmoStats({
-    info: AmmoInfo.LONG,
+    info: AmmoInfo.SPECIAL_LONG,
     scarce: false,
 
     dropRange: DROP_RANGE,
@@ -58,7 +58,7 @@ const AMMO = [
     damageBreakpoints: BASE_AMMO_DAMAGE_BREAKPOINTS
   }),
   new AmmoStats({
-    info: AmmoInfo.LONG_FMJ,
+    info: AmmoInfo.SPECIAL_LONG_FMJ,
     scarce: false,
 
     dropRange: 125,
@@ -82,7 +82,7 @@ const AMMO = [
     ]
   }),
   new AmmoStats({
-    info: AmmoInfo.LONG_INCENDIARY,
+    info: AmmoInfo.SPECIAL_LONG_INCENDIARY,
     scarce: false,
 
     dropRange: DROP_RANGE,

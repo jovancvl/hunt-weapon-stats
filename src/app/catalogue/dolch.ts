@@ -71,39 +71,7 @@ const AMMO = [
     muzzleVelocity: 390,
     ammoReserve: AMMO_RESERVE,
     damageBreakpoints: BASE_AMMO_DAMAGE_BREAKPOINTS
-  }),
-  new AmmoStats({
-    info: AmmoInfo.DOLCH_FMJ,
-    scarce: false,
-
-    dropRange: 65,
-    spread: SPREAD,
-    verticalRecoil: 17,
-    muzzleVelocity: 390,
-    ammoReserve: AMMO_RESERVE,
-    damageBreakpoints: [
-      {
-        range: 0,
-        damage: BASE_DAMAGE
-      },
-      {
-        range: 30,
-        damage: BASE_DAMAGE
-      },
-      {
-        range: 60,
-        damage: 53
-      },
-      {
-        range: 80,
-        damage: 48
-      },
-      {
-        range: 100,
-        damage: 48
-      }
-    ]
-  }),
+  })
 ]
 
 export const DOLCH: Weapon = new Weapon({

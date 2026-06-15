@@ -52,6 +52,16 @@ export class AmmoInfo {
     cost: 0,
     icon: "ammo-icons/ammo_long-base.svg"
   })
+
+  static readonly SPECIAL_LONG = new AmmoInfo({
+    name: AmmoName.SPECIAL_LONG,
+    description: AmmoDescription.LONG,
+    effect: AmmoEffectType.NA,
+    severity: AmmoEffectSeverity.NA,
+    cost: 0,
+    icon: "ammo-icons/ammo_long-base.svg"
+  })
+
   static readonly BUCKSHOT = new AmmoInfo({
     name: AmmoName.BUCKSHOT,
     description: AmmoDescription.BUCKSHOT,
@@ -222,6 +232,33 @@ export class AmmoInfo {
     severity: AmmoEffectSeverity.NA,
     cost: 50,
     icon: "ammo-icons/ammo_long-spitzer.svg"
+  })
+
+  static readonly SPECIAL_LONG_INCENDIARY = new AmmoInfo({
+    name: AmmoName.INCENDIARY,
+    description: AmmoDescription.INCENDIARY,
+    effect: AmmoEffectType.BURN,
+    severity: AmmoEffectSeverity.MEDIUM,
+    cost: 50,
+    icon: 'ammo-icons/ammo_long-incendiary.svg'
+  })
+
+  static readonly SPECIAL_LONG_SPITZER = new AmmoInfo({
+    name: AmmoName.SPITZER,
+    description: AmmoDescription.SPITZER,
+    effect: AmmoEffectType.NA,
+    severity: AmmoEffectSeverity.NA,
+    cost: 50,
+    icon: "ammo-icons/ammo_long-spitzer.svg"
+  })
+
+  static readonly SPECIAL_LONG_FMJ = new AmmoInfo({
+    name: AmmoName.FMJ,
+    description: AmmoDescription.FMJ,
+    effect: AmmoEffectType.NA,
+    severity: AmmoEffectSeverity.NA,
+    cost: 50,
+    icon: "ammo-icons/ammo_long-fmj.svg"
   })
 
   static readonly SHELL_DRAGONBREATH = new AmmoInfo({
