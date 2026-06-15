@@ -13,7 +13,7 @@ const AMMO_RESERVE = 20
 
 const NAME = "Martini-Henry"
 const COST = 122
-const SIZE = 3
+const SIZE = 4
 const ACTION = ActionType.SINGLE_SHOT
 const SWAY = 77
 const RATE_OF_FIRE = 18

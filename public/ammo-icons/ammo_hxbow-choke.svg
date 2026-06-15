@@ -5,11 +5,11 @@
    version="1.1"
    x="0px"
    y="0px"
-   viewBox="0 0 72 72"
+   viewBox="0 0 72 72.000016"
    xml:space="preserve"
    id="svg969"
    width="72"
-   height="72"
+   height="72.000015"
    xmlns="http://www.w3.org/2000/svg"
    xmlns:svg="http://www.w3.org/2000/svg"><defs
    id="defs973" />
@@ -41,7 +41,7 @@
 </style>
 <g
    id="layer67"
-   transform="translate(2185.102,21.303589)"><g
+   transform="translate(2185.1022,21.303553)"><g
      id="g499"
      transform="matrix(1.3495216,0,0,1.3495216,-2485.2678,-563.20098)">
 						<rect

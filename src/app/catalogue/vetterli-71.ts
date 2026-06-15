@@ -9,7 +9,7 @@ const DROP_RANGE = 125
 const SPREAD = 22.5
 const VERTICAL_RECOIL = 5
 const MUZZLE_VELOCITY = 410
-const AMMO_RESERVE = 20
+const AMMO_RESERVE = 16
 
 const NAME = "Vetterli 71"
 const COST = 105

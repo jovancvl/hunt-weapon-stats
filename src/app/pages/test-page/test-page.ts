@@ -1,5 +1,5 @@
 import { CdkDropList, CdkDragDrop, CdkDrag, CdkDragPlaceholder, CdkDragPreview } from '@angular/cdk/drag-drop';
-import { Component, computed, inject, signal, viewChild } from '@angular/core';
+import { Component, computed, inject, signal, viewChild, ChangeDetectionStrategy } from '@angular/core';
 import { Router, RouterLink } from '@angular/router';
 import { Weapon } from '../../model/weapon';
 import { WEAPON_LIST } from '../../catalogue/__all-weapons';
@@ -14,6 +14,7 @@ import { AmmoName, BLEED_AMMO_TYPES, EXPLOSIVE_AMMO_TYPES, FMJ_AMMO_TYPES, HIGH_
   selector: 'hunt-test-page',
   imports: [CdkDrag, EquipmentCardComponent, CdkDropList, CdkDragPlaceholder, CompareEquipmentCardComponent, CdkDragPreview, NgTemplateOutlet, RouterLink, StatComparisonTableComponent],
   templateUrl: './test-page.html',
+  changeDetection: ChangeDetectionStrategy.Eager,
   styleUrl: './test-page.scss',
 })
 export class TestPage {

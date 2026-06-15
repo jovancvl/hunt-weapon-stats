@@ -1,4 +1,4 @@
-import { Component, inject, OnDestroy } from '@angular/core'
+import { Component, inject, OnDestroy, ChangeDetectionStrategy } from '@angular/core'
 import { Router } from '@angular/router'
 import { WeaponInfoComponent } from "../../components/weapon-info-component/weapon-info-component"
 import { SelectWeaponComponent } from "../../components/select-weapon-component/select-weapon-component"
@@ -11,6 +11,7 @@ import { BreakpointObserver } from '@angular/cdk/layout'
   selector: 'hunt-weapon-select-page',
   imports: [WeaponInfoComponent, SelectWeaponComponent],
   templateUrl: './weapon-select-page.html',
+  changeDetection: ChangeDetectionStrategy.Eager,
   styleUrl: './weapon-select-page.scss'
 })
 export class WeaponSelectPage implements OnDestroy {

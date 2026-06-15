@@ -1,10 +1,11 @@
-import { Component, input } from '@angular/core';
+import { Component, input, ChangeDetectionStrategy } from '@angular/core';
 import { Weapon } from '../../model/weapon';
 
 @Component({
   selector: 'hunt-compare-equipment-card-component',
   imports: [],
   templateUrl: './compare-equipment-card-component.html',
+  changeDetection: ChangeDetectionStrategy.Eager,
   styleUrl: './compare-equipment-card-component.scss',
 })
 export class CompareEquipmentCardComponent {

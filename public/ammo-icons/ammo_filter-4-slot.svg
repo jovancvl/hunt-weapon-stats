@@ -5,11 +5,11 @@
    version="1.1"
    x="0px"
    y="0px"
-   viewBox="0 0 72 72"
+   viewBox="0 0 48 48.000001"
    xml:space="preserve"
    id="svg969"
-   width="72"
-   height="72"
+   width="48"
+   height="48"
    xmlns="http://www.w3.org/2000/svg"
    xmlns:svg="http://www.w3.org/2000/svg"><defs
    id="defs973" />
@@ -39,24 +39,43 @@
 	.st20{fill:#635956;}
 	.st21{fill:#636363;}
 </style>
-<g
-   id="layer51"
-   transform="translate(3408.4535,20.418207)"><polygon
-     class="st0"
-     points="317.8,784.4 324.4,784.4 324.8,794 324.9,795.1 325,798.4 317.1,798.4 "
-     id="polygon838"
-     transform="matrix(1.2382991,0,0,1.2382991,-3770.0093,-943.88685)" /><polygon
-     class="st0"
-     points="325.1,800.8 316.9,800.8 317,799.5 325,799.5 "
-     id="polygon840"
-     transform="matrix(1.2382991,0,0,1.2382991,-3770.0093,-943.88685)" /><polygon
-     class="st0"
-     points="325.7,803.9 316.4,803.9 316.5,801.9 325.6,801.9 "
-     id="polygon842"
-     transform="matrix(1.2382991,0,0,1.2382991,-3770.0093,-943.88685)" /><path
-     class="st0"
-     d="m -3368.6766,25.20599 h -7.6775 c 0,-2.352768 1.7337,-8.544263 3.8388,-8.544263 2.1051,0.123829 3.8387,6.191495 3.8387,8.544263 z"
-     id="path844"
-     style="stroke-width:1.2383" /></g>
 
-</svg>
+
+<g
+   id="layer36"
+   transform="translate(-1093.8888,-165.99098)"><rect
+     x="1095.8336"
+     y="186.02159"
+     class="st0"
+     width="7.9386797"
+     height="7.9386797"
+     id="rect944-3-5-9-3"
+     style="fill:#ffffff;stroke-width:0.69032" /><rect
+     x="1104.8763"
+     y="186.02159"
+     class="st0"
+     width="7.9386797"
+     height="7.9386797"
+     id="rect944-3-5-7-3-7"
+     style="fill:#ffffff;stroke-width:0.69032" /><rect
+     x="1132.006"
+     y="186.02159"
+     class="st21"
+     width="7.9386797"
+     height="7.9386797"
+     id="rect948-4-5-1-6-9"
+     style="fill:#636363;stroke-width:0.69032" /><rect
+     x="1113.9196"
+     y="186.02159"
+     class="st0"
+     width="7.9386797"
+     height="7.9386797"
+     id="rect944-3-5-7-3-6-2"
+     style="fill:#ffffff;stroke-width:0.69032" /><rect
+     x="1122.9628"
+     y="186.02159"
+     class="st0"
+     width="7.9386797"
+     height="7.9386797"
+     id="rect944-3-5-7-3-6-2-8"
+     style="fill:#ffffff;stroke-width:0.69032" /></g></svg>

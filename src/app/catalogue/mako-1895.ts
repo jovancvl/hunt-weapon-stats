@@ -8,12 +8,12 @@ const OPTIMAL_RANGE = 40
 const DROP_RANGE = 115
 const SPREAD = 27.5
 const VERTICAL_RECOIL = 11
-const MUZZLE_VELOCITY = 540
+const MUZZLE_VELOCITY = 440
 const AMMO_RESERVE = 8
 
 const NAME = "Mako 1895"
 const COST = 360
-const SIZE = 3
+const SIZE = 4
 const ACTION = ActionType.LEVER_ACTION
 const SWAY = 77
 const RATE_OF_FIRE = 20

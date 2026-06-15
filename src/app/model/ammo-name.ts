@@ -2,6 +2,7 @@ export enum AmmoName {
   COMPACT = 'Compact',
   MEDIUM = 'Medium',
   LONG = 'Long',
+  SPECIAL_LONG = 'Special Long',
   BUCKSHOT = 'Buckshot',
   DERRINGER = 'Derringer',
 
@@ -71,7 +72,8 @@ const SPECIAL_AMMO_TYPE_ARRAY = [
   AmmoName.HAND_CROSSBOW,
   AmmoName.DOLCH,
   AmmoName.LANCE,
-  AmmoName.NITRO
+  AmmoName.NITRO,
+  AmmoName.SPECIAL_LONG
 ] as const;
 
 export type SpecialAmmo = typeof SPECIAL_AMMO_TYPE_ARRAY[number];

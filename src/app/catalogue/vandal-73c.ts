@@ -9,7 +9,7 @@ const DROP_RANGE = 120
 const SPREAD = 25
 const VERTICAL_RECOIL = 8
 const MUZZLE_VELOCITY = 370
-const AMMO_RESERVE = 28
+const AMMO_RESERVE = 18
 
 const NAME = "Vandal 73C"
 const COST = 35

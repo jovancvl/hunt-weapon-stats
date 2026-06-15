@@ -5,11 +5,11 @@
    version="1.1"
    x="0px"
    y="0px"
-   viewBox="0 0 48 48.000015"
+   viewBox="0 0 48 48.000008"
    xml:space="preserve"
    id="svg969"
    width="48"
-   height="48.000015"
+   height="48.000008"
    xmlns="http://www.w3.org/2000/svg"
    xmlns:svg="http://www.w3.org/2000/svg"><defs
    id="defs973" />
@@ -43,7 +43,7 @@
 
 <g
    id="layer45"
-   transform="translate(3319.1363,-204.24534)"><rect
+   transform="translate(3319.1364,-204.24535)"><rect
      x="-3299.5364"
      y="214.19534"
      class="st0"
@@ -51,6 +51,6 @@
      height="20.4"
      id="rect890" /><polygon
      class="st0"
-     points="567.3,112.3 576.1,112.3 577.1,112.3 577.1,110.8 576.1,110.8 576.1,106.3 567.3,106.3 567.3,110.8 566.3,110.8 566.3,112.3 "
+     points="566.3,110.8 566.3,112.3 567.3,112.3 576.1,112.3 577.1,112.3 577.1,110.8 576.1,110.8 576.1,106.3 567.3,106.3 567.3,110.8 "
      id="polygon892"
      transform="translate(-3866.8363,129.99534)" /></g></svg>

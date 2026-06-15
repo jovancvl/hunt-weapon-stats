@@ -13,7 +13,7 @@ const AMMO_RESERVE = 24
 
 const NAME = "Springfield 1866"
 const COST = 38
-const SIZE = 3
+const SIZE = 4
 const ACTION = ActionType.SINGLE_SHOT
 const SWAY = 77
 const RATE_OF_FIRE = 19

@@ -13,7 +13,7 @@ const AMMO_RESERVE = 12
 
 const NAME = "Centennial"
 const COST = 157
-const SIZE = 3
+const SIZE = 4
 const ACTION = ActionType.LEVER_ACTION
 const SWAY = 77
 const RATE_OF_FIRE = 23

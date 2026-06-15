@@ -13,7 +13,7 @@ const AMMO_RESERVE = 5
 
 const NAME = "Lebel 1886"
 const COST = 397
-const SIZE = 3
+const SIZE = 4
 const ACTION = ActionType.BOLT_ACTION
 const SWAY = 77
 const RATE_OF_FIRE = 20
@@ -47,7 +47,7 @@ const BASE_AMMO_DAMAGE_BREAKPOINTS: DamageBreakpoint[] = [
 
 const AMMO = [
   new AmmoStats({
-    info: AmmoInfo.LONG,
+    info: AmmoInfo.SPECIAL_LONG,
     scarce: false,
 
     dropRange: DROP_RANGE,
@@ -58,7 +58,7 @@ const AMMO = [
     damageBreakpoints: BASE_AMMO_DAMAGE_BREAKPOINTS
   }),
   new AmmoStats({
-    info: AmmoInfo.LONG_SPITZER,
+    info: AmmoInfo.SPECIAL_LONG_SPITZER,
     scarce: false,
 
     dropRange: 165,
@@ -86,7 +86,7 @@ const AMMO = [
     ]
   }),
   new AmmoStats({
-    info: AmmoInfo.LONG_INCENDIARY,
+    info: AmmoInfo.SPECIAL_LONG_INCENDIARY,
     scarce: false,
 
     dropRange: DROP_RANGE,

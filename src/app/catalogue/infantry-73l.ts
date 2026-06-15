@@ -13,7 +13,7 @@ const AMMO_RESERVE = 20
 
 const NAME = "Infantry 73L"
 const COST = 78
-const SIZE = 3
+const SIZE = 4
 const ACTION = ActionType.LEVER_ACTION
 const SWAY = 77
 const RATE_OF_FIRE = 35

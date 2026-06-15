@@ -33,6 +33,8 @@ export class CustomAmmoFilter implements Filter {
 export const SIZE_1_FILTER = new SizeFilter(1, "ammo-icons/ammo_filter-1-slot.svg")
 export const SIZE_2_FILTER = new SizeFilter(2, "ammo-icons/ammo_filter-2-slot.svg")
 export const SIZE_3_FILTER = new SizeFilter(3, "ammo-icons/ammo_filter-3-slot.svg")
+export const SIZE_4_FILTER = new SizeFilter(4, "ammo-icons/ammo_filter-4-slot.svg")
+export const SIZE_5_FILTER = new SizeFilter(5, "ammo-icons/ammo_filter-5-slot.svg")
 
 export const COMPACT_AMMO_FILTER = new BaseAmmoFilter(AmmoName.COMPACT, "ammo-icons/ammo_filter-compact.svg")
 export const MEDIUM_AMMO_FILTER = new BaseAmmoFilter(AmmoName.MEDIUM, "ammo-icons/ammo_filter-medium.svg")
@@ -52,6 +54,8 @@ export const SIZE_FILTERS = [
   SIZE_1_FILTER,
   SIZE_2_FILTER,
   SIZE_3_FILTER,
+  SIZE_4_FILTER,
+  SIZE_5_FILTER
 ]
 
 export const BASE_AMMO_FILTERS = [

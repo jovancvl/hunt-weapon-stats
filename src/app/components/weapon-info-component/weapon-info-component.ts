@@ -1,4 +1,4 @@
-import { Component, computed, input } from '@angular/core';
+import { Component, computed, input, ChangeDetectionStrategy } from '@angular/core';
 import { Weapon } from '../../model/weapon';
 import { StatTableComponent } from "../stat-table-component/stat-table-component";
 import { AmmoStats } from '../../model/ammo-stats';
@@ -9,6 +9,7 @@ import { AmmoName } from '../../model/ammo-name'
   selector: 'hunt-weapon-info-component',
   imports: [StatTableComponent, DollarIcon],
   templateUrl: './weapon-info-component.html',
+  changeDetection: ChangeDetectionStrategy.Eager,
   styleUrl: './weapon-info-component.scss',
 })
 export class WeaponInfoComponent {
@@ -29,13 +30,10 @@ export class WeaponInfoComponent {
   })
 
   sizeSrc = computed(() => {
-    switch (this.weapon().size) {
-      case 1:
-        return "ammo-icons/ammo_filter-1-slot.svg"
-      case 2:
-        return "ammo-icons/ammo_filter-2-slot.svg"
-      default:
-        return "ammo-icons/ammo_filter-3-slot.svg"
+    if (this.weapon().size > 0 && this.weapon().size < 6) {
+      return `ammo-icons/ammo_filter-${this.weapon().size}-slot.svg`
+    } else {
+      return `ammo-icons/ammo_filter-5-slot.svg`
     }
   })
 

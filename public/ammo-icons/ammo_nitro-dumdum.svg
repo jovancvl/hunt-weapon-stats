@@ -5,11 +5,11 @@
    version="1.1"
    x="0px"
    y="0px"
-   viewBox="0 0 72 71.999992"
+   viewBox="0 0 72 72.000001"
    xml:space="preserve"
    id="svg969"
    width="72"
-   height="71.999992"
+   height="72"
    xmlns="http://www.w3.org/2000/svg"
    xmlns:svg="http://www.w3.org/2000/svg"><defs
    id="defs973" />
@@ -41,12 +41,12 @@
 </style>
 <g
    id="layer34"
-   transform="translate(-839.47631,-2.3586336)"><g
+   transform="translate(-839.47621,-2.3586614)"><g
      id="layer4_11_"
      transform="matrix(1.1599338,0,0,1.1599338,543.44013,-777.38076)">
 						<polygon
    class="st0"
-   points="281.4,734.3 291.3,734.3 291.3,732.8 290.2,732.8 290.2,706.9 282.5,706.9 282.5,732.8 281.4,732.8 "
+   points="291.3,732.8 290.2,732.8 290.2,706.9 282.5,706.9 282.5,732.8 281.4,732.8 281.4,734.3 291.3,734.3 "
    id="polygon817" />
 						<path
    class="st0"

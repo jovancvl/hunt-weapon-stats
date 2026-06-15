@@ -13,7 +13,7 @@ const AMMO_RESERVE = 26
 
 const NAME = "Maynard Sniper"
 const COST = 139
-const SIZE = 3
+const SIZE = 4
 const ACTION = ActionType.SINGLE_SHOT
 const SWAY = 69
 const RATE_OF_FIRE = 11

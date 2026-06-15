@@ -9,11 +9,11 @@ const DROP_RANGE = 100
 const SPREAD = 55
 const VERTICAL_RECOIL = 16
 const MUZZLE_VELOCITY = 520
-const AMMO_RESERVE = 10
+const AMMO_RESERVE = 7
 
 const NAME = "Mosin Obrez"
 const COST = 290
-const SIZE = 3
+const SIZE = 2
 const ACTION = ActionType.BOLT_ACTION
 const SWAY = 100
 const RATE_OF_FIRE = 26
@@ -48,7 +48,7 @@ const BASE_AMMO_DAMAGE_BREAKPOINTS: DamageBreakpoint[] = [
 
 const AMMO = [
   new AmmoStats({
-    info: AmmoInfo.LONG,
+    info: AmmoInfo.SPECIAL_LONG,
     scarce: false,
 
     dropRange: DROP_RANGE,
@@ -59,7 +59,7 @@ const AMMO = [
     damageBreakpoints: BASE_AMMO_DAMAGE_BREAKPOINTS
   }),
   new AmmoStats({
-    info: AmmoInfo.LONG_INCENDIARY,
+    info: AmmoInfo.SPECIAL_LONG_INCENDIARY,
     scarce: false,
 
     dropRange: DROP_RANGE,
@@ -70,7 +70,7 @@ const AMMO = [
     damageBreakpoints: BASE_AMMO_DAMAGE_BREAKPOINTS
   }),
   new AmmoStats({
-    info: AmmoInfo.LONG_SPITZER,
+    info: AmmoInfo.SPECIAL_LONG_SPITZER,
     scarce: false,
 
     dropRange: 120,

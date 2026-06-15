@@ -9,7 +9,7 @@ const DROP_RANGE = 120
 const SPREAD = 62.5
 const VERTICAL_RECOIL = 16
 const MUZZLE_VELOCITY = 424
-const AMMO_RESERVE = 20
+const AMMO_RESERVE = 16
 
 const NAME = "Drilling Shorty"
 const COST = 330

@@ -9,7 +9,7 @@ const DROP_RANGE = 100
 const SPREAD = 42.5
 const VERTICAL_RECOIL = 15
 const MUZZLE_VELOCITY = 459
-const AMMO_RESERVE = 12
+const AMMO_RESERVE = 9
 
 const NAME = "Centennial Shorty Silencer"
 const COST = 137

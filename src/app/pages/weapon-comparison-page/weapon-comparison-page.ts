@@ -1,4 +1,4 @@
-import { Component, inject } from '@angular/core';
+import { Component, inject, ChangeDetectionStrategy } from '@angular/core';
 import { SelectWeaponComponent } from "../../components/select-weapon-component/select-weapon-component";
 import { HunterBodyComponent } from "../../components/hunter-body-component/hunter-body-component";
 import { FRONTIER_73C } from '../../catalogue/frontier-73c'
@@ -18,6 +18,7 @@ enum LeftOrRight {
   selector: 'hunt-weapon-comparison-page',
   imports: [HunterBodyComponent, StatComparisonTableComponent],
   templateUrl: './weapon-comparison-page.html',
+  changeDetection: ChangeDetectionStrategy.Eager,
   styleUrl: './weapon-comparison-page.scss',
 })
 export class WeaponComparisonPage {
