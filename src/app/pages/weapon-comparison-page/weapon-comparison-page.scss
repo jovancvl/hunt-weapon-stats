@@ -38,6 +38,7 @@
   box-sizing: border-box;
   border: 1px solid transparent;
   padding: 4px;
+  transition: border-color ease-in-out 200ms;
 
   img {
     max-width: 100%;

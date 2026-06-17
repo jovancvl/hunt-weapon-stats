@@ -22,8 +22,15 @@ echarts.use([CanvasRenderer, LineChart, TooltipComponent, GridComponent, MarkLin
   styleUrl: './chart-component.scss',
 })
 export class ChartComponent {
-  ammo = input.required<AmmoStats>()
+  ammo = input.required<AmmoStats[]>()
   rangeSelected = output<number>()
+  readonly colors = [
+    'white',
+    'gold',
+    'red',
+    'blue',
+    'green'
+  ]
   
   chartOptions: EChartsCoreOption = {
     xAxis: {
@@ -52,10 +59,12 @@ export class ChartComponent {
         type: 'none'
       },
       formatter: (params: any[]) => {
-        const p = params[0]
-        const damage = Math.floor(p.value[1])
-        const range = p.value[0]
-        return `Damage: ${damage}\nRange: ${range}m`
+        let finalString = `Range: ${params[0].value[0]}\n`
+        for (const p of params) {
+          const damage = Math.floor(p.value[1]);
+          finalString += `Damage: ${damage}\n`
+        }
+        return finalString
       }
     },
 
@@ -65,79 +74,106 @@ export class ChartComponent {
       right: 0,
       bottom: 50
     },
-
-    visualMap: [{
-      pieces: [
-        { gte: 0, lt: 50, color: '#ECEFF1' },
-        { gte: 50, lt: 75, color: '#CCFF90' },
-        { gte: 75, lt: 100, color: '#64DD17' },
-        { gte: 100, lt: 125, color: '#FFD600' },
-        { gte: 125, lt: 150, color: '#FF6D00' },
-        { gte: 150, color: '#DD2C00' }
-      ],
-      outOfRange: { color: '#999' },
-      show: false
-    }],
   };
 
 
   config = effect(() => {
-    const damageArray = this.ammo().getDamageArray()
-
     this.chartOptions = {
       ...this.chartOptions,
-      series: [
-        {
-          name: 'Damage',
-          type: 'line',
-          smooth: true,
-          symbol: 'emptyCircle',
-          showSymbol: false,
-          lineStyle: {
-            width: 4
-          },
-          data: damageArray.map((damage, range) => [range, damage]),
-
-          markLine: {
-            symbol: 'none',
-            z: 0,
-            animationDuration: 500,
-            animationEasing: 'sinusoidalInOut',
-            lineStyle: {
-              color: '#303030',
-              type: 'dashed',
-              width: 1,
-            },
-            label: {
-              show: false,
-            },
-            emphasis: {
-              lineStyle: {
-                // type: 'solid',
-                color: '#606060',
-                width: 2,
-              },
-              label: {
-                show: true,
-                position: 'bottom',
-                align: 'center',
-                verticalAlign: 'top',
-                distance: 41,
-                color: 'white',
-                borderWidth: 0,
-                formatter: (params: any) => {
-                  return params.name
-                }
-              }
-            },
-            data: this.calculateCombinations()
-          }
-        },
-      ]
+      series: this.calculateSeries(),
+    }
+    
+    if (this.ammo().length === 1) {
+      this.chartOptions['visualMap'] = [{
+        pieces: [
+          { gte: 0, lt: 50, color: '#ECEFF1' },
+          { gte: 50, lt: 75, color: '#CCFF90' },
+          { gte: 75, lt: 100, color: '#64DD17' },
+          { gte: 100, lt: 125, color: '#FFD600' },
+          { gte: 125, lt: 150, color: '#FF6D00' },
+          { gte: 150, color: '#DD2C00' }
+        ],
+        outOfRange: { color: '#999' },
+        show: false
+      }]
     }
   });
 
-  calculateCombinations() {
+  calculateSeries() {
+    const resultSeries = []
+    const baseSerie = {
+      name: 'Damage',
+      type: 'line',
+      smooth: true,
+      symbol: 'emptyCircle',
+      showSymbol: false,
+      lineStyle: {
+        width: 4
+      },
+      data: [] // requires
+    }
+    const baseMarkline = {
+      symbol: 'none',
+      z: 0,
+      animationDuration: 500,
+      animationEasing: 'sinusoidalInOut',
+      lineStyle: {
+        color: '#303030',
+        type: 'dashed',
+        width: 1,
+      },
+      label: {
+        show: false,
+      },
+      emphasis: {
+        lineStyle: {
+          // type: 'solid',
+          color: '#606060',
+          width: 2,
+        },
+        label: {
+          show: true,
+          position: 'bottom',
+          align: 'center',
+          verticalAlign: 'top',
+          distance: 41,
+          color: 'white',
+          borderWidth: 0,
+          formatter: (params: any) => {
+            return params.name;
+          }
+        }
+      },
+      data: [] // requires data
+    }
+
+    for (let i = 0; i < this.ammo().length; i++) {
+      const a = this.ammo()[i]
+      const damageArray = a.getDamageArray()
+      const newMarkline = {
+        ...baseMarkline,
+        data: this.calculateCombinations(a)
+      }
+
+      const newSerie = {
+        ...baseSerie,
+        data: damageArray.map((damage, range) => [range, damage]),
+        markLine: {
+          ...newMarkline,
+        }
+      };
+      (newSerie.lineStyle as any).color = this.ammo().length > 1 ? this.colors[i] : undefined; // not applying correctly
+      resultSeries.push(newSerie)
+    }
+
+    return resultSeries
+  }
+
+  calculateCombinations(ammo: AmmoStats) {
+    if (this.ammo().length > 1) {
+      return [];
+    }
+
     const result: { xAxis: number, name: string }[] = []
 
     const parts = ['chest', 'cock', 'arms', 'legs']
@@ -148,7 +184,7 @@ export class ChartComponent {
         let part1 = parts[i]
         let part2 = parts[j]
 
-        const range = this.findRange(part1 as any, part2 as any)
+        const range = this.findRange(part1 as any, part2 as any, ammo)
 
         if (range > 0 && range <= 100) {
           part1 = part1 === 'cock' ? 'crotch' : part1
@@ -164,12 +200,12 @@ export class ChartComponent {
   }
 
 
-  findRange(bodypartOne: 'chest' | 'cock' | 'legs' | 'arms', bodypartTwo: 'chest' | 'cock' | 'legs' | 'arms') {
+  findRange(bodypartOne: 'chest' | 'cock' | 'legs' | 'arms', bodypartTwo: 'chest' | 'cock' | 'legs' | 'arms', ammo: AmmoStats) {
     let found = false
     let range = 0
     while (range <= 100 && !found) {
-      const leftDamage = this.ammo().calculateDamage(range)[bodypartOne]
-      const rightDamage = this.ammo().calculateDamage(range)[bodypartTwo]
+      const leftDamage = ammo.calculateDamage(range)[bodypartOne]
+      const rightDamage = ammo.calculateDamage(range)[bodypartTwo]
       if (leftDamage + rightDamage < 150) {
         found = true
       } else {

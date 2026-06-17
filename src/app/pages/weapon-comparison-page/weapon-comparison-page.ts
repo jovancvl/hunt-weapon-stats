@@ -7,10 +7,11 @@ import { Dialog } from '@angular/cdk/dialog'
 import { SelectWeaponDialogComponent } from './select-weapon-dialog-component/select-weapon-dialog-component'
 import { AmmoSelectorComponent } from "./ammo-selector-component/ammo-selector-component";
 import { StatBarComponent } from "../../components/stat-bar-component/stat-bar-component";
+import { ChartComponent } from "../../components/chart-component/chart-component";
 
 @Component({
   selector: 'hunt-weapon-comparison-page',
-  imports: [AmmoSelectorComponent, StatBarComponent],
+  imports: [AmmoSelectorComponent, StatBarComponent, ChartComponent],
   templateUrl: './weapon-comparison-page.html',
   changeDetection: ChangeDetectionStrategy.Eager,
   styleUrl: './weapon-comparison-page.scss',

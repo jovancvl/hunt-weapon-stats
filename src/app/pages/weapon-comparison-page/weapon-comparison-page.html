@@ -15,11 +15,13 @@
 
 @if (isLeftAmmoSelectorOpen || isRightAmmoSelectorOpen) {
 <div class="ammo-select">
-  <span>Choose ammo type:</span>
+
   @if (isLeftAmmoSelectorOpen) {
+  <span>Choose <b>{{leftWeapon.name}}</b> ammo type:</span>
   <hunt-ammo-selector [(weapon)]="leftWeapon" [canChangeActiveAmmo]="true"></hunt-ammo-selector>
   }
   @if (isRightAmmoSelectorOpen) {
+  <span>Choose <b>{{rightWeapon.name}}</b> ammo type:</span>
   <hunt-ammo-selector [(weapon)]="rightWeapon" [canChangeActiveAmmo]="true"></hunt-ammo-selector>
   }
 </div>
@@ -35,3 +37,5 @@
   <hunt-stat-bar-component [value]="rightWeapon.activeAmmo.baseDamage" [max]="150" color="gold"
     [withNumber]="false"></hunt-stat-bar-component>
 </div>
+
+<hunt-chart-component [ammo]="[leftWeapon.activeAmmo, rightWeapon.activeAmmo]"></hunt-chart-component>
