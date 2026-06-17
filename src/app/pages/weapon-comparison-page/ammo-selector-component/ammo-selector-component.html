@@ -1,0 +1,8 @@
+<div class="button-container">
+  @for (ammo of weapon().availableAmmo; track $index) {
+  <button (click)="activateAmmo(ammo)" [class.can-hover]="canChangeActiveAmmo()"
+    [class.active]="ammo.info.name === weapon().activeAmmo.info.name">
+    <img [src]="ammo.info.icon">
+  </button>
+  }
+</div>
