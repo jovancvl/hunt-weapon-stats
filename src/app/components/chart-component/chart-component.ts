@@ -1,13 +1,13 @@
-import { Component, effect, input, output, ChangeDetectionStrategy } from '@angular/core'
-import { AmmoStats } from '../../model/ammo-stats'
-import { NgxEchartsDirective } from 'ngx-echarts'
-import { provideEchartsCore } from 'ngx-echarts'
-import * as echarts from 'echarts/core'
-import { LineChart } from 'echarts/charts'
-import { GridComponent, MarkLineComponent, TooltipComponent, VisualMapComponent } from 'echarts/components'
-import { CanvasRenderer } from 'echarts/renderers'
+import { Component, effect, input, output, ChangeDetectionStrategy } from '@angular/core';
+import { AmmoStats } from '../../model/ammo-stats';
+import { NgxEchartsDirective } from 'ngx-echarts';
+import { provideEchartsCore } from 'ngx-echarts';
+import * as echarts from 'echarts/core';
+import { LineChart } from 'echarts/charts';
+import { GridComponent, MarkLineComponent, TooltipComponent, VisualMapComponent } from 'echarts/components';
+import { CanvasRenderer } from 'echarts/renderers';
 
-import { ECElementEvent, EChartsCoreOption } from 'echarts/core'
+import { ECElementEvent, EChartsCoreOption } from 'echarts/core';
 
 echarts.use([CanvasRenderer, LineChart, TooltipComponent, GridComponent, MarkLineComponent, VisualMapComponent]);
 
@@ -22,16 +22,16 @@ echarts.use([CanvasRenderer, LineChart, TooltipComponent, GridComponent, MarkLin
   styleUrl: './chart-component.scss',
 })
 export class ChartComponent {
-  ammo = input.required<AmmoStats[]>()
-  rangeSelected = output<number>()
+  ammo = input.required<AmmoStats[]>();
+  rangeSelected = output<number>();
   readonly colors = [
-    'white',
+    'lightgrey',
     'gold',
     'red',
     'blue',
     'green'
-  ]
-  
+  ];
+
   chartOptions: EChartsCoreOption = {
     xAxis: {
       type: 'value',
@@ -59,12 +59,13 @@ export class ChartComponent {
         type: 'none'
       },
       formatter: (params: any[]) => {
-        let finalString = `Range: ${params[0].value[0]}\n`
-        for (const p of params) {
+        let finalString = `Range: ${params[0].value[0]}</br>`;
+        for (let i = 0; i < params.length; i++) {
+          const p = params[i];
           const damage = Math.floor(p.value[1]);
-          finalString += `Damage: ${damage}\n`
+          finalString += `Damage: ${damage}</br>`;
         }
-        return finalString
+        return finalString;
       }
     },
 
@@ -81,8 +82,8 @@ export class ChartComponent {
     this.chartOptions = {
       ...this.chartOptions,
       series: this.calculateSeries(),
-    }
-    
+    };
+
     if (this.ammo().length === 1) {
       this.chartOptions['visualMap'] = [{
         pieces: [
@@ -95,12 +96,12 @@ export class ChartComponent {
         ],
         outOfRange: { color: '#999' },
         show: false
-      }]
+      }];
     }
   });
 
   calculateSeries() {
-    const resultSeries = []
+    const resultSeries = [];
     const baseSerie = {
       name: 'Damage',
       type: 'line',
@@ -108,10 +109,11 @@ export class ChartComponent {
       symbol: 'emptyCircle',
       showSymbol: false,
       lineStyle: {
+        color: 'white',
         width: 4
       },
-      data: [] // requires
-    }
+      data: [] // required
+    };
     const baseMarkline = {
       symbol: 'none',
       z: 0,
@@ -144,29 +146,30 @@ export class ChartComponent {
           }
         }
       },
-      data: [] // requires data
-    }
+      data: [] // required
+    };
 
     for (let i = 0; i < this.ammo().length; i++) {
-      const a = this.ammo()[i]
-      const damageArray = a.getDamageArray()
-      const newMarkline = {
-        ...baseMarkline,
-        data: this.calculateCombinations(a)
-      }
+      const a = this.ammo()[i];
+      const damageArray = a.getDamageArray();
 
       const newSerie = {
         ...baseSerie,
         data: damageArray.map((damage, range) => [range, damage]),
+        lineStyle: {
+          ...baseSerie.lineStyle,
+          color: this.ammo().length > 1 ? this.colors[i] : undefined
+        },
         markLine: {
-          ...newMarkline,
+          ...baseMarkline,
+          data: this.calculateCombinations(a)
         }
       };
-      (newSerie.lineStyle as any).color = this.ammo().length > 1 ? this.colors[i] : undefined; // not applying correctly
-      resultSeries.push(newSerie)
+
+      resultSeries.push(newSerie);
     }
 
-    return resultSeries
+    return resultSeries;
   }
 
   calculateCombinations(ammo: AmmoStats) {
@@ -174,57 +177,57 @@ export class ChartComponent {
       return [];
     }
 
-    const result: { xAxis: number, name: string }[] = []
+    const result: { xAxis: number, name: string; }[] = [];
 
-    const parts = ['chest', 'cock', 'arms', 'legs']
+    const parts = ['chest', 'cock', 'arms', 'legs'];
 
     // loop over all unique pairs (including same-part pairs)
     for (let i = 0; i < parts.length; i++) {
       for (let j = i; j < parts.length; j++) {
-        let part1 = parts[i]
-        let part2 = parts[j]
+        let part1 = parts[i];
+        let part2 = parts[j];
 
-        const range = this.findRange(part1 as any, part2 as any, ammo)
+        const range = this.findRange(part1 as any, part2 as any, ammo);
 
         if (range > 0 && range <= 100) {
-          part1 = part1 === 'cock' ? 'crotch' : part1
-          part2 = part2 === 'cock' ? 'crotch' : part2
-          const name = `${range}m\n\n${part1} + ${part2}`
+          part1 = part1 === 'cock' ? 'crotch' : part1;
+          part2 = part2 === 'cock' ? 'crotch' : part2;
+          const name = `${range}m\n\n${part1} + ${part2}`;
 
-          result.push({ xAxis: range, name })
+          result.push({ xAxis: range, name });
         }
       }
     }
 
-    return result
+    return result;
   }
 
 
   findRange(bodypartOne: 'chest' | 'cock' | 'legs' | 'arms', bodypartTwo: 'chest' | 'cock' | 'legs' | 'arms', ammo: AmmoStats) {
-    let found = false
-    let range = 0
+    let found = false;
+    let range = 0;
     while (range <= 100 && !found) {
-      const leftDamage = ammo.calculateDamage(range)[bodypartOne]
-      const rightDamage = ammo.calculateDamage(range)[bodypartTwo]
+      const leftDamage = ammo.calculateDamage(range)[bodypartOne];
+      const rightDamage = ammo.calculateDamage(range)[bodypartTwo];
       if (leftDamage + rightDamage < 150) {
-        found = true
+        found = true;
       } else {
-        range++
+        range++;
       }
     }
 
     if (found) {
-      range--
+      range--;
     }
-    
-    return range
+
+    return range;
   }
 
   onChartClick(event: ECElementEvent) {
     if (event.componentType !== "series" && event.componentType !== "markLine") {
-      return
+      return;
     }
-    const range: number = Array.isArray(event.value) ? event.value[0] as number : event.value as number
-    this.rangeSelected.emit(range)
+    const range: number = Array.isArray(event.value) ? event.value[0] as number : event.value as number;
+    this.rangeSelected.emit(range);
   }
 }
