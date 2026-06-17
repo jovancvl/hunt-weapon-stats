@@ -6,10 +6,11 @@ import { BERTHIER_1892 } from '../../catalogue/berthier-1892'
 import { Dialog } from '@angular/cdk/dialog'
 import { SelectWeaponDialogComponent } from './select-weapon-dialog-component/select-weapon-dialog-component'
 import { AmmoSelectorComponent } from "./ammo-selector-component/ammo-selector-component";
+import { StatBarComponent } from "../../components/stat-bar-component/stat-bar-component";
 
 @Component({
   selector: 'hunt-weapon-comparison-page',
-  imports: [AmmoSelectorComponent],
+  imports: [AmmoSelectorComponent, StatBarComponent],
   templateUrl: './weapon-comparison-page.html',
   changeDetection: ChangeDetectionStrategy.Eager,
   styleUrl: './weapon-comparison-page.scss',
@@ -18,6 +19,19 @@ export class WeaponComparisonPage {
   dialog = inject(Dialog)
   leftWeapon: Weapon = Object.assign({ ...FRONTIER_73C })
   rightWeapon: Weapon = Object.assign({ ...BERTHIER_1892 })
+
+  isLeftAmmoSelectorOpen = false
+  isRightAmmoSelectorOpen = false
+
+  openOrCloseAmmoSelector(side: 'left' | 'right') {
+    if (side === 'left') {
+      this.isRightAmmoSelectorOpen = false
+      this.isLeftAmmoSelectorOpen = !this.isLeftAmmoSelectorOpen
+    } else {
+      this.isLeftAmmoSelectorOpen = false
+      this.isRightAmmoSelectorOpen = !this.isRightAmmoSelectorOpen
+    }
+  }
 
   activateAmmo(leftOrRight: Weapon, ammo: AmmoStats) {
     leftOrRight.activeAmmo = ammo

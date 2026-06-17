@@ -10,6 +10,7 @@ import { Component, computed, input, ChangeDetectionStrategy } from '@angular/co
 export class StatBarComponent {
   value = input.required<number>()
   max = input.required<number>()
+  withNumber = input(true)
   color = input<string>()
 
   statBarStyle = computed(() => {

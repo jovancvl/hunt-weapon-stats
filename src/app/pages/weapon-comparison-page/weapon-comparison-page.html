@@ -1,13 +1,37 @@
-<h1>
-  {{leftWeapon.name}} {{leftWeapon.activeAmmo !== leftWeapon.baseAmmo ? leftWeapon.activeAmmo.info.name : '' }}
-  vs 
-  {{rightWeapon.name}} {{rightWeapon.activeAmmo !== rightWeapon.baseAmmo ? rightWeapon.activeAmmo.info.name : '' }}
-</h1>
+<div class="title">
+  <h4>{{leftWeapon.name}} {{leftWeapon.activeAmmo !== leftWeapon.baseAmmo ? leftWeapon.activeAmmo.info.name : '' }}</h4>
+  <h4>{{rightWeapon.name}} {{rightWeapon.activeAmmo !== rightWeapon.baseAmmo ? rightWeapon.activeAmmo.info.name : '' }}</h4>
+</div>
 
-<hunt-ammo-selector [(weapon)]="leftWeapon" [canChangeActiveAmmo]="true"></hunt-ammo-selector>
-<hunt-ammo-selector [(weapon)]="rightWeapon" [canChangeActiveAmmo]="true"></hunt-ammo-selector>
+<div class="guns">
+  <div class="gun-img" [class.open]="isLeftAmmoSelectorOpen" (click)="openOrCloseAmmoSelector('left')">
+    <img [src]="leftWeapon.image" />
+  </div>
 
-<div class="wrapper" data-anim="base wrapper">
-  <div class="circle" data-anim="base left"></div>
-  <div class="circle" data-anim="base right"></div>
+  <div class="gun-img" [class.open]="isRightAmmoSelectorOpen" (click)="openOrCloseAmmoSelector('right')">
+    <img [src]="rightWeapon.image" />
+  </div>
+</div>
+
+@if (isLeftAmmoSelectorOpen || isRightAmmoSelectorOpen) {
+<div class="ammo-select">
+  <span>Choose ammo type:</span>
+  @if (isLeftAmmoSelectorOpen) {
+  <hunt-ammo-selector [(weapon)]="leftWeapon" [canChangeActiveAmmo]="true"></hunt-ammo-selector>
+  }
+  @if (isRightAmmoSelectorOpen) {
+  <hunt-ammo-selector [(weapon)]="rightWeapon" [canChangeActiveAmmo]="true"></hunt-ammo-selector>
+  }
+</div>
+}
+
+<div class="stat-comparison">
+  <div class="text">
+    <span>{{leftWeapon.activeAmmo.baseDamage}}</span>
+    <span>Damage</span>
+    <span>{{rightWeapon.activeAmmo.baseDamage}}</span>
+  </div>
+  <hunt-stat-bar-component [value]="leftWeapon.activeAmmo.baseDamage" [max]="150" [withNumber]="false"></hunt-stat-bar-component>
+  <hunt-stat-bar-component [value]="rightWeapon.activeAmmo.baseDamage" [max]="150" color="gold"
+    [withNumber]="false"></hunt-stat-bar-component>
 </div>

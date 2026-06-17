@@ -2,5 +2,7 @@
   <span class="meter">
     <div class="stat-bar" [style]="statBarStyle()"></div>
   </span>
+  @if (withNumber()) {
   <span class="stat-value">{{value()}}</span>
+  }
 </div>

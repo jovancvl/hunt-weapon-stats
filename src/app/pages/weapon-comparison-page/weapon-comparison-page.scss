@@ -1,1 +1,57 @@
 @use '../../../styles.scss';
+
+:host {
+  padding: 0 1rem;
+}
+
+.title {
+  display: flex;
+  justify-content: space-between;
+}
+
+.stat-comparison {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+
+  .text {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+}
+
+.guns {
+  display: flex;
+  justify-content: space-between;
+
+  .open {
+    border: 1px solid gold;
+  }
+}
+
+.gun-img {
+  aspect-ratio: 5;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  box-sizing: border-box;
+  border: 1px solid transparent;
+  padding: 4px;
+
+  img {
+    max-width: 100%;
+  }
+  
+  &:hover {
+    border: 1px solid lightgrey;
+  }
+}
+
+.ammo-select {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin: 1rem 0;
+}
