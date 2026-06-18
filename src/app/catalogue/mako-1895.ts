@@ -64,7 +64,7 @@ const AMMO = [
     dropRange: 85,
     spread: SPREAD,
     verticalRecoil: VERTICAL_RECOIL,
-    muzzleVelocity: 432,
+    muzzleVelocity: 332,
     ammoReserve: AMMO_RESERVE,
     damageBreakpoints: [
       {
@@ -96,7 +96,7 @@ const AMMO = [
     dropRange: 95,
     spread: SPREAD,
     verticalRecoil: 14,
-    muzzleVelocity: 405,
+    muzzleVelocity: 305,
     ammoReserve: AMMO_RESERVE,
     damageBreakpoints: [
       {
