@@ -65,10 +65,10 @@ const AMMO = [
     info: AmmoInfo.SPECIAL_LONG_FMJ,
     scarce: false,
 
-    dropRange: 125,
+    dropRange: 120,
     spread: SPREAD,
     verticalRecoil: 6,
-    muzzleVelocity: 458,
+    muzzleVelocity: 414,
     ammoReserve: AMMO_RESERVE,
     damageBreakpoints: [
       {
@@ -108,10 +108,10 @@ const AMMO = [
     info: AmmoInfo.LONG_SUBSONIC,
     scarce: false,
 
-    dropRange: 110,
+    dropRange: 105,
     spread: SPREAD,
     verticalRecoil: VERTICAL_RECOIL,
-    muzzleVelocity: 336,
+    muzzleVelocity: 304,
     ammoReserve: 12,
     damageBreakpoints: BASE_AMMO_DAMAGE_BREAKPOINTS
   })
