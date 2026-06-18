@@ -13,7 +13,7 @@ const AMMO_RESERVE = 16
 
 const NAME = "Sparks Silencer"
 const COST = 150
-const SIZE = 3
+const SIZE = 4
 const ACTION = ActionType.SINGLE_SHOT
 const SWAY = 77
 const RATE_OF_FIRE = 13
