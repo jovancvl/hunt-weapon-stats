@@ -8,7 +8,7 @@ const OPTIMAL_RANGE = 30
 const DROP_RANGE = 150
 const SPREAD = 25
 const VERTICAL_RECOIL = 8
-const MUZZLE_VELOCITY = 560
+const MUZZLE_VELOCITY = 476
 const AMMO_RESERVE = 26
 
 const NAME = "Maynard Sniper Silencer"

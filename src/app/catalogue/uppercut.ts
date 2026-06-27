@@ -3,7 +3,7 @@ import { AmmoStats } from "../model/ammo-stats"
 import { DamageBreakpoint } from "../model/damage"
 import { ActionType, Weapon } from "../model/weapon"
 
-const BASE_DAMAGE = 123
+const BASE_DAMAGE = 126
 const OPTIMAL_RANGE = 40
 const DROP_RANGE = 65
 const SPREAD = 40
@@ -65,7 +65,7 @@ const AMMO = [
     info: AmmoInfo.LONG_EXPLOSIVE,
     scarce: false,
 
-    dropRange: 40,
+    dropRange: 45,
     spread: SPREAD,
     verticalRecoil: VERTICAL_RECOIL,
     muzzleVelocity: 330,
@@ -73,11 +73,11 @@ const AMMO = [
     damageBreakpoints: [
       {
         range: 0,
-        damage: 99
+        damage: 102
       },
       {
         range: OPTIMAL_RANGE,
-        damage: 99
+        damage: 102
       },
       {
         range: 50,
@@ -97,7 +97,7 @@ const AMMO = [
     info: AmmoInfo.LONG_FMJ,
     scarce: false,
 
-    dropRange: 55,
+    dropRange: 60,
     spread: SPREAD,
     verticalRecoil: 25,
     muzzleVelocity: 360,
