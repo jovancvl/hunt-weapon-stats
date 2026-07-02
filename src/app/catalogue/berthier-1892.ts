@@ -3,7 +3,7 @@ import { AmmoStats } from "../model/ammo-stats"
 import { DamageBreakpoint } from "../model/damage"
 import { ActionType, Weapon } from "../model/weapon"
 
-const BASE_DAMAGE = 133
+const BASE_DAMAGE = 128
 const OPTIMAL_RANGE = 40
 const DROP_RANGE = 120
 const SPREAD = 42.5
@@ -81,11 +81,11 @@ const AMMO = [
     damageBreakpoints: [
       {
         range: 0,
-        damage: 113
+        damage: 109
       },
       {
         range: OPTIMAL_RANGE,
-        damage: 113
+        damage: 109
       },
       {
         range: 90,
