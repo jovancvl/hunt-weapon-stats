@@ -1,4 +1,4 @@
-import { Component, effect, input, output, ChangeDetectionStrategy } from '@angular/core';
+import { Component, effect, input, output, ChangeDetectionStrategy, computed } from '@angular/core';
 import { AmmoStats } from '../../model/ammo-stats';
 import { NgxEchartsDirective } from 'ngx-echarts';
 import { provideEchartsCore } from 'ngx-echarts';
@@ -18,7 +18,6 @@ echarts.use([CanvasRenderer, LineChart, TooltipComponent, GridComponent, MarkLin
     provideEchartsCore({ echarts }),
   ],
   templateUrl: './chart-component.html',
-  changeDetection: ChangeDetectionStrategy.Eager,
   styleUrl: './chart-component.scss',
 })
 export class ChartComponent {
@@ -32,60 +31,56 @@ export class ChartComponent {
     'green'
   ];
 
-  chartOptions: EChartsCoreOption = {
-    xAxis: {
-      type: 'value',
-      min: 0,
-      max: 100,
-      name: 'Range',
-      nameLocation: 'start',
-      interval: 10,
-      splitLine: { show: false },
-    },
-
-    yAxis: {
-      type: 'value',
-      min: 0,
-      max: 150,
-      name: 'Damage',
-      nameLocation: 'middle',
-      interval: 25,
-      splitLine: { show: false },
-    },
-
-    tooltip: {
-      trigger: 'axis',
-      axisPointer: {
-        type: 'none'
+  options = computed<EChartsCoreOption>(() => {
+    const baseOptions: EChartsCoreOption = {
+      xAxis: {
+        type: 'value',
+        min: 0,
+        max: 100,
+        name: 'Range',
+        nameLocation: 'start',
+        interval: 10,
+        splitLine: { show: false },
       },
-      formatter: (params: any[]) => {
-        let finalString = `Range: ${params[0].value[0]}</br>`;
-        for (let i = 0; i < params.length; i++) {
-          const p = params[i];
-          const damage = Math.floor(p.value[1]);
-          finalString += `Damage: ${damage}</br>`;
+
+      yAxis: {
+        type: 'value',
+        min: 0,
+        max: 150,
+        name: 'Damage',
+        nameLocation: 'middle',
+        interval: 25,
+        splitLine: { show: false },
+      },
+
+      tooltip: {
+        trigger: 'axis',
+        axisPointer: {
+          type: 'none'
+        },
+        formatter: (params: any[]) => {
+          let finalString = `Range: ${params[0].value[0]}</br>`;
+          for (let i = 0; i < params.length; i++) {
+            const p = params[i];
+            const damage = Math.floor(p.value[1]);
+            finalString += `Damage: ${damage}</br>`;
+          }
+          return finalString;
         }
-        return finalString;
-      }
-    },
+      },
 
-    grid: {
-      left: 0,
-      top: 0,
-      right: 0,
-      bottom: 50
-    },
-  };
-
-
-  config = effect(() => {
-    this.chartOptions = {
-      ...this.chartOptions,
-      series: this.calculateSeries(),
+      grid: {
+        left: 0,
+        top: 0,
+        right: 0,
+        bottom: 50
+      },
     };
 
+    baseOptions['series'] = this.calculateSeries()
+
     if (this.ammo().length === 1) {
-      this.chartOptions['visualMap'] = [{
+      baseOptions['visualMap'] = [{
         pieces: [
           { gte: 0, lt: 50, color: '#ECEFF1' },
           { gte: 50, lt: 75, color: '#CCFF90' },
@@ -98,7 +93,9 @@ export class ChartComponent {
         show: false
       }];
     }
-  });
+
+    return baseOptions
+  })
 
   calculateSeries() {
     const resultSeries = [];

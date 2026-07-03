@@ -13,7 +13,6 @@ import { ChartComponent } from "../../components/chart-component/chart-component
   selector: 'hunt-weapon-comparison-page',
   imports: [AmmoSelectorComponent, StatBarComponent, ChartComponent],
   templateUrl: './weapon-comparison-page.html',
-  changeDetection: ChangeDetectionStrategy.Eager,
   styleUrl: './weapon-comparison-page.scss',
 })
 export class WeaponComparisonPage {

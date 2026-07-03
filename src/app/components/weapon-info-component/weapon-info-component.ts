@@ -1,4 +1,4 @@
-import { Component, computed, input, ChangeDetectionStrategy } from '@angular/core';
+import { Component, computed, input, ChangeDetectionStrategy, model } from '@angular/core';
 import { Weapon } from '../../model/weapon';
 import { StatTableComponent } from "../stat-table-component/stat-table-component";
 import { AmmoStats } from '../../model/ammo-stats';
@@ -9,11 +9,10 @@ import { AmmoName } from '../../model/ammo-name'
   selector: 'hunt-weapon-info-component',
   imports: [StatTableComponent, DollarIcon],
   templateUrl: './weapon-info-component.html',
-  changeDetection: ChangeDetectionStrategy.Eager,
   styleUrl: './weapon-info-component.scss',
 })
 export class WeaponInfoComponent {
-  weapon = input.required<Weapon>()
+  weapon = model.required<Weapon>()
   canChangeActiveAmmo = input<boolean>(false)
 
   ammoTypeSrc = computed(() => {
@@ -41,6 +40,10 @@ export class WeaponInfoComponent {
     if (!this.canChangeActiveAmmo()) {
       return
     }
-    this.weapon().activeAmmo = ammo
+    this.weapon.update(w => {
+      const updated = { ...w } as Weapon
+      updated.activeAmmo = ammo
+      return updated
+    })
   }
 }

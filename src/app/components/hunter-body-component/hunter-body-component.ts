@@ -5,7 +5,6 @@ import { AmmoStats } from '../../model/ammo-stats'
   selector: 'hunt-hunter-body-component',
   imports: [],
   templateUrl: './hunter-body-component.html',
-  changeDetection: ChangeDetectionStrategy.Eager,
   styleUrl: './hunter-body-component.scss'
 })
 export class HunterBodyComponent  {

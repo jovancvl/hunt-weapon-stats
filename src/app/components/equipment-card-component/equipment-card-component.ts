@@ -6,7 +6,6 @@ import { DollarIcon } from "../dollar-icon/dollar-icon";
   selector: 'hunt-equipment-card-component',
   imports: [DollarIcon],
   templateUrl: './equipment-card-component.html',
-  changeDetection: ChangeDetectionStrategy.Eager,
   styleUrl: './equipment-card-component.scss'
 })
 export class EquipmentCardComponent {

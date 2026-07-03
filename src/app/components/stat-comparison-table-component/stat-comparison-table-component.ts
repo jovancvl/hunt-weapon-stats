@@ -6,7 +6,6 @@ import { Weapon } from '../../model/weapon';
   selector: 'hunt-stat-comparison-table-component',
   imports: [StatBarComponent],
   templateUrl: './stat-comparison-table-component.html',
-  changeDetection: ChangeDetectionStrategy.Eager,
   styleUrl: './stat-comparison-table-component.scss',
 })
 export class StatComparisonTableComponent {

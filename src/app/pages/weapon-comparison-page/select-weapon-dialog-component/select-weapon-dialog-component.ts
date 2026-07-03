@@ -7,7 +7,6 @@ import { Weapon } from '../../../model/weapon'
   selector: 'hunt-select-weapon-dialog-component',
   imports: [SelectWeaponComponent],
   templateUrl: './select-weapon-dialog-component.html',
-  changeDetection: ChangeDetectionStrategy.Eager,
   styleUrl: './select-weapon-dialog-component.scss',
 })
 export class SelectWeaponDialogComponent {

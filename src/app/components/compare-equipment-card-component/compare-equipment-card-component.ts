@@ -5,7 +5,6 @@ import { Weapon } from '../../model/weapon';
   selector: 'hunt-compare-equipment-card-component',
   imports: [],
   templateUrl: './compare-equipment-card-component.html',
-  changeDetection: ChangeDetectionStrategy.Eager,
   styleUrl: './compare-equipment-card-component.scss',
 })
 export class CompareEquipmentCardComponent {

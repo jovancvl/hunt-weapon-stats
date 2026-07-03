@@ -26,7 +26,7 @@ export class BaseAmmoFilter implements Filter {
 export class CustomAmmoFilter implements Filter {
   constructor(readonly customAmmo: Set<AmmoName>, readonly icon: string){}
   apply(weapon: Weapon): boolean {
-    return weapon.hasAnyOfTheseCustomAmmoTypes(this.customAmmo)
+    return !!weapon.availableAmmo.find(a => this.customAmmo.has(a.info.name))
   }
 }
 

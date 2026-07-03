@@ -5,7 +5,6 @@ import { RouterLink } from '@angular/router';
   selector: 'hunt-nav-bar-component',
   imports: [RouterLink],
   templateUrl: './nav-bar-component.html',
-  changeDetection: ChangeDetectionStrategy.Eager,
   styleUrl: './nav-bar-component.scss'
 })
 export class NavBarComponent {
