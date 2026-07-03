@@ -1,6 +1,6 @@
 import { Component, computed, input, model } from '@angular/core';
-import { Weapon } from '../../../model/weapon';
-import { AmmoStats } from '../../../model/ammo-stats';
+import { Weapon } from '../../model/weapon';
+import { AmmoStats } from '../../model/ammo-stats';
 
 @Component({
   selector: 'hunt-ammo-selector',
@@ -10,7 +10,6 @@ import { AmmoStats } from '../../../model/ammo-stats';
 })
 export class AmmoSelectorComponent {
   weapon = model.required<Weapon>();
-  canChangeActiveAmmo = input<boolean>(false)
 
   sizeSrc = computed(() => {
     if (this.weapon().size > 0 && this.weapon().size < 6) {
@@ -21,10 +20,6 @@ export class AmmoSelectorComponent {
   });
 
   activateAmmo(ammo: AmmoStats) {
-    if (!this.canChangeActiveAmmo()) {
-      return;
-    }
-
     this.weapon.update(w => {
       w.activeAmmo = ammo
       return w

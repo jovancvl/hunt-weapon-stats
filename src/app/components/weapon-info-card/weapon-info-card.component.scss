@@ -1,0 +1,27 @@
+.weapon-card {
+  margin: 0.5rem;
+
+  .title {
+    margin-left: 0.5rem;
+  }
+
+  .weapon-img {
+    height: 80px;
+    margin: 0.5rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    img {
+      height: 100%;
+    }
+  }
+
+  .ammo-container {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-around;
+    gap: 2rem;
+  }
+}

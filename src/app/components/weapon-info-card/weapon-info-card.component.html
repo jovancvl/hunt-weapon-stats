@@ -1,0 +1,15 @@
+<div class="weapon-card">
+  @if (titleSize() === "large") {
+    <h1 class="title">{{weaponTitleText()}}</h1>
+  } @else {
+    <h3 class="title">{{weaponTitleText()}}</h3>
+  }
+  
+  <div class="weapon-img" >
+    <img [src]="weapon().image"/>
+  </div>
+  <div class="ammo-container">
+    <hunt-aux-stats [weapon]="weapon()"></hunt-aux-stats>
+    <hunt-ammo-selector [(weapon)]="weapon"></hunt-ammo-selector>
+  </div>
+</div>

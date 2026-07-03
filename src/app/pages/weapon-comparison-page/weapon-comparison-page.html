@@ -1,74 +1,11 @@
 <div class="content">
   <div>
-    <div class="weapon-card">
-      <h3 class="title">{{leftWeapon.name}} {{leftWeapon.activeAmmo !== leftWeapon.baseAmmo ? leftWeapon.activeAmmo.info.name : '' }}</h3>
-      <div class="weapon-img" [class.open]="isLeftAmmoSelectorOpen" (click)="openOrCloseAmmoSelector('left')">
-        <img [src]="leftWeapon.image" />
-      </div>
-      <div class="ammo-container">
-        <div class="aux-stats">
-          <span class="ammo-icon">
-            <span class="icon">
-              <img [src]="ammoTypeSrc(leftWeapon)">
-            </span>
-            <span class="ammo">
-              {{leftWeapon.magazine}}{{leftWeapon.hasExtraBullet ? '+1' : ''}}/{{leftWeapon.activeAmmo.ammoReserve}}
-            </span>
-          </span>
-          <img [src]="sizeSrc(leftWeapon)">
-          <span class="money">
-            <hunt-dollar-icon></hunt-dollar-icon>
-            {{leftWeapon.cost}}
-          </span>
-        </div>
-        <hunt-ammo-selector [weapon]="leftWeapon" [canChangeActiveAmmo]="true"></hunt-ammo-selector>
-      </div>
-    </div>
-
-    <div class="weapon-card">
-      <h3 class="title">{{rightWeapon.name}} {{rightWeapon.activeAmmo !== rightWeapon.baseAmmo ? rightWeapon.activeAmmo.info.name : '' }}
-      </h3>
-      <div class="weapon-img" [class.open]="isRightAmmoSelectorOpen" (click)="openOrCloseAmmoSelector('right')">
-        <img [src]="rightWeapon.image" />
-      </div>
-      <div class="ammo-container">
-        <div class="aux-stats">
-          <span class="ammo-icon">
-            <span class="icon">
-              <img [src]="ammoTypeSrc(rightWeapon)">
-            </span>
-            <span class="ammo">
-              {{rightWeapon.magazine}}{{rightWeapon.hasExtraBullet ? '+1' : ''}}/{{rightWeapon.activeAmmo.ammoReserve}}
-            </span>
-          </span>
-          <img [src]="sizeSrc(rightWeapon)">
-          <span class="money">
-            <hunt-dollar-icon></hunt-dollar-icon>
-            {{rightWeapon.cost}}
-          </span>
-        </div>
-        <hunt-ammo-selector [weapon]="rightWeapon" [canChangeActiveAmmo]="true"></hunt-ammo-selector>
-      </div>
-    </div>
-
-    @if (isLeftAmmoSelectorOpen || isRightAmmoSelectorOpen) {
-    <div class="ammo-select">
-
-      @if (isLeftAmmoSelectorOpen) {
-      <span>Choose <b>{{leftWeapon.name}}</b> ammo type:</span>
-      <hunt-ammo-selector [(weapon)]="leftWeapon" [canChangeActiveAmmo]="true"></hunt-ammo-selector>
-      }
-      @if (isRightAmmoSelectorOpen) {
-      <span>Choose <b>{{rightWeapon.name}}</b> ammo type:</span>
-      <hunt-ammo-selector [(weapon)]="rightWeapon" [canChangeActiveAmmo]="true"></hunt-ammo-selector>
-      }
-    </div>
-    }
-
-    <hunt-stat-comparison-table-component [left]="leftWeapon" [right]="rightWeapon"></hunt-stat-comparison-table-component>
+    <hunt-weapon-info-card [(weapon)]="leftWeapon"></hunt-weapon-info-card>
+    <hunt-weapon-info-card [(weapon)]="rightWeapon"></hunt-weapon-info-card>
+    <hunt-stat-comparison-table-component [left]="leftWeapon()" [right]="rightWeapon()"></hunt-stat-comparison-table-component>
   </div>
 
-  <hunt-chart-component [ammo]="[leftWeapon.activeAmmo, rightWeapon.activeAmmo]"></hunt-chart-component>
+  <hunt-chart-component [ammo]="[leftWeapon().activeAmmo, rightWeapon().activeAmmo]"></hunt-chart-component>
 
 </div>
 

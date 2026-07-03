@@ -1,0 +1,37 @@
+.aux-stats {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 5px;
+
+  .ammo-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    .icon {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 32px;
+      width: 24px;
+      overflow: hidden;
+
+      img {
+        aspect-ratio: 1;
+        height: 36px;
+      }
+    }
+
+    .ammo {
+      text-align: center;
+      min-width: 6ch;
+    }
+  }
+
+  .money {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+  }
+}
