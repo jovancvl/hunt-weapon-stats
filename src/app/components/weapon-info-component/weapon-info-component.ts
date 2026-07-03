@@ -1,8 +1,6 @@
-import { Component, computed, input, model } from '@angular/core';
+import { Component, model } from '@angular/core';
 import { Weapon } from '../../model/weapon';
 import { StatTableComponent } from "../stat-table-component/stat-table-component";
-import { AmmoStats } from '../../model/ammo-stats';
-import { AmmoName } from '../../model/ammo-name'
 import { WeaponInfoCardComponent } from "../weapon-info-card/weapon-info-card.component";
 
 @Component({

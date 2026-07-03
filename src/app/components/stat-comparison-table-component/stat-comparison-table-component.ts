@@ -1,4 +1,4 @@
-import { Component, input, ChangeDetectionStrategy } from '@angular/core';
+import { Component, input } from '@angular/core';
 import { StatBarComponent } from "../stat-bar-component/stat-bar-component";
 import { Weapon } from '../../model/weapon';
 
@@ -12,5 +12,5 @@ export class StatComparisonTableComponent {
   left = input.required<Weapon>()
   right = input.required<Weapon>()
 
-  readonly RIGHT_STAT_BAR_COLOR = "#e0c528ff"
+  readonly RIGHT_STAT_BAR_COLOR = "goldenrod"
 }

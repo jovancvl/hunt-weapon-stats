@@ -1,8 +1,8 @@
 <div class="info-card">
   @if (titleSize() === "large") {
-    <h1 class="title">{{weaponTitleText()}}</h1>
+    <h1 class="title" [style.color]="titleColor()">{{weaponTitleText()}}</h1>
   } @else {
-    <h3 class="title">{{weaponTitleText()}}</h3>
+    <h3 class="title" [style.color]="titleColor()">{{weaponTitleText()}}</h3>
   }
   
   <div class="card-img" >

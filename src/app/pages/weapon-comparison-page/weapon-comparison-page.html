@@ -1,7 +1,7 @@
 <div class="content">
   <div>
-    <hunt-weapon-info-card [(weapon)]="leftWeapon"></hunt-weapon-info-card>
-    <hunt-weapon-info-card [(weapon)]="rightWeapon"></hunt-weapon-info-card>
+    <hunt-weapon-info-card [(weapon)]="leftWeapon" titleSize="small"></hunt-weapon-info-card>
+    <hunt-weapon-info-card [(weapon)]="rightWeapon" titleSize="small" titleColor="goldenrod"></hunt-weapon-info-card>
     <hunt-stat-comparison-table-component [left]="leftWeapon()" [right]="rightWeapon()"></hunt-stat-comparison-table-component>
   </div>
 

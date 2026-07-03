@@ -25,7 +25,7 @@ export class ChartComponent {
   rangeSelected = output<number>();
   readonly colors = [
     'lightgrey',
-    'gold',
+    'goldenrod',
     'red',
     'blue',
     'green'

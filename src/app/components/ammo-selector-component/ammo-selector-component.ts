@@ -21,8 +21,9 @@ export class AmmoSelectorComponent {
 
   activateAmmo(ammo: AmmoStats) {
     this.weapon.update(w => {
-      w.activeAmmo = ammo
-      return w
+      const updated = {...w}
+      updated.activeAmmo = ammo
+      return updated
     })
   }
 }
