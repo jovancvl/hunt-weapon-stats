@@ -1,16 +1,12 @@
 @use '../../../styles.scss';
 
-:host {
-  padding: 0 1rem;
-}
-
 .content {
   display: grid;
   grid-template-columns: 1fr 2fr;
 }
 
 .weapon-card {
-  margin: 1rem;
+  margin: 0 1rem 1rem;
 
   .title {
   }
