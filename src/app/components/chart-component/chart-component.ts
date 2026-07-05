@@ -1,4 +1,4 @@
-import { Component, effect, input, output, computed } from '@angular/core';
+import { Component, input, output, computed } from '@angular/core';
 import { AmmoStats } from '../../model/ammo-stats';
 import { NgxEchartsDirective } from 'ngx-echarts';
 import { provideEchartsCore } from 'ngx-echarts';
@@ -107,7 +107,7 @@ export class ChartComponent {
       showSymbol: false,
       lineStyle: {
         color: 'white',
-        width: 4
+        width: 5
       },
       data: [] // required
     };
@@ -126,7 +126,6 @@ export class ChartComponent {
       },
       emphasis: {
         lineStyle: {
-          // type: 'solid',
           color: '#606060',
           width: 2,
         },
@@ -153,9 +152,12 @@ export class ChartComponent {
       const newSerie = {
         ...baseSerie,
         data: damageArray.map((damage, range) => [range, damage]),
+        itemStyle: {
+          color: this.ammo().length > 1 ? this.colors[i] : undefined // overrides visualMap from above if defined
+        },
         lineStyle: {
           ...baseSerie.lineStyle,
-          color: this.ammo().length > 1 ? this.colors[i] : undefined
+          color: this.ammo().length > 1 ? this.colors[i] : undefined // overrides visualMap from above if defined
         },
         markLine: {
           ...baseMarkline,
