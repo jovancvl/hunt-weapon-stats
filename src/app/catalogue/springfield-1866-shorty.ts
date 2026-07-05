@@ -37,11 +37,11 @@ const BASE_AMMO_DAMAGE_BREAKPOINTS: DamageBreakpoint[] = [
   },
   {
     range: 80,
-    damage: 83
+    damage: 85
   },
   {
     range: 100,
-    damage: 75
+    damage: 79
   },
 ]
 
@@ -91,7 +91,7 @@ const AMMO = [
       },
       {
         range: 100,
-        damage: 28+32
+        damage: 29+32
       },
     ]
   }),
@@ -115,11 +115,11 @@ const AMMO = [
       },
       {
         range: 80,
-        damage: 79
+        damage: 81
       },
       {
         range: 100,
-        damage: 71
+        damage: 75
       },
     ]
   }),
