@@ -1,6 +1,7 @@
 import { Weapon } from "../model/weapon";
 import { CARBINE_1865 } from "./1865-carbine"
 import { CARBINE_1865_SILENCER } from "./1865-carbine-silencer"
+import { CAVALRY_1890 } from "./1890-cavalry";
 import { BERTHIER_1892 } from "./berthier-1892";
 import { BORNHEIM_NO3 } from "./bornheim-no3";
 import { BORNHEIM_NO3_MATCH } from "./bornheim-no3-match"
@@ -103,6 +104,7 @@ export const WEAPON_LIST: Weapon[] = [
   SPARKS_SILENCER,
   SPARKS_PISTOL_SILENCER,
   UPPERCUT,
+  CAVALRY_1890
 ].sort((a, b) => {
   if (a.name > b.name) {
     return 1;
