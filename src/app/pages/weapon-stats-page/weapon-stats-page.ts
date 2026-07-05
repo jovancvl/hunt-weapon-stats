@@ -1,4 +1,4 @@
-import { Component, inject, ChangeDetectionStrategy, signal, computed } from '@angular/core'
+import { Component, inject, signal, computed } from '@angular/core'
 import { HunterBodyComponent } from "../../components/hunter-body-component/hunter-body-component"
 import { ActivatedRoute, Router } from '@angular/router'
 import { WEAPON_MAP } from '../../catalogue/__all-weapons'

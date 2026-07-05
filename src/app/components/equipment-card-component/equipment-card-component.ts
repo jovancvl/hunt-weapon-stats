@@ -1,4 +1,4 @@
-import { Component, computed, input, output, ChangeDetectionStrategy } from '@angular/core';
+import { Component, computed, input, output } from '@angular/core';
 import { Weapon } from '../../model/weapon';
 import { DollarIcon } from "../dollar-icon/dollar-icon";
 

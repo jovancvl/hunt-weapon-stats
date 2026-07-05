@@ -1,4 +1,4 @@
-import { Component, inject, OnDestroy, ChangeDetectionStrategy, signal } from '@angular/core'
+import { Component, inject, OnDestroy, signal } from '@angular/core'
 import { Router } from '@angular/router'
 import { WeaponInfoComponent } from "../../components/weapon-info-component/weapon-info-component"
 import { SelectWeaponComponent } from "../../components/select-weapon-component/select-weapon-component"

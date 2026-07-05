@@ -5,7 +5,11 @@
     <hunt-stat-comparison-table-component [left]="leftWeapon()" [right]="rightWeapon()"></hunt-stat-comparison-table-component>
   </div>
 
-  <hunt-chart-component [ammo]="[leftWeapon().activeAmmo, rightWeapon().activeAmmo]"></hunt-chart-component>
-
+  <div class="chart-and-body-container">
+    <hunt-chart-component [ammo]="[leftWeapon().activeAmmo, rightWeapon().activeAmmo]" (rangeSelected)="rangeSelected($event)"></hunt-chart-component>
+    <div class="hunter-bodies-container">
+      <hunt-hunter-body-component [ammo]="leftWeapon().activeAmmo" [range]="range()"></hunt-hunter-body-component>
+      <hunt-hunter-body-component [ammo]="rightWeapon().activeAmmo" [range]="range()" [alternateTextColor]="true"></hunt-hunter-body-component>
+    </div>
+  </div>
 </div>
-

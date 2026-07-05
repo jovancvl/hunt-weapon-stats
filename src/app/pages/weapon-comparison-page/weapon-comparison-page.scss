@@ -4,3 +4,13 @@
   display: grid;
   grid-template-columns: 1fr 2fr;
 }
+
+.chart-and-body-container {
+  display: flex;
+  flex-direction: column;
+}
+
+.hunter-bodies-container {
+  display: flex;
+  justify-content: space-around;
+}

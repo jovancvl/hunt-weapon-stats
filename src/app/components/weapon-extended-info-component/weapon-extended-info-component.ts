@@ -1,4 +1,4 @@
-import { Component, computed, input, output, ChangeDetectionStrategy } from '@angular/core';
+import { Component, computed, input, output } from '@angular/core';
 import { ChartComponent } from "../chart-component/chart-component";
 import { AmmoStats } from '../../model/ammo-stats'
 
