@@ -1,15 +1,26 @@
-<div class="content">
+<div class="content-container">
   <div>
-    <hunt-weapon-info-card [(weapon)]="leftWeapon" titleSize="small"></hunt-weapon-info-card>
-    <hunt-weapon-info-card [(weapon)]="rightWeapon" titleSize="small" titleColor="goldenrod"></hunt-weapon-info-card>
+    <hunt-weapon-info-card [(weapon)]="leftWeapon" titleSize="small" [blurImageOnHover]="true"
+      [showBorder]="isWeaponSelectorOpen() && weaponSelecting() === 'left'"
+      (imageClicked)="openWeaponSelection('left')"></hunt-weapon-info-card>
+    <hunt-weapon-info-card [(weapon)]="rightWeapon" titleSize="small" titleColor="goldenrod"
+      [showBorder]="isWeaponSelectorOpen() && weaponSelecting() === 'right'" [blurImageOnHover]="true"
+      (imageClicked)="openWeaponSelection('right')"></hunt-weapon-info-card>
     <hunt-stat-comparison-table-component [left]="leftWeapon()" [right]="rightWeapon()"></hunt-stat-comparison-table-component>
   </div>
 
+  @if (isWeaponSelectorOpen()) {
+  <hunt-select-weapon-component (onDetailsClick)="setComparisonWeapon($event)"
+    (onSelect)="weaponSelected($event)"></hunt-select-weapon-component>
+  } @else {
   <div class="chart-and-body-container">
-    <hunt-chart-component [ammo]="[leftWeapon().activeAmmo, rightWeapon().activeAmmo]" (rangeSelected)="rangeSelected($event)"></hunt-chart-component>
+    <hunt-chart-component [ammo]="[leftWeapon().activeAmmo, rightWeapon().activeAmmo]"
+      (rangeSelected)="rangeSelected($event)"></hunt-chart-component>
     <div class="hunter-bodies-container">
       <hunt-hunter-body-component [ammo]="leftWeapon().activeAmmo" [range]="range()"></hunt-hunter-body-component>
-      <hunt-hunter-body-component [ammo]="rightWeapon().activeAmmo" [range]="range()" [alternateTextColor]="true"></hunt-hunter-body-component>
+      <hunt-hunter-body-component [ammo]="rightWeapon().activeAmmo" [range]="range()"
+        [alternateTextColor]="true"></hunt-hunter-body-component>
     </div>
   </div>
+  }
 </div>

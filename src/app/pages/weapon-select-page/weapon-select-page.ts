@@ -25,7 +25,7 @@ export class WeaponSelectPage {
   }
 
   onSelect(w: Weapon) {
-    if (this.utilService.isSmallScreen) {
+    if (this.utilService.isSmallScreen()) {
       this.goToDetails(w)
     }
     this.weapon.set(w)

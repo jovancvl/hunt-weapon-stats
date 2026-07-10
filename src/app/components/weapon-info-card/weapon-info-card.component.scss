@@ -1,19 +1,34 @@
 .info-card {
   margin: 0.5rem;
+  padding: 0.5rem;
+  box-sizing: border-box;
+  border: 1px solid;
+  animation: borderFade 1.5s ease-in infinite;
 
   .title {
     margin-left: 0.5rem;
   }
 
   .card-img {
+    position: relative;
     height: 80px;
     margin: 0.5rem;
     display: flex;
     justify-content: center;
     align-items: center;
+    box-sizing: border-box;
+    cursor: pointer;
 
     img {
       height: 100%;
+      transition: 150ms filter linear;
+    }
+
+    .swap-icon {
+      position: absolute;
+      font-size: 3rem;
+      opacity: 1;
+      transition: 150ms opacity linear;
     }
   }
 
@@ -23,5 +38,23 @@
     align-items: center;
     justify-content: space-around;
     margin: 0 1rem;
+  }
+}
+
+.invisible {
+  opacity: 0 !important;
+}
+
+.blurred {
+  filter: blur(5px)
+}
+
+@keyframes borderFade {
+  0%, 100% {
+    border-color: transparent;
+  }
+
+  50% {
+    border-color: var(--border-color);
   }
 }

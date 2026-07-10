@@ -10,7 +10,10 @@ import { UtilService } from '../../services/util.service';
 
 @Component({
   selector: 'hunt-select-weapon-component',
-  imports: [EquipmentCardComponent, FormField],
+  imports: [
+    EquipmentCardComponent, 
+    FormField
+  ],
   templateUrl: './select-weapon-component.html',
   styleUrl: './select-weapon-component.scss',
 })
@@ -74,7 +77,7 @@ export class SelectWeaponComponent {
   }
 
   onWeaponSelect(w: Weapon) {
-    if ((!this.doubleClickTimerSub?.closed && this.selectedWeapon.name === w.name) || this.utilService.isSmallScreen) {
+    if ((!this.doubleClickTimerSub?.closed && this.selectedWeapon.name === w.name) || this.utilService.isSmallScreen()) {
       this.goToDetails(w);
       return 
     }

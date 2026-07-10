@@ -117,10 +117,10 @@ export class AmmoStats {
     damageBreakpoints: [
       {
         range: 0,
-        damage: 150
+        damage: 0
       },
       {
-        range: 100,
+        range: 1,
         damage: 0
       }
     ]

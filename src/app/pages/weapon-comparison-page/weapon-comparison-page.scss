@@ -1,9 +1,29 @@
 @use '../../../styles.scss';
 
-.content {
+.content-container {
   display: grid;
-  grid-template-columns: 1fr 2fr;
+  grid-template-columns: minmax(400px, 33vw) minmax(350px, 67vw);
+  // grid-template-rows: 1fr;
+  // row-gap: 1rem;
+  height: 100%;
+
+  hunt-select-weapon-component {
+    overflow-y: auto;
+  }
 }
+
+@media (max-width: 1024px) {
+  .content-container {
+    display: flex;
+    flex-direction: column;
+    height: unset;
+  }
+
+  .hunter-bodies-container {
+    flex-direction: column;
+  }
+}
+
 
 .chart-and-body-container {
   display: flex;
