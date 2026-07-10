@@ -25,9 +25,11 @@ export class SelectWeaponComponent {
 
   onSelect = output<Weapon>();
   goToOption = output<[Weapon, WeaponCardOption]>();
+
+  showOptions = computed(() => this.showOptionsOnWeaponCards() || this.utilService.isSmallScreen())
   
   weaponsList: Weapon[] = [...WEAPON_LIST];
-  selectedWeapon = FRONTIER_73C;
+  selectedWeapon = Weapon.EMPTY;
 
   search = viewChild.required<ElementRef<HTMLInputElement>>('search');
 

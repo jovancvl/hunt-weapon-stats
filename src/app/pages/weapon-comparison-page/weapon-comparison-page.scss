@@ -34,3 +34,23 @@
   display: flex;
   justify-content: space-around;
 }
+
+.modal {
+  background-color: black;
+  height: 100vh;
+  overflow: auto;
+
+  hunt-select-weapon-component {
+    overflow-y: auto;
+  }
+
+  .title-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    h1 {
+      display: inline-block;
+    }
+  }
+}

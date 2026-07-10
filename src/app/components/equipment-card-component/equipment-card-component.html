@@ -4,7 +4,7 @@
   <span class="bottom-left size-icon">
     <img [src]="sizeSrc()">
   </span>
-  @if (showOptions()) {
+  @if (_showOptions()) {
   <span class="top-right">
     <button class="options-button" (click)="toggleOptions($event)" [cdkMenuTriggerFor]="options">
       <span class="material-symbols-outlined">more_vert</span>
