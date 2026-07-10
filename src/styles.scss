@@ -1,8 +1,5 @@
 /* You can add global styles to this file, and also import other style files */
 @use "sass:math";
-@use '@angular/cdk' as cdk;
-
-@include cdk.overlay();
 
 $nav-bar-height: 3rem;
 $item-bg-hover-color: #141414;
