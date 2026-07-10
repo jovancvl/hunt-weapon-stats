@@ -1,4 +1,4 @@
-import { Component, inject, ChangeDetectionStrategy } from '@angular/core'
+import { Component, inject, signal, computed } from '@angular/core'
 import { HunterBodyComponent } from "../../components/hunter-body-component/hunter-body-component"
 import { ActivatedRoute, Router } from '@angular/router'
 import { WEAPON_MAP } from '../../catalogue/__all-weapons'
@@ -10,16 +10,15 @@ import { WeaponExtendedInfoComponent } from "../../components/weapon-extended-in
   selector: 'hunt-weapon-stats-page',
   imports: [HunterBodyComponent, WeaponInfoComponent, WeaponExtendedInfoComponent],
   templateUrl: './weapon-stats-page.html',
-  changeDetection: ChangeDetectionStrategy.Eager,
   styleUrl: './weapon-stats-page.scss'
 })
 export class WeaponStatsPage {
   private activatedRoute = inject(ActivatedRoute)
   private router = inject(Router)
 
-  weapon = Weapon.EMPTY
+  weapon = signal(Weapon.EMPTY)
   range = 10
-  
+    
   constructor () {
     const id = this.activatedRoute.snapshot.paramMap.get('id')
     if (!id) {
@@ -34,7 +33,7 @@ export class WeaponStatsPage {
       return
     }
 
-    this.weapon = Object.assign({ ...wn })
+    this.weapon.set(Object.assign({ ...wn }))
     
   }
 

@@ -1,4 +1,4 @@
-import { Component, input, ChangeDetectionStrategy } from '@angular/core';
+import { Component, input } from '@angular/core';
 import { Weapon } from '../../model/weapon';
 import { StatBarComponent } from "../stat-bar-component/stat-bar-component";
 
@@ -6,9 +6,8 @@ import { StatBarComponent } from "../stat-bar-component/stat-bar-component";
   selector: 'hunt-stat-table-component',
   imports: [StatBarComponent],
   templateUrl: './stat-table-component.html',
-  changeDetection: ChangeDetectionStrategy.Eager,
   styleUrl: './stat-table-component.scss',
 })
 export class StatTableComponent {
-  weapon = input.required<Weapon>()
+  weapon = input.required<Weapon>();
 }

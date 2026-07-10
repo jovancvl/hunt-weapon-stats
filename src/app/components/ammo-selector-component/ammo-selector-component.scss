@@ -1,0 +1,44 @@
+@use '../../../styles.scss';
+
+.button-container {
+  $button-size: 2rem;
+
+  display: flex;
+  flex-flow: row wrap;
+  gap: 4px;
+
+  button {
+    cursor: pointer;
+    aspect-ratio: 0.66;
+    width: $button-size;
+    box-sizing: border-box;
+    padding: 3px 0px;
+    transition: border 200ms ease-in-out, background-color 200ms ease-in-out;
+
+    border: none;
+    background-color: transparent;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+
+    img {
+      aspect-ratio: 1/1;
+      height: 100%;
+    }
+  }
+
+  .can-hover {
+    border: 1px solid styles.$button-border-color;
+    background-color: styles.$item-bg-color;
+
+    &:hover {
+      background-color: styles.$item-bg-hover-color;
+    }
+
+    &.active {
+      border-color: styles.$active-border-color;
+    }
+  }
+}

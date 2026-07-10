@@ -1,0 +1,15 @@
+<span class="aux-stats">
+  <span class="ammo-icon">
+    <span class="icon">
+      <img [src]="ammoTypeSrc()">
+    </span>
+    <span class="ammo">
+      {{weapon().magazine}}{{weapon().hasExtraBullet ? '+1' : ''}}/{{weapon().activeAmmo.ammoReserve}}
+    </span>
+  </span>
+  <img [src]="sizeSrc()">
+  <span class="money">
+    <hunt-dollar-icon></hunt-dollar-icon>
+    {{weapon().cost}}
+  </span>
+</span>

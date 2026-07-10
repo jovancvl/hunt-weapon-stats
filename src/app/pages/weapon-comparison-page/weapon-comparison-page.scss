@@ -2,106 +2,55 @@
 
 .content-container {
   display: grid;
-  grid-template-columns: minmax(300px, 1fr) minmax(300px, 3fr) minmax(300px, 1fr);
+  grid-template-columns: minmax(400px, 33vw) minmax(350px, 67vw);
+  // grid-template-rows: 1fr;
+  // row-gap: 1rem;
+  height: 100%;
+
+  hunt-select-weapon-component {
+    overflow-y: auto;
+  }
 }
 
-.hunter-body-left {
-  margin-left: auto;
+@media (max-width: 1024px) {
+  .content-container {
+    display: flex;
+    flex-direction: column;
+    height: unset;
+  }
+
+  .hunter-bodies-container {
+    flex-direction: column;
+  }
 }
 
-.hunter-body-right {
-  margin-right: auto;
-}
 
-.left-weapon, .right-weapon {
-  display: inline-block;
-  // border: 2px solid white;
-  box-sizing: border-box;
-  border-radius: 25px;
-  aspect-ratio: 1/1;
-  height: 1.2rem;
-}
-
-.left-weapon {
-  background-color: white;
-}
-
-.right-weapon {
-  background-color: #e0c528ff;
-}
-
-.weapon-info-container {
-  padding: 0.5rem;
-}
-
-.weapon-title-container {
+.chart-and-body-container {
   display: flex;
-  flex-flow: row nowrap;
-  align-items: center;
-  gap: 1rem;
-
-  h1 {
-    display: inline;
-  }
-
-  button {
-    margin-right: 1rem;
-  }
+  flex-direction: column;
 }
 
-.button-container {
-  $button-size: 3rem;
-
+.hunter-bodies-container {
   display: flex;
-  flex-flow: row wrap;
-  justify-content: center;
-  gap: 4px;
-
-  margin-bottom: 1rem;
-
-  button {
-    aspect-ratio: 1/1;
-    height: $button-size;
-    background-color: styles.$item-bg-color;
-    border: 1px solid styles.$button-border-color;
-    box-sizing: border-box;
-    padding: 3px;
-    transition: border 200ms ease-in-out, background-color 200ms ease-in-out;
-
-    img {
-      aspect-ratio: 1/1;
-      height: 100%;
-    }
-
-    &:hover {
-      background-color: styles.$item-bg-hover-color;
-    }
-
-    &.active {
-      border-color: styles.$active-border-color;
-    }
-  }
+  justify-content: space-around;
 }
 
-.gun-img {
-  display: flex;
-  justify-content: center;
-  align-items: center;
+.modal {
+  background-color: black;
+  height: 100vh;
+  overflow: auto;
 
-  img {
-    width: max(300px, 75%);
+  hunt-select-weapon-component {
+    overflow-y: auto;
   }
-}
 
-.compare-container {
-  display: grid;
-  grid-template-columns: repeat(2, minmax(300px, 50%));
-  grid-auto-rows: auto;
+  .title-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
 
-  h1 {
-    width: 100%;
-    text-overflow: ellipsis;
-    white-space:nowrap;
-    overflow: hidden;
+    h1 {
+      display: inline-block;
+    }
   }
 }

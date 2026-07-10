@@ -1,0 +1,16 @@
+<div class="info-card" [style.--border-color]="showBorder() ? titleColor() : 'transparent'">
+  @if (titleSize() === "large") {
+  <h1 class="title" [style.color]="titleColor()">{{weaponTitleText()}}</h1>
+  } @else {
+  <h3 class="title" [style.color]="titleColor()">{{weaponTitleText()}}</h3>
+  }
+
+  <div class="card-img" [style.cursor]="blurImageOnHover() ? 'pointer' : 'initial'" (click)="imgClicked()" (mouseenter)="toggleBlur(true)" (mouseleave)="toggleBlur(false)">
+    <img [src]="weapon().image" [class.blurred]="isImageBlurred()" />
+    <span class="swap-icon material-symbols-outlined" [class.invisible]="!isImageBlurred()">swap_horiz</span>
+  </div>
+  <div class="ammo-container">
+    <hunt-aux-stats [weapon]="weapon()"></hunt-aux-stats>
+    <hunt-ammo-selector [(weapon)]="weapon"></hunt-ammo-selector>
+  </div>
+</div>

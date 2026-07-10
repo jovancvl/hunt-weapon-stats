@@ -1,16 +1,16 @@
-import { Component, computed, input, ChangeDetectionStrategy } from '@angular/core';
+import { Component, computed, input } from '@angular/core';
 import { AmmoStats } from '../../model/ammo-stats'
 
 @Component({
   selector: 'hunt-hunter-body-component',
   imports: [],
   templateUrl: './hunter-body-component.html',
-  changeDetection: ChangeDetectionStrategy.Eager,
   styleUrl: './hunter-body-component.scss'
 })
 export class HunterBodyComponent  {
   ammo = input.required<AmmoStats>()
   range = input.required<number>()
+  alternateTextColor = input(false)
 
   chest = computed(() => Math.floor(this.ammo().calculateDamage(this.range()).chest))
   cock = computed(() => Math.floor(this.ammo().calculateDamage(this.range()).cock))

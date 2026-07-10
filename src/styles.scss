@@ -1,5 +1,8 @@
 /* You can add global styles to this file, and also import other style files */
 @use "sass:math";
+@use '@angular/cdk' as cdk;
+
+@include cdk.overlay();
 
 $nav-bar-height: 3rem;
 $item-bg-hover-color: #141414;
@@ -26,7 +29,7 @@ a {
   color: inherit;
 }
 
-h1 {
+h1, h2, h3, h4 {
   margin: 0px;
 }
 
@@ -36,12 +39,6 @@ h1 {
     'wght' 300,
     'GRAD' 0,
     'opsz' 24
-}
-
-
-// cdkDrag doesn't allow putting this css inside the component
-.equipment-card-list-container .cdk-drag-placeholder {
-  display: none;
 }
 
 .icon-only-button {

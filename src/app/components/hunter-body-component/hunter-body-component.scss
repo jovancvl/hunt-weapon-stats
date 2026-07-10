@@ -6,9 +6,8 @@
 .hunter-body-container {
   position: relative;
   width: fit-content;
-  height: 100%;
   max-height: 90vh;
-  min-height: 500px;
+  min-height: 425px;
   box-sizing: border-box;
 
   p {
@@ -62,4 +61,8 @@
     padding: 1rem 4rem;
     height: 100%;
   }
+}
+
+.goldenrod {
+  color: goldenrod;
 }

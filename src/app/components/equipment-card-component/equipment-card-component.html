@@ -4,13 +4,28 @@
   <span class="bottom-left size-icon">
     <img [src]="sizeSrc()">
   </span>
+  @if (_showOptions()) {
   <span class="top-right">
-    <button class="nav-button" (click)="goToDetails()">
-      <span class="material-symbols-outlined">open_in_new</span>
+    <button class="options-button" (click)="toggleOptions($event)" [cdkMenuTriggerFor]="options">
+      <span class="material-symbols-outlined">more_vert</span>
     </button>
   </span>
+  }
   <span class="bottom-right hunt-dollars">
     <hunt-dollar-icon></hunt-dollar-icon>
     {{weapon().cost}}
   </span>
 </div>
+
+<ng-template #options>
+  <div class="options-list" cdkMenu>
+    <button (click)="optionSelected.emit(OPTIONS.DETAILS)" cdkMenuItem>
+      <span class="material-symbols-outlined">info</span>
+      <span>Details</span>
+    </button>
+    <button (click)="optionSelected.emit(OPTIONS.COMPARE)" cdkMenuItem>
+      <span class="material-symbols-outlined">compare_arrows</span>
+      <span>Compare</span>
+    </button>
+  </div>
+</ng-template>

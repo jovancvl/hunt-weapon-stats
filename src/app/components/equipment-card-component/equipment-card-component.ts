@@ -1,18 +1,30 @@
-import { Component, computed, input, output, ChangeDetectionStrategy } from '@angular/core';
+import { Component, computed, inject, input, output } from '@angular/core';
 import { Weapon } from '../../model/weapon';
 import { DollarIcon } from "../dollar-icon/dollar-icon";
+import { WeaponCardOption } from './options.model';
+import { CdkMenuTrigger, CdkMenu, CdkMenuItem } from '@angular/cdk/menu';
+import { UtilService } from '../../services/util.service';
 
 @Component({
   selector: 'hunt-equipment-card-component',
-  imports: [DollarIcon],
+  imports: [
+    DollarIcon,
+    CdkMenuTrigger, 
+    CdkMenu, 
+    CdkMenuItem
+  ],
   templateUrl: './equipment-card-component.html',
-  changeDetection: ChangeDetectionStrategy.Eager,
   styleUrl: './equipment-card-component.scss'
 })
 export class EquipmentCardComponent {
+  readonly utilService = inject(UtilService)
+  OPTIONS = WeaponCardOption
   weapon = input.required<Weapon>()
-  active = input<boolean>(false)
-  onDetailsClick = output()
+  active = input(false)
+  showOptions = input(true)
+  optionSelected = output<WeaponCardOption>()
+
+  _showOptions = computed(() => this.showOptions() || this.utilService.isSmallScreen())
 
   sizeSrc = computed(() => {
     const size = this.weapon().size
@@ -23,7 +35,7 @@ export class EquipmentCardComponent {
     }
   })
 
-  goToDetails() {
-    this.onDetailsClick.emit()
+  toggleOptions(event: PointerEvent) {
+    event.stopPropagation()
   }
 }

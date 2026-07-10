@@ -1,5 +1,4 @@
 import { AmmoStats } from "./ammo-stats"
-import { AmmoName, SPECIAL_AMMO_TYPES } from "./ammo-name"
 
 export enum ActionType {
   BOLT_ACTION,
@@ -85,18 +84,6 @@ export class Weapon {
     this.heavyStaminaConsumption = weapon.heavyStaminaConsumption
 
     this.image = weapon.image
-  }
-
-  baseAmmoEquals(ammoType: AmmoName) { // can remove
-    return this.baseAmmo.info.name === ammoType
-  }
-
-  isBaseAmmoSpecialAmmo() { // can remove
-    return SPECIAL_AMMO_TYPES.has(this.baseAmmo.info.name)
-  }
-
-  hasAnyOfTheseCustomAmmoTypes(ammoTypes: Set<AmmoName>) {
-    return this.availableAmmo.find(a => ammoTypes.has(a.info.name)) !== undefined
   }
 
   /**
