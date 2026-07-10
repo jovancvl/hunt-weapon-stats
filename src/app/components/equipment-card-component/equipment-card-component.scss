@@ -18,7 +18,7 @@
   &:hover {
     background-color: styles.$item-bg-hover-color;
 
-    .nav-button {
+    .options-button {
       opacity: 1;
     }
   }
@@ -73,16 +73,20 @@
   border-color: styles.$active-border-color;
 }
 
-.nav-button {
+.options-button {
   opacity: 0;
+  aspect-ratio: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   transition: opacity 100ms ease-in-out;
-  padding: 2px;
+  padding: 1px;
   box-sizing: border-box;
   display: flex;
   color: white;
   background-color: transparent;
   border: none;
-  border-radius: 3px;
+  border-radius: 50%;
   cursor: pointer;
 
   transition: color 100ms ease-in-out;
@@ -91,5 +95,34 @@
   &:hover {
     color: black;
     background-color: white;
+  }
+}
+
+.options-list {
+  display: flex;
+  flex-direction: column;
+  border: 1px solid styles.$button-border-color;
+  border-radius: 2px;
+  background-color: styles.$item-bg-color;
+  // width: 100px;
+
+  button {
+    border: none;
+    width: 100%;
+    background-color: transparent;
+    color: white;
+    padding: 0.5rem;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 4px;
+
+    .material-symbols-outlined {
+      font-size: 28px;
+    }
+
+    &:hover {
+      background-color: styles.$item-bg-hover-color;
+    }
   }
 }

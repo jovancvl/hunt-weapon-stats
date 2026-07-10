@@ -1,4 +1,4 @@
-import { Component, computed, ElementRef, HostListener, output, signal, viewChild, WritableSignal, inject } from '@angular/core';
+import { Component, computed, ElementRef, HostListener, output, signal, viewChild, WritableSignal, inject, input } from '@angular/core';
 import { SIZE_FILTERS, BASE_AMMO_FILTERS, CUSTOM_AMMO_FILTERS, SizeFilter, BaseAmmoFilter, CustomAmmoFilter, Filter } from '../../model/filter';
 import { Weapon } from '../../model/weapon';
 import { EquipmentCardComponent } from "../equipment-card-component/equipment-card-component";
@@ -7,6 +7,7 @@ import { form, FormField } from '@angular/forms/signals';
 import { FRONTIER_73C } from '../../catalogue/frontier-73c';
 import { Subscription, timer } from 'rxjs';
 import { UtilService } from '../../services/util.service';
+import { WeaponCardOption } from '../equipment-card-component/options.model';
 
 @Component({
   selector: 'hunt-select-weapon-component',
@@ -20,8 +21,10 @@ import { UtilService } from '../../services/util.service';
 export class SelectWeaponComponent {
   utilService = inject(UtilService)
 
+  showOptionsOnWeaponCards = input(true)
+
   onSelect = output<Weapon>();
-  onDetailsClick = output<Weapon>();
+  goToOption = output<[Weapon, WeaponCardOption]>();
   
   weaponsList: Weapon[] = [...WEAPON_LIST];
   selectedWeapon = FRONTIER_73C;
@@ -72,13 +75,13 @@ export class SelectWeaponComponent {
     });
   });
 
-  goToDetails(w: Weapon) {
-    this.onDetailsClick.emit(w);
+  optionSelected(w: Weapon, option: WeaponCardOption) {
+    this.goToOption.emit([w, option])
   }
 
   onWeaponSelect(w: Weapon) {
     if ((!this.doubleClickTimerSub?.closed && this.selectedWeapon.name === w.name) || this.utilService.isSmallScreen()) {
-      this.goToDetails(w);
+      this.optionSelected(w, WeaponCardOption.DETAILS);
       return 
     }
 

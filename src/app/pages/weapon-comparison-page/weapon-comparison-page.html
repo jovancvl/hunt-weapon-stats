@@ -10,7 +10,7 @@
   </div>
 
   @if (isWeaponSelectorOpen()) {
-  <hunt-select-weapon-component (onDetailsClick)="setComparisonWeapon($event)"
+  <hunt-select-weapon-component [showOptionsOnWeaponCards]="false" (goToOption)="setComparisonWeapon($event[0])"
     (onSelect)="weaponSelected($event)"></hunt-select-weapon-component>
   } @else {
   <div class="chart-and-body-container">
