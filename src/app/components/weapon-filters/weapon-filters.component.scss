@@ -1,0 +1,105 @@
+@use '../../../styles.scss';
+
+$filter-height: 40px;
+
+.filters-container {
+  flex: 0 0 auto;
+
+  box-sizing: border-box;
+  background-color: black;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 0.5rem 1.5rem;
+  padding: 0.5rem 0.5rem;
+}
+
+.filter-group {
+  display: flex;
+  gap: 5px;
+
+  button {
+    aspect-ratio: 1;
+    height: $filter-height;
+    background-color: styles.$item-bg-color;
+    color: white;
+    padding: 0px;
+    border: 1px solid styles.$button-border-color;
+    box-sizing: border-box;
+    transition: border 200ms ease-in-out, background-color 200ms ease-in-out;
+
+    img {
+      height: 100%;
+      aspect-ratio: 1/1;
+      transition: border 200ms ease-in-out, background-color 200ms ease-in-out;
+    }
+
+    &:hover {
+      background-color: styles.$item-bg-hover-color;
+    }
+
+    &.active {
+      border-color: styles.$active-border-color;
+    }
+  }
+}
+
+.search-container {
+  display: flex;
+  align-items: center;
+  background-color: styles.$item-bg-color;
+  border: 1px solid styles.$button-border-color;
+  border-radius: 0px;
+  box-sizing: border-box;
+  height: $filter-height;
+  width: $filter-height * 6;
+  min-width: $filter-height * 3;
+
+  img {
+    box-sizing: border-box;
+    padding: 5px;
+    height: 100%;
+  }
+
+  .material-symbols-outlined {
+    cursor: pointer;
+  }
+
+  .hide {
+    display: none;
+  }
+
+  input {
+    box-sizing: border-box;
+    height: 100%;
+    width: 100%;
+    background-color: styles.$item-bg-color;
+    color: white;
+    border: none;
+    font-size: large;
+
+    &:focus {
+      outline: none;
+    }
+  }
+}
+
+@media (max-width: 576px) {
+  $filter-height: 32px;
+
+  .filters-container {
+    gap: 0.5rem;
+  }
+
+  .filter-group {
+    gap: 2px;
+
+    button {
+      height: $filter-height;
+    }
+  }
+
+  .search-container {
+    width: 100%;
+  }
+}
