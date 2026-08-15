@@ -1,4 +1,5 @@
-import { Component, input, output } from '@angular/core';
+import { Overlay } from '@angular/cdk/overlay';
+import { Component, inject, input, OnDestroy, output } from '@angular/core';
 
 export interface ModalResult {
   reason: 'cancel' | 'ok';
@@ -11,10 +12,21 @@ export interface ModalResult {
   templateUrl: './modal.component.html',
   styleUrl: './modal.component.scss',
 })
-export class ModalComponent {
+export class ModalComponent implements OnDestroy {
+  overlay = inject(Overlay)
+  scrollStrategy = this.overlay.scrollStrategies.block()
+
   title = input('')
 
   modalClosed = output<ModalResult>()
+
+  constructor() {
+    this.scrollStrategy.enable()
+  }
+
+  ngOnDestroy(): void {
+    this.scrollStrategy.disable()
+  }
 
   cancel() {
     this.modalClosed.emit({

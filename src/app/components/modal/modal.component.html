@@ -1,5 +1,5 @@
-<div class="background">
-  <div class="modal">
+<div class="background" (click)="cancel()">
+  <div class="modal" (click)="$event.stopPropagation()">
     <div class="title">
       <h3>
         {{title()}}
