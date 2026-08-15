@@ -13,16 +13,16 @@
   <hunt-select-weapon-component [showOptionsOnWeaponCards]="false" (goToOption)="setComparisonWeapon($event[0])"
     (onSelect)="weaponSelected($event)"></hunt-select-weapon-component>
   } @else if (isWeaponSelectorOpen() && isMobile()) {
-    <div class="modal" #modal>
-      <div class="title-container">
-        <h2>Select weapon for comparison</h2>
-        <button class="icon-only-button" (click)="isWeaponSelectorOpen.set(false)">
-          <span class="material-symbols-outlined">close</span>
-        </button>
-      </div>
-      <hunt-select-weapon-component [showOptionsOnWeaponCards]="false" (goToOption)="setComparisonWeapon($event[0])"
-        (onSelect)="weaponSelected($event)"></hunt-select-weapon-component>
+  <div class="modal" #modal>
+    <div class="title-container">
+      <h2>Select weapon for comparison</h2>
+      <button class="icon-only-button" (click)="isWeaponSelectorOpen.set(false)">
+        <span class="material-symbols-outlined">close</span>
+      </button>
     </div>
+    <hunt-select-weapon-component [showOptionsOnWeaponCards]="false" (goToOption)="setComparisonWeapon($event[0])"
+      (onSelect)="weaponSelected($event)"></hunt-select-weapon-component>
+  </div>
   } @else {
   <div class="chart-and-body-container">
     <hunt-chart-component [ammo]="[leftWeapon().activeAmmo, rightWeapon().activeAmmo]"

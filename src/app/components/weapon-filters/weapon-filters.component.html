@@ -2,8 +2,12 @@
   <div class="search-container" (click)="search.focus()">
     <img src="ammo-icons/ammo_filter-search.svg">
     <input id="search" #search placeholder="Search" [formField]="searchForm.query" [autocomplete]="false" />
-    <span (click)="clearSearchQuery()" [class.hide]="searchForm.query().value().length === 0" class="material-symbols-outlined">close</span>
-    <span [class.hide]="!utilService.isSmallScreen()" class="material-symbols-outlined">filter_alt</span>
+    @if (searchForm.query().value().length !== 0) {
+    <span (click)="clearSearchQuery()" class="material-symbols-outlined">close</span>
+    }
+    @if (utilService.isSmallScreen()) {
+    <span class="material-symbols-outlined">filter_alt</span>
+    }
   </div>
   <div class="filter-group">
     @for (filter of sizeFilters; track $index) {

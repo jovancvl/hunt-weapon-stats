@@ -1,4 +1,4 @@
-import { Component, computed, output, inject, input } from '@angular/core';
+import { Component, computed, output, inject, input, viewChild, effect, ElementRef } from '@angular/core';
 import { Weapon } from '../../model/weapon';
 import { EquipmentCardComponent } from "../equipment-card-component/equipment-card-component";
 import { WEAPON_LIST } from '../../catalogue/__all-weapons';
@@ -31,7 +31,7 @@ export class SelectWeaponComponent {
 
   doubleClickTimerSub?: Subscription;
 
-  filteredWeapons: Weapon[] = [] // the component emits an event immediately with all the weapons
+  filteredWeapons: Weapon[] = []; // the component emits an event immediately with all the weapons
 
   optionSelected(w: Weapon, option: WeaponCardOption) {
     this.goToOption.emit([w, option]);
@@ -49,6 +49,6 @@ export class SelectWeaponComponent {
   }
 
   applyFilters(weapons: Weapon[]) {
-    this.filteredWeapons = weapons
+    this.filteredWeapons = weapons;
   }
 }

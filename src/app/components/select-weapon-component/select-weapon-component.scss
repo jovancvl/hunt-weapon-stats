@@ -1,5 +1,10 @@
 @use '../../../styles.scss';
 
+:host {
+  display: flex;
+  flex-direction: column;
+}
+
 .equipment-card-list-container {
   padding: 0.5rem;
   box-sizing: border-box;
@@ -8,14 +13,10 @@
   gap: 6px;
 
   overflow-y: auto;
-
-  .always-show {
-    display: block !important;
-  }
 }
 
 @media (max-width: 576px) {
   .equipment-card-list-container {
-    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    grid-template-columns: repeat(auto-fill, minmax(175px, 1fr));
   }
 }
