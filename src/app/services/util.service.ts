@@ -12,7 +12,7 @@ export class UtilService {
   }
 
   constructor () {
-    this.breakpointObserver.observe(['(max-width: 1024px)']).subscribe(result => {
+    this.breakpointObserver.observe(['(max-width: 576px)']).subscribe(result => {
       this._isSmallScreen.set(result.matches);
     });
   }
