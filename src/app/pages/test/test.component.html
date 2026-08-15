@@ -1,7 +1,18 @@
-<hunt-modal title="This is a title">
-  this is a paragraph of text
-</hunt-modal>
-
-<div class="fullscreen">
-  aaa
-</div>
+<hunt-weapon-filters></hunt-weapon-filters>
+@if (true) {
+  <div class="list">
+    @for (w of weapons; track $index) {
+    <div class="list-item">
+      <img class="size-image" src="ammo-icons/ammo_filter-{{w.size}}-slot.svg" />
+      <img class="ammo-image" [src]="w.baseAmmo.info.icon"/>
+      <span class="weapon-info">
+        {{w.name}}
+      </span>
+      <img class="weapon-image" [src]="w.image" />
+      <!-- <button class="options-button">
+        <span class="material-symbols-outlined">more_vert</span>
+      </button> -->
+    </div>
+    }
+  </div>
+}

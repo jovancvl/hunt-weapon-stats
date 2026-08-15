@@ -4,12 +4,14 @@ import { SIZE_FILTERS, BASE_AMMO_FILTERS, CUSTOM_AMMO_FILTERS, SizeFilter, BaseA
 import { UtilService } from '../../services/util.service';
 import { WEAPON_LIST } from '../../catalogue/__all-weapons';
 import { Weapon } from '../../model/weapon';
+import { ModalComponent } from "../modal/modal.component";
 
 @Component({
   selector: 'hunt-weapon-filters',
   imports: [
-    FormField
-  ],
+    FormField,
+    ModalComponent
+],
   templateUrl: './weapon-filters.component.html',
   styleUrl: './weapon-filters.component.scss',
 })
@@ -26,6 +28,8 @@ export class WeaponFiltersComponent {
   onInput() {
     this.search().nativeElement.focus();
   }
+
+  isModalOpen = false;
 
   // filters
   sizeFilters = SIZE_FILTERS;

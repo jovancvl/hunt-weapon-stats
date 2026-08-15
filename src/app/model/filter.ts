@@ -1,54 +1,67 @@
-import { AmmoName, BLEED_AMMO_TYPES, EXPLOSIVE_AMMO_TYPES, FMJ_AMMO_TYPES, HIGH_VELOCITY_AMMO_TYPES, INCENDIARY_AMMO_TYPES, POISON_AMMO_TYPES, SPECIAL_AMMO_TYPES, SUBSONIC_AMMO_TYPES } from "./ammo-name"
-import { Weapon } from "./weapon"
+import { AmmoName, BLEED_AMMO_TYPES, EXPLOSIVE_AMMO_TYPES, FMJ_AMMO_TYPES, HIGH_VELOCITY_AMMO_TYPES, INCENDIARY_AMMO_TYPES, POISON_AMMO_TYPES, SPECIAL_AMMO_TYPES, SUBSONIC_AMMO_TYPES } from "./ammo-name";
+import { Weapon } from "./weapon";
 
 export interface Filter {
-  icon: string
-  apply(weapon: Weapon): boolean
+  icon: string;
+  name: string;
+  apply(weapon: Weapon): boolean;
 }
 
 export class SizeFilter implements Filter {
-  constructor(readonly size: number, readonly icon: string) { }
+  readonly name: string;
+
+  constructor (readonly size: number, readonly icon: string) {
+    this.name = `Size ${size}`;
+  }
   apply(weapon: Weapon): boolean {
-    return weapon.size === this.size
+    return weapon.size === this.size;
   }
 }
 
 export class BaseAmmoFilter implements Filter {
-  constructor(readonly baseAmmo: AmmoName | Set<AmmoName>, readonly icon: string) {}
+  readonly name: string;
+
+  constructor (readonly baseAmmo: AmmoName | Set<AmmoName>, readonly icon: string) {
+    if (this.baseAmmo instanceof Set) {
+      this.name = 'Special';
+    } else {
+      this.name = baseAmmo as AmmoName;
+    }
+  }
   apply(weapon: Weapon): boolean {
     if (this.baseAmmo instanceof Set) {
-      return this.baseAmmo.has(weapon.baseAmmo.info.name)
+      return this.baseAmmo.has(weapon.baseAmmo.info.name);
     }
-    return this.baseAmmo === weapon.baseAmmo.info.name
+    return this.baseAmmo === weapon.baseAmmo.info.name;
   }
 }
 
 export class CustomAmmoFilter implements Filter {
-  constructor(readonly customAmmo: Set<AmmoName>, readonly icon: string){}
+  constructor (readonly customAmmo: Set<AmmoName>, readonly icon: string, readonly name: string) { }
   apply(weapon: Weapon): boolean {
-    return !!weapon.availableAmmo.find(a => this.customAmmo.has(a.info.name))
+    return !!weapon.availableAmmo.find(a => this.customAmmo.has(a.info.name));
   }
 }
 
-export const SIZE_1_FILTER = new SizeFilter(1, "ammo-icons/ammo_filter-1-slot.svg")
-export const SIZE_2_FILTER = new SizeFilter(2, "ammo-icons/ammo_filter-2-slot.svg")
-export const SIZE_3_FILTER = new SizeFilter(3, "ammo-icons/ammo_filter-3-slot.svg")
-export const SIZE_4_FILTER = new SizeFilter(4, "ammo-icons/ammo_filter-4-slot.svg")
-export const SIZE_5_FILTER = new SizeFilter(5, "ammo-icons/ammo_filter-5-slot.svg")
+export const SIZE_1_FILTER = new SizeFilter(1, "ammo-icons/ammo_filter-1-slot.svg");
+export const SIZE_2_FILTER = new SizeFilter(2, "ammo-icons/ammo_filter-2-slot.svg");
+export const SIZE_3_FILTER = new SizeFilter(3, "ammo-icons/ammo_filter-3-slot.svg");
+export const SIZE_4_FILTER = new SizeFilter(4, "ammo-icons/ammo_filter-4-slot.svg");
+export const SIZE_5_FILTER = new SizeFilter(5, "ammo-icons/ammo_filter-5-slot.svg");
 
-export const COMPACT_AMMO_FILTER = new BaseAmmoFilter(AmmoName.COMPACT, "ammo-icons/ammo_filter-compact.svg")
-export const MEDIUM_AMMO_FILTER = new BaseAmmoFilter(AmmoName.MEDIUM, "ammo-icons/ammo_filter-medium.svg")
-export const LONG_AMMO_FILTER = new BaseAmmoFilter(AmmoName.LONG, "ammo-icons/ammo_filter-long.svg")
-export const BUCKSHOT_AMMO_FILTER = new BaseAmmoFilter(AmmoName.BUCKSHOT, "ammo-icons/ammo_filter-shell.svg")
-export const SPECIAL_AMMO_FILTER = new BaseAmmoFilter(SPECIAL_AMMO_TYPES, "ammo-icons/ammo_filter-special-ammo.svg")
+export const COMPACT_AMMO_FILTER = new BaseAmmoFilter(AmmoName.COMPACT, "ammo-icons/ammo_filter-compact.svg");
+export const MEDIUM_AMMO_FILTER = new BaseAmmoFilter(AmmoName.MEDIUM, "ammo-icons/ammo_filter-medium.svg");
+export const LONG_AMMO_FILTER = new BaseAmmoFilter(AmmoName.LONG, "ammo-icons/ammo_filter-long.svg");
+export const BUCKSHOT_AMMO_FILTER = new BaseAmmoFilter(AmmoName.BUCKSHOT, "ammo-icons/ammo_filter-shell.svg");
+export const SPECIAL_AMMO_FILTER = new BaseAmmoFilter(SPECIAL_AMMO_TYPES, "ammo-icons/ammo_filter-special-ammo.svg");
 
-export const EXPLOSIVE_AMMO_FILTER = new CustomAmmoFilter(EXPLOSIVE_AMMO_TYPES, "ammo-icons/ammo_filter-explosive.svg")
-export const BLEED_AMMO_FILTER = new CustomAmmoFilter(BLEED_AMMO_TYPES, "ammo-icons/ammo_filter-dumdum.svg")
-export const INCENDIARY_AMMO_FILTER = new CustomAmmoFilter(INCENDIARY_AMMO_TYPES, "ammo-icons/ammo_filter-burn.svg")
-export const POISON_AMMO_FILTER = new CustomAmmoFilter(POISON_AMMO_TYPES, "ammo-icons/ammo_filter-poison.svg")
-export const FMJ_AMMO_FILTER = new CustomAmmoFilter(FMJ_AMMO_TYPES, "ammo-icons/ammo_filter-fmj.svg")
-export const SUBSONIC_AMMO_FILTER = new CustomAmmoFilter(SUBSONIC_AMMO_TYPES, "ammo-icons/ammo_filter-subsonic.svg")
-export const HIGH_VELOCITY_AMMO_FILTER = new CustomAmmoFilter(HIGH_VELOCITY_AMMO_TYPES, "ammo-icons/ammo_filter-hv.svg")
+export const EXPLOSIVE_AMMO_FILTER = new CustomAmmoFilter(EXPLOSIVE_AMMO_TYPES, "ammo-icons/ammo_filter-explosive.svg", "Explosive");
+export const BLEED_AMMO_FILTER = new CustomAmmoFilter(BLEED_AMMO_TYPES, "ammo-icons/ammo_filter-dumdum.svg", "Dumdum");
+export const INCENDIARY_AMMO_FILTER = new CustomAmmoFilter(INCENDIARY_AMMO_TYPES, "ammo-icons/ammo_filter-burn.svg", "Incendiary");
+export const POISON_AMMO_FILTER = new CustomAmmoFilter(POISON_AMMO_TYPES, "ammo-icons/ammo_filter-poison.svg", "Poison");
+export const FMJ_AMMO_FILTER = new CustomAmmoFilter(FMJ_AMMO_TYPES, "ammo-icons/ammo_filter-fmj.svg", "FMJ");
+export const SUBSONIC_AMMO_FILTER = new CustomAmmoFilter(SUBSONIC_AMMO_TYPES, "ammo-icons/ammo_filter-subsonic.svg", "Subsonic");
+export const HIGH_VELOCITY_AMMO_FILTER = new CustomAmmoFilter(HIGH_VELOCITY_AMMO_TYPES, "ammo-icons/ammo_filter-hv.svg", "High Velocity");
 
 export const SIZE_FILTERS = [
   SIZE_1_FILTER,
@@ -56,7 +69,7 @@ export const SIZE_FILTERS = [
   SIZE_3_FILTER,
   SIZE_4_FILTER,
   SIZE_5_FILTER
-]
+];
 
 export const BASE_AMMO_FILTERS = [
   COMPACT_AMMO_FILTER,
@@ -64,7 +77,7 @@ export const BASE_AMMO_FILTERS = [
   LONG_AMMO_FILTER,
   BUCKSHOT_AMMO_FILTER,
   SPECIAL_AMMO_FILTER,
-]
+];
 
 export const CUSTOM_AMMO_FILTERS = [
   EXPLOSIVE_AMMO_FILTER,
@@ -74,7 +87,7 @@ export const CUSTOM_AMMO_FILTERS = [
   FMJ_AMMO_FILTER,
   SUBSONIC_AMMO_FILTER,
   HIGH_VELOCITY_AMMO_FILTER
-]
+];
 
 export const ALL_FILTERS: Filter[] = [
   SIZE_1_FILTER,
@@ -92,4 +105,4 @@ export const ALL_FILTERS: Filter[] = [
   FMJ_AMMO_FILTER,
   SUBSONIC_AMMO_FILTER,
   HIGH_VELOCITY_AMMO_FILTER
-]
+];

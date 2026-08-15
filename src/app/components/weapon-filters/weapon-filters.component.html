@@ -1,34 +1,86 @@
 <div class="filters-container">
-  <div class="search-container" (click)="search.focus()">
-    <img src="ammo-icons/ammo_filter-search.svg">
-    <input id="search" #search placeholder="Search" [formField]="searchForm.query" [autocomplete]="false" />
-    @if (searchForm.query().value().length !== 0) {
-    <span (click)="clearSearchQuery()" class="material-symbols-outlined">close</span>
-    }
+  <div class="search-and-mobile-filter-container">
+    <div class="search-container" (click)="search.focus()">
+      <img src="ammo-icons/ammo_filter-search.svg">
+      <input id="search" #search placeholder="Search" [formField]="searchForm.query" [autocomplete]="false" />
+      @if (searchForm.query().value().length !== 0) {
+      <span (click)="clearSearchQuery()" class="material-symbols-outlined">close</span>
+      }
+    </div>
     @if (utilService.isSmallScreen()) {
-    <span class="material-symbols-outlined">filter_alt</span>
-    }
-  </div>
-  <div class="filter-group">
-    @for (filter of sizeFilters; track $index) {
-    <button (click)="updateSizeFilter(filter)" [class.active]="appliedSizeFilters().includes(filter)">
-      <img [src]="filter.icon" />
+    <button class="filter-button open-filters-button" (click)="isModalOpen = true">
+      <span class="material-symbols-outlined">filter_alt</span>
     </button>
     }
   </div>
 
-  <div class="filter-group">
-    @for (filter of baseAmmoFilters; track $index) {
-    <button (click)="updateBaseAmmoFilter(filter)" [class.active]="appliedBaseAmmoFilters().includes(filter)">
-      <img [src]="filter.icon" />
-    </button>
-    }
-  </div>
-  <div class="filter-group">
-    @for (filter of customAmmoFilters; track $index) {
-    <button (click)="updateCustomAmmoFilter(filter)" [class.active]="appliedCustomAmmoFilters().includes(filter)">
-      <img [src]="filter.icon" />
-    </button>
-    }
-  </div>
+  @if (!utilService.isSmallScreen()) {
+    <div class="filter-group">
+      @for (filter of sizeFilters; track $index) {
+      <button class="filter-button" (click)="updateSizeFilter(filter)" [class.active]="appliedSizeFilters().includes(filter)">
+        <img [src]="filter.icon" />
+      </button>
+      }
+    </div>
+    
+    <div class="filter-group">
+      @for (filter of baseAmmoFilters; track $index) {
+      <button class="filter-button" (click)="updateBaseAmmoFilter(filter)" [class.active]="appliedBaseAmmoFilters().includes(filter)">
+        <img [src]="filter.icon" />
+      </button>
+      }
+    </div>
+    
+    <div class="filter-group">
+      @for (filter of customAmmoFilters; track $index) {
+      <button class="filter-button" (click)="updateCustomAmmoFilter(filter)" [class.active]="appliedCustomAmmoFilters().includes(filter)">
+        <img [src]="filter.icon" />
+      </button>
+      }
+    </div>
+  }
 </div>
+
+@if (isModalOpen) {
+  <hunt-modal title="Apply filters" (modalClosed)="isModalOpen = false">
+    <h4>Size Filters</h4>
+    <div class="modal-filters-container">
+      @for (filter of sizeFilters; track $index) {
+      <button class="modal-button" (click)="updateSizeFilter(filter)" [class.active]="appliedSizeFilters().includes(filter)">
+        <img [src]="filter.icon" />
+        <span>
+          {{filter.name}}
+        </span>
+      </button>
+      }
+    </div>
+
+    <h4>Base Ammo Filters</h4>
+    <div class="modal-filters-container">
+      @for (filter of baseAmmoFilters; track $index) {
+      <button class="modal-button" (click)="updateBaseAmmoFilter(filter)" [class.active]="appliedBaseAmmoFilters().includes(filter)">
+        <img [src]="filter.icon" />
+        <span>
+          {{filter.name}}
+        </span>
+      </button>
+      }
+    </div>
+
+    <h4>Custom Ammo Filters</h4>
+    <div class="modal-filters-container">
+      @for (filter of customAmmoFilters; track $index) {
+      <button class="modal-button" (click)="updateCustomAmmoFilter(filter)" [class.active]="appliedCustomAmmoFilters().includes(filter)">
+        <img [src]="filter.icon" />
+        <span>
+          {{filter.name}}
+        </span>
+      </button>
+      }
+    </div>
+
+    <button class="confirm-button" (click)="isModalOpen = false">
+      Confirm
+    </button>
+  </hunt-modal>
+}

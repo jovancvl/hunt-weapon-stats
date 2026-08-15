@@ -1,6 +1,54 @@
 @use '../../../styles.scss';
 
-.fullscreen {
-  background-color: red;
-  height: calc(100vh - styles.$nav-bar-height);
+$icon-height: 36px;
+$icon-width: 14px;
+
+.list {
+  margin: 0.5rem;
+}
+
+.list-item {
+  display: grid;
+  grid-template-columns: $icon-width*2 $icon-width 2fr minmax(120px, auto);
+  align-items: center;
+  gap: 3px;
+
+  border: 1px solid white;
+  margin: 5px 0;
+  padding: 8px;
+  padding-left: 0; // the icon has a lot of empty space so no padding needed
+}
+
+.size-image {
+  rotate: 90deg;
+  width: $icon-height;
+  height: $icon-width;
+  object-fit: cover;
+}
+
+.ammo-image {
+  height: $icon-height;
+  width: $icon-width;
+  object-fit: cover;
+  transform: translateY(-8px) ;
+}
+
+.weapon-info {
+  display: flex;
+  flex-direction: column;
+  align-items: start;
+}
+
+.weapon-image {
+  height: auto;
+  width: 100%;
+  max-width: 125px;
+}
+
+.options-button {
+  border: none;
+  cursor: pointer;
+  background: none;
+  color: white;
+  padding: 0;
 }
