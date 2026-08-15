@@ -1,7 +1,5 @@
 @use '../../../styles.scss';
 
-$filter-height: 40px;
-
 .filters-container {
   display: flex;
   box-sizing: border-box;
@@ -23,9 +21,9 @@ $filter-height: 40px;
   border: 1px solid styles.$button-border-color;
   border-radius: 0px;
   box-sizing: border-box;
-  height: $filter-height;
-  width: $filter-height * 6;
-  min-width: $filter-height * 3;
+  height: styles.$filter-height;
+  width: styles.$filter-height * 6;
+  min-width: styles.$filter-height * 3;
 
   img {
     box-sizing: border-box;
@@ -56,31 +54,6 @@ $filter-height: 40px;
   }
 }
 
-.filter-button {
-  aspect-ratio: 1;
-  height: $filter-height;
-  background-color: styles.$item-bg-color;
-  color: white;
-  padding: 0px;
-  border: 1px solid styles.$button-border-color;
-  box-sizing: border-box;
-  transition: border 200ms ease-in-out, background-color 200ms ease-in-out;
-
-  img {
-    height: 100%;
-    aspect-ratio: 1/1;
-    transition: border 200ms ease-in-out, background-color 200ms ease-in-out;
-  }
-
-  &:hover {
-    background-color: styles.$item-bg-hover-color;
-  }
-
-  &.active {
-    border-color: styles.$active-border-color;
-  }
-}
-
 .search-and-mobile-filter-container {
   @media (max-width: 576px) {
     width: 100%;
@@ -95,6 +68,14 @@ $filter-height: 40px;
 }
 
 .open-filters-button {
+  height: styles.$filter-height;
+  aspect-ratio: 1;
+  background-color: styles.$item-bg-color;
+  color: white;
+  padding: 0px;
+  border: 1px solid styles.$button-border-color;
+  box-sizing: border-box;
+
   .material-symbols-outlined {
     font-size: 32px;
   }
@@ -106,31 +87,18 @@ $filter-height: 40px;
   gap: 5px;
 }
 
-.modal-button {
-  background-color: styles.$item-bg-color;
-  display: flex;
-  justify-content: start;
-  align-items: center;
-  color: white;
-  border: 1px solid styles.$button-border-color;
-  padding: 0;
-  gap: 5px;
-
-  span {
-    vertical-align: baseline;
-  }
-
-  &.active {
-    border-color: styles.$active-border-color;
-  }
-}
-
 h4 {
   margin: 0.5rem 0;
 }
 
 .confirm-button {
   width: 100%;
-  padding: 0.5rem;
+  padding: 0.25rem;
   margin: 1rem 0;
+
+  font-size: large;
+
+  box-sizing: border-box;
+  border: 1px solid transparent;
+  border-radius: 1rem;
 }
