@@ -1,7 +1,15 @@
 <div class="background">
   <div class="modal">
-    <div class="padded">
-      <ng-content />
+    <div class="title">
+      <span class="title-text">
+        {{title()}}
+      </span>
+      <button class="close-button" (click)="cancel()">
+        <span class="material-symbols-outlined">close</span>
+      </button>
+    </div>
+    <div class="content">
+      <ng-content></ng-content>
     </div>
   </div>
 </div>

@@ -1,4 +1,9 @@
-import { Component } from '@angular/core';
+import { Component, input, output } from '@angular/core';
+
+export interface ModalResult {
+  reason: 'cancel' | 'ok';
+  data?: any;
+}
 
 @Component({
   selector: 'hunt-modal',
@@ -7,5 +12,13 @@ import { Component } from '@angular/core';
   styleUrl: './modal.component.scss',
 })
 export class ModalComponent {
+  title = input('')
 
+  modalClosed = output<ModalResult>()
+
+  cancel() {
+    this.modalClosed.emit({
+      reason: 'cancel'
+    })
+  }
 }

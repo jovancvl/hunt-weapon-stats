@@ -1,0 +1,6 @@
+@use '../../../styles.scss';
+
+.fullscreen {
+  background-color: red;
+  height: calc(100vh - styles.$nav-bar-height);
+}
