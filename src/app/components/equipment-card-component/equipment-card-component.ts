@@ -77,7 +77,7 @@ export class EquipmentCardComponent {
   }
 
   cardClicked() {
-    if (this.doubleClickTimerSub && !this.doubleClickTimerSub.closed) {
+    if ((this.doubleClickTimerSub && !this.doubleClickTimerSub.closed) || !this.showOptions()) {
       this.optionSelected.emit(WeaponCardOption.DETAILS);
       this.isOptionsModalOpen = false; // unnecessary but just in case
       return;
