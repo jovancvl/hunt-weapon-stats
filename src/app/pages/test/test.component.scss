@@ -1,0 +1,47 @@
+@use '../../../styles.scss';
+
+.carrousel {
+  $number-of-items: 2;
+
+  width: 100vw;
+  position: relative;
+
+  .item-container {
+    display: grid;
+    grid-template-columns: repeat(var(--number-of-items), 50vw);
+    overflow-x: auto;
+    overflow-y: hidden;
+    // scrollbar-width: none;
+  }
+
+  .left-button,
+  .right-button {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    cursor: pointer;
+  }
+
+  .left-button {
+    left: 0;
+  }
+
+  .right-button {
+    right: 0;
+  }
+}
+
+.options-list-container {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  place-content: start center;
+  margin-bottom: 1rem;
+}
+
+.modal-ammo-container {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 5px;
+  margin-bottom: 0.5rem;
+}

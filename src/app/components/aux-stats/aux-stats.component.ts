@@ -13,16 +13,21 @@ export class AuxStatsComponent {
   weapon = input.required<Weapon>();
 
   ammoTypeSrc = computed(() => {
-    switch (this.weapon().baseAmmo.info.name) {
-      case AmmoName.COMPACT:
-        return "ammo-icons/ammo_filter-compact.svg";
-      case AmmoName.MEDIUM:
-        return "ammo-icons/ammo_filter-medium.svg";
-      case AmmoName.LONG:
-        return "ammo-icons/ammo_filter-long.svg";
-      default:
-        return "ammo-icons/ammo_filter-special-ammo.svg";
+    if (this.weapon().baseAmmo === this.weapon().activeAmmo) {
+      switch (this.weapon().baseAmmo.info.name) {
+        case AmmoName.COMPACT:
+          return "ammo-icons/ammo_filter-compact.svg";
+        case AmmoName.MEDIUM:
+          return "ammo-icons/ammo_filter-medium.svg";
+        case AmmoName.LONG:
+          return "ammo-icons/ammo_filter-long.svg";
+        default:
+          return "ammo-icons/ammo_filter-special-ammo.svg";
+      }
+    } else {
+      return this.weapon().activeAmmo.info.icon;
     }
+    
   });
 
   sizeSrc = computed(() => {

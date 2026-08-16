@@ -1,124 +1,43 @@
-import { Component, computed, ElementRef, HostListener, output, signal, viewChild, WritableSignal, inject, input } from '@angular/core';
-import { SIZE_FILTERS, BASE_AMMO_FILTERS, CUSTOM_AMMO_FILTERS, SizeFilter, BaseAmmoFilter, CustomAmmoFilter, Filter } from '../../model/filter';
+import { Component, computed, output, inject, input } from '@angular/core';
 import { Weapon } from '../../model/weapon';
 import { EquipmentCardComponent } from "../equipment-card-component/equipment-card-component";
 import { WEAPON_LIST } from '../../catalogue/__all-weapons';
-import { form, FormField } from '@angular/forms/signals';
-import { FRONTIER_73C } from '../../catalogue/frontier-73c';
-import { Subscription, timer } from 'rxjs';
 import { UtilService } from '../../services/util.service';
 import { WeaponCardOption } from '../equipment-card-component/options.model';
+import { WeaponFiltersComponent } from "../weapon-filters/weapon-filters.component";
 
 @Component({
   selector: 'hunt-select-weapon-component',
   imports: [
-    EquipmentCardComponent, 
-    FormField
-  ],
+    EquipmentCardComponent,
+    WeaponFiltersComponent,
+],
   templateUrl: './select-weapon-component.html',
   styleUrl: './select-weapon-component.scss',
 })
 export class SelectWeaponComponent {
-  utilService = inject(UtilService)
+  readonly utilService = inject(UtilService);
 
-  showOptionsOnWeaponCards = input(true)
+  showOptions = input(true);
 
-  onSelect = output<Weapon>();
+  weaponTouched = output<Weapon>();
   goToOption = output<[Weapon, WeaponCardOption]>();
 
-  showOptions = computed(() => this.showOptionsOnWeaponCards() || this.utilService.isSmallScreen())
-  
   weaponsList: Weapon[] = [...WEAPON_LIST];
   selectedWeapon = Weapon.EMPTY;
 
-  search = viewChild.required<ElementRef<HTMLInputElement>>('search');
-
-  doubleClickTimerSub?: Subscription;
-
-  @HostListener('window:keydown')
-  onInput() {
-    this.search().nativeElement.focus();
-  }
-
-  // filters
-  sizeFilters = SIZE_FILTERS;
-  baseAmmoFilters = BASE_AMMO_FILTERS;
-  customAmmoFilters = CUSTOM_AMMO_FILTERS;
-
-  searchForm = form(signal({ query: '' }));
-
-  appliedSizeFilters = signal<SizeFilter[]>([]);
-  appliedBaseAmmoFilters = signal<BaseAmmoFilter[]>([]);
-  appliedCustomAmmoFilters = signal<CustomAmmoFilter[]>([]);
-
-  filteredWeapons = computed(() => {
-    return this.weaponsList.filter((w) => {
-      const searchText = this.searchForm.query().value();
-      const sizeFilters = this.appliedSizeFilters();
-      const baseAmmoFilters = this.appliedBaseAmmoFilters();
-      const customAmmoFilters = this.appliedCustomAmmoFilters();
-
-      const isSearchFilterOff = searchText.length === 0;
-      const isSizeFilterOff = sizeFilters.length === 0;
-      const isBaseAmmoFilterOff = baseAmmoFilters.length === 0;
-      const isCustomAmmoFilterOff = customAmmoFilters.length === 0;
-
-      const isSearchApplied = w.name.toLowerCase().includes(searchText);
-      const isSizeApplied = sizeFilters.some(f => f.apply(w));
-      const isBaseAmmoApplied = baseAmmoFilters.some(f => f.apply(w));
-      const isCustomAmmoApplied = customAmmoFilters.some(f => f.apply(w));
-
-      return (
-        (isSearchFilterOff || isSearchApplied) &&
-        (isSizeFilterOff || isSizeApplied) &&
-        (isBaseAmmoFilterOff || isBaseAmmoApplied) &&
-        (isCustomAmmoFilterOff || isCustomAmmoApplied)
-      );
-    });
-  });
+  filteredWeapons: Weapon[] = []; // the component emits an event immediately with all the weapons
 
   optionSelected(w: Weapon, option: WeaponCardOption) {
-    this.goToOption.emit([w, option])
+    this.goToOption.emit([w, option]);
   }
 
-  onWeaponSelect(w: Weapon) {
-    if ((!this.doubleClickTimerSub?.closed && this.selectedWeapon.name === w.name) || this.utilService.isSmallScreen()) {
-      this.optionSelected(w, WeaponCardOption.DETAILS);
-      return 
-    }
-
+  touchWeapon(w: Weapon) {
     this.selectedWeapon = w;
-    this.doubleClickTimerSub = timer(500).subscribe(() => this.doubleClickTimerSub?.unsubscribe());
-    this.onSelect.emit(w);
+    this.weaponTouched.emit(w);
   }
 
-
-  clearSearchQuery() {
-    this.searchForm.query().controlValue.set('');
-  }
-
-  updateSizeFilter(filter: SizeFilter) {
-    this.toggleFilter(this.appliedSizeFilters, filter);
-  }
-
-  updateBaseAmmoFilter(filter: BaseAmmoFilter) {
-    this.toggleFilter(this.appliedBaseAmmoFilters, filter);
-  }
-
-  updateCustomAmmoFilter(filter: CustomAmmoFilter) {
-    this.toggleFilter(this.appliedCustomAmmoFilters, filter);
-  }
-
-  private toggleFilter(filterList: WritableSignal<Filter[]>, filter: Filter) {
-    const list = filterList();
-    const index = list.findIndex(f => f.icon === filter.icon);
-
-    if (index >= 0) {
-      list.splice(index, 1);
-    } else {
-      list.push(filter);
-    }
-
-    filterList.set([...list]);
+  applyFilters(weapons: Weapon[]) {
+    this.filteredWeapons = weapons;
   }
 }

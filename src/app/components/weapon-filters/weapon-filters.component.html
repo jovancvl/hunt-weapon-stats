@@ -1,0 +1,77 @@
+<div class="filters-container">
+  <div class="search-and-mobile-filter-container">
+    <div class="search-container" (click)="search.focus()">
+      <img src="ammo-icons/ammo_filter-search.svg">
+      <input id="search" #search placeholder="Search" [formField]="searchForm.query" [autocomplete]="false" />
+      @if (searchForm.query().value().length !== 0) {
+      <span (click)="clearSearchQuery()" class="material-symbols-outlined">close</span>
+      }
+    </div>
+    @if (utilService.isSmallScreen()) {
+    <button class="open-filters-button" [class.active]="appliedSizeFilters().length > 0 || appliedBaseAmmoFilters().length > 0 || appliedCustomAmmoFilters().length > 0" (click)="isModalOpen = true">
+      <span class="material-symbols-outlined">filter_alt</span>
+    </button>
+    }
+  </div>
+
+  @if (!utilService.isSmallScreen()) {
+  <div class="filter-group">
+    @for (filter of sizeFilters; track $index) {
+    <hunt-filter-button [icon]="filter.icon" [isActive]="appliedSizeFilters().includes(filter)"
+      (click)="updateSizeFilter(filter)"></hunt-filter-button>
+    }
+  </div>
+
+  <div class="filter-group">
+    @for (filter of baseAmmoFilters; track $index) {
+      <hunt-filter-button [icon]="filter.icon" [isActive]="appliedBaseAmmoFilters().includes(filter)"
+        (click)="updateBaseAmmoFilter(filter)"></hunt-filter-button>
+    }
+  </div>
+
+  <div class="filter-group">
+    @for (filter of customAmmoFilters; track $index) {
+      <hunt-filter-button [icon]="filter.icon" [isActive]="appliedCustomAmmoFilters().includes(filter)"
+        (click)="updateCustomAmmoFilter(filter)"></hunt-filter-button>
+    }
+  </div>
+  }
+</div>
+
+@if (utilService.isSmallScreen() && allAppliedFilters().length > 0) {
+<div class="chips-container" animate.enter="open-animation" animate.leave="close-animation">
+  @for (filter of allAppliedFilters(); track $index) {
+    <hunt-chip (click)="removeChip(filter)">{{filter.name}}</hunt-chip>
+  }
+</div>
+}
+
+<hunt-modal title="Apply filters" [(show)]="isModalOpen" (modalClosed)="isModalOpen = false">
+  <h4>Size Filters</h4>
+  <div class="modal-filters-container">
+    @for (filter of sizeFilters; track $index) {
+    <hunt-filter-button [icon]="filter.icon" [label]="filter.name" [isActive]="appliedSizeFilters().includes(filter)"
+      (click)="updateSizeFilter(filter)"></hunt-filter-button>
+    }
+  </div>
+
+  <h4>Base Ammo Filters</h4>
+  <div class="modal-filters-container">
+    @for (filter of baseAmmoFilters; track $index) {
+    <hunt-filter-button [icon]="filter.icon" [label]="filter.name" [isActive]="appliedBaseAmmoFilters().includes(filter)"
+      (click)="updateBaseAmmoFilter(filter)"></hunt-filter-button>
+    }
+  </div>
+
+  <h4>Custom Ammo Filters</h4>
+  <div class="modal-filters-container">
+    @for (filter of customAmmoFilters; track $index) {
+    <hunt-filter-button [icon]="filter.icon" [label]="filter.name" [isActive]="appliedCustomAmmoFilters().includes(filter)"
+      (click)="updateCustomAmmoFilter(filter)"></hunt-filter-button>
+    }
+  </div>
+
+  <hunt-primary-button (click)="isModalOpen = false">
+    Confirm
+  </hunt-primary-button>
+</hunt-modal>

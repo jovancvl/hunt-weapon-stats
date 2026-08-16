@@ -7,12 +7,27 @@ export class UtilService {
 
   private _isSmallScreen = signal(false);
 
+  static readonly COLORS = [
+    'white',
+    'goldenrod',
+    'lightcoral',
+    'lightskyblue',
+    'lightgreen',
+    'plum',
+    'khaki',
+    'lightsalmon',
+    'powderblue',
+    'palegreen',
+    'violet',
+    'peachpuff',
+  ];
+
   get isSmallScreen() {
-    return computed(() => this._isSmallScreen())
+    return computed(() => this._isSmallScreen());
   }
 
   constructor () {
-    this.breakpointObserver.observe(['(max-width: 1024px)']).subscribe(result => {
+    this.breakpointObserver.observe(['(max-width: 576px)']).subscribe(result => {
       this._isSmallScreen.set(result.matches);
     });
   }

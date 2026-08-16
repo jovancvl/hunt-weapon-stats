@@ -26,24 +26,21 @@ export class WeaponSelectPage {
     const o = event[1]
     switch (o) {
       case (WeaponCardOption.COMPARE): {
-        this.router.navigate(['compare'], {
+        this.router.navigate(['/compare'], {
           queryParams: {
-            left: w.name
+            items: w.name
           }
         })
         break
       }
       case (WeaponCardOption.DETAILS): {
-        this.router.navigate(['weapons', w.name])
+        this.router.navigate(['/weapons', w.name])
         break
       }
     }
   }
 
   onSelect(w: Weapon) {
-    if (this.utilService.isSmallScreen()) {
-      this.goToOption([w, WeaponCardOption.DETAILS])
-    }
     this.weapon.set(w)
   }
 }

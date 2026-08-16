@@ -8,6 +8,7 @@ import { GridComponent, MarkLineComponent, TooltipComponent, VisualMapComponent 
 import { CanvasRenderer } from 'echarts/renderers';
 
 import { ECElementEvent, EChartsCoreOption } from 'echarts/core';
+import { UtilService } from '../../services/util.service';
 
 echarts.use([CanvasRenderer, LineChart, TooltipComponent, GridComponent, MarkLineComponent, VisualMapComponent]);
 
@@ -23,13 +24,7 @@ echarts.use([CanvasRenderer, LineChart, TooltipComponent, GridComponent, MarkLin
 export class ChartComponent {
   ammo = input.required<AmmoStats[]>();
   rangeSelected = output<number>();
-  readonly colors = [
-    'lightgrey',
-    'goldenrod',
-    'red',
-    'blue',
-    'green'
-  ];
+  readonly colors = UtilService.COLORS
 
   options = computed<EChartsCoreOption>(() => {
     const baseOptions: EChartsCoreOption = {

@@ -1,0 +1,33 @@
+@use '../../../styles.scss';
+
+.filter-button {
+  height: styles.$filter-height;
+  width: 100%;
+  background-color: styles.$item-bg-color;
+  color: white;
+  padding: 0px;
+  border: 1px solid styles.$button-border-color;
+  box-sizing: border-box;
+  transition: border 200ms ease-in-out, background-color 200ms ease-in-out;
+
+  display: flex;
+  justify-content: start;
+  align-items: center;
+  gap: 5px;
+
+  img {
+    height: 100%;
+    aspect-ratio: 1/1;
+    padding: 5px;
+    box-sizing: border-box;
+    transition: border 200ms ease-in-out, background-color 200ms ease-in-out;
+  }
+
+  &:hover {
+    background-color: styles.$item-bg-hover-color;
+  }
+
+  &.active {
+    border-color: styles.$active-border-color;
+  }
+}

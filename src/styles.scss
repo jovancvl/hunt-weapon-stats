@@ -1,10 +1,13 @@
 /* You can add global styles to this file, and also import other style files */
 @use "sass:math";
+@use './assets/animations.scss';
+@import '@angular/cdk/overlay-prebuilt.css';
 
 $nav-bar-height: 3rem;
 $item-bg-hover-color: #141414;
 $item-bg-color: #0a0a0a;
 $compare-card-ratio: math.div(12, 3);
+$filter-height: 40px;
 $button-border-color: #b0b0b0;
 $active-border-color: goldenrod;
 
@@ -16,8 +19,8 @@ html {
   color: white;
   background-color: black;
 
-  * {
-    scrollbar-width: none;
+  @media (max-width: 576px) {
+    font-size: medium;
   }
 }
 
@@ -26,7 +29,10 @@ a {
   color: inherit;
 }
 
-h1, h2, h3, h4 {
+h1,
+h2,
+h3,
+h4 {
   margin: 0px;
 }
 
@@ -36,6 +42,10 @@ h1, h2, h3, h4 {
     'wght' 300,
     'GRAD' 0,
     'opsz' 24
+}
+
+.body-bottom-pad {
+  margin-bottom: 4rem;
 }
 
 .icon-only-button {
@@ -57,88 +67,4 @@ h1, h2, h3, h4 {
   &:hover {
     background: $item-bg-hover-color;
   }
-}
-
-.stat-table {
-  font-size: 16px;
-  width: 100%;
-
-  tr {
-    td {
-      width: 50%;
-      padding-right: 0.25rem;
-    }
-  }
-}
-
-@keyframes in-from-down {
-  from {
-    transform: translateY(100vh);
-  }
-
-  to {
-    transform: translateY(0vh);
-  }
-}
-
-@keyframes in-from-up {
-  from {
-    transform: translateY(-100vh);
-  }
-
-  to {
-    transform: translateY(0vh);
-  }
-}
-
-@keyframes out-to-up {
-  from {
-    transform: translateY(0vh);
-  }
-
-  to {
-    transform: translateY(-100vh);
-  }
-}
-
-@keyframes out-to-below {
-  from {
-    transform: translateY(0vh);
-  }
-
-  to {
-    transform: translateY(100vh);
-  }
-}
-
-::view-transition-old(animate-out-to-above) {
-  animation: 1s ease-in-out both out-to-up;
-}
-
-::view-transition-old(animate-out-to-below) {
-  animation: 1s ease-in-out both out-to-below;
-}
-
-::view-transition-new(animate-in-from-above) {
-  animation: 1s ease-in-out both in-from-up;
-}
-
-::view-transition-new(animate-in-from-below) {
-  animation: 1s ease-in-out both in-from-down;
-}
-
-.animate-out-to-above {
-  view-transition-name: animate-out-to-above;
-}
-
-.animate-out-to-below {
-  view-transition-name: animate-out-to-below;
-}
-
-.animate-in-from-above {
-  view-transition-name: animate-out-from-above;
-}
-
-.animate-in-from-below {
-  view-transition-name: animate-in-from-below;
 }

@@ -1,0 +1,31 @@
+@use '../../../styles.scss';
+
+.option-button {
+  background-color: styles.$item-bg-color;
+  color: white;
+  padding: 0.5rem 0.25rem;
+
+  border: none;
+  border-radius: 8px;
+
+  width: 100%;
+
+  display: flex;
+  align-items: center;
+  gap: 6px;
+
+  transition: background-color 200ms ease-in-out;
+
+  .material-symbols-outlined {
+    font-size: 32px;
+  }
+
+  img {
+    width: 32px;
+    aspect-ratio: 1;
+  }
+
+  &:hover {
+    background-color: styles.$item-bg-hover-color
+  }
+}

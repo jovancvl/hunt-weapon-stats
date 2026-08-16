@@ -1,36 +1,8 @@
-<div class="filters-container">
-  <div class="search-container" (click)="search.focus()">
-    <img src="ammo-icons/ammo_filter-search.svg">
-    <input id="search" #search placeholder="Search" [formField]="searchForm.query" [autocomplete]="false" />
-    <span (click)="clearSearchQuery()" [class.hide]="searchForm.query().value().length === 0" class="material-symbols-outlined">close</span>
-  </div>
-  <div class="filter-group">
-    @for (filter of sizeFilters; track $index) {
-    <button (click)="updateSizeFilter(filter)" [class.active]="appliedSizeFilters().includes(filter)">
-      <img [src]="filter.icon" />
-    </button>
-    }
-  </div>
-
-  <div class="filter-group">
-    @for (filter of baseAmmoFilters; track $index) {
-    <button (click)="updateBaseAmmoFilter(filter)" [class.active]="appliedBaseAmmoFilters().includes(filter)">
-      <img [src]="filter.icon" />
-    </button>
-    }
-  </div>
-  <div class="filter-group">
-    @for (filter of customAmmoFilters; track $index) {
-    <button (click)="updateCustomAmmoFilter(filter)" [class.active]="appliedCustomAmmoFilters().includes(filter)">
-      <img [src]="filter.icon" />
-    </button>
-    }
-  </div>
-</div>
+<hunt-weapon-filters (weaponsChange)="applyFilters($event)"></hunt-weapon-filters>
 
 <div class="equipment-card-list-container">
-  @for (weapon of filteredWeapons(); track $index) {
-  <hunt-equipment-card-component [weapon]="weapon" [active]="selectedWeapon === weapon" [showOptions]="showOptions()" (optionSelected)="optionSelected(weapon, $event)"
-    (click)="onWeaponSelect(weapon)"></hunt-equipment-card-component>
+  @for (weapon of filteredWeapons; track $index) {
+  <hunt-equipment-card-component [weapon]="weapon" [active]="selectedWeapon === weapon" [showOptions]="showOptions()"
+    (optionSelected)="optionSelected(weapon, $event)" (click)="touchWeapon(weapon)"></hunt-equipment-card-component>
   }
 </div>

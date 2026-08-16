@@ -1,0 +1,17 @@
+@if (show()) {
+  <div class="background" animate.enter="fade-in-animation" animate.leave="fade-out-animation" (click)="cancel()">
+    <div class="modal" animate.enter="slide-in-animation" animate.leave="slide-out-animation" (click)="$event.stopPropagation()">
+      <div class="title">
+        <h3>
+          {{title()}}
+        </h3>
+        <button class="close-button" (click)="cancel()">
+          <span class="material-symbols-outlined">close</span>
+        </button>
+      </div>
+      <div class="content">
+        <ng-content></ng-content>
+      </div>
+    </div>
+  </div>
+}
