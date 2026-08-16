@@ -17,6 +17,7 @@
 
 @media (max-width: 576px) {
   .equipment-card-list-container {
-    grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+    display: flex;
+    flex-direction: column;
   }
 }

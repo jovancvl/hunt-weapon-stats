@@ -79,6 +79,10 @@
   .material-symbols-outlined {
     font-size: 32px;
   }
+
+  &.active {
+    border-color: styles.$active-border-color;
+  }
 }
 
 .modal-filters-container {

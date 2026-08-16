@@ -77,18 +77,15 @@
   opacity: 0;
   aspect-ratio: 1;
   display: flex;
-  justify-content: center;
-  align-items: center;
-  transition: opacity 100ms ease-in-out;
   padding: 1px;
   box-sizing: border-box;
-  display: flex;
   color: white;
   background-color: transparent;
   border: none;
   border-radius: 50%;
   cursor: pointer;
 
+  transition: opacity 100ms ease-in-out;
   transition: color 100ms ease-in-out;
   transition: background-color 100ms ease-in-out;
 
@@ -128,5 +125,54 @@
     &:hover {
       background-color: styles.$item-bg-hover-color;
     }
+  }
+}
+
+$icon-height: 36px;
+$icon-width: 12px;
+
+.list-item {
+  display: grid;
+  grid-template-columns: $icon-width $icon-height 1fr minmax(100px, 1fr);
+  align-items: center;
+  gap: 3px;
+
+  border: 1px solid styles.$button-border-color;
+  background-color: styles.$item-bg-color;
+  padding: 8px;
+
+  cursor: pointer;
+
+  &:hover {
+    background-color: styles.$item-bg-hover-color;
+  }
+
+  .icon-container {
+    display: flex;
+    align-items: center;
+  }
+
+  .ammo-icon {
+    height: $icon-height;
+  }
+
+  .size-icon {
+    transform: rotate(90deg) translateY(12px);
+    width: $icon-height;
+    height: $icon-width;
+    object-fit: cover;
+  }
+
+  .weapon-name {
+    display: inline-flex;
+    height: 2lh;
+    align-items: center;
+  }
+
+  .weapon-image {
+    height: auto;
+    width: 100%;
+    max-width: 250px;
+    justify-self: end;
   }
 }

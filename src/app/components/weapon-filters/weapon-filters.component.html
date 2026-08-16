@@ -8,7 +8,7 @@
       }
     </div>
     @if (utilService.isSmallScreen()) {
-    <button class="open-filters-button" (click)="isModalOpen = true">
+    <button class="open-filters-button" [class.active]="appliedSizeFilters().length > 0 || appliedBaseAmmoFilters().length > 0 || appliedCustomAmmoFilters().length > 0" (click)="isModalOpen = true">
       <span class="material-symbols-outlined">filter_alt</span>
     </button>
     }

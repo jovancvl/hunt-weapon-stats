@@ -4,6 +4,7 @@ import { DollarIcon } from "../dollar-icon/dollar-icon";
 import { WeaponCardOption } from './options.model';
 import { CdkMenuTrigger, CdkMenu, CdkMenuItem } from '@angular/cdk/menu';
 import { UtilService } from '../../services/util.service';
+import { AmmoName } from '../../model/ammo-name';
 
 @Component({
   selector: 'hunt-equipment-card-component',
@@ -38,4 +39,37 @@ export class EquipmentCardComponent {
   toggleOptions(event: PointerEvent) {
     event.stopPropagation()
   }
+
+  getAmmoSrc(weapon: Weapon) {
+      let src = "ammo-icons/ammo_filter";
+  
+      switch (weapon.baseAmmo.info.name) {
+        case AmmoName.COMPACT:
+          src = `${src}-compact`;
+          break;
+        case AmmoName.MEDIUM:
+          src = `${src}-medium`;
+          break;
+        case AmmoName.LONG:
+          src = `${src}-long`;
+          break;
+        default:
+          src = `${src}-special-ammo`;
+      }
+  
+      src = `${src}.svg`;
+      return src;
+    }
+  
+    getAmmoLabel(weapon: Weapon) {
+      switch (weapon.baseAmmo.info.name) {
+        case AmmoName.COMPACT:
+          return 'Compact Ammo';
+        case AmmoName.MEDIUM:
+          return "Medium Ammo";
+        case AmmoName.LONG:
+          return "Long Ammo";
+      }
+      return "Special Ammo";
+    }
 }
