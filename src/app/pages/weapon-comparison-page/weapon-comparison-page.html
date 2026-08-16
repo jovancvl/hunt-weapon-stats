@@ -1,35 +1,76 @@
-<div #container class="content-container">
-  <div>
-    <hunt-weapon-info-card [(weapon)]="leftWeapon" titleSize="small"
-      (imageClicked)="openWeaponSelection('left')"></hunt-weapon-info-card>
-    <hunt-weapon-info-card [(weapon)]="rightWeapon" titleSize="small" titleColor="goldenrod"
-      (imageClicked)="openWeaponSelection('right')"></hunt-weapon-info-card>
-    <hunt-stat-table-component [weapons]="[leftWeapon(), rightWeapon()]"></hunt-stat-table-component>
+<div class="carrousel" [style.--number-of-items]="compareList().length">
+  <div class="item-container">
+    @for (weapon of compareList(); track $index) {
+    <hunt-weapon-info-card [weapon]="weapon" [withBottomButtons]="false"></hunt-weapon-info-card>
+    }
   </div>
+  @if (compareList().length > 2) {
+  <span class="left-button">
+    <span class="material-symbols-outlined">chevron_left</span>
+  </span>
 
-  @if (isWeaponSelectorOpen() && !isMobile()) {
-  <hunt-select-weapon-component [showOptions]="false" (goToOption)="setComparisonWeapon($event[0])"
-    (weaponTouched)="weaponSelected($event)"></hunt-select-weapon-component>
-  } @else if (isWeaponSelectorOpen() && isMobile()) {
-  <div class="modal" #modal>
-    <div class="title-container">
-      <h2>Select weapon for comparison</h2>
-      <button class="icon-only-button" (click)="isWeaponSelectorOpen.set(false)">
-        <span class="material-symbols-outlined">close</span>
-      </button>
-    </div>
-    <hunt-select-weapon-component [showOptions]="false" (goToOption)="setComparisonWeapon($event[0])"
-      (weaponTouched)="weaponSelected($event)"></hunt-select-weapon-component>
+  <span class="right-button">
+    <span class="material-symbols-outlined">chevron_right</span>
+  </span>
+  }
+</div>
+
+<hunt-stat-table-component [weapons]="compareList()"></hunt-stat-table-component>
+
+<hunt-bottom-buttons>
+  <hunt-primary-button (click)="isOptionsModalOpen = true">Options</hunt-primary-button>
+</hunt-bottom-buttons>
+
+<hunt-modal title="Options" [(show)]="isOptionsModalOpen">
+  <div class="options-list-container">
+    @for (weapon of compareList(); track $index) {
+    <h3>{{weapon.name}}</h3>
+    <hunt-option-button icon="compare_arrows" (click)="openWeaponSelectModal($index)">
+      <span>Change Weapon</span>
+    </hunt-option-button>
+    <hunt-option-button [img]="getAmmoSrc(weapon)" (click)="openAmmoSelectModal($index)">
+      <span>Change Ammunition</span>
+    </hunt-option-button>
+    <hunt-option-button icon="delete" (click)="removeWeapon($index)">
+      <span>Remove Weapon</span>
+    </hunt-option-button>
+    }
   </div>
-  } @else {
-  <div class="chart-and-body-container">
-    <hunt-chart-component [ammo]="[leftWeapon().activeAmmo, rightWeapon().activeAmmo]"
-      (rangeSelected)="rangeSelected($event)"></hunt-chart-component>
-    <div class="hunter-bodies-container">
-      <hunt-hunter-body-component [ammo]="leftWeapon().activeAmmo" [range]="range()"></hunt-hunter-body-component>
-      <hunt-hunter-body-component [ammo]="rightWeapon().activeAmmo" [range]="range()"
-        [alternateTextColor]="true"></hunt-hunter-body-component>
-    </div>
+  <hunt-primary-button (click)="openWeaponSelectModal(compareList().length)">
+    <span class="material-symbols-outlined">add</span>
+    Add New Weapon
+  </hunt-primary-button>
+</hunt-modal>
+
+<hunt-modal title="Choose Weapon To Compare With" [(show)]="isWeaponSelectionModalOpen">
+  <hunt-select-weapon-component [showOptions]="false" (goToOption)="replaceWeapon($event, weaponSelecting)"></hunt-select-weapon-component>
+</hunt-modal>
+
+<hunt-modal title="Choose Ammunition" [(show)]="isAmmoSelectionModalOpen">
+  <div class="modal-ammo-container">
+    @for (ammo of compareList()[ammoSelecting]?.availableAmmo; track $index) {
+    <hunt-filter-button [icon]="ammo.info.icon" [label]="ammo.info.name" [isActive]="compareList()[ammoSelecting].activeAmmo === ammo"
+      (click)="replaceAmmo(ammo, ammoSelecting)"></hunt-filter-button>
+    }
   </div>
+  <hunt-primary-button (click)="closeAmmoSelectModal()">Confirm</hunt-primary-button>
+</hunt-modal>
+
+<hunt-chart-component [ammo]="ammoList()" (rangeSelected)="range = $event"></hunt-chart-component>
+
+<div class="carrousel" [style.--number-of-items]="compareList().length">
+  <div class="item-container">
+    @for (weapon of compareList(); track $index) {
+    <hunt-hunter-body-component [ammo]="weapon.activeAmmo" [range]="range"></hunt-hunter-body-component>
+    }
+  </div>
+  @if (compareList().length > 2) {
+  <span class="left-button">
+    <span class="material-symbols-outlined">chevron_left</span>
+  </span>
+
+  <span class="right-button">
+    <span class="material-symbols-outlined">chevron_right</span>
+  </span>
   }
 </div>

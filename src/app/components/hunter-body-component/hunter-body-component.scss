@@ -29,22 +29,22 @@
 
   .chest-damage {
     top: 25%;
-    left: 50%;
+    left: 47%;
   }
 
   .cock-damage {
-    top: 45%;
-    left: 50%;
+    top: 47%;
+    left: 47%;
   }
 
   .arms-damage {
     top: 25%;
-    left: 15%;
+    left: 5%;
   }
 
   .legs-damage {
     top: 70%;
-    left: 25%;
+    left: 15%;
   }
 
   .range {
@@ -66,4 +66,28 @@
 
 .goldenrod {
   color: goldenrod;
+}
+
+@media (max-width: 576px) {
+  .hunter-body-container {
+    .chest-damage {
+      top: 25%;
+      left: 50%;
+    }
+
+    .cock-damage {
+      top: 45%;
+      left: 50%;
+    }
+
+    .arms-damage {
+      top: 25%;
+      left: 11%;
+    }
+
+    .legs-damage {
+      top: 70%;
+      left: 25%;
+    }
+  }
 }

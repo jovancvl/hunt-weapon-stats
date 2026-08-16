@@ -1,4 +1,4 @@
-import { Component, effect, ElementRef, inject, signal, viewChild } from '@angular/core';
+import { Component, computed, effect, ElementRef, inject, signal, viewChild } from '@angular/core';
 import { FRONTIER_73C } from '../../catalogue/frontier-73c';
 import { Weapon } from '../../model/weapon';
 import { ChartComponent } from "../../components/chart-component/chart-component";
@@ -10,99 +10,112 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { WEAPON_MAP } from '../../catalogue/__all-weapons';
 import { Location } from '@angular/common';
 import { StatTableComponent } from "../../components/stat-table-component/stat-table-component";
+import { FilterButtonComponent } from "../../components/filter-button/filter-button.component";
+import { PrimaryButtonComponent } from "../../components/primary-button/primary-button.component";
+import { ModalComponent } from "../../components/modal/modal.component";
+import { INFANTRY_37L } from '../../catalogue/infantry-73l';
+import { WeaponCardOption } from '../../components/equipment-card-component/options.model';
+import { AmmoName } from '../../model/ammo-name';
+import { AmmoStats } from '../../model/ammo-stats';
+import { BottomButtonsComponent } from "../../components/bottom-buttons/bottom-buttons.component";
+import { OptionButtonComponent } from "../../components/option-button/option-button.component";
 
 @Component({
   selector: 'hunt-weapon-comparison-page',
-  imports: [ChartComponent, WeaponInfoCardComponent, HunterBodyComponent, SelectWeaponComponent, StatTableComponent],
+  imports: [ChartComponent, WeaponInfoCardComponent, HunterBodyComponent, SelectWeaponComponent, StatTableComponent, FilterButtonComponent, PrimaryButtonComponent, ModalComponent, BottomButtonsComponent, OptionButtonComponent],
   templateUrl: './weapon-comparison-page.html',
   styleUrl: './weapon-comparison-page.scss',
 })
 export class WeaponComparisonPage {
-  readonly utilService = inject(UtilService);
-  readonly activatedRoute = inject(ActivatedRoute);
-  readonly router = inject(Router);
-  readonly location = inject(Location);
+  activatedRoute = inject(ActivatedRoute)
 
-  container = viewChild<ElementRef>('container');
-  modal = viewChild<ElementRef>('modal');
+  compareList = signal<Weapon[]>([]);
 
-  leftWeapon = signal<Weapon>(Object.assign({ ...FRONTIER_73C }));
-  rightWeapon = signal<Weapon>(Object.assign({ ...Weapon.EMPTY }));
-  range = signal(10);
-  isWeaponSelectorOpen = signal(true);
-  weaponSelecting = signal<"left" | "right">("right");
+  isOptionsModalOpen = false;
 
-  isMobile = this.utilService.isSmallScreen;
+  isWeaponSelectionModalOpen = false;
+  weaponSelecting = -1;
 
-  constructor () {
-    const leftWeaponName = this.activatedRoute.snapshot.queryParamMap.get('left');
-    if (leftWeaponName) {
-      const leftWeapon = WEAPON_MAP.get(leftWeaponName);
-      if (leftWeapon) {
-        this.leftWeapon.set(Object.assign({ ...leftWeapon }));
-      }
+  isAmmoSelectionModalOpen = false;
+  ammoSelecting = 0;
+
+  ammoList = computed(() => this.compareList().map(w => w.activeAmmo));
+
+  range = 10;
+
+  constructor() {
+    const items = this.activatedRoute.snapshot.queryParamMap.get("items")?.split(',').map(i => WEAPON_MAP.get(i)).filter(w => !!w)
+    this.compareList.set(items || [INFANTRY_37L])
+
+    if (items && items.length < 2) {
+      this.weaponSelecting = items.length
+      this.isWeaponSelectionModalOpen = true
+    }
+  }
+
+  getAmmoSrc(weapon: Weapon) {
+    let src = "ammo-icons/ammo_filter";
+
+    switch (weapon.baseAmmo.info.name) {
+      case AmmoName.COMPACT:
+        src = `${src}-compact`;
+        break;
+      case AmmoName.MEDIUM:
+        src = `${src}-medium`;
+        break;
+      case AmmoName.LONG:
+        src = `${src}-long`;
+        break;
+      default:
+        src = `${src}-special-ammo`;
     }
 
-    const rightWeaponName = this.activatedRoute.snapshot.queryParamMap.get('right');
-    if (rightWeaponName) {
-      const rightWeapon = WEAPON_MAP.get(rightWeaponName);
-      if (rightWeapon) {
-        this.rightWeapon.set(Object.assign({ ...rightWeapon }));
-      }
-    }
+    src = `${src}.svg`;
+    return src;
+  }
 
-    this.isWeaponSelectorOpen.set(!(leftWeaponName && rightWeaponName));
+  openWeaponSelectModal(toReplace: number) {
+    this.weaponSelecting = toReplace;
+    this.isOptionsModalOpen = false;
+    this.isWeaponSelectionModalOpen = true;
+  }
 
-    effect(() => {
-      if (!this.isMobile()) {
-        return
-      }
-      if (this.isWeaponSelectorOpen()) {
-        this.modal()?.nativeElement.scrollIntoView({
-          behavior: "smooth"
-        });
-      } else {
-        this.container()?.nativeElement.scrollIntoView({
-          behavior: "smooth"
-        });
-      }
+  openAmmoSelectModal(toReplace: number) {
+    this.ammoSelecting = toReplace;
+    this.isOptionsModalOpen = false;
+    this.isAmmoSelectionModalOpen = true;
+  }
+
+  closeAmmoSelectModal() {
+    this.isAmmoSelectionModalOpen = false;
+  }
+
+  removeWeapon(toRemove: number) {
+    this.compareList.update(l => {
+      l.splice(toRemove, 1);
+      const result = [...l];
+      return result;
     });
   }
 
-  rangeSelected(r: number) {
-    this.range.set(r);
-  }
-
-  openWeaponSelection(side: "left" | "right") {
-    this.isWeaponSelectorOpen.set(!(this.weaponSelecting() === side && this.isWeaponSelectorOpen()));
-    this.weaponSelecting.set(side);
-  }
-
-  weaponSelected(w: Weapon) {
-    let queryParams = {
-      left: this.leftWeapon().name,
-      right: this.rightWeapon().name
-    };
-    if (this.weaponSelecting() === 'left') {
-      queryParams.left = w.name;
-      this.leftWeapon.set(w);
-    } else {
-      queryParams.right = w.name;
-      this.rightWeapon.set(w);
-    }
-
-    const urlTree = this.router.createUrlTree(['.'], {
-      relativeTo: this.activatedRoute,
-      queryParams: queryParams,
-      queryParamsHandling: 'merge',
+  replaceWeapon(option: [Weapon, WeaponCardOption], toReplace: number) {
+    const weapon = option[0];
+    this.compareList.update(l => {
+      l.splice(toReplace, 1, { ...weapon });
+      const result = [...l];
+      return result;
     });
-
-    this.location.replaceState(this.router.serializeUrl(urlTree));
+    this.isOptionsModalOpen = false;
+    this.isWeaponSelectionModalOpen = false;
   }
 
-  setComparisonWeapon(w: Weapon) {
-    this.weaponSelected(w);
-
-    this.isWeaponSelectorOpen.set(false);
+  replaceAmmo(ammo: AmmoStats, toReplace: number) {
+    const weapon = this.compareList()[toReplace];
+    weapon.activeAmmo = ammo;
+    this.compareList.update(l => {
+      l.splice(toReplace, 1, { ...weapon });
+      const result = [...l];
+      return result;
+    });
   }
 }

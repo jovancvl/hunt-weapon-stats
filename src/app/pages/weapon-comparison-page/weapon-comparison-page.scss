@@ -1,56 +1,47 @@
 @use '../../../styles.scss';
 
-.content-container {
-  display: grid;
-  grid-template-columns: minmax(400px, 33vw) minmax(350px, 67vw);
-  // grid-template-rows: 1fr;
-  // row-gap: 1rem;
-  height: calc(100vh - styles.$nav-bar-height);
+.carrousel {
+  $number-of-items: 2;
 
-  hunt-select-weapon-component {
-    overflow-y: auto;
+  width: 100vw;
+  position: relative;
+
+  .item-container {
+    display: grid;
+    grid-template-columns: repeat(var(--number-of-items), 50vw);
+    overflow-x: auto;
+    overflow-y: hidden;
+    // scrollbar-width: none;
+  }
+
+  .left-button,
+  .right-button {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    cursor: pointer;
+  }
+
+  .left-button {
+    left: 0;
+  }
+
+  .right-button {
+    right: 0;
   }
 }
 
-@media (max-width: 1024px) {
-  .content-container {
-    display: flex;
-    flex-direction: column;
-    height: unset;
-  }
-
-  .hunter-bodies-container {
-    flex-direction: column;
-  }
-}
-
-
-.chart-and-body-container {
+.options-list-container {
   display: flex;
   flex-direction: column;
+  gap: 6px;
+  place-content: start center;
+  margin-bottom: 1rem;
 }
 
-.hunter-bodies-container {
-  display: flex;
-  justify-content: space-around;
-}
-
-.modal {
-  background-color: black;
-  height: 100vh;
-  overflow: auto;
-
-  hunt-select-weapon-component {
-    overflow-y: auto;
-  }
-
-  .title-container {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-
-    h1 {
-      display: inline-block;
-    }
-  }
+.modal-ammo-container {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 5px;
+  margin-bottom: 0.5rem;
 }

@@ -39,9 +39,10 @@ export class WeaponInfoCardComponent {
   }
 
   goToCompare() {
+    this.isOptionsModalOpen = false;
     this.router.navigate(['/compare'], {
       queryParams: {
-        left: this.weapon().name
+        items: this.weapon().name
       }
     });
   }
