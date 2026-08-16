@@ -2,7 +2,6 @@ import { Component, effect, ElementRef, inject, signal, viewChild } from '@angul
 import { FRONTIER_73C } from '../../catalogue/frontier-73c';
 import { Weapon } from '../../model/weapon';
 import { ChartComponent } from "../../components/chart-component/chart-component";
-import { StatComparisonTableComponent } from "../../components/stat-comparison-table-component/stat-comparison-table-component";
 import { WeaponInfoCardComponent } from "../../components/weapon-info-card/weapon-info-card.component";
 import { HunterBodyComponent } from "../../components/hunter-body-component/hunter-body-component";
 import { SelectWeaponComponent } from "../../components/select-weapon-component/select-weapon-component";
@@ -10,10 +9,11 @@ import { UtilService } from '../../services/util.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import { WEAPON_MAP } from '../../catalogue/__all-weapons';
 import { Location } from '@angular/common';
+import { StatTableComponent } from "../../components/stat-table-component/stat-table-component";
 
 @Component({
   selector: 'hunt-weapon-comparison-page',
-  imports: [ChartComponent, StatComparisonTableComponent, WeaponInfoCardComponent, HunterBodyComponent, SelectWeaponComponent],
+  imports: [ChartComponent, WeaponInfoCardComponent, HunterBodyComponent, SelectWeaponComponent, StatTableComponent],
   templateUrl: './weapon-comparison-page.html',
   styleUrl: './weapon-comparison-page.scss',
 })

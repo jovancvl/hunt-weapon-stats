@@ -6,7 +6,7 @@
     <hunt-weapon-info-card [(weapon)]="rightWeapon" titleSize="small" titleColor="goldenrod"
       [showBorder]="isWeaponSelectorOpen() && weaponSelecting() === 'right'" [blurImageOnHover]="true"
       (imageClicked)="openWeaponSelection('right')"></hunt-weapon-info-card>
-    <hunt-stat-comparison-table-component [left]="leftWeapon()" [right]="rightWeapon()"></hunt-stat-comparison-table-component>
+    <hunt-stat-table-component [weapons]="[leftWeapon(), rightWeapon()]"></hunt-stat-table-component>
   </div>
 
   @if (isWeaponSelectorOpen() && !isMobile()) {

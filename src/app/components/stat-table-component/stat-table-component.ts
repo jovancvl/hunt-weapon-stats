@@ -9,5 +9,7 @@ import { StatBarComponent } from "../stat-bar-component/stat-bar-component";
   styleUrl: './stat-table-component.scss',
 })
 export class StatTableComponent {
-  weapon = input.required<Weapon>();
+  weapons = input.required<Weapon[]>()
+
+  readonly RIGHT_STAT_BAR_COLOR = "goldenrod";
 }
