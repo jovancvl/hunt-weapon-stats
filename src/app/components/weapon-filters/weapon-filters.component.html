@@ -38,8 +38,7 @@
   }
 </div>
 
-@if (isModalOpen) {
-<hunt-modal title="Apply filters" (modalClosed)="isModalOpen = false">
+<hunt-modal title="Apply filters" [(show)]="isModalOpen" (modalClosed)="isModalOpen = false">
   <h4>Size Filters</h4>
   <div class="modal-filters-container">
     @for (filter of sizeFilters; track $index) {
@@ -68,4 +67,3 @@
     Confirm
   </button>
 </hunt-modal>
-}
