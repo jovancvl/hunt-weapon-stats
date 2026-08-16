@@ -1,54 +1,41 @@
-import { Component } from '@angular/core';
-import { WEAPON_LIST } from '../../catalogue/__all-weapons';
-import { WeaponFiltersComponent } from "../../components/weapon-filters/weapon-filters.component";
-import { Weapon } from '../../model/weapon';
-import { AmmoName } from '../../model/ammo-name';
-import { DollarIcon } from "../../components/dollar-icon/dollar-icon";
+import { Component, computed, signal } from '@angular/core';
+import { INFANTRY_37L } from '../../catalogue/infantry-73l';
+import { WeaponInfoCardComponent } from "../../components/weapon-info-card/weapon-info-card.component";
 import { AuxStatsComponent } from "../../components/aux-stats/aux-stats.component";
+import { AmmoSelectorComponent } from "../../components/ammo-selector-component/ammo-selector-component";
+import { StatTableComponent } from "../../components/stat-table-component/stat-table-component";
+import { ModalComponent } from "../../components/modal/modal.component";
+import { FilterButtonComponent } from "../../components/filter-button/filter-button.component";
+import { PrimaryButtonComponent } from "../../components/primary-button/primary-button.component";
+import { AmmoStats } from '../../model/ammo-stats';
+import { BottomButtonsComponent } from "../../components/bottom-buttons/bottom-buttons.component";
 
 @Component({
   selector: 'hunt-test',
   imports: [
-    WeaponFiltersComponent,
-    DollarIcon,
-    AuxStatsComponent
+    AuxStatsComponent,
+    StatTableComponent,
+    ModalComponent,
+    FilterButtonComponent,
+    PrimaryButtonComponent,
+    BottomButtonsComponent
 ],
   templateUrl: './test.component.html',
   styleUrl: './test.component.scss',
 })
 export class TestComponent {
-  weapons = [...WEAPON_LIST];
+  weapon = signal(INFANTRY_37L)
 
-  getAmmoSrc(weapon: Weapon) {
-    let src = "ammo-icons/ammo_filter";
+  weaponTitleText = computed(() => `${this.weapon().name} ${this.weapon().activeAmmo !== this.weapon().baseAmmo ? this.weapon().activeAmmo.info.name : ''}`);
 
-    switch (weapon.baseAmmo.info.name) {
-      case AmmoName.COMPACT:
-        src = `${src}-compact`;
-        break;
-      case AmmoName.MEDIUM:
-        src = `${src}-medium`;
-        break;
-      case AmmoName.LONG:
-        src = `${src}-long`;
-        break;
-      default:
-        src = `${src}-special-ammo`;
-    }
+  isAmmoModalOpen = false
+  isOptionsModalOpen = false
 
-    src = `${src}.svg`;
-    return src;
-  }
-
-  getAmmoLabel(weapon: Weapon) {
-    switch (weapon.baseAmmo.info.name) {
-      case AmmoName.COMPACT:
-        return 'Compact Ammo';
-      case AmmoName.MEDIUM:
-        return "Medium Ammo";
-      case AmmoName.LONG:
-        return "Long Ammo";
-    }
-    return "Special Ammo";
+  selectAmmo(ammo: AmmoStats) {
+    this.weapon.update(w => {
+      const updated = { ...w };
+      updated.activeAmmo = ammo;
+      return updated;
+    })
   }
 }

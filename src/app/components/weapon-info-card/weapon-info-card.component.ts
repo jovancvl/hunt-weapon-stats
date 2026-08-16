@@ -28,7 +28,7 @@ export class WeaponInfoCardComponent {
     this.imageClicked.emit()
   }
 
-  toggleBlur(blur: boolean) {
+  setBlur(blur: boolean) {
     if (!this.blurImageOnHover()) {
       return;
     }

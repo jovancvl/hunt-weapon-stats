@@ -10,15 +10,13 @@ export class StatBarComponent {
   value = input.required<number>()
   max = input.required<number>()
   withNumber = input(true)
-  color = input<string>()
+  color = input<string>('')
 
-  statBarStyle = computed(() => {
+  _color = computed(() => this.color() || "#f0f0f0")
+
+  barWidth = computed(() => {
     let percentage = this.value() * 100 / this.max()
     percentage = percentage < 100 ? percentage : 100
-    let result = `width: ${percentage}%;`
-    if (this.color()) {
-      result = result + `background: ${this.color()};`
-    }
-    return result
+    return `${percentage}%`
   })
 }

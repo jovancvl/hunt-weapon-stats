@@ -17,21 +17,21 @@
   @if (!utilService.isSmallScreen()) {
   <div class="filter-group">
     @for (filter of sizeFilters; track $index) {
-    <hunt-filter-button [filter]="filter" [isActive]="appliedSizeFilters().includes(filter)"
+    <hunt-filter-button [icon]="filter.icon" [isActive]="appliedSizeFilters().includes(filter)"
       (click)="updateSizeFilter(filter)"></hunt-filter-button>
     }
   </div>
 
   <div class="filter-group">
     @for (filter of baseAmmoFilters; track $index) {
-      <hunt-filter-button [filter]="filter" [isActive]="appliedBaseAmmoFilters().includes(filter)"
+      <hunt-filter-button [icon]="filter.icon" [isActive]="appliedBaseAmmoFilters().includes(filter)"
         (click)="updateBaseAmmoFilter(filter)"></hunt-filter-button>
     }
   </div>
 
   <div class="filter-group">
     @for (filter of customAmmoFilters; track $index) {
-      <hunt-filter-button [filter]="filter" [isActive]="appliedCustomAmmoFilters().includes(filter)"
+      <hunt-filter-button [icon]="filter.icon" [isActive]="appliedCustomAmmoFilters().includes(filter)"
         (click)="updateCustomAmmoFilter(filter)"></hunt-filter-button>
     }
   </div>
@@ -42,7 +42,7 @@
   <h4>Size Filters</h4>
   <div class="modal-filters-container">
     @for (filter of sizeFilters; track $index) {
-    <hunt-filter-button [filter]="filter" [withLabel]="true" [isActive]="appliedSizeFilters().includes(filter)"
+    <hunt-filter-button [icon]="filter.icon" [label]="filter.name" [isActive]="appliedSizeFilters().includes(filter)"
       (click)="updateSizeFilter(filter)"></hunt-filter-button>
     }
   </div>
@@ -50,7 +50,7 @@
   <h4>Base Ammo Filters</h4>
   <div class="modal-filters-container">
     @for (filter of baseAmmoFilters; track $index) {
-    <hunt-filter-button [filter]="filter" [withLabel]="true" [isActive]="appliedBaseAmmoFilters().includes(filter)"
+    <hunt-filter-button [icon]="filter.icon" [label]="filter.name" [isActive]="appliedBaseAmmoFilters().includes(filter)"
       (click)="updateBaseAmmoFilter(filter)"></hunt-filter-button>
     }
   </div>
@@ -58,12 +58,12 @@
   <h4>Custom Ammo Filters</h4>
   <div class="modal-filters-container">
     @for (filter of customAmmoFilters; track $index) {
-    <hunt-filter-button [filter]="filter" [withLabel]="true" [isActive]="appliedCustomAmmoFilters().includes(filter)"
+    <hunt-filter-button [icon]="filter.icon" [label]="filter.name" [isActive]="appliedCustomAmmoFilters().includes(filter)"
       (click)="updateCustomAmmoFilter(filter)"></hunt-filter-button>
     }
   </div>
 
-  <button class="confirm-button" (click)="isModalOpen = false">
+  <hunt-primary-button (click)="isModalOpen = false">
     Confirm
-  </button>
+  </hunt-primary-button>
 </hunt-modal>

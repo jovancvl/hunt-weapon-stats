@@ -1,50 +1,76 @@
 @use '../../../styles.scss';
 
-$icon-height: 36px;
-$icon-width: 12px;
-
-.list {
+.info-card {
   margin: 0.5rem;
+  padding: 0.5rem;
+  box-sizing: border-box;
+  border: none;
+
+  .title {
+    margin-left: 0.5rem;
+
+    @media (max-width: 576px) {
+      text-align: center;
+    }
+  }
+
+  .card-img {
+    position: relative;
+    height: 80px;
+    margin: 0.5rem 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-sizing: border-box;
+
+    img {
+      height: 100%;
+      transition: 150ms filter linear;
+    }
+  }
+
+  .ammo-container {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-around;
+    gap: 5px;
+  }
 }
 
-.list-item {
+.modal-ammo-container {
   display: grid;
-  grid-template-columns: $icon-width $icon-height 1fr minmax(100px, 1fr);
-  align-items: center;
-  gap: 3px;
-
-  border: 1px solid white;
-  margin: 5px 0;
-  padding: 8px;
-
-  cursor: pointer;
+  grid-template-columns: 1fr 1fr;
+  gap: 5px;
+  margin-bottom: 0.5rem;
 }
 
-.icon-container {
+.options-list-container {
   display: flex;
-  align-items: center;
-}
+  flex-direction: column;
+  gap: 6px;
+  place-content: start center;
 
-.ammo-icon {
-  height: $icon-height;
-}
+  .option-button {
+    background-color: styles.$item-bg-color;
+    color: white;
+    padding: 0.5rem 0.25rem;
 
-.size-icon {
-  transform: rotate(90deg) translateY(12px);
-  width: $icon-height;
-  height: $icon-width;
-  object-fit: cover;
-}
+    border: none;
+    border-radius: 8px;
 
-.weapon-name {
-  display: inline-flex;
-  height: 2lh;
-  align-items: center;
-}
+    display: flex;
+    align-items: center;
+    gap: 6px;
 
-.weapon-image {
-  height: auto;
-  width: 100%;
-  max-width: 250px;
-  justify-self: end;
+    transition: background-color 200ms ease-in-out;
+
+    .material-symbols-outlined {
+      font-size: 32px;
+    }
+
+    &:hover {
+      background-color: styles.$item-bg-hover-color
+    }
+  }
 }

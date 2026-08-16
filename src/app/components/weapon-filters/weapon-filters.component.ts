@@ -6,13 +6,15 @@ import { WEAPON_LIST } from '../../catalogue/__all-weapons';
 import { Weapon } from '../../model/weapon';
 import { ModalComponent } from "../modal/modal.component";
 import { FilterButtonComponent } from "../filter-button/filter-button.component";
+import { PrimaryButtonComponent } from "../primary-button/primary-button.component";
 
 @Component({
   selector: 'hunt-weapon-filters',
   imports: [
     FormField,
     ModalComponent,
-    FilterButtonComponent
+    FilterButtonComponent,
+    PrimaryButtonComponent
 ],
   templateUrl: './weapon-filters.component.html',
   styleUrl: './weapon-filters.component.scss',

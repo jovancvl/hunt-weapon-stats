@@ -1,5 +1,4 @@
 import { Component, input } from '@angular/core';
-import { Filter } from '../../model/filter';
 
 @Component({
   selector: 'hunt-filter-button',
@@ -8,7 +7,7 @@ import { Filter } from '../../model/filter';
   styleUrl: './filter-button.component.scss',
 })
 export class FilterButtonComponent {
-  filter = input.required<Filter>()
-  withLabel = input(false)
+  icon = input.required<string>();
+  label = input('');
   isActive = input(false)
 }

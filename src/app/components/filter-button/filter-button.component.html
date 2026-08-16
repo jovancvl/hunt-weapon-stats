@@ -1,8 +1,8 @@
 <button class="filter-button" [class.active]="isActive()">
-  <img [src]="filter().icon" />
-  @if (withLabel()) {
+  <img [src]="icon()" />
+  @if (label()) {
     <span>
-      {{filter().name}}
+      {{label()}}
     </span>
   }
 </button>

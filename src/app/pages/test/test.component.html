@@ -1,17 +1,46 @@
-<hunt-weapon-filters></hunt-weapon-filters>
-@if (true) {
-<div class="list">
-  @for (w of weapons; track $index) {
-  <div class="list-item">
-    <img class="size-icon" src="ammo-icons/ammo_filter-{{w.size}}-slot.svg" />
-    <img class="ammo-icon" [src]="getAmmoSrc(w)" />
+<div class="info-card">
+  <h3 class="title">{{weaponTitleText()}}</h3>
 
-    <h4 class="weapon-name">
-      {{w.name}}
-    </h4>
-
-    <img class="weapon-image" [src]="w.image" />
+  <div class="card-img">
+    <img [src]="weapon().image" />
   </div>
-  }
+  <div class="ammo-container">
+    <hunt-aux-stats [weapon]="weapon()"></hunt-aux-stats>
+  </div>
 </div>
-}
+
+<hunt-stat-table-component [weapons]="[weapon()]"></hunt-stat-table-component>
+
+<hunt-bottom-buttons>
+  <hunt-primary-button (click)="isAmmoModalOpen = true">Change Ammo Type</hunt-primary-button>
+  <hunt-primary-button [iconOnly]="true" (click)="isOptionsModalOpen = true">
+    <span class="material-symbols-outlined">instant_mix</span>
+  </hunt-primary-button>
+</hunt-bottom-buttons>
+
+<hunt-modal title="Change Ammo" [(show)]="isAmmoModalOpen">
+  <div class="modal-ammo-container">
+    @for (ammo of weapon().availableAmmo; track $index) {
+    <hunt-filter-button [icon]="ammo.info.icon" [label]="ammo.info.name" [isActive]="weapon().activeAmmo === ammo"
+      (click)="selectAmmo(ammo)"></hunt-filter-button>
+    }
+  </div>
+  <hunt-primary-button (click)="isAmmoModalOpen = false">Confirm</hunt-primary-button>
+</hunt-modal>
+
+<hunt-modal title="Options" [(show)]="isOptionsModalOpen">
+  <div class="options-list-container">
+    <button class="option-button">
+      <span class="material-symbols-outlined">compare_arrows</span>
+      <span>
+        Compare with another weapon
+      </span>
+    </button>
+    <button class="option-button">
+      <span class="material-symbols-outlined">info</span>
+      <span>
+        See more details
+      </span>
+    </button>
+  </div>
+</hunt-modal>
