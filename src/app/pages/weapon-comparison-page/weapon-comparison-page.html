@@ -11,7 +11,7 @@
 
   @if (isWeaponSelectorOpen() && !isMobile()) {
   <hunt-select-weapon-component [showOptionsOnWeaponCards]="false" (goToOption)="setComparisonWeapon($event[0])"
-    (onSelect)="weaponSelected($event)"></hunt-select-weapon-component>
+    (weaponTouched)="weaponSelected($event)"></hunt-select-weapon-component>
   } @else if (isWeaponSelectorOpen() && isMobile()) {
   <div class="modal" #modal>
     <div class="title-container">
@@ -21,7 +21,7 @@
       </button>
     </div>
     <hunt-select-weapon-component [showOptionsOnWeaponCards]="false" (goToOption)="setComparisonWeapon($event[0])"
-      (onSelect)="weaponSelected($event)"></hunt-select-weapon-component>
+      (weaponTouched)="weaponSelected($event)"></hunt-select-weapon-component>
   </div>
   } @else {
   <div class="chart-and-body-container">

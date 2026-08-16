@@ -41,9 +41,6 @@ export class WeaponSelectPage {
   }
 
   onSelect(w: Weapon) {
-    if (this.utilService.isSmallScreen()) {
-      this.goToOption([w, WeaponCardOption.DETAILS])
-    }
     this.weapon.set(w)
   }
 }
