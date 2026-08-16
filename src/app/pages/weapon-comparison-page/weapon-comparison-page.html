@@ -45,23 +45,21 @@
   <div class="carousel grid-header" [style.--number-of-items]="compareList().length">
     <div class="item-container">
       @for (weapon of compareList(); track $index) {
-      <hunt-weapon-info-card [weapon]="weapon" [withBottomButtons]="false" [color]="colors[$index] || ''" (weaponChange)="replaceAmmo($event.activeAmmo, $index)"></hunt-weapon-info-card>
+        <div class="remove-container">
+          <hunt-weapon-info-card [weapon]="weapon" [withBottomButtons]="false" [color]="colors[$index] || ''" (weaponChange)="replaceAmmo($event.activeAmmo, $index)"></hunt-weapon-info-card>
+          @if (compareList().length > 1) {
+            <span class="remove material-symbols-outlined" (click)="removeWeapon($index)">
+              close
+            </span>
+          }
+        </div>
       }
       <div class="empty-weapon-info">
-        <hunt-primary-button [iconOnly]="true" (click)="isOptionsModalOpen = true">
-          <span class="material-symbols-outlined">instant_mix</span>
+        <hunt-primary-button [iconOnly]="true" (click)="openWeaponSelectModal(compareList().length)">
+          <span class="material-symbols-outlined">add</span>
         </hunt-primary-button>
       </div>
     </div>
-    @if (compareList().length > 2) {
-    <span class="left-button">
-      <span class="material-symbols-outlined">chevron_left</span>
-    </span>
-
-    <span class="right-button">
-      <span class="material-symbols-outlined">chevron_right</span>
-    </span>
-    }
   </div>
 
   <div class="grid-table">
@@ -78,15 +76,6 @@
       <hunt-hunter-body-component [ammo]="weapon.activeAmmo" [range]="range"></hunt-hunter-body-component>
       }
     </div>
-    @if (compareList().length > 2) {
-    <span class="left-button">
-      <span class="material-symbols-outlined">chevron_left</span>
-    </span>
-
-    <span class="right-button">
-      <span class="material-symbols-outlined">chevron_right</span>
-    </span>
-    }
   </div>
 </div>
 }
