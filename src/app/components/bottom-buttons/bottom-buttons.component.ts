@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, inject, OnDestroy, OnInit, Renderer2 } from '@angular/core';
 
 @Component({
   selector: 'hunt-bottom-buttons',
@@ -6,8 +6,16 @@ import { Component } from '@angular/core';
   templateUrl: './bottom-buttons.component.html',
   styleUrl: './bottom-buttons.component.scss',
 })
-export class BottomButtonsComponent {
-isAmmoModalOpen: any;
-isOptionsModalOpen: any;
+export class BottomButtonsComponent implements OnInit, OnDestroy {
+  renderer = inject(Renderer2)
+  isAmmoModalOpen: any;
+  isOptionsModalOpen: any;
 
+  ngOnInit(): void {
+    this.renderer.addClass(document.body, 'body-bottom-pad')
+  }
+
+  ngOnDestroy(): void {
+    this.renderer.removeClass(document.body, 'body-bottom-pad')
+  }
 }

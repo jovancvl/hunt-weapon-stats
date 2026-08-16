@@ -10,6 +10,8 @@
   grid-template-columns: 100fr 1fr;
   gap: 5px;
 
+  z-index: 10;
+
   >* {
     flex: 1 0 auto;
   }

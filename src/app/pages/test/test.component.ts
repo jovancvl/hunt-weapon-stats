@@ -25,7 +25,6 @@ import { BottomButtonsComponent } from "../../components/bottom-buttons/bottom-b
 })
 export class TestComponent {
   weapon = signal(INFANTRY_37L)
-
   weaponTitleText = computed(() => `${this.weapon().name} ${this.weapon().activeAmmo !== this.weapon().baseAmmo ? this.weapon().activeAmmo.info.name : ''}`);
 
   isAmmoModalOpen = false

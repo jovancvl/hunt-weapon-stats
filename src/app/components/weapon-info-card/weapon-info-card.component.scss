@@ -1,12 +1,17 @@
+@use '../../../styles.scss';
+
 .info-card {
   margin: 0.5rem;
   padding: 0.5rem;
   box-sizing: border-box;
-  border: 1px solid;
-  animation: borderFade 1.5s ease-in infinite;
+  border: none;
 
   .title {
     margin-left: 0.5rem;
+
+    @media (max-width: 576px) {
+      text-align: center;
+    }
   }
 
   .card-img {
@@ -20,14 +25,6 @@
 
     img {
       height: 100%;
-      transition: 150ms filter linear;
-    }
-
-    .swap-icon {
-      position: absolute;
-      font-size: 3rem;
-      opacity: 1;
-      transition: 150ms opacity linear;
     }
   }
 
@@ -40,20 +37,39 @@
   }
 }
 
-.invisible {
-  opacity: 0 !important;
+.modal-ammo-container {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 5px;
+  margin-bottom: 0.5rem;
 }
 
-.blurred {
-  filter: blur(5px)
-}
+.options-list-container {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  place-content: start center;
 
-@keyframes borderFade {
-  0%, 100% {
-    border-color: transparent;
-  }
+  .option-button {
+    background-color: styles.$item-bg-color;
+    color: white;
+    padding: 0.5rem 0.25rem;
 
-  50% {
-    border-color: var(--border-color);
+    border: none;
+    border-radius: 8px;
+
+    display: flex;
+    align-items: center;
+    gap: 6px;
+
+    transition: background-color 200ms ease-in-out;
+
+    .material-symbols-outlined {
+      font-size: 32px;
+    }
+
+    &:hover {
+      background-color: styles.$item-bg-hover-color
+    }
   }
 }

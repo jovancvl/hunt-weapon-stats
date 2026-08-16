@@ -18,8 +18,8 @@ html {
   color: white;
   background-color: black;
 
-  * {
-    // scrollbar-width: none;
+  @media (max-width: 576px) {
+    font-size: medium;
   }
 }
 
@@ -43,6 +43,10 @@ h4 {
     'opsz' 24
 }
 
+.body-bottom-pad {
+  padding-bottom: 2rem;
+}
+
 .icon-only-button {
   display: flex;
   justify-content: center;
@@ -62,77 +66,4 @@ h4 {
   &:hover {
     background: $item-bg-hover-color;
   }
-}
-
-
-@keyframes in-from-down {
-  from {
-    transform: translateY(100vh);
-  }
-
-  to {
-    transform: translateY(0vh);
-  }
-}
-
-@keyframes in-from-up {
-  from {
-    transform: translateY(-100vh);
-  }
-
-  to {
-    transform: translateY(0vh);
-  }
-}
-
-@keyframes out-to-up {
-  from {
-    transform: translateY(0vh);
-  }
-
-  to {
-    transform: translateY(-100vh);
-  }
-}
-
-@keyframes out-to-below {
-  from {
-    transform: translateY(0vh);
-  }
-
-  to {
-    transform: translateY(100vh);
-  }
-}
-
-::view-transition-old(animate-out-to-above) {
-  animation: 1s ease-in-out both out-to-up;
-}
-
-::view-transition-old(animate-out-to-below) {
-  animation: 1s ease-in-out both out-to-below;
-}
-
-::view-transition-new(animate-in-from-above) {
-  animation: 1s ease-in-out both in-from-up;
-}
-
-::view-transition-new(animate-in-from-below) {
-  animation: 1s ease-in-out both in-from-down;
-}
-
-.animate-out-to-above {
-  view-transition-name: animate-out-to-above;
-}
-
-.animate-out-to-below {
-  view-transition-name: animate-out-to-below;
-}
-
-.animate-in-from-above {
-  view-transition-name: animate-out-from-above;
-}
-
-.animate-in-from-below {
-  view-transition-name: animate-in-from-below;
 }

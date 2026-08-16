@@ -21,6 +21,10 @@ nav {
     margin: 5px;
     box-sizing: border-box;
 
+    @media(max-width: 576px) {
+      font-size: large;
+    }
+
     img {
       box-sizing: border-box;
       height: 100%;

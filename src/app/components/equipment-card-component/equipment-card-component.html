@@ -12,16 +12,16 @@
 
 <hunt-modal [title]="weapon().name" [(show)]="isOptionsModalOpen">
   <div class="options-list-container">
-    <button class="option-button" (click)="optionSelected.emit(OPTIONS.COMPARE)">
-      <span class="material-symbols-outlined">compare_arrows</span>
-      <span>
-        Compare with another weapon
-      </span>
-    </button>
     <button class="option-button" (click)="optionSelected.emit(OPTIONS.DETAILS)">
       <span class="material-symbols-outlined">info</span>
       <span>
         See more details
+      </span>
+    </button>
+    <button class="option-button" (click)="optionSelected.emit(OPTIONS.COMPARE)">
+      <span class="material-symbols-outlined">compare_arrows</span>
+      <span>
+        Compare with another weapon
       </span>
     </button>
   </div>

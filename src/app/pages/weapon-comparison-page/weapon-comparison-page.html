@@ -1,10 +1,8 @@
 <div #container class="content-container">
   <div>
-    <hunt-weapon-info-card [(weapon)]="leftWeapon" titleSize="small" [blurImageOnHover]="true"
-      [showBorder]="isWeaponSelectorOpen() && weaponSelecting() === 'left'"
+    <hunt-weapon-info-card [(weapon)]="leftWeapon" titleSize="small"
       (imageClicked)="openWeaponSelection('left')"></hunt-weapon-info-card>
     <hunt-weapon-info-card [(weapon)]="rightWeapon" titleSize="small" titleColor="goldenrod"
-      [showBorder]="isWeaponSelectorOpen() && weaponSelecting() === 'right'" [blurImageOnHover]="true"
       (imageClicked)="openWeaponSelection('right')"></hunt-weapon-info-card>
     <hunt-stat-table-component [weapons]="[leftWeapon(), rightWeapon()]"></hunt-stat-table-component>
   </div>
