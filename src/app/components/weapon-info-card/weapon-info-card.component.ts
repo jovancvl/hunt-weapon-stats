@@ -1,4 +1,4 @@
-import { Component, computed, inject, input, model, output, signal } from '@angular/core';
+import { Component, computed, HostBinding, inject, input, model, output, signal } from '@angular/core';
 import { Weapon } from '../../model/weapon';
 import { AuxStatsComponent } from "../aux-stats/aux-stats.component";
 import { AmmoSelectorComponent } from "../ammo-selector-component/ammo-selector-component";
@@ -24,6 +24,14 @@ export class WeaponInfoCardComponent {
 
   weapon = model.required<Weapon>();
   withBottomButtons = input(true)
+
+  color = input('')
+
+  @HostBinding('style.color')
+  get hostColor() {
+    return this.color()
+  }
+  
 
   weaponTitleText = computed(() => `${this.weapon().name} ${this.weapon().activeAmmo !== this.weapon().baseAmmo ? this.weapon().activeAmmo.info.name : ''}`);
 

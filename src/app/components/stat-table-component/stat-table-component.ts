@@ -1,6 +1,7 @@
-import { Component, input } from '@angular/core';
+import { Component, computed, input } from '@angular/core';
 import { Weapon } from '../../model/weapon';
 import { StatBarComponent } from "../stat-bar-component/stat-bar-component";
+import { UtilService } from '../../services/util.service';
 
 @Component({
   selector: 'hunt-stat-table-component',
@@ -11,5 +12,5 @@ import { StatBarComponent } from "../stat-bar-component/stat-bar-component";
 export class StatTableComponent {
   weapons = input.required<Weapon[]>()
 
-  readonly RIGHT_STAT_BAR_COLOR = "goldenrod";
+  readonly colors = UtilService.COLORS
 }

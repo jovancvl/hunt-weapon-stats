@@ -7,8 +7,23 @@ export class UtilService {
 
   private _isSmallScreen = signal(false);
 
+  static readonly COLORS = [
+    'white',
+    'goldenrod',
+    'lightcoral',
+    'lightskyblue',
+    'lightgreen',
+    'plum',
+    'khaki',
+    'lightsalmon',
+    'powderblue',
+    'palegreen',
+    'violet',
+    'peachpuff',
+  ];
+
   get isSmallScreen() {
-    return computed(() => this._isSmallScreen())
+    return computed(() => this._isSmallScreen());
   }
 
   constructor () {

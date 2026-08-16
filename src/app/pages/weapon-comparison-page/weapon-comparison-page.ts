@@ -1,10 +1,10 @@
-import { Component, computed, inject, signal } from '@angular/core';
+import { Component, computed, effect, inject, signal } from '@angular/core';
 import { Weapon } from '../../model/weapon';
 import { ChartComponent } from "../../components/chart-component/chart-component";
 import { WeaponInfoCardComponent } from "../../components/weapon-info-card/weapon-info-card.component";
 import { HunterBodyComponent } from "../../components/hunter-body-component/hunter-body-component";
 import { SelectWeaponComponent } from "../../components/select-weapon-component/select-weapon-component";
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { WEAPON_MAP } from '../../catalogue/__all-weapons';
 import { StatTableComponent } from "../../components/stat-table-component/stat-table-component";
 import { FilterButtonComponent } from "../../components/filter-button/filter-button.component";
@@ -26,9 +26,12 @@ import { UtilService } from '../../services/util.service';
 })
 export class WeaponComparisonPage {
   activatedRoute = inject(ActivatedRoute);
+  router = inject(Router)
   utilService = inject(UtilService);
 
   compareList = signal<Weapon[]>([]);
+
+  readonly colors = UtilService.COLORS
 
   isOptionsModalOpen = false;
 
@@ -50,6 +53,15 @@ export class WeaponComparisonPage {
       this.weaponSelecting = items.length;
       this.isWeaponSelectionModalOpen = true;
     }
+
+    effect(() => {
+      this.router.navigate([], {
+        queryParams: {
+          items: this.compareList().map(w => w.name).join(',')
+        },
+        queryParamsHandling: 'replace'
+      })
+    })
   }
 
   getAmmoSrc(weapon: Weapon) {
