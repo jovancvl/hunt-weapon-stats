@@ -1,47 +1,13 @@
 @use '../../../styles.scss';
 
-.info-card {
-  margin: 0.5rem;
-  padding: 0.5rem;
-  box-sizing: border-box;
-  border: none;
+.weapon-header-container {
+  $number-of-items: 2;
 
-  .title {
-    margin-left: 0.5rem;
-
-    @media (max-width: 576px) {
-      text-align: center;
-    }
-  }
-
-  .card-img {
-    position: relative;
-    height: 80px;
-    margin: 0.5rem 0;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    box-sizing: border-box;
-
-    img {
-      height: 100%;
-    }
-  }
-
-  .ammo-container {
-    display: flex;
-    flex-wrap: wrap;
-    align-items: center;
-    justify-content: space-around;
-    gap: 5px;
-  }
-}
-
-.modal-ammo-container {
+  width: 100vw;
   display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 5px;
-  margin-bottom: 0.5rem;
+  grid-template-columns: repeat(var(--number-of-items), 50vw);
+  overflow: auto;
+  scrollbar-width: none;
 }
 
 .options-list-container {
@@ -49,27 +15,12 @@
   flex-direction: column;
   gap: 6px;
   place-content: start center;
+  margin-bottom: 1rem;
+}
 
-  .option-button {
-    background-color: styles.$item-bg-color;
-    color: white;
-    padding: 0.5rem 0.25rem;
-
-    border: none;
-    border-radius: 8px;
-
-    display: flex;
-    align-items: center;
-    gap: 6px;
-
-    transition: background-color 200ms ease-in-out;
-
-    .material-symbols-outlined {
-      font-size: 32px;
-    }
-
-    &:hover {
-      background-color: styles.$item-bg-hover-color
-    }
-  }
+.modal-ammo-container {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 5px;
+  margin-bottom: 0.5rem;
 }

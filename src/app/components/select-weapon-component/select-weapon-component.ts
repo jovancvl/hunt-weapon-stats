@@ -2,7 +2,6 @@ import { Component, computed, output, inject, input } from '@angular/core';
 import { Weapon } from '../../model/weapon';
 import { EquipmentCardComponent } from "../equipment-card-component/equipment-card-component";
 import { WEAPON_LIST } from '../../catalogue/__all-weapons';
-import { Subscription } from 'rxjs';
 import { UtilService } from '../../services/util.service';
 import { WeaponCardOption } from '../equipment-card-component/options.model';
 import { WeaponFiltersComponent } from "../weapon-filters/weapon-filters.component";
@@ -19,12 +18,10 @@ import { WeaponFiltersComponent } from "../weapon-filters/weapon-filters.compone
 export class SelectWeaponComponent {
   readonly utilService = inject(UtilService);
 
-  showOptionsOnWeaponCards = input(true);
+  showOptions = input(true);
 
   weaponTouched = output<Weapon>();
   goToOption = output<[Weapon, WeaponCardOption]>();
-
-  showOptions = computed(() => this.showOptionsOnWeaponCards() || this.utilService.isSmallScreen());
 
   weaponsList: Weapon[] = [...WEAPON_LIST];
   selectedWeapon = Weapon.EMPTY;

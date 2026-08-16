@@ -1,46 +1,47 @@
-<div class="info-card">
-  <h3 class="title">{{weaponTitleText()}}</h3>
-
-  <div class="card-img">
-    <img [src]="weapon().image" />
-  </div>
-  <div class="ammo-container">
-    <hunt-aux-stats [weapon]="weapon()"></hunt-aux-stats>
-  </div>
+<div class="weapon-header-container" [style.--number-of-items]="compareList().length">
+  @for (weapon of compareList(); track $index) {
+  <hunt-weapon-info-card [weapon]="weapon" [withBottomButtons]="false"></hunt-weapon-info-card>
+  }
 </div>
 
-<hunt-stat-table-component [weapons]="[weapon()]"></hunt-stat-table-component>
+<hunt-stat-table-component [weapons]="compareList()"></hunt-stat-table-component>
 
 <hunt-bottom-buttons>
-  <hunt-primary-button (click)="isAmmoModalOpen = true">Change Ammo Type</hunt-primary-button>
-  <hunt-primary-button [iconOnly]="true" (click)="isOptionsModalOpen = true">
-    <span class="material-symbols-outlined">instant_mix</span>
-  </hunt-primary-button>
+  <hunt-primary-button (click)="isOptionsModalOpen = true">Options</hunt-primary-button>
 </hunt-bottom-buttons>
-
-<hunt-modal title="Change Ammo" [(show)]="isAmmoModalOpen">
-  <div class="modal-ammo-container">
-    @for (ammo of weapon().availableAmmo; track $index) {
-    <hunt-filter-button [icon]="ammo.info.icon" [label]="ammo.info.name" [isActive]="weapon().activeAmmo === ammo"
-      (click)="selectAmmo(ammo)"></hunt-filter-button>
-    }
-  </div>
-  <hunt-primary-button (click)="isAmmoModalOpen = false">Confirm</hunt-primary-button>
-</hunt-modal>
 
 <hunt-modal title="Options" [(show)]="isOptionsModalOpen">
   <div class="options-list-container">
-    <button class="option-button">
-      <span class="material-symbols-outlined">compare_arrows</span>
+    @for (weapon of compareList(); track $index) {
+    <h3>{{weapon.name}}</h3>
+    <hunt-option-button icon="compare_arrows" (click)="openWeaponSelectModal($index)">
       <span>
-        Compare with another weapon
+        Change Weapon
       </span>
-    </button>
-    <button class="option-button">
-      <span class="material-symbols-outlined">info</span>
+    </hunt-option-button>
+    <hunt-option-button [img]="getAmmoSrc(weapon)" (click)="openAmmoSelectModal($index)">
       <span>
-        See more details
+        Change Ammunition
       </span>
-    </button>
+    </hunt-option-button>
+    }
   </div>
+  <hunt-primary-button (click)="openWeaponSelectModal(compareList().length)">
+    <span class="material-symbols-outlined">add</span>
+    Add New Weapon
+  </hunt-primary-button>
+</hunt-modal>
+
+<hunt-modal title="Choose Weapon" [(show)]="isWeaponSelectionModalOpen">
+  <hunt-select-weapon-component [showOptions]="false" (goToOption)="replaceWeapon($event, weaponSelecting)"></hunt-select-weapon-component>
+</hunt-modal>
+
+<hunt-modal title="Choose Ammunition" [(show)]="isAmmoSelectionModalOpen">
+  <div class="modal-ammo-container">
+    @for (ammo of compareList()[ammoSelecting].availableAmmo; track $index) {
+    <hunt-filter-button [icon]="ammo.info.icon" [label]="ammo.info.name" [isActive]="compareList()[ammoSelecting].activeAmmo === ammo"
+      (click)="replaceAmmo(ammo, ammoSelecting)"></hunt-filter-button>
+    }
+  </div>
+  <hunt-primary-button (click)="isAmmoSelectionModalOpen = false">Confirm</hunt-primary-button>
 </hunt-modal>

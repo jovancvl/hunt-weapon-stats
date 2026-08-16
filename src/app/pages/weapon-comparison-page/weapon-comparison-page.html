@@ -8,7 +8,7 @@
   </div>
 
   @if (isWeaponSelectorOpen() && !isMobile()) {
-  <hunt-select-weapon-component [showOptionsOnWeaponCards]="false" (goToOption)="setComparisonWeapon($event[0])"
+  <hunt-select-weapon-component [showOptions]="false" (goToOption)="setComparisonWeapon($event[0])"
     (weaponTouched)="weaponSelected($event)"></hunt-select-weapon-component>
   } @else if (isWeaponSelectorOpen() && isMobile()) {
   <div class="modal" #modal>
@@ -18,7 +18,7 @@
         <span class="material-symbols-outlined">close</span>
       </button>
     </div>
-    <hunt-select-weapon-component [showOptionsOnWeaponCards]="false" (goToOption)="setComparisonWeapon($event[0])"
+    <hunt-select-weapon-component [showOptions]="false" (goToOption)="setComparisonWeapon($event[0])"
       (weaponTouched)="weaponSelected($event)"></hunt-select-weapon-component>
   </div>
   } @else {

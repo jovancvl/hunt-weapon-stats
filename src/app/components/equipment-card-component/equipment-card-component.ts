@@ -22,10 +22,12 @@ import { Subscription, timer } from 'rxjs';
 })
 export class EquipmentCardComponent {
   readonly utilService = inject(UtilService);
+
   OPTIONS = WeaponCardOption;
   weapon = input.required<Weapon>();
   active = input(false);
   showOptions = input(true);
+
   optionSelected = output<WeaponCardOption>();
 
   sizeSrc = computed(() => {
@@ -59,6 +61,19 @@ export class EquipmentCardComponent {
 
     src = `${src}.svg`;
     return src;
+  }
+
+  openOptionsModal() {
+    if (this.showOptions()) {
+      this.isOptionsModalOpen = true
+    } else {
+      this.optionClicked(WeaponCardOption.DETAILS)
+    }
+  }
+
+  optionClicked(option: WeaponCardOption) {
+    this.optionSelected.emit(option);
+    this.isOptionsModalOpen = false;
   }
 
   cardClicked() {

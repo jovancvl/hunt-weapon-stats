@@ -1,5 +1,5 @@
 import { Overlay } from '@angular/cdk/overlay';
-import { Component, inject, input, model, OnDestroy } from '@angular/core';
+import { Component, effect, inject, input, model } from '@angular/core';
 
 @Component({
   selector: 'hunt-modal',
@@ -7,7 +7,7 @@ import { Component, inject, input, model, OnDestroy } from '@angular/core';
   templateUrl: './modal.component.html',
   styleUrl: './modal.component.scss',
 })
-export class ModalComponent implements OnDestroy {
+export class ModalComponent  {
   overlay = inject(Overlay)
   scrollStrategy = this.overlay.scrollStrategies.block()
 
@@ -15,11 +15,13 @@ export class ModalComponent implements OnDestroy {
   show = model(true);
 
   constructor() {
-    this.scrollStrategy.enable()
-  }
-
-  ngOnDestroy(): void {
-    this.scrollStrategy.disable()
+    effect(() => {
+      if (this.show()) {
+        this.scrollStrategy.enable()
+      } else {
+        this.scrollStrategy.disable()
+      }
+    })
   }
 
   cancel() {

@@ -1,5 +1,5 @@
 @if (utilService.isSmallScreen()) {
-<div class="list-item" (click)="isOptionsModalOpen = true">
+<div class="list-item" (click)="openOptionsModal()">
   <img class="size-icon" src="ammo-icons/ammo_filter-{{weapon().size}}-slot.svg" />
   <img class="ammo-icon" [src]="getAmmoSrc(weapon())" />
 
@@ -12,13 +12,13 @@
 
 <hunt-modal [title]="weapon().name" [(show)]="isOptionsModalOpen">
   <div class="options-list-container">
-    <button class="option-button" (click)="optionSelected.emit(OPTIONS.DETAILS)">
+    <button class="option-button" (click)="optionClicked(OPTIONS.DETAILS)">
       <span class="material-symbols-outlined">info</span>
       <span>
         See more details
       </span>
     </button>
-    <button class="option-button" (click)="optionSelected.emit(OPTIONS.COMPARE)">
+    <button class="option-button" (click)="optionClicked(OPTIONS.COMPARE)">
       <span class="material-symbols-outlined">compare_arrows</span>
       <span>
         Compare with another weapon

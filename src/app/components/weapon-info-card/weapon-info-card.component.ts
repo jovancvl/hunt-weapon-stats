@@ -12,16 +12,20 @@ import { Router } from '@angular/router';
 
 @Component({
   selector: 'hunt-weapon-info-card',
-  imports: [AuxStatsComponent, BottomButtonsComponent, PrimaryButtonComponent, ModalComponent, FilterButtonComponent, AmmoSelectorComponent],
+  imports: [
+    AuxStatsComponent, BottomButtonsComponent, PrimaryButtonComponent, ModalComponent, FilterButtonComponent, AmmoSelectorComponent
+  ],
   templateUrl: './weapon-info-card.component.html',
   styleUrl: './weapon-info-card.component.scss',
 })
 export class WeaponInfoCardComponent {
-  utilService = inject(UtilService)
-  router = inject(Router)
+  utilService = inject(UtilService);
+  router = inject(Router);
 
-  weapon = model.required<Weapon>()
-  weaponTitleText = computed(() => `${this.weapon().name} ${this.weapon().activeAmmo !== this.weapon().baseAmmo ? this.weapon().activeAmmo.info.name : '' }`)
+  weapon = model.required<Weapon>();
+  withBottomButtons = input(true)
+
+  weaponTitleText = computed(() => `${this.weapon().name} ${this.weapon().activeAmmo !== this.weapon().baseAmmo ? this.weapon().activeAmmo.info.name : ''}`);
 
   isAmmoModalOpen = false;
   isOptionsModalOpen = false;
@@ -39,6 +43,6 @@ export class WeaponInfoCardComponent {
       queryParams: {
         left: this.weapon().name
       }
-    })
+    });
   }
 }

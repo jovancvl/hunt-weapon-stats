@@ -7,7 +7,10 @@
   border: none;
 
   .title {
-    margin-left: 0.5rem;
+    max-width: 15ch;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
 
     @media (max-width: 576px) {
       text-align: center;
@@ -16,7 +19,7 @@
 
   .card-img {
     position: relative;
-    height: 80px;
+    // height: 80px;
     margin: 0.5rem 0;
     display: flex;
     justify-content: center;
@@ -24,7 +27,8 @@
     box-sizing: border-box;
 
     img {
-      height: 100%;
+      width: 100%;
+      max-width: 300px;
     }
   }
 
