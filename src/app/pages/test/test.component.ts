@@ -1,4 +1,4 @@
-import { Component, signal } from '@angular/core';
+import { Component, computed, ElementRef, signal, viewChild } from '@angular/core';
 import { INFANTRY_37L } from '../../catalogue/infantry-73l';
 import { CARBINE_1865_SILENCER } from '../../catalogue/1865-carbine-silencer';
 import { WeaponInfoCardComponent } from "../../components/weapon-info-card/weapon-info-card.component";
@@ -14,6 +14,8 @@ import { WeaponCardOption } from '../../components/equipment-card-component/opti
 import { BERTHIER_1892 } from '../../catalogue/berthier-1892';
 import { FilterButtonComponent } from "../../components/filter-button/filter-button.component";
 import { AmmoStats } from '../../model/ammo-stats';
+import { HunterBodyComponent } from "../../components/hunter-body-component/hunter-body-component";
+import { ChartComponent } from "../../components/chart-component/chart-component";
 
 @Component({
   selector: 'hunt-test',
@@ -25,13 +27,15 @@ import { AmmoStats } from '../../model/ammo-stats';
     ModalComponent,
     OptionButtonComponent,
     SelectWeaponComponent,
-    FilterButtonComponent
-  ],
+    FilterButtonComponent,
+    HunterBodyComponent,
+    ChartComponent,
+],
   templateUrl: './test.component.html',
   styleUrl: './test.component.scss',
 })
 export class TestComponent {
-  compareList = signal([INFANTRY_37L, CARBINE_1865_SILENCER]);
+  compareList = signal([INFANTRY_37L]);
 
   isOptionsModalOpen = false;
 
@@ -40,6 +44,10 @@ export class TestComponent {
 
   isAmmoSelectionModalOpen = false;
   ammoSelecting = 0;
+
+  ammoList = computed(() => this.compareList().map(w => w.activeAmmo))
+
+  range = 10;
 
   getAmmoSrc(weapon: Weapon) {
     let src = "ammo-icons/ammo_filter";
@@ -74,6 +82,18 @@ export class TestComponent {
     this.isAmmoSelectionModalOpen = true;
   }
 
+  closeAmmoSelectModal() {
+    this.isAmmoSelectionModalOpen = false;
+  }
+
+  removeWeapon(toRemove: number) {
+    this.compareList.update(l => {
+      l.splice(toRemove, 1);
+      const result = [...l];
+      return result;
+    });
+  }
+
   replaceWeapon(option: [Weapon, WeaponCardOption], toReplace: number) {
     const weapon = option[0];
     this.compareList.update(l => {
@@ -91,7 +111,6 @@ export class TestComponent {
     this.compareList.update(l => {
       l.splice(toReplace, 1, {...weapon});
       const result = [...l];
-      console.log(result);
       return result;
     });
   }

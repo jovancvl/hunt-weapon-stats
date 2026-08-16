@@ -1,6 +1,17 @@
-<div class="weapon-header-container" [style.--number-of-items]="compareList().length">
-  @for (weapon of compareList(); track $index) {
-  <hunt-weapon-info-card [weapon]="weapon" [withBottomButtons]="false"></hunt-weapon-info-card>
+<div class="carrousel" [style.--number-of-items]="compareList().length">
+  <div class="item-container">
+    @for (weapon of compareList(); track $index) {
+    <hunt-weapon-info-card [weapon]="weapon" [withBottomButtons]="false"></hunt-weapon-info-card>
+    }
+  </div>
+  @if (compareList().length > 2) {
+  <span class="left-button">
+    <span class="material-symbols-outlined">chevron_left</span>
+  </span>
+
+  <span class="right-button">
+    <span class="material-symbols-outlined">chevron_right</span>
+  </span>
   }
 </div>
 
@@ -15,14 +26,13 @@
     @for (weapon of compareList(); track $index) {
     <h3>{{weapon.name}}</h3>
     <hunt-option-button icon="compare_arrows" (click)="openWeaponSelectModal($index)">
-      <span>
-        Change Weapon
-      </span>
+      <span>Change Weapon</span>
     </hunt-option-button>
     <hunt-option-button [img]="getAmmoSrc(weapon)" (click)="openAmmoSelectModal($index)">
-      <span>
-        Change Ammunition
-      </span>
+      <span>Change Ammunition</span>
+    </hunt-option-button>
+    <hunt-option-button icon="delete" (click)="removeWeapon($index)">
+      <span>Remove Weapon</span>
     </hunt-option-button>
     }
   </div>
@@ -32,16 +42,35 @@
   </hunt-primary-button>
 </hunt-modal>
 
-<hunt-modal title="Choose Weapon" [(show)]="isWeaponSelectionModalOpen">
+<hunt-modal title="Choose Weapon To Compare With" [(show)]="isWeaponSelectionModalOpen">
   <hunt-select-weapon-component [showOptions]="false" (goToOption)="replaceWeapon($event, weaponSelecting)"></hunt-select-weapon-component>
 </hunt-modal>
 
 <hunt-modal title="Choose Ammunition" [(show)]="isAmmoSelectionModalOpen">
   <div class="modal-ammo-container">
-    @for (ammo of compareList()[ammoSelecting].availableAmmo; track $index) {
+    @for (ammo of compareList()[ammoSelecting]?.availableAmmo; track $index) {
     <hunt-filter-button [icon]="ammo.info.icon" [label]="ammo.info.name" [isActive]="compareList()[ammoSelecting].activeAmmo === ammo"
       (click)="replaceAmmo(ammo, ammoSelecting)"></hunt-filter-button>
     }
   </div>
-  <hunt-primary-button (click)="isAmmoSelectionModalOpen = false">Confirm</hunt-primary-button>
+  <hunt-primary-button (click)="closeAmmoSelectModal()">Confirm</hunt-primary-button>
 </hunt-modal>
+
+<hunt-chart-component [ammo]="ammoList()" (rangeSelected)="range = $event"></hunt-chart-component>
+
+<div class="carrousel" [style.--number-of-items]="compareList().length">
+  <div class="item-container">
+    @for (weapon of compareList(); track $index) {
+    <hunt-hunter-body-component [ammo]="weapon.activeAmmo" [range]="range"></hunt-hunter-body-component>
+    }
+  </div>
+  @if (compareList().length > 2) {
+  <span class="left-button">
+    <span class="material-symbols-outlined">chevron_left</span>
+  </span>
+
+  <span class="right-button">
+    <span class="material-symbols-outlined">chevron_right</span>
+  </span>
+  }
+</div>

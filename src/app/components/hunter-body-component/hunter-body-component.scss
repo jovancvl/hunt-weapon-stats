@@ -7,7 +7,7 @@
   position: relative;
   width: fit-content;
   max-height: 90vh;
-  min-height: 425px;
+  min-height: 350px;
   box-sizing: border-box;
 
   p {
@@ -29,22 +29,22 @@
 
   .chest-damage {
     top: 25%;
-    left: 41%;
+    left: 50%;
   }
 
   .cock-damage {
-    top: 46%;
-    left: 41%;
+    top: 45%;
+    left: 50%;
   }
 
   .arms-damage {
     top: 25%;
-    left: 5%;
+    left: 15%;
   }
 
   .legs-damage {
     top: 70%;
-    left: 15%;
+    left: 25%;
   }
 
   .range {
@@ -58,7 +58,8 @@
     filter: invert(63%) sepia(0%) saturate(0%) hue-rotate(190deg) brightness(90%) contrast(82%);
     box-sizing: border-box;
     // border: 2px solid rgb(141, 141, 141);
-    padding: 1rem 4rem;
+    padding: 1rem;
+    padding-left: 4rem;
     height: 100%;
   }
 }

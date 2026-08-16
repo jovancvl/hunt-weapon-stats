@@ -1,13 +1,34 @@
 @use '../../../styles.scss';
 
-.weapon-header-container {
+.carrousel {
   $number-of-items: 2;
 
   width: 100vw;
-  display: grid;
-  grid-template-columns: repeat(var(--number-of-items), 50vw);
-  overflow: auto;
-  scrollbar-width: none;
+  position: relative;
+
+  .item-container {
+    display: grid;
+    grid-template-columns: repeat(var(--number-of-items), 50vw);
+    overflow-x: auto;
+    overflow-y: hidden;
+    // scrollbar-width: none;
+  }
+
+  .left-button,
+  .right-button {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    cursor: pointer;
+  }
+
+  .left-button {
+    left: 0;
+  }
+
+  .right-button {
+    right: 0;
+  }
 }
 
 .options-list-container {
