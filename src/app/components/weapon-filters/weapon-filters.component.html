@@ -38,6 +38,14 @@
   }
 </div>
 
+@if (utilService.isSmallScreen() && allAppliedFilters().length > 0) {
+<div class="chips-container" animate.enter="open-animation" animate.leave="close-animation">
+  @for (filter of allAppliedFilters(); track $index) {
+    <hunt-chip (click)="removeChip(filter)">{{filter.name}}</hunt-chip>
+  }
+</div>
+}
+
 <hunt-modal title="Apply filters" [(show)]="isModalOpen" (modalClosed)="isModalOpen = false">
   <h4>Size Filters</h4>
   <div class="modal-filters-container">

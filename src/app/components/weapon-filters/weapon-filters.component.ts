@@ -1,4 +1,4 @@
-import { Component, effect, ElementRef, HostListener, inject, input, output, signal, viewChild, WritableSignal } from '@angular/core';
+import { Component, computed, effect, ElementRef, HostListener, inject, input, output, signal, viewChild, WritableSignal } from '@angular/core';
 import { form, FormField } from '@angular/forms/signals';
 import { SIZE_FILTERS, BASE_AMMO_FILTERS, CUSTOM_AMMO_FILTERS, SizeFilter, BaseAmmoFilter, CustomAmmoFilter, Filter } from '../../model/filter';
 import { UtilService } from '../../services/util.service';
@@ -7,6 +7,7 @@ import { Weapon } from '../../model/weapon';
 import { ModalComponent } from "../modal/modal.component";
 import { FilterButtonComponent } from "../filter-button/filter-button.component";
 import { PrimaryButtonComponent } from "../primary-button/primary-button.component";
+import { ChipComponent } from "../chip/chip.component";
 
 @Component({
   selector: 'hunt-weapon-filters',
@@ -14,7 +15,8 @@ import { PrimaryButtonComponent } from "../primary-button/primary-button.compone
     FormField,
     ModalComponent,
     FilterButtonComponent,
-    PrimaryButtonComponent
+    PrimaryButtonComponent,
+    ChipComponent
 ],
   templateUrl: './weapon-filters.component.html',
   styleUrl: './weapon-filters.component.scss',
@@ -45,6 +47,12 @@ export class WeaponFiltersComponent {
   appliedSizeFilters = signal<SizeFilter[]>([]);
   appliedBaseAmmoFilters = signal<BaseAmmoFilter[]>([]);
   appliedCustomAmmoFilters = signal<CustomAmmoFilter[]>([]);
+
+  allAppliedFilters = computed(() => [
+    ...this.appliedSizeFilters(),
+    ...this.appliedBaseAmmoFilters(),
+    ...this.appliedCustomAmmoFilters()
+  ])
 
   constructor() {
     effect(() => {
@@ -90,6 +98,16 @@ export class WeaponFiltersComponent {
 
   updateCustomAmmoFilter(filter: CustomAmmoFilter) {
     this.toggleFilter(this.appliedCustomAmmoFilters, filter);
+  }
+
+  removeChip(filter: Filter) {
+    if (filter instanceof SizeFilter) {
+      this.toggleFilter(this.appliedSizeFilters, filter)
+    } else if (filter instanceof BaseAmmoFilter) {
+      this.toggleFilter(this.appliedBaseAmmoFilters, filter)
+    } else {
+      this.toggleFilter(this.appliedCustomAmmoFilters, filter)
+    }
   }
 
   private toggleFilter(filterList: WritableSignal<Filter[]>, filter: Filter) {

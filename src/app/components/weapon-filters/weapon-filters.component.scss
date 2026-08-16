@@ -95,3 +95,15 @@
 h4 {
   margin: 0.5rem 0;
 }
+
+.chips-container {
+  width: 100%;
+  padding: 0.25rem;
+  box-sizing: border-box;
+  display: flex;
+  gap: 6px;
+  overflow: auto;
+  scrollbar-width: none;
+}
+
+

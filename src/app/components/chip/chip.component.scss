@@ -1,0 +1,26 @@
+button {
+  cursor: pointer;
+  padding: 2px;
+  padding-right: 1rem;
+
+  display: flex;
+  align-items: center;
+  gap: 6px;
+
+  border-radius: 100rem;
+  border: 1px solid white;
+  background-color: transparent;
+  color: white;
+
+  max-width: 20ch;
+
+  .material-symbols-outlined {
+    font-size: 20px;
+  }
+
+  .label {
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+  }
+}

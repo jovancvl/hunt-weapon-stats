@@ -6,13 +6,6 @@
   position: fixed;
   inset: 0;
   z-index: 10;
-
-  opacity: 1;
-  transition: opacity 200ms ease-in;
-
-  @starting-style {
-    opacity: 0;
-  }
 }
 
 .modal {
@@ -73,43 +66,5 @@
     bottom: 0;
     left: 0;
     right: 0;
-  }
-}
-
-.slide-in-animation {
-  animation: slide ease-in-out 300ms;
-}
-
-.slide-out-animation {
-  animation: slide ease-in-out 300ms;
-  animation-direction: reverse;
-}
-
-.fade-in-animation {
-  animation: fade ease-in-out 300ms;
-}
-
-.fade-out-animation {
-  animation: fade ease-in-out 300ms;
-  animation-direction: reverse;
-}
-
-@keyframes slide {
-  from {
-    transform: translateY(100%);
-  }
-
-  to {
-    transform: translateY(0%);
-  }
-}
-
-@keyframes fade {
-  from {
-    opacity: 0;
-  }
-
-  to {
-    opacity: 1;
   }
 }
