@@ -29,28 +29,29 @@
 
   .chest-damage {
     top: 25%;
-    left: 47%;
+    right: 37%;
   }
 
   .cock-damage {
     top: 47%;
-    left: 47%;
+    right: 37%;
   }
 
   .arms-damage {
     top: 25%;
-    left: 5%;
+    right: 80%;
   }
 
   .legs-damage {
     top: 70%;
-    left: 15%;
+    right: 66%;
   }
 
   .range {
     position: absolute;
-    left: 16px;
+    text-align: right;
     top: 36px;
+    right: 55%;
   }
 
   img {

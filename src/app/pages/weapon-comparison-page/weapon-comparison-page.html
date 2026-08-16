@@ -45,7 +45,7 @@
   <div class="carousel grid-header" [style.--number-of-items]="compareList().length">
     <div class="item-container">
       @for (weapon of compareList(); track $index) {
-      <hunt-weapon-info-card [weapon]="weapon" [withBottomButtons]="false"></hunt-weapon-info-card>
+      <hunt-weapon-info-card [weapon]="weapon" [withBottomButtons]="false" (weaponChange)="replaceAmmo($event.activeAmmo, $index)"></hunt-weapon-info-card>
       }
       <div class="empty-weapon-info">
         <hunt-primary-button [iconOnly]="true" (click)="isOptionsModalOpen = true">
@@ -101,7 +101,7 @@
     <hunt-option-button [img]="getAmmoSrc(weapon)" (click)="openAmmoSelectModal($index)">
       <span>Change Ammunition</span>
     </hunt-option-button>
-    @if (!$first) {
+    @if (compareList().length > 1) {
     <hunt-option-button icon="delete" (click)="removeWeapon($index)">
       <span>Remove Weapon</span>
     </hunt-option-button>
