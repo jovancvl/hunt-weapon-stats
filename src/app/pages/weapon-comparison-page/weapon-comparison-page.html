@@ -1,4 +1,5 @@
-<div class="carrousel" [style.--number-of-items]="compareList().length">
+@if (utilService.isSmallScreen()) {
+<div class="carousel" [style.--number-of-items]="compareList().length">
   <div class="item-container">
     @for (weapon of compareList(); track $index) {
     <hunt-weapon-info-card [weapon]="weapon" [withBottomButtons]="false"></hunt-weapon-info-card>
@@ -21,6 +22,75 @@
   <hunt-primary-button (click)="isOptionsModalOpen = true">Options</hunt-primary-button>
 </hunt-bottom-buttons>
 
+<hunt-chart-component [ammo]="ammoList()" (rangeSelected)="range = $event"></hunt-chart-component>
+
+<div class="carousel" [style.--number-of-items]="compareList().length">
+  <div class="item-container">
+    @for (weapon of compareList(); track $index) {
+    <hunt-hunter-body-component [ammo]="weapon.activeAmmo" [range]="range"></hunt-hunter-body-component>
+    }
+  </div>
+  @if (compareList().length > 2) {
+  <span class="left-button">
+    <span class="material-symbols-outlined">chevron_left</span>
+  </span>
+
+  <span class="right-button">
+    <span class="material-symbols-outlined">chevron_right</span>
+  </span>
+  }
+</div>
+} @else {
+<div class="grid-container">
+  <div class="carousel grid-header" [style.--number-of-items]="compareList().length">
+    <div class="item-container">
+      @for (weapon of compareList(); track $index) {
+      <hunt-weapon-info-card [weapon]="weapon" [withBottomButtons]="false"></hunt-weapon-info-card>
+      }
+      <div class="empty-weapon-info">
+        <hunt-primary-button [iconOnly]="true" (click)="isOptionsModalOpen = true">
+          <span class="material-symbols-outlined">instant_mix</span>
+        </hunt-primary-button>
+      </div>
+    </div>
+    @if (compareList().length > 2) {
+    <span class="left-button">
+      <span class="material-symbols-outlined">chevron_left</span>
+    </span>
+
+    <span class="right-button">
+      <span class="material-symbols-outlined">chevron_right</span>
+    </span>
+    }
+  </div>
+
+  <div class="grid-table">
+    <hunt-stat-table-component [weapons]="compareList()"></hunt-stat-table-component>
+  </div>
+
+  <div class="grid-chart">
+    <hunt-chart-component [ammo]="ammoList()" (rangeSelected)="range = $event"></hunt-chart-component>
+  </div>
+
+  <div class="carousel grid-body" [style.--number-of-items]="compareList().length">
+    <div class="item-container">
+      @for (weapon of compareList(); track $index) {
+      <hunt-hunter-body-component [ammo]="weapon.activeAmmo" [range]="range"></hunt-hunter-body-component>
+      }
+    </div>
+    @if (compareList().length > 2) {
+    <span class="left-button">
+      <span class="material-symbols-outlined">chevron_left</span>
+    </span>
+
+    <span class="right-button">
+      <span class="material-symbols-outlined">chevron_right</span>
+    </span>
+    }
+  </div>
+</div>
+}
+
 <hunt-modal title="Options" [(show)]="isOptionsModalOpen">
   <div class="options-list-container">
     @for (weapon of compareList(); track $index) {
@@ -31,9 +101,11 @@
     <hunt-option-button [img]="getAmmoSrc(weapon)" (click)="openAmmoSelectModal($index)">
       <span>Change Ammunition</span>
     </hunt-option-button>
+    @if (!$first) {
     <hunt-option-button icon="delete" (click)="removeWeapon($index)">
       <span>Remove Weapon</span>
     </hunt-option-button>
+    }
     }
   </div>
   <hunt-primary-button (click)="openWeaponSelectModal(compareList().length)">
@@ -55,22 +127,3 @@
   </div>
   <hunt-primary-button (click)="closeAmmoSelectModal()">Confirm</hunt-primary-button>
 </hunt-modal>
-
-<hunt-chart-component [ammo]="ammoList()" (rangeSelected)="range = $event"></hunt-chart-component>
-
-<div class="carrousel" [style.--number-of-items]="compareList().length">
-  <div class="item-container">
-    @for (weapon of compareList(); track $index) {
-    <hunt-hunter-body-component [ammo]="weapon.activeAmmo" [range]="range"></hunt-hunter-body-component>
-    }
-  </div>
-  @if (compareList().length > 2) {
-  <span class="left-button">
-    <span class="material-symbols-outlined">chevron_left</span>
-  </span>
-
-  <span class="right-button">
-    <span class="material-symbols-outlined">chevron_right</span>
-  </span>
-  }
-</div>

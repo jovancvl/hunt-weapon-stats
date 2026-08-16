@@ -17,10 +17,8 @@ export class ModalComponent  {
   constructor() {
     effect(() => {
       if (this.show()) {
-        console.log("Scroll blocked by title", this.title())
         this.scrollStrategy.enable()
       } else {
-        console.log("Scroll enabled by title", this.title())
         this.scrollStrategy.disable()
       }
     })

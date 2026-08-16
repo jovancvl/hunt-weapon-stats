@@ -1,14 +1,11 @@
-import { Component, computed, effect, ElementRef, inject, signal, viewChild } from '@angular/core';
-import { FRONTIER_73C } from '../../catalogue/frontier-73c';
+import { Component, computed, inject, signal } from '@angular/core';
 import { Weapon } from '../../model/weapon';
 import { ChartComponent } from "../../components/chart-component/chart-component";
 import { WeaponInfoCardComponent } from "../../components/weapon-info-card/weapon-info-card.component";
 import { HunterBodyComponent } from "../../components/hunter-body-component/hunter-body-component";
 import { SelectWeaponComponent } from "../../components/select-weapon-component/select-weapon-component";
-import { UtilService } from '../../services/util.service';
-import { ActivatedRoute, Router } from '@angular/router';
+import { ActivatedRoute } from '@angular/router';
 import { WEAPON_MAP } from '../../catalogue/__all-weapons';
-import { Location } from '@angular/common';
 import { StatTableComponent } from "../../components/stat-table-component/stat-table-component";
 import { FilterButtonComponent } from "../../components/filter-button/filter-button.component";
 import { PrimaryButtonComponent } from "../../components/primary-button/primary-button.component";
@@ -19,6 +16,7 @@ import { AmmoName } from '../../model/ammo-name';
 import { AmmoStats } from '../../model/ammo-stats';
 import { BottomButtonsComponent } from "../../components/bottom-buttons/bottom-buttons.component";
 import { OptionButtonComponent } from "../../components/option-button/option-button.component";
+import { UtilService } from '../../services/util.service';
 
 @Component({
   selector: 'hunt-weapon-comparison-page',
@@ -27,7 +25,8 @@ import { OptionButtonComponent } from "../../components/option-button/option-but
   styleUrl: './weapon-comparison-page.scss',
 })
 export class WeaponComparisonPage {
-  activatedRoute = inject(ActivatedRoute)
+  activatedRoute = inject(ActivatedRoute);
+  utilService = inject(UtilService);
 
   compareList = signal<Weapon[]>([]);
 
@@ -43,13 +42,13 @@ export class WeaponComparisonPage {
 
   range = 10;
 
-  constructor() {
-    const items = this.activatedRoute.snapshot.queryParamMap.get("items")?.split(',').map(i => WEAPON_MAP.get(i)).filter(w => !!w)
-    this.compareList.set(items || [INFANTRY_37L])
+  constructor () {
+    const items = this.activatedRoute.snapshot.queryParamMap.get("items")?.split(',').map(i => WEAPON_MAP.get(i)).filter(w => !!w) || [INFANTRY_37L];
+    this.compareList.set(items);
 
-    if (items && items.length < 2) {
-      this.weaponSelecting = items.length
-      this.isWeaponSelectionModalOpen = true
+    if (items.length < 2) {
+      this.weaponSelecting = items.length;
+      this.isWeaponSelectionModalOpen = true;
     }
   }
 
@@ -93,6 +92,9 @@ export class WeaponComparisonPage {
   removeWeapon(toRemove: number) {
     this.compareList.update(l => {
       l.splice(toRemove, 1);
+      if (l.length === 0) {
+        l = [INFANTRY_37L]
+      }
       const result = [...l];
       return result;
     });

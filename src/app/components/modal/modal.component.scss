@@ -10,14 +10,18 @@
 
 .modal {
   background-color: black;
-  border-radius: 8px;
+  border: 1px solid rgba($color: white, $alpha: 0.3);
+  border-radius: 1rem;
 
   position: fixed;
 
   min-height: 200px;
   max-height: 650px;
+  height: fit-content;
+
   min-width: 300px;
   max-width: 1000px;
+  width: fit-content;
 
   margin: auto;
   left: 1rem;
@@ -61,6 +65,12 @@
   .modal {
     border-bottom-left-radius: 0;
     border-bottom-right-radius: 0;
+
+    border-right: none;
+    border-left: none;
+    border-bottom: none;
+
+    width: 100vw;
 
     top: unset;
     bottom: 0;
