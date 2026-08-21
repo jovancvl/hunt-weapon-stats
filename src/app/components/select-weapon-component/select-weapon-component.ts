@@ -11,13 +11,11 @@ import { WeaponFiltersComponent } from "../weapon-filters/weapon-filters.compone
   imports: [
     EquipmentCardComponent,
     WeaponFiltersComponent,
-],
+  ],
   templateUrl: './select-weapon-component.html',
   styleUrl: './select-weapon-component.scss',
 })
 export class SelectWeaponComponent {
-  readonly utilService = inject(UtilService);
-
   showOptions = input(true);
 
   weaponTouched = output<Weapon>();
@@ -34,6 +32,7 @@ export class SelectWeaponComponent {
 
   touchWeapon(w: Weapon) {
     this.selectedWeapon = w;
+
     this.weaponTouched.emit(w);
   }
 

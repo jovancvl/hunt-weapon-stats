@@ -8,8 +8,6 @@ import { Component, inject, OnDestroy, OnInit, Renderer2 } from '@angular/core';
 })
 export class BottomButtonsComponent implements OnInit, OnDestroy {
   renderer = inject(Renderer2)
-  isAmmoModalOpen: any;
-  isOptionsModalOpen: any;
 
   ngOnInit(): void {
     this.renderer.addClass(document.body, 'body-bottom-pad')
