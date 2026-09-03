@@ -46,6 +46,7 @@ import { ROMERO_77 } from "./romero-77";
 import { ROMERO_77_SHORTY } from "./romero-77-shorty";
 import { SCOTTFIELD } from "./scottfield"
 import { SCOTTFIELD_SPITFIRE } from "./scottfield-spitfire"
+import { SLATE } from "./slate";
 import { SPARKS } from "./sparks"
 import { SPARKS_PISTOL } from "./sparks-pistol"
 import { SPARKS_PISTOL_SILENCER } from "./sparks-pistol-silencer"
@@ -116,7 +117,8 @@ export const WEAPON_LIST: Weapon[] = [
   AUTO_5,
   AUTO_4_SHORTY,
   RIVAL_78,
-  RIVAL_78_SHORTY
+  RIVAL_78_SHORTY,
+  SLATE
 ].sort((a, b) => {
   if (a.name > b.name) {
     return 1;
