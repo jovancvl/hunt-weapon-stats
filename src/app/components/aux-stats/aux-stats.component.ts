@@ -21,6 +21,8 @@ export class AuxStatsComponent {
           return "ammo-icons/ammo_filter-medium.svg";
         case AmmoName.LONG:
           return "ammo-icons/ammo_filter-long.svg";
+        case AmmoName.BUCKSHOT:
+          return "ammo-icons/ammo_filter-shell.svg";
         default:
           return "ammo-icons/ammo_filter-special-ammo.svg";
       }
