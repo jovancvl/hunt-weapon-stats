@@ -40,6 +40,8 @@ import { OFFICER_CARBINE } from "./officer-carbine"
 import { PAX } from "./pax"
 import { PAX_TRUESHOT } from "./pax-trueshot"
 import { RANGER_73 } from "./ranger-73";
+import { RIVAL_78_SHORTY } from "./rival-78-shorty";
+import { RIVAL_78 } from "./rival_78";
 import { ROMERO_77 } from "./romero-77";
 import { ROMERO_77_SHORTY } from "./romero-77-shorty";
 import { SCOTTFIELD } from "./scottfield"
@@ -112,7 +114,9 @@ export const WEAPON_LIST: Weapon[] = [
   ROMERO_77,
   ROMERO_77_SHORTY,
   AUTO_5,
-  AUTO_4_SHORTY
+  AUTO_4_SHORTY,
+  RIVAL_78,
+  RIVAL_78_SHORTY
 ].sort((a, b) => {
   if (a.name > b.name) {
     return 1;
