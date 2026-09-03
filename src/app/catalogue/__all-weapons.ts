@@ -55,6 +55,8 @@ import { SPECTER_1882 } from "./specter-1882";
 import { SPECTER_1882_SHORTY } from "./specter-1882-shorty";
 import { SPRINGFIELD_1866 } from "./springfield-1866"
 import { SPRINGFIELD_1866_SHORTY } from "./springfield-1866-shorty"
+import { TERMINUS } from "./terminus";
+import { TERMINUS_SHORTY } from "./terminus_shorty";
 import { UPPERCUT } from "./uppercut"
 import { VANDAL_73C } from "./vandal-73c";
 import { VETTERLI_71 } from "./vetterli-71";
@@ -122,7 +124,9 @@ export const WEAPON_LIST: Weapon[] = [
   RIVAL_78_SHORTY,
   SLATE,
   SPECTER_1882,
-  SPECTER_1882_SHORTY
+  SPECTER_1882_SHORTY,
+  TERMINUS,
+  TERMINUS_SHORTY
 ].sort((a, b) => {
   if (a.name > b.name) {
     return 1;
