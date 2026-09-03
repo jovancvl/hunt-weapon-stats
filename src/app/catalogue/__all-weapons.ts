@@ -51,6 +51,8 @@ import { SPARKS } from "./sparks"
 import { SPARKS_PISTOL } from "./sparks-pistol"
 import { SPARKS_PISTOL_SILENCER } from "./sparks-pistol-silencer"
 import { SPARKS_SILENCER } from "./sparks-silencer"
+import { SPECTER_1882 } from "./specter-1882";
+import { SPECTER_1882_SHORTY } from "./specter-1882-shorty";
 import { SPRINGFIELD_1866 } from "./springfield-1866"
 import { SPRINGFIELD_1866_SHORTY } from "./springfield-1866-shorty"
 import { UPPERCUT } from "./uppercut"
@@ -118,7 +120,9 @@ export const WEAPON_LIST: Weapon[] = [
   AUTO_4_SHORTY,
   RIVAL_78,
   RIVAL_78_SHORTY,
-  SLATE
+  SLATE,
+  SPECTER_1882,
+  SPECTER_1882_SHORTY
 ].sort((a, b) => {
   if (a.name > b.name) {
     return 1;
