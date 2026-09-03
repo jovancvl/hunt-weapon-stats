@@ -2,6 +2,8 @@ import { Weapon } from "../model/weapon";
 import { CARBINE_1865 } from "./1865-carbine"
 import { CARBINE_1865_SILENCER } from "./1865-carbine-silencer"
 import { CAVALRY_1890 } from "./1890-cavalry";
+import { AUTO_4_SHORTY } from "./auto-4";
+import { AUTO_5 } from "./auto-5";
 import { BERTHIER_1892 } from "./berthier-1892";
 import { BORNHEIM_NO3 } from "./bornheim-no3";
 import { BORNHEIM_NO3_MATCH } from "./bornheim-no3-match"
@@ -108,7 +110,9 @@ export const WEAPON_LIST: Weapon[] = [
   UPPERCUT,
   CAVALRY_1890,
   ROMERO_77,
-  ROMERO_77_SHORTY
+  ROMERO_77_SHORTY,
+  AUTO_5,
+  AUTO_4_SHORTY
 ].sort((a, b) => {
   if (a.name > b.name) {
     return 1;
