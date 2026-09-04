@@ -4,7 +4,7 @@ import { DamageBreakpoint } from "../model/damage"
 import { ActionType, Weapon } from "../model/weapon";
 
 const BASE_DAMAGE = 150
-const OPTIMAL_RANGE = 12
+const OPTIMAL_RANGE = 13
 const DROP_RANGE = 20
 const SPREAD = 25
 const VERTICAL_RECOIL = 30
@@ -107,7 +107,7 @@ const AMMO = [
         damage: 150
       },
       {
-        range: OPTIMAL_RANGE,
+        range: 12,
         damage: 150
       },
     ]

@@ -127,7 +127,7 @@ const AMMO = [
         damage: 150
       },
       {
-        range: OPTIMAL_RANGE,
+        range: 12,
         damage: 150
       },
     ]
